@@ -1,5 +1,5 @@
-import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 import { copy as heroCopy } from "@/features/Dashboard/presentation/constants/HeroCard.constant";

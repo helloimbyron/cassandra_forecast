@@ -1,5 +1,5 @@
 import { projectPortfolio } from "@/features/Dashboard/domain/utils/projectPortfolio.util";
-import type { Portfolio } from "@/shared/domain/portfolio/Portfolio.type";
+import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 import { formatYears } from "@/features/Dashboard/presentation/utils/formatYears.util";
 

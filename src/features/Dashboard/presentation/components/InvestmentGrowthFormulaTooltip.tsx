@@ -5,7 +5,7 @@ import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/sign
 import { copy } from "@/features/Dashboard/presentation/constants/InvestmentGrowthFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
-import type { InvestmentProjection } from "@/shared/domain/portfolio/InvestmentProjection.type";
+import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";
 import { FormulaResult } from "@/features/Dashboard/presentation/components/FormulaResult";

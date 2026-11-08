@@ -1,9 +1,9 @@
-import type { Holding } from "@/shared/domain/portfolio/Holding.type";
-import type { HoldingProjection } from "@/shared/domain/portfolio/HoldingProjection.type";
-import type { ProjectionPoint } from "@/shared/domain/portfolio/ProjectionPoint.type";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import type { Holding } from "@/shared/domain/types/Holding.type";
+import type { HoldingProjection } from "@/shared/domain/types/HoldingProjection.type";
+import type { ProjectionPoint } from "@/shared/domain/types/ProjectionPoint.type";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 
-import { portfolioMessages } from "@/shared/domain/portfolio/portfolioMessages.constant";
+import { portfolioMessages } from "@/shared/domain/types/portfolioMessages.constant";
 import { monthlyInflationFactor } from "@/features/Dashboard/domain/utils/monthlyInflationFactor.util";
 import { monthlyRateFromAnnualPct } from "@/features/Dashboard/domain/utils/monthlyRateFromAnnualPct.util";
 import { realAnnualRatePct } from "@/features/Dashboard/domain/utils/realAnnualRatePct.util";

@@ -1,5 +1,5 @@
-import type { Portfolio } from "@/shared/domain/portfolio/Portfolio.type";
-import type { Investment } from "@/shared/domain/portfolio/Investment.type";
+import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
+import type { Investment } from "@/shared/domain/types/Investment.type";
 
 export function updateInvestment(
   portfolio: Portfolio,

@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { readPortfolioFile } from "@/shared/infrastructure/portfolio/readPortfolioFile.service";
+import { readPortfolioFile } from "@/shared/infrastructure/services/readPortfolioFile.service";
 import { createPortfolioChartData } from "../../../../src/features/Dashboard/presentation/utils/createPortfolioChartData.util";
 import { portfolioSchema } from "../../../../src/features/Dashboard";
 

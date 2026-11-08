@@ -1,14 +1,14 @@
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
 import { copy } from "@/features/Dashboard/presentation/constants/InvestmentCard.constant";
-import type { Investment } from "@/shared/domain/portfolio/Investment.type";
-import type { HoldingProjection } from "@/shared/domain/portfolio/HoldingProjection.type";
+import type { Investment } from "@/shared/domain/types/Investment.type";
+import type { HoldingProjection } from "@/shared/domain/types/HoldingProjection.type";
 import type { DashboardModel } from "@/features/Dashboard/presentation/types/DashboardModel.type";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 import { NumericUnitInput } from "@/features/Dashboard/presentation/components/NumericUnitInput";
 import { ProjectedValueFormulaTooltip } from "@/features/Dashboard/presentation/components/ProjectedValueFormulaTooltip";
 import { PROJECTION_SCOPE_VALUES } from "@/features/Dashboard/presentation/enums/projectionScope.enum";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 
 // --- Constants ---
 

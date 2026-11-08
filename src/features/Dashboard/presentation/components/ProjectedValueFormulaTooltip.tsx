@@ -13,7 +13,7 @@ import { MonthlyBalanceExamples } from "@/features/Dashboard/presentation/compon
 import { FormulaTooltip } from "@/features/Dashboard/presentation/components/FormulaTooltip";
 import { PROJECTION_SCOPE_VALUES } from "@/features/Dashboard/presentation/enums/projectionScope.enum";
 import type { ProjectionScope } from "@/features/Dashboard/presentation/types/ProjectionScope.type";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { monthlyRateFromAnnualPct } from "@/features/Dashboard/domain/utils/monthlyRateFromAnnualPct.util";
 import { realAnnualRatePct } from "@/features/Dashboard/domain/utils/realAnnualRatePct.util";
 

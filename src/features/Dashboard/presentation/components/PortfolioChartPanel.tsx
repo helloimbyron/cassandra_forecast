@@ -3,13 +3,11 @@ import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/p
 import { copy } from "@/features/Dashboard/presentation/constants/PortfolioChartPanel.constant";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { Badge } from "@/design-system/components/Badge";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/design-system/components/Card";
+import { Card } from "@/design-system/components/cards/Card";
+import { CardHeader } from "@/design-system/components/cards/CardHeader";
+import { CardTitle } from "@/design-system/components/cards/CardTitle";
+import { CardDescription } from "@/design-system/components/cards/CardDescription";
+import { CardContent } from "@/design-system/components/cards/CardContent";
 import { compactMoney } from "@/features/Dashboard/presentation/utils/compactMoney.util";
 import { investmentSeriesKey } from "@/features/Dashboard/presentation/utils/investmentSeriesKey.util";
 import { CHART_CONSTANTS } from "@/features/Dashboard/presentation/constants/chartConstants.constant";

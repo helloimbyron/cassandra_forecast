@@ -1,5 +1,5 @@
-import { brandLabel } from "@/shared/presentation/brand.constant";
-import { copy } from "@/shared/presentation/Footer.constant";
+import { brandLabel } from "@/shared/presentation/constants/brand.constant";
+import { copy } from "@/shared/presentation/constants/Footer.constant";
 
 export function Footer() {
   return (

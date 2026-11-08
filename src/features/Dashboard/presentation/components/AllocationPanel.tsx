@@ -1,13 +1,11 @@
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 import { copy } from "@/features/Dashboard/presentation/constants/AllocationPanel.constant";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/design-system/components/Card";
+import { Card } from "@/design-system/components/cards/Card";
+import { CardHeader } from "@/design-system/components/cards/CardHeader";
+import { CardTitle } from "@/design-system/components/cards/CardTitle";
+import { CardDescription } from "@/design-system/components/cards/CardDescription";
+import { CardContent } from "@/design-system/components/cards/CardContent";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 import { AbbreviatedValue } from "@/features/Dashboard/presentation/components/money/AbbreviatedValue";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";

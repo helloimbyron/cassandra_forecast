@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "@/shared/utils/cn.util";
+import { cn } from "@/libraries/shadcn/utils/cn.util";
 
 export function Card({
   className,

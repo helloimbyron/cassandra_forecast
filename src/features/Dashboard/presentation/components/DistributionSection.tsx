@@ -18,25 +18,23 @@ import {
   PiggyBank,
 } from "lucide-react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/design-system/components/Card";
+import { Card } from "@/design-system/components/cards/Card";
+import { CardContent } from "@/design-system/components/cards/CardContent";
+import { CardDescription } from "@/design-system/components/cards/CardDescription";
+import { CardHeader } from "@/design-system/components/cards/CardHeader";
+import { CardTitle } from "@/design-system/components/cards/CardTitle";
 import { Badge } from "@/design-system/components/Badge";
 import { NumericUnitInput } from "@/features/Dashboard/presentation/components/NumericUnitInput";
 import { Label } from "@/design-system/components/Label";
-import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 import { AbbreviatedValue } from "@/features/Dashboard/presentation/components/money/AbbreviatedValue";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { formatNumericUnitValue } from "@/features/Dashboard/presentation/formatters/formatNumericUnitValue.util";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { estimateAdditionalPortfolioDepletionMonths } from "@/features/Dashboard/domain/utils/estimateAdditionalPortfolioDepletionMonths.util";
 import { simulatePortfolioDistribution } from "@/features/Dashboard/domain/utils/simulatePortfolioDistribution.util";
-import type { DistributionPoint } from "@/shared/domain/portfolio/DistributionPoint.type";
+import type { DistributionPoint } from "@/shared/domain/types/DistributionPoint.type";
 import { annualRateForMonthlyWithdrawal } from "@/features/Dashboard/domain/utils/annualRateForMonthlyWithdrawal.util";
 import { distributionAssetsWithReturn } from "@/features/Dashboard/domain/utils/distributionAssetsWithReturn.util";
 import { monthlyWithdrawalForAnnualRate } from "@/features/Dashboard/domain/utils/monthlyWithdrawalForAnnualRate.util";

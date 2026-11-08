@@ -1,4 +1,4 @@
-import type { Portfolio } from "@/shared/domain/portfolio/Portfolio.type";
+import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
 
 export function portfolioInitialValue(portfolio: Portfolio): number {
   return portfolio.investments.reduce(

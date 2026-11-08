@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router";
-import { usePortfolioSession } from "@/app/hooks/usePortfolioSession";
+import { usePortfolioSession } from "@/shared/presentation/hooks/usePortfolioSession";
 import { APP_PATHS } from "@/app/routes/appPaths";
 import { DashboardPage, StickyProjectionControls, useDashboardModel } from "@/features/Dashboard";
 import { HomePage } from "@/features/Home";

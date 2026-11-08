@@ -1,5 +1,5 @@
 import { MAX_ADDITIONAL_DEPLETION_MONTHS } from "@/features/Dashboard/domain/constants/maxAdditionalDepletionMonths.constant";
-import type { DistributionAsset } from "@/shared/domain/portfolio/DistributionAsset.type";
+import type { DistributionAsset } from "@/shared/domain/types/DistributionAsset.type";
 import { grownAssetBalances } from "@/features/Dashboard/domain/utils/grownAssetBalances.util";
 import { validateDistributionAssets } from "@/features/Dashboard/domain/validators/validateDistributionAssets.validator";
 import { withdrawProRata } from "@/features/Dashboard/domain/utils/withdrawProRata.util";

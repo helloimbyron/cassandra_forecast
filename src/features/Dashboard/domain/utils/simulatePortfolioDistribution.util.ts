@@ -1,7 +1,7 @@
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
-import type { DistributionAsset } from "@/shared/domain/portfolio/DistributionAsset.type";
-import type { DistributionPoint } from "@/shared/domain/portfolio/DistributionPoint.type";
-import type { PortfolioDistributionProjection } from "@/shared/domain/portfolio/PortfolioDistributionProjection.type";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
+import type { DistributionAsset } from "@/shared/domain/types/DistributionAsset.type";
+import type { DistributionPoint } from "@/shared/domain/types/DistributionPoint.type";
+import type { PortfolioDistributionProjection } from "@/shared/domain/types/PortfolioDistributionProjection.type";
 import { grownAssetBalances } from "@/features/Dashboard/domain/utils/grownAssetBalances.util";
 import { validateDistributionAssets } from "@/features/Dashboard/domain/validators/validateDistributionAssets.validator";
 import { withdrawProRata } from "@/features/Dashboard/domain/utils/withdrawProRata.util";

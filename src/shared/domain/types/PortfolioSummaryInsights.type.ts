@@ -1,4 +1,4 @@
-import type { InvestmentProjection } from "@/shared/domain/portfolio/InvestmentProjection.type";
+import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
 
 export type PortfolioSummaryInsights = {
   totalGrowth: number;

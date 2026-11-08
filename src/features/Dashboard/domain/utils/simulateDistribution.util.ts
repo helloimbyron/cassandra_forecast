@@ -1,6 +1,6 @@
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
-import type { DistributionPoint } from "@/shared/domain/portfolio/DistributionPoint.type";
-import type { DistributionProjection } from "@/shared/domain/portfolio/DistributionProjection.type";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
+import type { DistributionPoint } from "@/shared/domain/types/DistributionPoint.type";
+import type { DistributionProjection } from "@/shared/domain/types/DistributionProjection.type";
 
 // --- Constants ---
 

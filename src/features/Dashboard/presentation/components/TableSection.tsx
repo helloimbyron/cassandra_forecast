@@ -4,7 +4,8 @@ import { labels } from "@/features/Dashboard/presentation/constants/labels.const
 import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
 import { copy } from "@/features/Dashboard/presentation/constants/TableSection.constant";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import { Card, CardContent } from "@/design-system/components/Card";
+import { Card } from "@/design-system/components/cards/Card";
+import { CardContent } from "@/design-system/components/cards/CardContent";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 import { getVisibleInvestmentTotal } from "@/features/Dashboard/presentation/utils/getVisibleInvestmentTotal.util";
 

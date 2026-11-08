@@ -1,5 +1,5 @@
-import { brandLabel } from "@/shared/presentation/brand.constant";
-import { copy } from "@/shared/presentation/Header.constant";
+import { brandLabel } from "@/shared/presentation/constants/brand.constant";
+import { copy } from "@/shared/presentation/constants/Header.constant";
 import { Upload } from "lucide-react";
 import { BrandMark } from "@/shared/presentation/components/BrandMark";
 import { ThemeToggle } from "@/shared/presentation/components/ThemeToggle";

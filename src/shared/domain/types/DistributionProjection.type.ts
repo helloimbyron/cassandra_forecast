@@ -1,4 +1,4 @@
-import type { DistributionPoint } from "@/shared/domain/portfolio/DistributionPoint.type";
+import type { DistributionPoint } from "@/shared/domain/types/DistributionPoint.type";
 
 export type DistributionProjection = {
   points: DistributionPoint[];

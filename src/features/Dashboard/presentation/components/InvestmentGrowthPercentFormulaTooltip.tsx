@@ -3,7 +3,7 @@ import { Calculator } from "lucide-react";
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
 import { copy } from "@/features/Dashboard/presentation/constants/InvestmentGrowthPercentFormulaTooltip.constant";
-import type { InvestmentProjection } from "@/shared/domain/portfolio/InvestmentProjection.type";
+import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";

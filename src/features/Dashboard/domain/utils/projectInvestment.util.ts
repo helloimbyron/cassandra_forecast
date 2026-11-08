@@ -1,5 +1,5 @@
-import type { Investment } from "@/shared/domain/portfolio/Investment.type";
-import type { InvestmentProjection } from "@/shared/domain/portfolio/InvestmentProjection.type";
+import type { Investment } from "@/shared/domain/types/Investment.type";
+import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
 import { projectHolding } from "@/features/Dashboard/domain/utils/projectHolding.util";
 
 export function projectInvestment(

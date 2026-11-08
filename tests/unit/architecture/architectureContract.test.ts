@@ -104,8 +104,10 @@ describe("architecture contract", () => {
     const config = JSON.parse(
       readFileSync(new URL("../../../components.json", import.meta.url), "utf8"),
     ) as { aliases: { lib?: string; utils: string } };
-    expect(config.aliases.utils).toBe("@/shared/utils/cn.util");
-    expect(existsSync(new URL("../../../src/shared/utils/cn.util.ts", import.meta.url))).toBe(true);
+    expect(config.aliases.utils).toBe("@/libraries/shadcn/utils/cn.util");
+    expect(
+      existsSync(new URL("../../../src/libraries/shadcn/utils/cn.util.ts", import.meta.url)),
+    ).toBe(true);
     expect(config.aliases).not.toHaveProperty("lib");
   });
 });

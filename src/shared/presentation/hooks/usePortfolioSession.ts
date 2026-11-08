@@ -1,7 +1,7 @@
 import { useRef, useState, type ChangeEvent, type DragEvent } from "react";
-import type { Portfolio } from "@/shared/domain/portfolio/Portfolio.type";
-import { readPortfolioFile } from "@/shared/infrastructure/portfolio/readPortfolioFile.service";
-import { importMessages } from "@/shared/infrastructure/portfolio/importMessages.constant";
+import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
+import { readPortfolioFile } from "@/shared/infrastructure/services/readPortfolioFile.service";
+import { importMessages } from "@/shared/infrastructure/constants/importMessages.constant";
 type Callbacks = { onPortfolioLoaded?: () => void; onExampleLoadFailed?: () => void };
 export function usePortfolioSession({ onPortfolioLoaded, onExampleLoadFailed }: Callbacks = {}) {
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null);

@@ -1,4 +1,4 @@
-import type { InvestmentCategory } from "@/shared/domain/portfolio/InvestmentCategory.type";
+import type { InvestmentCategory } from "@/shared/domain/types/InvestmentCategory.type";
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 
 export const categoryLabels: Record<InvestmentCategory, string> = {

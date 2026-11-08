@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { Card, CardContent } from "@/design-system/components/Card";
+import { Card } from "@/design-system/components/cards/Card";
+import { CardContent } from "@/design-system/components/cards/CardContent";
 
 export function Metric({
   icon,

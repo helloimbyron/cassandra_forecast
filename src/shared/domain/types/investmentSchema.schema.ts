@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { holdingSchema } from "@/shared/domain/portfolio/holdingSchema.schema";
-import { INVESTMENT_CATEGORY_VALUES } from "@/shared/domain/portfolio/investmentCategory.enum";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { holdingSchema } from "@/shared/domain/schemas/holdingSchema.schema";
+import { INVESTMENT_CATEGORY_VALUES } from "@/shared/domain/types/investmentCategory.enum";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 
 // --- Constants ---
 

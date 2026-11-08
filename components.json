@@ -14,7 +14,7 @@
   "rtl": false,
   "aliases": {
     "components": "@/design-system/components",
-    "utils": "@/shared/utils/cn.util",
+    "utils": "@/libraries/shadcn/utils/cn.util",
     "ui": "@/design-system/components",
     "hooks": "@/features/Portfolio/presentation/hooks"
   },

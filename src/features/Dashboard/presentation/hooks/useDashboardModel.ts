@@ -2,12 +2,12 @@ import { useEffect, useMemo, useRef, useState, type Dispatch, type SetStateActio
 import { portfolioInitialValue } from "@/features/Dashboard/domain/utils/portfolioInitialValue.util";
 import { getPortfolioSummaryInsights } from "@/features/Dashboard/domain/utils/getPortfolioSummaryInsights.util";
 import { projectPortfolio } from "@/features/Dashboard/domain/utils/projectPortfolio.util";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { updateInvestment } from "@/features/Dashboard/domain/utils/updateInvestment.util";
 import { createPortfolioChartData } from "@/features/Dashboard/presentation/utils/createPortfolioChartData.util";
 import { formatPortfolioDate } from "@/features/Dashboard/presentation/utils/formatPortfolioDate.util";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
-import type { Portfolio } from "@/shared/domain/portfolio/Portfolio.type";
+import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
 const { DEFAULT_HORIZON_YEARS, MONTHS_PER_YEAR, PERCENT_SCALE } = PORTFOLIO_CONSTANTS;
 type Session = {
   portfolio: Portfolio | null;

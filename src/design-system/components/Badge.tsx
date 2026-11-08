@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/shared/utils/cn.util";
+import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { Slot } from "radix-ui";
 
 // --- Constants ---

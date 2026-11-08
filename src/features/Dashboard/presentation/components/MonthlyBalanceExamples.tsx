@@ -3,7 +3,7 @@ import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/format
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";
 import { FormulaResult } from "@/features/Dashboard/presentation/components/FormulaResult";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { monthlyInflationFactor } from "@/features/Dashboard/domain/utils/monthlyInflationFactor.util";
 import { FORMULA_EXAMPLE_CONSTANTS } from "@/features/Dashboard/presentation/constants/formulaExampleConstants.constant";
 

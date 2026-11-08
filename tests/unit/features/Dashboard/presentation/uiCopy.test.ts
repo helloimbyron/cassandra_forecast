@@ -8,7 +8,7 @@ import { labels } from "@/features/Dashboard/presentation/constants/labels.const
 import { projectedBalanceLabel } from "../../../../../src/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
 import { signedOutcomeLabel } from "../../../../../src/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
 import { copy as heroCopy } from "@/features/Dashboard/presentation/constants/HeroCard.constant";
-import { copy as headerCopy } from "@/shared/presentation/Header.constant";
+import { copy as headerCopy } from "@/shared/presentation/constants/Header.constant";
 import { copy as distributionCopy } from "@/features/Dashboard/presentation/constants/DistributionSection.constant";
 import { copy as formulaResultCopy } from "@/features/Dashboard/presentation/constants/FormulaResult.constant";
 import { copy as tableCopy } from "@/features/Dashboard/presentation/constants/TableSection.constant";
@@ -236,13 +236,13 @@ describe("UI copy catalogs", () => {
       fileURLToPath(new URL("../../../../../src/app/copy/site.constant.ts", import.meta.url)),
       fileURLToPath(
         new URL(
-          "../../../../../src/shared/infrastructure/portfolio/importMessages.constant.ts",
+          "../../../../../src/shared/infrastructure/constants/importMessages.constant.ts",
           import.meta.url,
         ),
       ),
       fileURLToPath(
         new URL(
-          "../../../../../src/shared/domain/portfolio/portfolioMessages.constant.ts",
+          "../../../../../src/shared/domain/types/portfolioMessages.constant.ts",
           import.meta.url,
         ),
       ),

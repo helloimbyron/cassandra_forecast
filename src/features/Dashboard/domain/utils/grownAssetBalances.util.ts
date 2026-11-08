@@ -1,5 +1,5 @@
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
-import type { DistributionAsset } from "@/shared/domain/portfolio/DistributionAsset.type";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
+import type { DistributionAsset } from "@/shared/domain/types/DistributionAsset.type";
 
 // --- Constants ---
 

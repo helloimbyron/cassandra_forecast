@@ -1,4 +1,4 @@
-import type { InvestmentProjection } from "@/shared/domain/portfolio/InvestmentProjection.type";
+import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
 import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
 import { formatYears } from "@/features/Dashboard/presentation/utils/formatYears.util";
 

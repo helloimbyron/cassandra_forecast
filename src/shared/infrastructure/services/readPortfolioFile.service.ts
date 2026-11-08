@@ -1,7 +1,7 @@
-import { portfolioSchema } from "@/shared/domain/portfolio/portfolioSchema.schema";
-import type { Portfolio } from "@/shared/domain/portfolio/Portfolio.type";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
-import { importMessages } from "@/shared/infrastructure/portfolio/importMessages.constant";
+import { portfolioSchema } from "@/shared/domain/schemas/portfolioSchema.schema";
+import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
+import { importMessages } from "@/shared/infrastructure/constants/importMessages.constant";
 
 // --- Constants ---
 

@@ -1,4 +1,4 @@
-import { copy } from "@/shared/presentation/ThemeToggle.constant";
+import { copy } from "@/shared/presentation/constants/ThemeToggle.constant";
 import { useState } from "react";
 import { Button } from "@/design-system/components/Button";
 import { Sun } from "lucide-react";

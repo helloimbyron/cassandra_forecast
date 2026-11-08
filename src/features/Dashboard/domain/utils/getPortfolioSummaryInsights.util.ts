@@ -1,7 +1,7 @@
-import type { InvestmentProjection } from "@/shared/domain/portfolio/InvestmentProjection.type";
-import type { PortfolioSummaryInsights } from "@/shared/domain/portfolio/PortfolioSummaryInsights.type";
+import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
+import type { PortfolioSummaryInsights } from "@/shared/domain/types/PortfolioSummaryInsights.type";
 import { moneyWeightedMonthlyReturn } from "@/features/Dashboard/domain/utils/moneyWeightedMonthlyReturn.util";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { monthlyInflationFactor } from "@/features/Dashboard/domain/utils/monthlyInflationFactor.util";
 
 // --- Constants ---

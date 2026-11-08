@@ -3,18 +3,16 @@ import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/p
 import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
 import { copy } from "@/features/Dashboard/presentation/constants/InvestmentCard.constant";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import type { Investment } from "@/shared/domain/portfolio/Investment.type";
+import type { Investment } from "@/shared/domain/types/Investment.type";
 import { createElement, type CSSProperties } from "react";
 import { Badge } from "@/design-system/components/Badge";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/design-system/components/Card";
+import { Card } from "@/design-system/components/cards/Card";
+import { CardHeader } from "@/design-system/components/cards/CardHeader";
+import { CardTitle } from "@/design-system/components/cards/CardTitle";
+import { CardDescription } from "@/design-system/components/cards/CardDescription";
+import { CardContent } from "@/design-system/components/cards/CardContent";
 import { Label } from "@/design-system/components/Label";
-import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
 import { NumericUnitInput } from "@/features/Dashboard/presentation/components/NumericUnitInput";
 import { projectInvestment } from "@/features/Dashboard/domain/utils/projectInvestment.util";
 import { compactMoney } from "@/features/Dashboard/presentation/utils/compactMoney.util";
@@ -36,7 +34,7 @@ import { ProjectedValueFormulaTooltip } from "@/features/Dashboard/presentation/
 import { PortfolioTooltip } from "@/features/Dashboard/presentation/components/PortfolioTooltip";
 import { HoldingRow } from "@/features/Dashboard/presentation/components/HoldingRow";
 import { formatYears } from "@/features/Dashboard/presentation/utils/formatYears.util";
-import { PORTFOLIO_CONSTANTS } from "@/shared/domain/portfolio/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { categoryLabels } from "@/features/Dashboard/presentation/constants/categoryLabels.constant";
 import { PROJECTION_SCOPE_VALUES } from "@/features/Dashboard/presentation/enums/projectionScope.enum";
 import { createInvestmentChartData } from "@/features/Dashboard/presentation/utils/createInvestmentChartData.util";

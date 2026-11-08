@@ -1,6 +1,6 @@
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
-import { cn } from "@/shared/utils/cn.util";
+import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { formatFullMoneyDisplay } from "@/features/Dashboard/presentation/formatters/formatFullMoneyDisplay.util";
 import { formatFullUsd } from "@/features/Dashboard/presentation/formatters/formatFullUsd.util";
 import type { MoneyProps } from "@/features/Dashboard/presentation/types/MoneyProps.type";
