@@ -43,7 +43,7 @@ export function Header({
 
   return (
     <header
-      className={`topbar${showProjectionControls && inflation ? "has-projection-controls" : ""}`}
+      className={`topbar${showProjectionControls && inflation ? " has-projection-controls" : ""}`}
     >
       <div className="brand-group">
         <a className="brand" href="/" onClick={handleBrandClick} aria-label={copy.cassandraInicio}>
