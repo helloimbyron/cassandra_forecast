@@ -59,10 +59,8 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
     <Card className="panel-card chart-panel">
       <CardHeader className="panel-header">
         <div>
-          <CardTitle>{portfolioChartPanelCopy.proyeccionDeLaCartera}</CardTitle>
-          <CardDescription>
-            {portfolioChartPanelCopy.elEfectoDelTiempoSobreTuCapital}
-          </CardDescription>
+          <CardTitle>{portfolioChartPanelCopy.portfolioProjection}</CardTitle>
+          <CardDescription>{portfolioChartPanelCopy.timeEffectOnCapital}</CardDescription>
         </div>
         <Badge variant="outline">{totalYears === 0 ? labels.today : formatYears(totalYears)}</Badge>
       </CardHeader>
@@ -140,7 +138,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
         <div
           className="investment-legend"
           role="group"
-          aria-label={portfolioChartPanelCopy.seriesDeLaProyeccion}
+          aria-label={portfolioChartPanelCopy.projectionSeries}
         >
           {[
             {

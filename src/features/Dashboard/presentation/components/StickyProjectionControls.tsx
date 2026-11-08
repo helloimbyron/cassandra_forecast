@@ -29,7 +29,7 @@ export function StickyProjectionControls({
             <strong>{totalYears === 0 ? labels.today : formatYears(totalYears)}</strong>
           </div>
           <DebouncedSlider
-            aria-label={heroCardCopy.plazoTotalAnos}
+            aria-label={heroCardCopy.totalHorizonYears}
             min={PORTFOLIO_CONSTANTS.MIN_HORIZON_YEARS}
             max={PORTFOLIO_CONSTANTS.MAX_HORIZON_YEARS}
             step={1}

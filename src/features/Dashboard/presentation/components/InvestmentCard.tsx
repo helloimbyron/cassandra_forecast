@@ -117,8 +117,8 @@ export function InvestmentCard({
             <CardDescription>
               {investment.holdings.length}{" "}
               {investment.holdings.length === 1
-                ? investmentCardCopy.posicion
-                : investmentCardCopy.posiciones}
+                ? investmentCardCopy.position
+                : investmentCardCopy.positions}
             </CardDescription>
           </div>
         </div>

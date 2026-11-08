@@ -17,14 +17,14 @@ export function createPortfolioChartData(
     };
     projections.forEach((projection) => {
       row[projection.investment.id] = projection.points[year]!.balance;
-      row[`${projection.investment.id}-aporte`] = projection.points[year]!.contributions;
+      row[`${projection.investment.id}-contribution`] = projection.points[year]!.contributions;
     });
     row.total = projections.reduce((sum, projection) => sum + projection.points[year]!.balance, 0);
-    row.aportes = projections.reduce(
+    row.contributions = projections.reduce(
       (sum, projection) => sum + projection.points[year]!.contributions,
       0,
     );
-    row.invested = initial + Number(row.aportes);
+    row.invested = initial + Number(row.contributions);
 
     return row;
   });

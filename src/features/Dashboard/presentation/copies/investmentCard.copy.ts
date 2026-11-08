@@ -1,8 +1,8 @@
 import { t } from "@/libraries/i18n";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 export const investmentCardCopy = {
-  posicion: t("dashboard.investmentCard.copy.posicion.p1"),
-  posiciones: t("dashboard.investmentCard.copy.posiciones.p1"),
+  position: t("dashboard.investmentCard.copy.posicion.p1"),
+  positions: t("dashboard.investmentCard.copy.posiciones.p1"),
   text40: t("dashboard.investmentCard.copy.text40.p1"),
   questionMark: t("dashboard.investmentCard.copy.questionMark.p1"),
   rateSource: (asOf?: string | null) =>

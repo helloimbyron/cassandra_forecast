@@ -1,7 +1,7 @@
 import { t } from "@/libraries/i18n";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 export const leadingGrowthFormulaTooltipCopy = {
-  seComparanLosCrecimientosDeTodosLos: t(
+  compareGrowthAcrossInvestments: t(
     "dashboard.leadingGrowthFormulaTooltip.copy.seComparanLosCrecimientosDeTodosLos.p1",
   ),
   calculateEachInvestmentGrowthFirst: t(
@@ -20,7 +20,7 @@ export const leadingGrowthFormulaTooltipCopy = {
   comparaLosResultadosSiDosParecenIguales: t(
     "dashboard.leadingGrowthFormulaTooltip.copy.comparaLosResultadosSiDosParecenIguales.p1",
   ),
-  seEligeElMaximoEntreLosCrecimientos: t(
+  selectMaximumGrowth: t(
     "dashboard.leadingGrowthFormulaTooltip.copy.seEligeElMaximoEntreLosCrecimientos.p1",
   ),
   positiveInvestmentGrowths: t(

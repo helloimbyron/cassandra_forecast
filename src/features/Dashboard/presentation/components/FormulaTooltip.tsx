@@ -52,7 +52,7 @@ export function FormulaTooltip({
             <button
               className="formula-dialog-close"
               type="button"
-              aria-label={formulaTooltipCopy.cerrarFormula}
+              aria-label={formulaTooltipCopy.closeFormula}
             >
               <X className="icon-sm" aria-hidden="true" />
             </button>

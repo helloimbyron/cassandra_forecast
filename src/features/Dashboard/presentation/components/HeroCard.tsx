@@ -222,7 +222,7 @@ export function HeroCard({
                 <AbbreviatedMoney value={totalGrowth} />
                 <FormulaTooltip
                   label={signedOutcomeLabel(totalGrowth)}
-                  intro={heroCardCopy.esLaDiferenciaEntreElValorFinal}
+                  intro={heroCardCopy.finalValueDifferenceExplanation}
                   example={heroCardCopy.growthExample(
                     formatAbbreviatedValue(totalAtHorizon, "currency"),
                     formatAbbreviatedValue(initial, "currency"),
@@ -234,19 +234,19 @@ export function HeroCard({
                   <ol className="formula-tooltip-copy">
                     <FormulaStep>
                       <span className="formula-step-description">
-                        {heroCardCopy.separaElDineroQuePusisteDelValor}
+                        {heroCardCopy.distinguishesContributionsFromProjectedValue}
                       </span>
                       <FormulaMath
-                        label={heroCardCopy.valorProyectadoMenosCapitalActualYAportes}
+                        label={heroCardCopy.projectedGrowthCalculation}
                         tex={`${texText(labels.projectedValue)} - ${texText(labels.currentCapital)} - ${texText(labels.plannedContributions)}`}
                       />
                     </FormulaStep>
                     <FormulaStep>
                       <span className="formula-step-description">
-                        {heroCardCopy.restaElCapitalActualYTodosLos}
+                        {heroCardCopy.subtractCurrentCapitalAndAllContributions}
                       </span>
                       <FormulaMath
-                        label={heroCardCopy.sustitucionDeValoresDelCrecimiento}
+                        label={heroCardCopy.growthValueSubstitution}
                         className="formula-math-substitution"
                         tex={`${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))} - ${texText(formatAbbreviatedValue(initial, "currency"))} - ${texText(formatAbbreviatedValue(totalContributions, "currency"))}`}
                       />
@@ -284,7 +284,7 @@ export function HeroCard({
                       ? labels.growthPercent
                       : signedOutcomeLabel(summaryInsights.growthPctOfCurrent)
                   }
-                  intro={heroCardCopy.mideElCrecimientoFrenteAlCapitalQue}
+                  intro={heroCardCopy.growthRelativeToCapitalExplanation}
                   example={
                     summaryInsights.growthPctOfCurrent === null
                       ? undefined
@@ -299,10 +299,10 @@ export function HeroCard({
                   <ol className="formula-tooltip-copy">
                     <FormulaStep>
                       <span className="formula-step-description">
-                        {heroCardCopy.usaElCapitalActualComoReferenciaNo}
+                        {heroCardCopy.usesCurrentCapitalAsReference}
                       </span>
                       <FormulaMath
-                        label={heroCardCopy.crecimientoDivididoParaCapitalActualPor100}
+                        label={heroCardCopy.growthAsPercentOfCurrentCapital}
                         tex={`\\frac{${texText(labels.growth)}}{${texText(labels.currentCapital)}} \\times 100`}
                       />
                     </FormulaStep>
@@ -310,11 +310,11 @@ export function HeroCard({
                       <span className="formula-step-description">
                         {summaryInsights.growthPctOfCurrent === null
                           ? heroCardCopy.noCurrentCapital
-                          : heroCardCopy.sustituyeLosImportesYExpresaLaComparacion}
+                          : heroCardCopy.substituteAmountsToShowComparison}
                       </span>
                       {summaryInsights.growthPctOfCurrent !== null && (
                         <FormulaMath
-                          label={heroCardCopy.sustitucionDeValoresDelCrecimientoPorcentual}
+                          label={heroCardCopy.growthPercentValueSubstitution}
                           className="formula-math-substitution"
                           tex={`\\frac{${texText(formatAbbreviatedValue(totalGrowth, "currency"))}}{${texText(formatAbbreviatedValue(initial, "currency"))}} \\times 100`}
                         />
@@ -348,7 +348,7 @@ export function HeroCard({
           </div>
           <div className="hero-slider-wrap">
             <DebouncedSlider
-              aria-label={heroCardCopy.plazoTotalAnos}
+              aria-label={heroCardCopy.totalHorizonYears}
               min={MIN_HORIZON_YEARS}
               max={MAX_HORIZON_YEARS}
               step={1}
@@ -364,7 +364,7 @@ export function HeroCard({
               aria-hidden="true"
             >
               {draftYears}
-              {heroCardCopy.anos}
+              {heroCardCopy.years}
             </span>
           </div>
         </div>

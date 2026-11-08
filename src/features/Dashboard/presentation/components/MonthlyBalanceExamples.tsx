@@ -58,7 +58,7 @@ export function MonthlyBalanceExamples({
     <div
       className="formula-month-examples"
       role="list"
-      aria-label={monthlyBalanceExamplesCopy.ejemplosDelCalculoMesAMes}
+      aria-label={monthlyBalanceExamplesCopy.monthByMonthCalculationExamples}
     >
       {examples.map((example, index) => {
         const priorShownMonth = examples[index - 1]?.month ?? 0;
@@ -69,14 +69,14 @@ export function MonthlyBalanceExamples({
           <div className="formula-month-example" role="listitem" key={example.month}>
             {skipped > 0 && (
               <p className="formula-month-gap">
-                {monthlyBalanceExamplesCopy.meses}
-                {priorShownMonth + 1} {monthlyBalanceExamplesCopy.al}
+                {monthlyBalanceExamplesCopy.months}
+                {priorShownMonth + 1} {monthlyBalanceExamplesCopy.to}
                 {example.month - 1}
-                {monthlyBalanceExamplesCopy.seRepiteLaMismaOperacionUnoPor}
+                {monthlyBalanceExamplesCopy.repeatCalculationOneAtATime}
               </p>
             )}
             <strong className="formula-month-label">
-              {monthlyBalanceExamplesCopy.mes}
+              {monthlyBalanceExamplesCopy.month}
               {example.month}
               {isLast ? monthlyBalanceExamplesCopy.lastMonth : ""}
             </strong>

@@ -32,8 +32,8 @@ export const heroCardCopy = {
   nominalContributions: t("dashboard.heroCard.copy.nominalContributions.p1"),
   nominalContributionsShort: t("dashboard.heroCard.copy.nominalContributionsShort.p1"),
   realContributionsShort: t("dashboard.heroCard.copy.realContributionsShort.p1"),
-  desgloseDeLaProyeccion: t("dashboard.heroCard.copy.desgloseDeLaProyeccion.p1"),
-  esLaDiferenciaEntreElValorFinal: t("dashboard.heroCard.copy.esLaDiferenciaEntreElValorFinal.p1"),
+  projectionBreakdown: t("dashboard.heroCard.copy.desgloseDeLaProyeccion.p1"),
+  finalValueDifferenceExplanation: t("dashboard.heroCard.copy.esLaDiferenciaEntreElValorFinal.p1"),
   growthExample: (final: string, current: string, contributions: string, result: string) =>
     t("dashboard.heroCard.copy.growthExample.p1") +
     final +
@@ -52,38 +52,36 @@ export const heroCardCopy = {
     t("dashboard.heroCard.copy.growthPercentExample.p3") +
     percent +
     t("dashboard.heroCard.copy.growthPercentExample.p4"),
-  separaElDineroQuePusisteDelValor: t(
+  distinguishesContributionsFromProjectedValue: t(
     "dashboard.heroCard.copy.separaElDineroQuePusisteDelValor.p1",
   ),
-  valorProyectadoMenosCapitalActualYAportes:
+  projectedGrowthCalculation:
     t("dashboard.heroCard.copy.valorProyectadoMenosCapitalActualYAportes.p1") +
     labels.projectedValue +
     t("dashboard.heroCard.copy.valorProyectadoMenosCapitalActualYAportes.p2") +
     labels.currentCapital +
     t("dashboard.heroCard.copy.valorProyectadoMenosCapitalActualYAportes.p3"),
-  restaElCapitalActualYTodosLos: t("dashboard.heroCard.copy.restaElCapitalActualYTodosLos.p1"),
-  sustitucionDeValoresDelCrecimiento: t(
-    "dashboard.heroCard.copy.sustitucionDeValoresDelCrecimiento.p1",
+  subtractCurrentCapitalAndAllContributions: t(
+    "dashboard.heroCard.copy.restaElCapitalActualYTodosLos.p1",
   ),
-  mideElCrecimientoFrenteAlCapitalQue: t(
+  growthValueSubstitution: t("dashboard.heroCard.copy.sustitucionDeValoresDelCrecimiento.p1"),
+  growthRelativeToCapitalExplanation: t(
     "dashboard.heroCard.copy.mideElCrecimientoFrenteAlCapitalQue.p1",
   ),
-  usaElCapitalActualComoReferenciaNo: t(
-    "dashboard.heroCard.copy.usaElCapitalActualComoReferenciaNo.p1",
-  ),
-  crecimientoDivididoParaCapitalActualPor100:
+  usesCurrentCapitalAsReference: t("dashboard.heroCard.copy.usaElCapitalActualComoReferenciaNo.p1"),
+  growthAsPercentOfCurrentCapital:
     t("dashboard.heroCard.copy.crecimientoDivididoParaCapitalActualPor100.p1") +
     labels.growth +
     t("dashboard.heroCard.copy.crecimientoDivididoParaCapitalActualPor100.p2") +
     labels.currentCapital +
     t("dashboard.heroCard.copy.crecimientoDivididoParaCapitalActualPor100.p3"),
-  sustituyeLosImportesYExpresaLaComparacion: t(
+  substituteAmountsToShowComparison: t(
     "dashboard.heroCard.copy.sustituyeLosImportesYExpresaLaComparacion.p1",
   ),
-  sustitucionDeValoresDelCrecimientoPorcentual: t(
+  growthPercentValueSubstitution: t(
     "dashboard.heroCard.copy.sustitucionDeValoresDelCrecimientoPorcentual.p1",
   ),
-  anos: t("dashboard.heroCard.copy.anos.p1"),
-  plazoTotalAnos: t("dashboard.heroCard.copy.plazoTotalAnos.p1"),
+  years: t("dashboard.heroCard.copy.anos.p1"),
+  totalHorizonYears: t("dashboard.heroCard.copy.plazoTotalAnos.p1"),
   noCurrentCapital: t("dashboard.heroCard.copy.noCurrentCapital.p1"),
 } as const;

@@ -2,8 +2,8 @@ import { t } from "@/libraries/i18n";
 
 export const headerCopy = {
   headerActions: t("shared.header.copy.headerActions.p1"),
-  cambiarJson: t("shared.header.copy.cambiarJson.p1"),
-  cassandraInicio: t("shared.header.copy.cassandraInicio.p1"),
+  changePortfolioFile: t("shared.header.copy.cambiarJson.p1"),
+  cassandraHome: t("shared.header.copy.cassandraInicio.p1"),
   inflationMode: t("shared.header.copy.inflationMode.p1"),
   withoutInflation: t("shared.header.copy.withoutInflation.p1"),
   withInflation: t("shared.header.copy.withInflation.p1"),

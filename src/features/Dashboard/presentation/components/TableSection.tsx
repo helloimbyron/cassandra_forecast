@@ -58,19 +58,19 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="table-section" aria-label={tableSectionCopy.evolucionAnoAAno}>
+    <section className="table-section" aria-label={tableSectionCopy.yearByYearProgression}>
       <div className="section-heading table-section-heading">
         <div className="eyebrow">
-          <span className="eyebrow-line" /> {tableSectionCopy.evolucionAnoAAno}
+          <span className="eyebrow-line" /> {tableSectionCopy.yearByYearProgression}
         </div>
         <div className="table-controls">
           <details ref={columnPickerRef} className="table-column-picker">
-            <summary aria-label={tableSectionCopy.seleccionarColumnas}>
+            <summary aria-label={tableSectionCopy.selectColumns}>
               <Columns3 className="icon-sm" aria-hidden="true" />
               <span>
-                {tableSectionCopy.columnas}
+                {tableSectionCopy.columns}
                 <small>
-                  {tableSectionCopy.columnasVisibles(
+                  {tableSectionCopy.visibleColumnsSummary(
                     visibleInvestments.length,
                     portfolio.investments.length,
                   )}
@@ -81,7 +81,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
             <div
               className="table-column-options"
               role="group"
-              aria-label={tableSectionCopy.seleccionarColumnas}
+              aria-label={tableSectionCopy.selectColumns}
             >
               {portfolio.investments.map((investment) => {
                 const visible = !hiddenInvestmentIds.has(investment.id);
@@ -110,12 +110,12 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
               style={{ minWidth: `${(visibleInvestments.length + 2) * 8}rem` }}
             >
               <caption id="year-table-caption" className="visually-hidden">
-                {tableSectionCopy.tablaProyeccionAccesible(projectedLabel)}
+                {tableSectionCopy.accessibleProjectionTable(projectedLabel)}
               </caption>
               <thead>
                 <tr>
                   <th id="year-column-heading" scope="col">
-                    {tableSectionCopy.ano}
+                    {tableSectionCopy.year}
                   </th>
                   {visibleInvestments.map((investment, investmentIndex) => (
                     <th

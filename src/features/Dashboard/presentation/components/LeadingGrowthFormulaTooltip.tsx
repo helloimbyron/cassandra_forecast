@@ -19,7 +19,7 @@ export function LeadingGrowthFormulaTooltip({
   return (
     <FormulaTooltip
       label={labels.leadingGrowth}
-      intro={leadingGrowthFormulaTooltipCopy.seComparanLosCrecimientosDeTodosLos}
+      intro={leadingGrowthFormulaTooltipCopy.compareGrowthAcrossInvestments}
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
     >
       <ol className="formula-tooltip-copy">
@@ -38,7 +38,7 @@ export function LeadingGrowthFormulaTooltip({
           </span>
           {leader && (
             <FormulaMath
-              label={leadingGrowthFormulaTooltipCopy.seEligeElMaximoEntreLosCrecimientos}
+              label={leadingGrowthFormulaTooltipCopy.selectMaximumGrowth}
               tex={`\\max\\left(${texText(leadingGrowthFormulaTooltipCopy.positiveInvestmentGrowths)}\\right)`}
             />
           )}

@@ -58,7 +58,7 @@ export function ProjectedValueFormulaTooltip({
       ? holdingValues?.length === 1
         ? projectedPositionLabel(holdingValues[0]!.label, real)
         : projectedValueFormulaTooltipCopy.positionsLabel(projectedBalanceLabel(real))
-      : projectedPositionLabel(holdingLabel ?? projectedValueFormulaTooltipCopy.estaPosicion, real);
+      : projectedPositionLabel(holdingLabel ?? projectedValueFormulaTooltipCopy.thisPosition, real);
 
   if (scope === PROJECTION_SCOPE_VALUES.investment) {
     const values = holdingValues ?? [];
@@ -79,7 +79,7 @@ export function ProjectedValueFormulaTooltip({
           <ol className="formula-tooltip-copy formula-investment-expression">
             <FormulaStep>
               <span className="formula-step-description">
-                {projectedValueFormulaTooltipCopy.noHayOtrasPosicionesQueSumar}
+                {projectedValueFormulaTooltipCopy.noOtherPositionsToAdd}
               </span>
               <FormulaResult
                 name={investmentLabel}
@@ -114,7 +114,7 @@ export function ProjectedValueFormulaTooltip({
         <ol className="formula-tooltip-copy formula-investment-expression">
           <FormulaStep>
             <span className="formula-step-description">
-              {projectedValueFormulaTooltipCopy.sumaElValorProyectadoDeCadaPosicion}
+              {projectedValueFormulaTooltipCopy.sumProjectedValueForEachPosition}
             </span>
             <FormulaMath
               label={values
@@ -126,8 +126,8 @@ export function ProjectedValueFormulaTooltip({
           <FormulaStep>
             <span className="formula-step-description">
               {amountsDifferAfterRounding
-                ? projectedValueFormulaTooltipCopy.sustituyeLosImportesMostradosElTotalUsa
-                : projectedValueFormulaTooltipCopy.sustituyeCadaPosicionPorSuImporteProyectado}
+                ? projectedValueFormulaTooltipCopy.useDisplayedAmountsForTotal
+                : projectedValueFormulaTooltipCopy.replaceEachPositionWithProjectedAmount}
             </span>
             <FormulaMath
               label={values
@@ -147,7 +147,7 @@ export function ProjectedValueFormulaTooltip({
     );
   }
 
-  const positionName = holdingLabel ?? projectedValueFormulaTooltipCopy.estaPosicion;
+  const positionName = holdingLabel ?? projectedValueFormulaTooltipCopy.thisPosition;
   const current = currentValue ?? 0;
   const contribution = monthlyContribution ?? 0;
   const projectedValue = projectedFinalValue ?? current;
@@ -161,8 +161,8 @@ export function ProjectedValueFormulaTooltip({
       label={label}
       intro={
         inflationRatePct > 0
-          ? projectedValueFormulaTooltipCopy.saldoRealSignificaElValorDeEstaPosicion
-          : projectedValueFormulaTooltipCopy.saldoSignificaElValorDeEstaPosicion
+          ? projectedValueFormulaTooltipCopy.realBalanceMeansPositionValue
+          : projectedValueFormulaTooltipCopy.balanceMeansPositionValue
       }
       example={projectedValueFormulaTooltipCopy.positionExample(
         formatAbbreviatedValue(current, "currency"),
@@ -177,7 +177,7 @@ export function ProjectedValueFormulaTooltip({
       <ol className="formula-tooltip-copy">
         <FormulaStep>
           <span className="formula-step-description">
-            {projectedValueFormulaTooltipCopy.buscaLaTasaMensualQueAplicadaDurante}
+            {projectedValueFormulaTooltipCopy.findMonthlyRateAppliedOver}
           </span>
           {inflationRatePct > 0 && (
             <>
@@ -193,29 +193,29 @@ export function ProjectedValueFormulaTooltip({
             </>
           )}
           <FormulaMath
-            label={projectedValueFormulaTooltipCopy.tasaMensualEquivalenteAPartirDeLa}
-            tex={`${texText(projectedValueFormulaTooltipCopy.tasaMensualEquivalente)} = (1 + ${texText(real ? labels.realAnnualRate : labels.annualRate)})^{1/12} - 1`}
+            label={projectedValueFormulaTooltipCopy.equivalentMonthlyRateFromAnnualRate}
+            tex={`${texText(projectedValueFormulaTooltipCopy.equivalentMonthlyRate)} = (1 + ${texText(real ? labels.realAnnualRate : labels.annualRate)})^{1/12} - 1`}
           />
           <FormulaMath
-            label={projectedValueFormulaTooltipCopy.sustitucionDeLaTasaAnualParaObtener}
+            label={projectedValueFormulaTooltipCopy.annualRateSubstitutionForMonthlyRate}
             className="formula-math-substitution"
-            tex={`${texText(projectedValueFormulaTooltipCopy.tasaMensualEquivalente)} = (1 + ${texText(formatAbbreviatedValue(effectiveAnnualRatePct, "percent", "precise"))})^{1/12} - 1`}
+            tex={`${texText(projectedValueFormulaTooltipCopy.equivalentMonthlyRate)} = (1 + ${texText(formatAbbreviatedValue(effectiveAnnualRatePct, "percent", "precise"))})^{1/12} - 1`}
           />
           <FormulaResult
-            name={projectedValueFormulaTooltipCopy.tasaMensualEquivalente}
+            name={projectedValueFormulaTooltipCopy.equivalentMonthlyRate}
             value={monthlyRateDisplay}
           />
         </FormulaStep>
         <FormulaStep>
           <span className="formula-step-description">
-            {projectedValueFormulaTooltipCopy.convierteElPlazoEnMesesParaSaber}
+            {projectedValueFormulaTooltipCopy.convertHorizonToMonths}
           </span>
           <FormulaMath
-            label={projectedValueFormulaTooltipCopy.mesesDeProyeccionAPartirDelPlazo}
+            label={projectedValueFormulaTooltipCopy.projectionMonthsFromHorizon}
             tex={`${monthsLabel} = ${texText(labels.horizon)} \\times 12`}
           />
           <FormulaMath
-            label={projectedValueFormulaTooltipCopy.sustitucionDelPlazoParaObtenerLosMeses}
+            label={projectedValueFormulaTooltipCopy.horizonToMonthsSubstitution}
             className="formula-math-substitution"
             tex={`${monthsLabel} = ${years} \\times 12`}
           />
@@ -242,7 +242,7 @@ export function ProjectedValueFormulaTooltip({
         </FormulaStep>
         <FormulaStep>
           <span className="formula-step-description">
-            {projectedValueFormulaTooltipCopy.miraComoElResultadoDeUnMes}
+            {projectedValueFormulaTooltipCopy.seeHowOneMonthChangesTheBalance}
           </span>
           <MonthlyBalanceExamples
             initialBalance={current}

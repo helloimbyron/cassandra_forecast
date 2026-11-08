@@ -5,16 +5,16 @@ export const investmentGrowthFormulaTooltipCopy = {
       outcome,
       investmentName,
     }),
-  hoyTodaviaNoTranscurreTiempoNiSe: t(
+  noTimeHasElapsedYet: t(
     "dashboard.investmentGrowthFormulaTooltip.copy.hoyTodaviaNoTranscurreTiempoNiSe.p1",
   ),
-  esLaDiferenciaEntreElValorFinal: t(
+  finalValueDifferenceExplanation: t(
     "dashboard.investmentGrowthFormulaTooltip.copy.esLaDiferenciaEntreElValorFinal.p1",
   ),
-  restaElValorQueYaTenianSus: t(
+  subtractTheirPreviousValue: t(
     "dashboard.investmentGrowthFormulaTooltip.copy.restaElValorQueYaTenianSus.p1",
   ),
-  sustituyeLosImportesVisiblesElResultadoUsa: t(
+  useVisibleAmountsForResult: t(
     "dashboard.investmentGrowthFormulaTooltip.copy.sustituyeLosImportesVisiblesElResultadoUsa.p1",
   ),
   substituteInvestmentAmounts: t(

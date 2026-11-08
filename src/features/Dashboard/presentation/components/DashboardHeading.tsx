@@ -11,10 +11,10 @@ export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="dashboard-heading" aria-label={dashboardHeadingCopy.carteraImportada}>
+    <section className="dashboard-heading" aria-label={dashboardHeadingCopy.importedPortfolio}>
       <div>
         <div className="eyebrow">
-          <span className="eyebrow-line" /> {dashboardHeadingCopy.resumenDeCartera}
+          <span className="eyebrow-line" /> {dashboardHeadingCopy.portfolioSummary}
         </div>
       </div>
       <input
@@ -23,7 +23,7 @@ export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
         type="file"
         accept=".json,application/json"
         onChange={onFileChange}
-        aria-label={dashboardHeadingCopy.seleccionarOtroArchivoJson}
+        aria-label={dashboardHeadingCopy.selectAnotherPortfolioFile}
       />
       {error && (
         <p className="error-message dashboard-error" role="alert">

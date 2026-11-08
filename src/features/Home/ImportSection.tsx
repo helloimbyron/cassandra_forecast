@@ -27,10 +27,10 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
       >
         <div className="import-actions">
           <Button size="lg" onClick={() => fileInput.current?.click()}>
-            <Upload className="icon-sm" /> {importSectionCopy.cargarMiJson}
+            <Upload className="icon-sm" /> {importSectionCopy.uploadPortfolioJson}
           </Button>
           <Button size="lg" variant="outline" onClick={() => void loadExample()}>
-            <Eye className="icon-sm" /> {importSectionCopy.mostrarEjemplo}
+            <Eye className="icon-sm" /> {importSectionCopy.showExample}
           </Button>
         </div>
         {error && (
@@ -39,9 +39,9 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
           </p>
         )}
         <div className="import-meta">
-          <span className="drop-hint">{importSectionCopy.oArrastraAquiTuArchivoJson}</span>
+          <span className="drop-hint">{importSectionCopy.orDropPortfolioJsonHere}</span>
           <a className="sample-link" href="/portfolio.example.json" download>
-            <Download className="icon-sm" /> {importSectionCopy.descargarFormatoDeEjemplo}
+            <Download className="icon-sm" /> {importSectionCopy.downloadExampleTemplate}
           </a>
         </div>
         <input
@@ -50,7 +50,7 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
           type="file"
           accept=".json,application/json"
           onChange={onFileChange}
-          aria-label={importSectionCopy.seleccionarArchivoJsonDeCartera}
+          aria-label={importSectionCopy.selectPortfolioJsonFile}
         />
       </div>
     </section>

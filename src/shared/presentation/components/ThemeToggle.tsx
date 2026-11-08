@@ -54,7 +54,7 @@ export function ThemeToggle() {
       className="theme-toggle"
       onClick={toggleTheme}
       aria-label={
-        theme === THEME_DARK ? themeToggleCopy.activarModoClaro : themeToggleCopy.activarModoOscuro
+        theme === THEME_DARK ? themeToggleCopy.enableLightMode : themeToggleCopy.enableDarkMode
       }
       aria-pressed={theme === THEME_LIGHT}
     >

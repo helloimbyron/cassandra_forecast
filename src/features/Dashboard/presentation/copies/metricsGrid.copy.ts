@@ -1,8 +1,8 @@
 import { t } from "@/libraries/i18n";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 export const metricsGridCopy = {
-  indicadoresDeCartera: t("dashboard.metricsGrid.copy.indicadoresDeCartera.p1"),
-  comparaElCrecimientoOLaPerdidaCon: t(
+  portfolioMetrics: t("dashboard.metricsGrid.copy.indicadoresDeCartera.p1"),
+  comparesGrowthOrLossToInvested: t(
     "dashboard.metricsGrid.copy.comparaElCrecimientoOLaPerdidaCon.p1",
   ),
   investedExample: (
@@ -47,10 +47,8 @@ export const metricsGridCopy = {
       ? t("dashboard.metricsGrid.copy.annualExample.p9")
       : t("dashboard.metricsGrid.copy.annualExample.p10")) +
     t("dashboard.metricsGrid.copy.annualExample.p11"),
-  primeroSumaTodoElDineroQueHabras: t(
-    "dashboard.metricsGrid.copy.primeroSumaTodoElDineroQueHabras.p1",
-  ),
-  totalInvertidoIgualACapitalActualMas:
+  firstAddAllContributions: t("dashboard.metricsGrid.copy.primeroSumaTodoElDineroQueHabras.p1"),
+  totalInvestedFormula:
     t("dashboard.metricsGrid.copy.totalInvertidoIgualACapitalActualMas.p1") +
     labels.totalInvested +
     t("dashboard.metricsGrid.copy.totalInvertidoIgualACapitalActualMas.p2") +
@@ -58,26 +56,28 @@ export const metricsGridCopy = {
     t("dashboard.metricsGrid.copy.totalInvertidoIgualACapitalActualMas.p3") +
     labels.plannedContributions +
     t("dashboard.metricsGrid.copy.totalInvertidoIgualACapitalActualMas.p4"),
-  sustitucionDelTotalInvertido: t("dashboard.metricsGrid.copy.sustitucionDelTotalInvertido.p1"),
-  comparaElCrecimientoConEseTotalY: t(
+  totalInvestedSubstitution: t("dashboard.metricsGrid.copy.sustitucionDelTotalInvertido.p1"),
+  comparesGrowthToTotalInvested: t(
     "dashboard.metricsGrid.copy.comparaElCrecimientoConEseTotalY.p1",
   ),
-  crecimientoDivididoParaTotalInvertidoPorCien:
+  growthAsPercentOfTotalInvested:
     t("dashboard.metricsGrid.copy.crecimientoDivididoParaTotalInvertidoPorCien.p1") +
     labels.growth +
     t("dashboard.metricsGrid.copy.crecimientoDivididoParaTotalInvertidoPorCien.p2") +
     labels.totalInvested +
     t("dashboard.metricsGrid.copy.crecimientoDivididoParaTotalInvertidoPorCien.p3"),
-  sustitucionDeValoresDeLaGananciaSobre:
+  returnOnInvestmentValueSubstitution:
     t("dashboard.metricsGrid.copy.sustitucionDeValoresDeLaGananciaSobre.p1") +
     labels.returnOnInvestment.toLowerCase() +
     t("dashboard.metricsGrid.copy.sustitucionDeValoresDeLaGananciaSobre.p2"),
-  sumaDeAportesMensualesPorPosicion: t(
+  monthlyContributionsByPosition: t(
     "dashboard.metricsGrid.copy.sumaDeAportesMensualesPorPosicion.p1",
   ),
-  noCalculableHoy: t("dashboard.metricsGrid.copy.noCalculableHoy.p1"),
-  anualizadoConAportesMensuales: t("dashboard.metricsGrid.copy.anualizadoConAportesMensuales.p1"),
-  gananciaAcumuladaSobreInvertido: (years: number) =>
+  notCalculableYet: t("dashboard.metricsGrid.copy.noCalculableHoy.p1"),
+  annualizedWithMonthlyContributions: t(
+    "dashboard.metricsGrid.copy.anualizadoConAportesMensuales.p1",
+  ),
+  cumulativeGainOnInvested: (years: number) =>
     years === 0
       ? t("dashboard.metricsGrid.copy.gananciaAcumuladaSobreInvertido.p1")
       : t("dashboard.metricsGrid.copy.gananciaAcumuladaSobreInvertido.p2") +
@@ -87,43 +87,43 @@ export const metricsGridCopy = {
           ? t("dashboard.metricsGrid.copy.gananciaAcumuladaSobreInvertido.p4")
           : t("dashboard.metricsGrid.copy.gananciaAcumuladaSobreInvertido.p5")) +
         t("dashboard.metricsGrid.copy.gananciaAcumuladaSobreInvertido.p6"),
-  saldoSignificaElValorDeTodaTu: t("dashboard.metricsGrid.copy.saldoSignificaElValorDeTodaTu.p1"),
-  saldoRealSignificaElValorDeTodaTu: t(
+  balanceMeansTotalPortfolioValue: t("dashboard.metricsGrid.copy.saldoSignificaElValorDeTodaTu.p1"),
+  realBalanceMeansTotalPortfolioValue: t(
     "dashboard.metricsGrid.copy.saldoRealSignificaElValorDeTodaTu.p1",
   ),
-  hoyNoHanTranscurridoMesesParaCalcular: t(
+  notEnoughMonthsToCalculateYet: t(
     "dashboard.metricsGrid.copy.hoyNoHanTranscurridoMesesParaCalcular.p1",
   ),
-  expresaElHorizonteEnMesesCadaAno: t(
+  expressHorizonInMonthsPerYear: t(
     "dashboard.metricsGrid.copy.expresaElHorizonteEnMesesCadaAno.p1",
   ),
-  mesesDeProyeccionIgualAPlazoTotal:
+  projectionMonthsEqualTotalHorizon:
     t("dashboard.metricsGrid.copy.mesesDeProyeccionIgualAPlazoTotal.p1") +
     labels.horizon +
     t("dashboard.metricsGrid.copy.mesesDeProyeccionIgualAPlazoTotal.p2"),
-  meses: t("dashboard.metricsGrid.copy.meses.p1"),
-  sustitucionDelPlazoEnAnos: t("dashboard.metricsGrid.copy.sustitucionDelPlazoEnAnos.p1"),
-  alFinalDeCadaMesPrimeroSe: t("dashboard.metricsGrid.copy.alFinalDeCadaMesPrimeroSe.p1"),
+  months: t("dashboard.metricsGrid.copy.meses.p1"),
+  horizonYearsSubstitution: t("dashboard.metricsGrid.copy.sustitucionDelPlazoEnAnos.p1"),
+  monthlyGrowthBeforeContributionStep: t("dashboard.metricsGrid.copy.alFinalDeCadaMesPrimeroSe.p1"),
   realContributionStep: t("dashboard.metricsGrid.copy.realContributionStep.p1"),
-  reglaDelSaldoMensual: t("dashboard.metricsGrid.copy.reglaDelSaldoMensual.p1"),
-  laAppPruebaYAjustaLaTasa: t("dashboard.metricsGrid.copy.laAppPruebaYAjustaLaTasa.p1"),
-  mesesElSaldoCoincideConElValor:
+  monthlyBalanceRule: t("dashboard.metricsGrid.copy.reglaDelSaldoMensual.p1"),
+  appTestsAndAdjustsRate: t("dashboard.metricsGrid.copy.laAppPruebaYAjustaLaTasa.p1"),
+  monthsUntilBalanceMatchesValue:
     t("dashboard.metricsGrid.copy.mesesElSaldoCoincideConElValor.p1") +
     labels.projectedValue.toLowerCase() +
     t("dashboard.metricsGrid.copy.mesesElSaldoCoincideConElValor.p2"),
-  sigueElValorDeLaCarteraCada: t("dashboard.metricsGrid.copy.sigueElValorDeLaCarteraCada.p1"),
-  convierteEsaTasaMensualEnUnaTasa: t(
+  tracksPortfolioValueEvery: t("dashboard.metricsGrid.copy.sigueElValorDeLaCarteraCada.p1"),
+  convertsMonthlyRateToAnnualRate: t(
     "dashboard.metricsGrid.copy.convierteEsaTasaMensualEnUnaTasa.p1",
   ),
-  formulaDeTasaAnualEquivalente:
+  equivalentAnnualRateFormula:
     t("dashboard.metricsGrid.copy.formulaDeTasaAnualEquivalente.p1") +
     labels.annualReturn +
     t("dashboard.metricsGrid.copy.formulaDeTasaAnualEquivalente.p2"),
-  sustitucionDeTasaAnualEquivalente:
+  equivalentAnnualRateSubstitution:
     t("dashboard.metricsGrid.copy.sustitucionDeTasaAnualEquivalente.p1") +
     labels.annualReturn +
     t("dashboard.metricsGrid.copy.sustitucionDeTasaAnualEquivalente.p2"),
-  sinCrecimientoPositivoEnEstePlazo: t(
+  noPositiveGrowthWithinHorizon: t(
     "dashboard.metricsGrid.copy.sinCrecimientoPositivoEnEstePlazo.p1",
   ),
   noInvestedCapital: t("dashboard.metricsGrid.copy.noInvestedCapital.p1"),

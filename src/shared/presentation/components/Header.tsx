@@ -38,7 +38,7 @@ export function Header({
           className="brand"
           href={homeHref}
           onClick={handleBrandClick}
-          aria-label={headerCopy.cassandraInicio}
+          aria-label={headerCopy.cassandraHome}
         >
           <span className="brand-mark">
             <BrandMark />
@@ -55,8 +55,8 @@ export function Header({
             size="icon"
             className="change-json-toggle"
             onClick={onChangeJson}
-            aria-label={headerCopy.cambiarJson}
-            title={headerCopy.cambiarJson}
+            aria-label={headerCopy.changePortfolioFile}
+            title={headerCopy.changePortfolioFile}
           >
             <Upload aria-hidden="true" />
           </Button>

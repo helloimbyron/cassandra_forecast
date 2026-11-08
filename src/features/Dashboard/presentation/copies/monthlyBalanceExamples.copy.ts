@@ -1,14 +1,14 @@
 import { t } from "@/libraries/i18n";
 export const monthlyBalanceExamplesCopy = {
-  ejemplosDelCalculoMesAMes: t(
+  monthByMonthCalculationExamples: t(
     "dashboard.monthlyBalanceExamples.copy.ejemplosDelCalculoMesAMes.p1",
   ),
-  meses: t("dashboard.monthlyBalanceExamples.copy.meses.p1"),
-  al: t("dashboard.monthlyBalanceExamples.copy.al.p1"),
-  seRepiteLaMismaOperacionUnoPor: t(
+  months: t("dashboard.monthlyBalanceExamples.copy.meses.p1"),
+  to: t("dashboard.monthlyBalanceExamples.copy.al.p1"),
+  repeatCalculationOneAtATime: t(
     "dashboard.monthlyBalanceExamples.copy.seRepiteLaMismaOperacionUnoPor.p1",
   ),
-  mes: t("dashboard.monthlyBalanceExamples.copy.mes.p1"),
+  month: t("dashboard.monthlyBalanceExamples.copy.mes.p1"),
   lastMonth: t("dashboard.monthlyBalanceExamples.copy.lastMonth.p1"),
   calculationForMonth: (month: number) =>
     t("dashboard.monthlyBalanceExamples.copy.calculationForMonth.p1") +

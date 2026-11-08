@@ -3,7 +3,7 @@ import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 export const projectedValueFormulaTooltipCopy = {
   positionsLabel: (projectedLabel: string) =>
     t("dashboard.projectedValueFormulaTooltip.dynamic.positionsLabel", { projectedLabel }),
-  estaPosicion: t("dashboard.projectedValueFormulaTooltip.copy.estaPosicion.p1"),
+  thisPosition: t("dashboard.projectedValueFormulaTooltip.copy.estaPosicion.p1"),
   positionExample: (
     current: string,
     contribution: string,
@@ -38,49 +38,47 @@ export const projectedValueFormulaTooltipCopy = {
     t("dashboard.projectedValueFormulaTooltip.copy.singlePositionInvestmentExplanation.p1") +
     labels.projectedValue.toLowerCase() +
     t("dashboard.projectedValueFormulaTooltip.copy.singlePositionInvestmentExplanation.p2"),
-  noHayOtrasPosicionesQueSumar: t(
+  noOtherPositionsToAdd: t(
     "dashboard.projectedValueFormulaTooltip.copy.noHayOtrasPosicionesQueSumar.p1",
   ),
   investmentTotalCombinesPositionValues: t(
     "dashboard.projectedValueFormulaTooltip.copy.investmentTotalCombinesPositionValues.p1",
   ),
-  sumaElValorProyectadoDeCadaPosicion: t(
+  sumProjectedValueForEachPosition: t(
     "dashboard.projectedValueFormulaTooltip.copy.sumaElValorProyectadoDeCadaPosicion.p1",
   ),
-  sustituyeLosImportesMostradosElTotalUsa: t(
+  useDisplayedAmountsForTotal: t(
     "dashboard.projectedValueFormulaTooltip.copy.sustituyeLosImportesMostradosElTotalUsa.p1",
   ),
-  sustituyeCadaPosicionPorSuImporteProyectado: t(
+  replaceEachPositionWithProjectedAmount: t(
     "dashboard.projectedValueFormulaTooltip.copy.sustituyeCadaPosicionPorSuImporteProyectado.p1",
   ),
-  saldoSignificaElValorDeEstaPosicion: t(
+  balanceMeansPositionValue: t(
     "dashboard.projectedValueFormulaTooltip.copy.saldoSignificaElValorDeEstaPosicion.p1",
   ),
-  saldoRealSignificaElValorDeEstaPosicion:
+  realBalanceMeansPositionValue:
     t("dashboard.projectedValueFormulaTooltip.copy.saldoRealSignificaElValorDeEstaPosicion.p1") +
     labels.projectedValueReal.toLowerCase() +
     t("dashboard.projectedValueFormulaTooltip.copy.saldoRealSignificaElValorDeEstaPosicion.p2"),
-  buscaLaTasaMensualQueAplicadaDurante: t(
+  findMonthlyRateAppliedOver: t(
     "dashboard.projectedValueFormulaTooltip.copy.buscaLaTasaMensualQueAplicadaDurante.p1",
   ),
-  tasaMensualEquivalenteAPartirDeLa:
+  equivalentMonthlyRateFromAnnualRate:
     t("dashboard.projectedValueFormulaTooltip.copy.tasaMensualEquivalenteAPartirDeLa.p1") +
     labels.annualRate.toLowerCase() +
     t("dashboard.projectedValueFormulaTooltip.copy.tasaMensualEquivalenteAPartirDeLa.p2"),
-  tasaMensualEquivalente: t(
-    "dashboard.projectedValueFormulaTooltip.copy.tasaMensualEquivalente.p1",
-  ),
-  sustitucionDeLaTasaAnualParaObtener:
+  equivalentMonthlyRate: t("dashboard.projectedValueFormulaTooltip.copy.tasaMensualEquivalente.p1"),
+  annualRateSubstitutionForMonthlyRate:
     t("dashboard.projectedValueFormulaTooltip.copy.sustitucionDeLaTasaAnualParaObtener.p1") +
     labels.annualRate.toLowerCase() +
     t("dashboard.projectedValueFormulaTooltip.copy.sustitucionDeLaTasaAnualParaObtener.p2"),
-  convierteElPlazoEnMesesParaSaber: t(
+  convertHorizonToMonths: t(
     "dashboard.projectedValueFormulaTooltip.copy.convierteElPlazoEnMesesParaSaber.p1",
   ),
-  mesesDeProyeccionAPartirDelPlazo: t(
+  projectionMonthsFromHorizon: t(
     "dashboard.projectedValueFormulaTooltip.copy.mesesDeProyeccionAPartirDelPlazo.p1",
   ),
-  sustitucionDelPlazoParaObtenerLosMeses: t(
+  horizonToMonthsSubstitution: t(
     "dashboard.projectedValueFormulaTooltip.copy.sustitucionDelPlazoParaObtenerLosMeses.p1",
   ),
   realAnnualRate: labels.realAnnualRate,
@@ -95,7 +93,7 @@ export const projectedValueFormulaTooltipCopy = {
   nominalMonthlyContribution: t(
     "dashboard.projectedValueFormulaTooltip.copy.nominalMonthlyContribution.p1",
   ),
-  miraComoElResultadoDeUnMes: t(
+  seeHowOneMonthChangesTheBalance: t(
     "dashboard.projectedValueFormulaTooltip.copy.miraComoElResultadoDeUnMes.p1",
   ),
 } as const;

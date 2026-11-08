@@ -29,7 +29,7 @@ export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
     <Card className="panel-card allocation-panel">
       <CardHeader className="panel-header">
         <div>
-          <CardTitle>{allocationPanelCopy.composicionActual}</CardTitle>
+          <CardTitle>{allocationPanelCopy.currentAllocation}</CardTitle>
           <CardDescription>{allocationPanelCopy.capitalDistributionByInvestment}</CardDescription>
         </div>
       </CardHeader>

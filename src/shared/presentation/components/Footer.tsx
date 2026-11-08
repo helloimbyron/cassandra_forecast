@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <span>{brandLabel}</span>
-      <a href="#inicio">{footerCopy.volverArriba}</a>
+      <a href="#inicio">{footerCopy.backToTop}</a>
     </footer>
   );
 }

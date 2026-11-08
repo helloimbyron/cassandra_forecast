@@ -43,8 +43,8 @@ export function InvestmentGrowthFormulaTooltip({
       )}
       intro={
         years === 0
-          ? investmentGrowthFormulaTooltipCopy.hoyTodaviaNoTranscurreTiempoNiSe
-          : investmentGrowthFormulaTooltipCopy.esLaDiferenciaEntreElValorFinal
+          ? investmentGrowthFormulaTooltipCopy.noTimeHasElapsedYet
+          : investmentGrowthFormulaTooltipCopy.finalValueDifferenceExplanation
       }
       example={investmentGrowthFormulaTooltipCopy.example(
         formatAbbreviatedValue(projection.finalValue, "currency"),
@@ -58,7 +58,7 @@ export function InvestmentGrowthFormulaTooltip({
       <ol className="formula-tooltip-copy">
         <FormulaStep>
           <span className="formula-step-description">
-            {investmentGrowthFormulaTooltipCopy.restaElValorQueYaTenianSus}
+            {investmentGrowthFormulaTooltipCopy.subtractTheirPreviousValue}
           </span>
           <FormulaMath
             label={investmentGrowthFormulaTooltipCopy.differenceLabel(finalLabel)}
@@ -68,7 +68,7 @@ export function InvestmentGrowthFormulaTooltip({
         <FormulaStep>
           <span className="formula-step-description">
             {roundedDifference
-              ? investmentGrowthFormulaTooltipCopy.sustituyeLosImportesVisiblesElResultadoUsa
+              ? investmentGrowthFormulaTooltipCopy.useVisibleAmountsForResult
               : investmentGrowthFormulaTooltipCopy.substituteInvestmentAmounts}
           </span>
           <FormulaMath
