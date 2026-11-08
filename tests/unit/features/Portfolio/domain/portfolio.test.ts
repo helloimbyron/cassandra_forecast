@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { threeInvestmentPortfolio } from "../fixtures/threeInvestmentPortfolio";
-import { PORTFOLIO_CONSTANTS } from "../../../../../src/features/Portfolio/domain/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
 import { formatInflationRate } from "../../../../../src/features/Portfolio/presentation/utils/formatInflationRate.util";
 import {
   getPortfolioSummaryInsights,

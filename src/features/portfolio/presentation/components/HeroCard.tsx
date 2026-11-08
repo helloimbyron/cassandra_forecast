@@ -1,7 +1,7 @@
 import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Portfolio/presentation/copy/HeroCard.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/HeroCard.constant";
 import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
 import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
@@ -22,7 +22,7 @@ import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/m
 import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
 import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
 import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
 import { useState } from "react";
 import { InflationControls } from "@/features/Portfolio/presentation/components/InflationControls";
 

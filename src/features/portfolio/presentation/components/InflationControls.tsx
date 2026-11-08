@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Info, Link2 } from "lucide-react";
 import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
-import { copy } from "@/features/Portfolio/presentation/copy/Header.constant";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/Header.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
 import { formatInflationRate } from "@/features/Portfolio/presentation/utils/formatInflationRate.util";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
 import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";

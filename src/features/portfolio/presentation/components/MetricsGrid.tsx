@@ -1,9 +1,9 @@
 import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
 import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
 import { formatMonths } from "@/features/Portfolio/presentation/utils/formatMonths.util";
-import { copy } from "@/features/Portfolio/presentation/copy/MetricsGrid.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/MetricsGrid.constant";
 import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";

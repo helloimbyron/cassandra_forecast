@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { copy } from "../../../../../src/features/Portfolio/presentation/copy/HeroCard.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/HeroCard.constant";
 
 const heroCardSource = readFileSync(
   new URL(

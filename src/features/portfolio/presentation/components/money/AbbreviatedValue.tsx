@@ -3,8 +3,8 @@ import { Tooltip as TooltipPrimitive } from "radix-ui";
 import { cn } from "@/shared/utils/cn.util";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
 import { formatFullValue } from "@/features/Portfolio/presentation/format/formatFullValue.util";
-import type { ValueUnit } from "@/features/Portfolio/presentation/format/ValueUnit.type";
-import { moneyCopy } from "@/features/Portfolio/presentation/components/money/moneyCopy.constant";
+import type { ValueUnit } from "@/features/Portfolio/presentation/types/ValueUnit.type";
+import { moneyCopy } from "@/features/Portfolio/presentation/constants/moneyCopy.constant";
 
 // --- Props ---
 

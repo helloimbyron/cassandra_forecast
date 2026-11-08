@@ -1,5 +1,5 @@
-import type { ValuePrecision } from "@/features/Portfolio/presentation/format/ValuePrecision.type";
-import { SCIENTIFIC_THRESHOLD } from "@/features/Portfolio/presentation/format/scientificThreshold.constant";
+import type { ValuePrecision } from "@/features/Portfolio/presentation/types/ValuePrecision.type";
+import { SCIENTIFIC_THRESHOLD } from "@/features/Portfolio/presentation/constants/scientificThreshold.constant";
 
 // --- Constants ---
 

@@ -1,14 +1,14 @@
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
-import { copy } from "@/features/Portfolio/presentation/copy/InvestmentCard.constant";
-import type { Investment } from "@/features/Portfolio/domain/Investment.type";
-import type { HoldingProjection } from "@/features/Portfolio/domain/HoldingProjection.type";
+import { copy } from "@/features/Portfolio/presentation/constants/InvestmentCard.constant";
+import type { Investment } from "@/features/Portfolio/domain/types/Investment.type";
+import type { HoldingProjection } from "@/features/Portfolio/domain/types/HoldingProjection.type";
 import type { DashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
 import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
 import { NumericUnitInput } from "@/features/Portfolio/presentation/components/NumericUnitInput";
 import { ProjectedValueFormulaTooltip } from "@/features/Portfolio/presentation/components/ProjectedValueFormulaTooltip";
-import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/projectionScope.enum";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/enums/projectionScope.enum";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
 
 // --- Constants ---
 

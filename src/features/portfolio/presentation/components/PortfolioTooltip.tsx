@@ -1,4 +1,4 @@
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
 
 // --- Components ---

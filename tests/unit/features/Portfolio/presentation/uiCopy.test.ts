@@ -3,15 +3,15 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
 import { describe, expect, it } from "vitest";
-import { FINANCIAL_TERM_VALUES } from "../../../../../src/features/Portfolio/presentation/copy/financialTerm.enum";
-import { labels } from "../../../../../src/features/Portfolio/presentation/copy/labels.constant";
+import { FINANCIAL_TERM_VALUES } from "@/features/Portfolio/presentation/enums/financialTerm.enum";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "../../../../../src/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
 import { signedOutcomeLabel } from "../../../../../src/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
-import { copy as heroCopy } from "../../../../../src/features/Portfolio/presentation/copy/HeroCard.constant";
-import { copy as headerCopy } from "../../../../../src/features/Portfolio/presentation/copy/Header.constant";
-import { copy as distributionCopy } from "../../../../../src/features/Portfolio/presentation/copy/DistributionSection.constant";
-import { copy as formulaResultCopy } from "../../../../../src/features/Portfolio/presentation/copy/FormulaResult.constant";
-import { copy as tableCopy } from "../../../../../src/features/Portfolio/presentation/copy/TableSection.constant";
+import { copy as heroCopy } from "@/features/Portfolio/presentation/constants/HeroCard.constant";
+import { copy as headerCopy } from "@/features/Portfolio/presentation/constants/Header.constant";
+import { copy as distributionCopy } from "@/features/Portfolio/presentation/constants/DistributionSection.constant";
+import { copy as formulaResultCopy } from "@/features/Portfolio/presentation/constants/FormulaResult.constant";
+import { copy as tableCopy } from "@/features/Portfolio/presentation/constants/TableSection.constant";
 import { projectedPositionLabel } from "../../../../../src/features/Portfolio/presentation/utils/projectedPositionLabel.util";
 
 function collectTypeScriptFiles(directory: string): string[] {
@@ -204,14 +204,17 @@ describe("UI copy catalogs", () => {
   it("avoids approximate and estimated wording in first-party interface copy", () => {
     const copyPaths = readdirSync(
       fileURLToPath(
-        new URL("../../../../../src/features/Portfolio/presentation/copy/", import.meta.url),
+        new URL("../../../../../src/features/Portfolio/presentation/constants/", import.meta.url),
       ),
     )
       .filter((name) => name.endsWith(".ts"))
       .map((name) =>
         join(
           fileURLToPath(
-            new URL("../../../../../src/features/Portfolio/presentation/copy/", import.meta.url),
+            new URL(
+              "../../../../../src/features/Portfolio/presentation/constants/",
+              import.meta.url,
+            ),
           ),
           name,
         ),
@@ -221,13 +224,13 @@ describe("UI copy catalogs", () => {
       fileURLToPath(new URL("../../../../../src/app/copy/site.constant.ts", import.meta.url)),
       fileURLToPath(
         new URL(
-          "../../../../../src/features/Portfolio/infrastructure/importMessages.constant.ts",
+          "../../../../../src/features/Portfolio/infrastructure/constants/importMessages.constant.ts",
           import.meta.url,
         ),
       ),
       fileURLToPath(
         new URL(
-          "../../../../../src/features/Portfolio/domain/portfolioMessages.constant.ts",
+          "../../../../../src/features/Portfolio/domain/constants/portfolioMessages.constant.ts",
           import.meta.url,
         ),
       ),
@@ -259,7 +262,7 @@ describe("UI copy catalogs", () => {
 
   it("keeps every first-party copy catalog entry in use", () => {
     const copyRoot = fileURLToPath(
-      new URL("../../../../../src/features/Portfolio/presentation/copy/", import.meta.url),
+      new URL("../../../../../src/features/Portfolio/presentation/constants/", import.meta.url),
     );
     const copyPaths = readdirSync(copyRoot)
       .filter((name) => name.endsWith(".ts"))

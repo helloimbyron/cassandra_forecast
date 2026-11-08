@@ -1,7 +1,7 @@
 import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
-import { copy } from "@/features/Portfolio/presentation/copy/ProjectedValueFormulaTooltip.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/ProjectedValueFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
@@ -11,11 +11,11 @@ import { FormulaMath } from "@/features/Portfolio/presentation/components/Formul
 import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
 import { MonthlyBalanceExamples } from "@/features/Portfolio/presentation/components/MonthlyBalanceExamples";
 import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
-import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/projectionScope.enum";
-import type { ProjectionScope } from "@/features/Portfolio/presentation/ProjectionScope.type";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
-import { monthlyRateFromAnnualPct } from "@/features/Portfolio/domain/monthlyRateFromAnnualPct.util";
-import { realAnnualRatePct } from "@/features/Portfolio/domain/realAnnualRatePct.util";
+import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/enums/projectionScope.enum";
+import type { ProjectionScope } from "@/features/Portfolio/presentation/types/ProjectionScope.type";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
+import { monthlyRateFromAnnualPct } from "@/features/Portfolio/domain/utils/monthlyRateFromAnnualPct.util";
+import { realAnnualRatePct } from "@/features/Portfolio/domain/utils/realAnnualRatePct.util";
 
 // --- Constants ---
 

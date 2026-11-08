@@ -1,7 +1,7 @@
 import { formatFullUsd } from "@/features/Portfolio/presentation/format/formatFullUsd.util";
 import { FullValueTooltip } from "@/features/Portfolio/presentation/components/money/FullValueTooltip";
-import type { MoneyProps } from "@/features/Portfolio/presentation/components/money/MoneyProps.type";
-import { MONEY_CONSTANTS } from "@/features/Portfolio/presentation/format/moneyConstants.constant";
+import type { MoneyProps } from "@/features/Portfolio/presentation/types/MoneyProps.type";
+import { MONEY_CONSTANTS } from "@/features/Portfolio/presentation/constants/moneyConstants.constant";
 
 // --- Constants ---
 

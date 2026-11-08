@@ -5,13 +5,13 @@ import {
   simulateDistribution,
   simulatePortfolioDistribution,
 } from "../../../../../src/features/Portfolio";
-import { distributionAssetsWithReturn } from "../../../../../src/features/Portfolio/domain/distributionAssetsWithReturn.util";
-import { annualRateForMonthlyWithdrawal } from "../../../../../src/features/Portfolio/domain/annualRateForMonthlyWithdrawal.util";
-import { monthlyWithdrawalForAnnualRate } from "../../../../../src/features/Portfolio/domain/monthlyWithdrawalForAnnualRate.util";
-import { selectedDistributionAnnualReturnPct } from "../../../../../src/features/Portfolio/domain/selectedDistributionAnnualReturnPct.util";
-import { weightedEffectiveAnnualReturnPct } from "../../../../../src/features/Portfolio/domain/weightedEffectiveAnnualReturnPct.util";
-import { withdrawalRateSliderMax } from "../../../../../src/features/Portfolio/domain/withdrawalRateSliderMax.util";
-import { copy } from "../../../../../src/features/Portfolio/presentation/copy/DistributionSection.constant";
+import { distributionAssetsWithReturn } from "@/features/Portfolio/domain/utils/distributionAssetsWithReturn.util";
+import { annualRateForMonthlyWithdrawal } from "@/features/Portfolio/domain/utils/annualRateForMonthlyWithdrawal.util";
+import { monthlyWithdrawalForAnnualRate } from "@/features/Portfolio/domain/utils/monthlyWithdrawalForAnnualRate.util";
+import { selectedDistributionAnnualReturnPct } from "@/features/Portfolio/domain/utils/selectedDistributionAnnualReturnPct.util";
+import { weightedEffectiveAnnualReturnPct } from "@/features/Portfolio/domain/utils/weightedEffectiveAnnualReturnPct.util";
+import { withdrawalRateSliderMax } from "@/features/Portfolio/domain/utils/withdrawalRateSliderMax.util";
+import { copy } from "@/features/Portfolio/presentation/constants/DistributionSection.constant";
 
 describe("retirement distribution projection", () => {
   it("returns only the starting balance when the selected horizon is zero", () => {

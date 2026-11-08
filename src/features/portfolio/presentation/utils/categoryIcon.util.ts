@@ -7,7 +7,7 @@ import {
   PiggyBank,
   ShieldCheck,
 } from "lucide-react";
-import type { InvestmentCategory } from "@/features/Portfolio/domain/InvestmentCategory.type";
+import type { InvestmentCategory } from "@/features/Portfolio/domain/types/InvestmentCategory.type";
 
 // --- Constants ---
 

@@ -1,5 +1,5 @@
-import type { InvestmentProjection } from "@/features/Portfolio/domain/InvestmentProjection.type";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import type { InvestmentProjection } from "@/features/Portfolio/domain/types/InvestmentProjection.type";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { formatYears } from "@/features/Portfolio/presentation/utils/formatYears.util";
 
 export function createInvestmentChartData(projection: InvestmentProjection) {

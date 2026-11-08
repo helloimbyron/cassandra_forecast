@@ -1,4 +1,4 @@
-import { positionCopy } from "@/features/Portfolio/presentation/copy/position.constant";
+import { positionCopy } from "@/features/Portfolio/presentation/constants/position.constant";
 
 export function projectedPositionLabel(name: string, real = false) {
 

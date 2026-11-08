@@ -1,9 +1,9 @@
 import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
 import { Calculator } from "lucide-react";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Portfolio/presentation/copy/InvestmentGrowthPercentFormulaTooltip.constant";
-import type { InvestmentProjection } from "@/features/Portfolio/domain/InvestmentProjection.type";
+import { copy } from "@/features/Portfolio/presentation/constants/InvestmentGrowthPercentFormulaTooltip.constant";
+import type { InvestmentProjection } from "@/features/Portfolio/domain/types/InvestmentProjection.type";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";

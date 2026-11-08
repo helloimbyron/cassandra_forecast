@@ -1,8 +1,8 @@
-import { MONEY_CONSTANTS } from "@/features/Portfolio/presentation/format/moneyConstants.constant";
+import { MONEY_CONSTANTS } from "@/features/Portfolio/presentation/constants/moneyConstants.constant";
 import { MONEY_FORMATTERS } from "@/features/Portfolio/presentation/format/moneyFormatters";
 import { NUMBER_FORMATTERS } from "@/features/Portfolio/presentation/format/numberFormatters";
-import type { ValuePrecision } from "@/features/Portfolio/presentation/format/ValuePrecision.type";
-import type { ValueUnit } from "@/features/Portfolio/presentation/format/ValueUnit.type";
+import type { ValuePrecision } from "@/features/Portfolio/presentation/types/ValuePrecision.type";
+import type { ValueUnit } from "@/features/Portfolio/presentation/types/ValueUnit.type";
 
 // --- Constants ---
 

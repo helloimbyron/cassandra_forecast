@@ -1,9 +1,9 @@
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
 import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Portfolio/presentation/copy/InvestmentCard.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/InvestmentCard.constant";
 import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
-import type { Investment } from "@/features/Portfolio/domain/Investment.type";
+import type { Investment } from "@/features/Portfolio/domain/types/Investment.type";
 import { createElement, type CSSProperties } from "react";
 import { Badge } from "@/design-system/components/Badge";
 import {
@@ -16,10 +16,10 @@ import {
 import { Label } from "@/design-system/components/Label";
 import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
 import { NumericUnitInput } from "@/features/Portfolio/presentation/components/NumericUnitInput";
-import { projectInvestment } from "@/features/Portfolio/domain/projectInvestment.util";
+import { projectInvestment } from "@/features/Portfolio/domain/utils/projectInvestment.util";
 import { compactMoney } from "@/features/Portfolio/presentation/utils/compactMoney.util";
 import { categoryIcon } from "@/features/Portfolio/presentation/utils/categoryIcon.util";
-import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/chartConstants.constant";
+import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/constants/chartConstants.constant";
 import {
   Area,
   AreaChart,
@@ -36,11 +36,11 @@ import { ProjectedValueFormulaTooltip } from "@/features/Portfolio/presentation/
 import { PortfolioTooltip } from "@/features/Portfolio/presentation/components/PortfolioTooltip";
 import { HoldingRow } from "@/features/Portfolio/presentation/components/HoldingRow";
 import { formatYears } from "@/features/Portfolio/presentation/utils/formatYears.util";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
-import { categoryLabels } from "@/features/Portfolio/presentation/copy/categoryLabels.constant";
-import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/projectionScope.enum";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
+import { categoryLabels } from "@/features/Portfolio/presentation/constants/categoryLabels.constant";
+import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/enums/projectionScope.enum";
 import { createInvestmentChartData } from "@/features/Portfolio/presentation/utils/createInvestmentChartData.util";
-import { DETAIL_SERIES_VALUES } from "@/features/Portfolio/presentation/detailSeries.enum";
+import { DETAIL_SERIES_VALUES } from "@/features/Portfolio/presentation/enums/detailSeries.enum";
 import { investmentDetailSeriesKey } from "@/features/Portfolio/presentation/utils/investmentDetailSeriesKey.util";
 import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
 import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";

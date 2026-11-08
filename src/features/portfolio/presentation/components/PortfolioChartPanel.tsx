@@ -1,6 +1,6 @@
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
-import { copy } from "@/features/Portfolio/presentation/copy/PortfolioChartPanel.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/PortfolioChartPanel.constant";
 import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
 import { Badge } from "@/design-system/components/Badge";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@/design-system/components/Card";
 import { compactMoney } from "@/features/Portfolio/presentation/utils/compactMoney.util";
 import { investmentSeriesKey } from "@/features/Portfolio/presentation/utils/investmentSeriesKey.util";
-import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/chartConstants.constant";
+import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/constants/chartConstants.constant";
 import { PortfolioTooltip } from "@/features/Portfolio/presentation/components/PortfolioTooltip";
 import {
   Area,

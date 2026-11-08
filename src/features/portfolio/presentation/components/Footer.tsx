@@ -1,5 +1,5 @@
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
-import { copy } from "@/features/Portfolio/presentation/copy/Footer.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/Footer.constant";
 
 export function Footer() {
 

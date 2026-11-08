@@ -3,8 +3,8 @@ import { Tooltip as TooltipPrimitive } from "radix-ui";
 import { cn } from "@/shared/utils/cn.util";
 import { formatFullMoneyDisplay } from "@/features/Portfolio/presentation/format/formatFullMoneyDisplay.util";
 import { formatFullUsd } from "@/features/Portfolio/presentation/format/formatFullUsd.util";
-import type { MoneyProps } from "@/features/Portfolio/presentation/components/money/MoneyProps.type";
-import { moneyCopy } from "@/features/Portfolio/presentation/components/money/moneyCopy.constant";
+import type { MoneyProps } from "@/features/Portfolio/presentation/types/MoneyProps.type";
+import { moneyCopy } from "@/features/Portfolio/presentation/constants/moneyCopy.constant";
 
 // --- Components ---
 

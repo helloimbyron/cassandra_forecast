@@ -1,11 +1,11 @@
-import { copy } from "@/features/Portfolio/presentation/copy/MonthlyBalanceExamples.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/MonthlyBalanceExamples.constant";
 import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
 import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
-import { monthlyInflationFactor } from "@/features/Portfolio/domain/monthlyInflationFactor.util";
-import { FORMULA_EXAMPLE_CONSTANTS } from "@/features/Portfolio/presentation/formulaExampleConstants.constant";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
+import { monthlyInflationFactor } from "@/features/Portfolio/domain/utils/monthlyInflationFactor.util";
+import { FORMULA_EXAMPLE_CONSTANTS } from "@/features/Portfolio/presentation/constants/formulaExampleConstants.constant";
 
 // --- Constants ---
 

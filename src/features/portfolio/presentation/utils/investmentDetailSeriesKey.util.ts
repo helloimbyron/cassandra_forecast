@@ -1,4 +1,4 @@
-import type { DetailSeries } from "@/features/Portfolio/presentation/DetailSeries.type";
+import type { DetailSeries } from "@/features/Portfolio/presentation/types/DetailSeries.type";
 
 export function investmentDetailSeriesKey(investmentId: string, series: DetailSeries): string {
 

@@ -1,4 +1,4 @@
-import { copy } from "@/features/Portfolio/presentation/copy/InvestmentsSection.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/InvestmentsSection.constant";
 import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
 import { InvestmentCard } from "@/features/Portfolio/presentation/components/InvestmentCard";
 

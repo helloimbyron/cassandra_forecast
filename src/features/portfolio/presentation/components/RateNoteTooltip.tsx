@@ -1,6 +1,6 @@
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
-import { copy } from "@/features/Portfolio/presentation/copy/InvestmentCard.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/InvestmentCard.constant";
 
 // --- Components ---
 

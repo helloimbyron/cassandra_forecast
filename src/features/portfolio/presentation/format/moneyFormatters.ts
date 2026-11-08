@@ -1,4 +1,4 @@
-import { MONEY_CONSTANTS } from "./moneyConstants.constant";
+import { MONEY_CONSTANTS } from "@/features/Portfolio/presentation/constants/moneyConstants.constant";
 
 // --- Constants ---
 

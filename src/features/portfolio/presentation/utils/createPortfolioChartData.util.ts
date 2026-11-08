@@ -1,6 +1,6 @@
-import { projectPortfolio } from "@/features/Portfolio/domain/projectPortfolio.util";
-import type { Portfolio } from "@/features/Portfolio/domain/Portfolio.type";
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectPortfolio } from "@/features/Portfolio/domain/utils/projectPortfolio.util";
+import type { Portfolio } from "@/features/Portfolio/domain/types/Portfolio.type";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { formatYears } from "@/features/Portfolio/presentation/utils/formatYears.util";
 
 export function createPortfolioChartData(

@@ -1,4 +1,4 @@
-import { copy } from "@/features/Portfolio/presentation/copy/IntroSection.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/IntroSection.constant";
 import { PiggyBank } from "lucide-react";
 
 export function IntroSection() {

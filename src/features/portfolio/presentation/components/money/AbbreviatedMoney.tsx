@@ -1,4 +1,4 @@
-import type { MoneyProps } from "@/features/Portfolio/presentation/components/money/MoneyProps.type";
+import type { MoneyProps } from "@/features/Portfolio/presentation/types/MoneyProps.type";
 import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
 
 export function AbbreviatedMoney({

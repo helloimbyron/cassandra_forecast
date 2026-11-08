@@ -1,14 +1,14 @@
-import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
-import { copy } from "@/features/Portfolio/presentation/copy/Header.constant";
+import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/Header.constant";
 import { Upload } from "lucide-react";
 import { BrandMark } from "@/features/Portfolio/presentation/components/BrandMark";
 import { ThemeToggle } from "@/features/Portfolio/presentation/components/ThemeToggle";
 import { Button } from "@/design-system/components/Button";
 import type { MouseEvent } from "react";
-import type { Portfolio } from "@/features/Portfolio/domain/Portfolio.type";
+import type { Portfolio } from "@/features/Portfolio/domain/types/Portfolio.type";
 import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
-import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
-import { copy as heroCopy } from "@/features/Portfolio/presentation/copy/HeroCard.constant";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
+import { copy as heroCopy } from "@/features/Portfolio/presentation/constants/HeroCard.constant";
 import { InflationControls } from "@/features/Portfolio/presentation/components/InflationControls";
 
 // --- Constants ---

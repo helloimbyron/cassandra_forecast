@@ -1,6 +1,6 @@
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
-import { copy } from "@/features/Portfolio/presentation/copy/FormulaResult.constant";
+import { copy } from "@/features/Portfolio/presentation/constants/FormulaResult.constant";
 
 export function FormulaResult({
   name,

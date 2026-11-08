@@ -34,6 +34,34 @@ describe("architecture contract", () => {
     expect(sourceFiles.every(({ source }) => !/\benum\s+[A-Za-z_$]/.test(source))).toBe(true);
   });
 
+  it("groups Portfolio support files by artifact type within their owning layer", () => {
+    const portfolioFiles = readSourceFiles(
+      new URL("../../../src/features/Portfolio/", import.meta.url),
+    );
+    const folderRules = [
+      ["domain", "constants", /\.constant\.ts$/],
+      ["domain", "enums", /\.enum\.ts$/],
+      ["domain", "schemas", /\.schema\.ts$/],
+      ["domain", "types", /\.type\.ts$/],
+      ["domain", "utils", /\.util\.ts$/],
+      ["domain", "validators", /\.validator\.ts$/],
+      ["infrastructure", "constants", /\.constant\.ts$/],
+      ["infrastructure", "services", /\.service\.ts$/],
+      ["presentation", "constants", /\.constant\.ts$/],
+      ["presentation", "enums", /\.enum\.ts$/],
+      ["presentation", "types", /\.type\.ts$/],
+    ] as const;
+
+    for (const [layer, folder, suffix] of folderRules) {
+      const layerPrefix = `/features/Portfolio/${layer}/`;
+      for (const file of portfolioFiles.filter(
+        ({ path }) => path.includes(layerPrefix) && suffix.test(path.split("/").at(-1) ?? ""),
+      )) {
+        expect(file.path, file.path).toContain(`${layerPrefix}${folder}/`);
+      }
+    }
+  });
+
   it("exposes the dashboard through the public client entrypoint", () => {
     const dashboardPage = readFileSync(
       new URL("../../../src/pages/dashboard.astro", import.meta.url),
