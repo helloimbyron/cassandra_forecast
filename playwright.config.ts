@@ -7,7 +7,7 @@ export default defineConfig({
   testMatch: "**/*.e2e.ts",
   use: { baseURL, browserName: "chromium" },
   webServer: {
-    command: "pnpm run dev -- --host localhost --port 4321",
+    command: "pnpm exec astro dev --host localhost --port 4321",
     url: baseURL,
     reuseExistingServer: !process.env.CI,
   },

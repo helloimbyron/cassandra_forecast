@@ -1,13 +1,20 @@
-import { labels, projectedBalanceLabel } from "../copy/labels";
-import { copy } from "../copy/InvestmentCard";
-import type { Investment } from "@/lib/portfolio";
-import type { HoldingProjection } from "../../domain/holding-projection";
-import type { DashboardModel } from "../hooks/usePortfolioDashboard";
-import { AbbreviatedMoney } from "@/components/MoneyAmount";
-import { NumericUnitInput } from "@/components/financial/NumericUnitInput";
-import { ProjectedValueFormulaTooltip } from "./ProjectedValueFormulaTooltip";
-import { PROJECTION_SCOPE } from "../projection-scope";
-import { MIN_CONTRIBUTION } from "../../domain/portfolio-constants";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/InvestmentCard.constant";
+import type { Investment } from "@/features/Portfolio/domain/Investment.type";
+import type { HoldingProjection } from "@/features/Portfolio/domain/HoldingProjection.type";
+import type { DashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { NumericUnitInput } from "@/features/Portfolio/presentation/components/NumericUnitInput";
+import { ProjectedValueFormulaTooltip } from "@/features/Portfolio/presentation/components/ProjectedValueFormulaTooltip";
+import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/projectionScope.enum";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+
+// --- Constants ---
+
+const { MIN_CONTRIBUTION } = PORTFOLIO_CONSTANTS;
+
+// --- Components ---
 
 export function HoldingRow({
   projection,
@@ -24,8 +31,14 @@ export function HoldingRow({
   realMode?: boolean;
   setContribution: DashboardModel["setContribution"];
 }) {
+
+  // --- Variables ---
+
   const { holding, finalValue, totalContributions } = projection;
   const projectedLabel = projectedBalanceLabel(realMode);
+
+  // --- Return ---
+
   return (
     <div className="holding-row" role="row">
       <div className="holding-cell holding-position" role="rowheader">
@@ -74,7 +87,7 @@ export function HoldingRow({
               monthlyContribution={holding.monthlyContribution}
               projectedFinalValue={finalValue}
               years={years}
-              scope={PROJECTION_SCOPE.position}
+              scope={PROJECTION_SCOPE_VALUES.position}
               holdingLabel={holding.label}
             />
           )}

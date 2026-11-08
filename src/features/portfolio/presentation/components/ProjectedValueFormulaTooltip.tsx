@@ -1,18 +1,27 @@
-import { FormulaStep } from "./FormulaStep";
-import { labels, projectedBalanceLabel } from "../copy/labels";
-import { copy } from "../copy/ProjectedValueFormulaTooltip";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/ProjectedValueFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { texText } from "../utils/texText";
-import { projectedPositionLabel } from "../utils/projectedPositionLabel";
-import { formatMonths } from "../utils/formatMonths";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { MonthlyBalanceExamples } from "./MonthlyBalanceExamples";
-import { FormulaTooltip } from "./FormulaTooltip";
-import { PROJECTION_SCOPE, type ProjectionScope } from "../projection-scope";
-import { MONTHS_PER_YEAR, PERCENT_SCALE } from "../../domain/portfolio-constants";
-import { monthlyRateFromAnnualPct, realAnnualRatePct } from "../../domain/real-rate";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
+import { projectedPositionLabel } from "@/features/Portfolio/presentation/utils/projectedPositionLabel.util";
+import { formatMonths } from "@/features/Portfolio/presentation/utils/formatMonths.util";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { MonthlyBalanceExamples } from "@/features/Portfolio/presentation/components/MonthlyBalanceExamples";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
+import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/projectionScope.enum";
+import type { ProjectionScope } from "@/features/Portfolio/presentation/ProjectionScope.type";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { monthlyRateFromAnnualPct } from "@/features/Portfolio/domain/monthlyRateFromAnnualPct.util";
+import { realAnnualRatePct } from "@/features/Portfolio/domain/realAnnualRatePct.util";
+
+// --- Constants ---
+
+const { MONTHS_PER_YEAR, PERCENT_SCALE } = PORTFOLIO_CONSTANTS;
+
+// --- Components ---
 
 export function ProjectedValueFormulaTooltip({
   annualRatePct,
@@ -37,23 +46,27 @@ export function ProjectedValueFormulaTooltip({
   holdingValues?: Array<{ label: string; value: number }>;
   holdingLabel?: string;
 }) {
+
+  // --- Variables ---
+
   const effectiveAnnualRatePct = realAnnualRatePct(annualRatePct, inflationRatePct);
   const monthlyRate = monthlyRateFromAnnualPct(effectiveAnnualRatePct);
   const monthlyRatePct = monthlyRate * PERCENT_SCALE;
   const monthCount = years * MONTHS_PER_YEAR;
   const real = realMode;
   const label =
-    scope === PROJECTION_SCOPE.investment
+    scope === PROJECTION_SCOPE_VALUES.investment
       ? holdingValues?.length === 1
         ? projectedPositionLabel(holdingValues[0]!.label, real)
         : `${projectedBalanceLabel(real)} de las posiciones`
       : projectedPositionLabel(holdingLabel ?? copy.estaPosicion, real);
 
-  if (scope === PROJECTION_SCOPE.investment) {
+  if (scope === PROJECTION_SCOPE_VALUES.investment) {
     const values = holdingValues ?? [];
     const investmentValue = values.reduce((sum, holding) => sum + holding.value, 0);
     if (values.length === 1) {
       const investmentLabel = projectedPositionLabel(values[0]!.label, real);
+
       return (
         <FormulaTooltip
           label={label}
@@ -86,6 +99,7 @@ export function ProjectedValueFormulaTooltip({
     const amountsDifferAfterRounding =
       values.reduce((sum, { value }) => sum + Math.round(value * PERCENT_SCALE), 0) !==
       Math.round(investmentValue * PERCENT_SCALE);
+
     return (
       <FormulaTooltip
         label={label}
@@ -138,6 +152,8 @@ export function ProjectedValueFormulaTooltip({
   const projectedValue = projectedFinalValue ?? current;
   const monthlyRateDisplay = formatAbbreviatedValue(monthlyRatePct, "percent", "precise");
   const monthsLabel = texText(labels.projectionMonths);
+
+  // --- Return ---
 
   return (
     <FormulaTooltip

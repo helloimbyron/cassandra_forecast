@@ -1,0 +1,4 @@
+export const FORMULA_EXAMPLE_CONSTANTS = {
+  FIRST_EXAMPLE_MONTH: 1,
+  SECOND_EXAMPLE_MONTH: 2,
+} as const;

@@ -1,17 +1,25 @@
-import { labels, projectedBalanceLabel, signedOutcomeLabel } from "../copy/labels";
-import { copy } from "../copy/InvestmentCard";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import type { Investment } from "@/lib/portfolio";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/InvestmentCard.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { Investment } from "@/features/Portfolio/domain/Investment.type";
 import { createElement, type CSSProperties } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { DebouncedSlider } from "@/components/ui/DebouncedSlider";
-import { NumericUnitInput } from "@/components/financial/NumericUnitInput";
-import { projectInvestment } from "@/lib/portfolio";
-import { compactMoney } from "../utils/compactMoney";
-import { categoryIcon } from "../utils/categoryIcon";
-import { COLORS } from "../chart-constants";
+import { Badge } from "@/design-system/components/Badge";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/design-system/components/Card";
+import { Label } from "@/design-system/components/Label";
+import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { NumericUnitInput } from "@/features/Portfolio/presentation/components/NumericUnitInput";
+import { projectInvestment } from "@/features/Portfolio/domain/projectInvestment.util";
+import { compactMoney } from "@/features/Portfolio/presentation/utils/compactMoney.util";
+import { categoryIcon } from "@/features/Portfolio/presentation/utils/categoryIcon.util";
+import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/chartConstants.constant";
 import {
   Area,
   AreaChart,
@@ -23,32 +31,39 @@ import {
   YAxis,
 } from "recharts";
 import { ArrowDown, ArrowUp, Link2, Minus } from "lucide-react";
-import { InvestmentGrowthFormulaTooltip } from "./InvestmentGrowthFormulaTooltip";
-import { ProjectedValueFormulaTooltip } from "./ProjectedValueFormulaTooltip";
-import { PortfolioTooltip } from "./PortfolioTooltip";
-import { HoldingRow } from "./HoldingRow";
-import { formatYears } from "../utils/formatYears";
-import {
+import { InvestmentGrowthFormulaTooltip } from "@/features/Portfolio/presentation/components/InvestmentGrowthFormulaTooltip";
+import { ProjectedValueFormulaTooltip } from "@/features/Portfolio/presentation/components/ProjectedValueFormulaTooltip";
+import { PortfolioTooltip } from "@/features/Portfolio/presentation/components/PortfolioTooltip";
+import { HoldingRow } from "@/features/Portfolio/presentation/components/HoldingRow";
+import { formatYears } from "@/features/Portfolio/presentation/utils/formatYears.util";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { categoryLabels } from "@/features/Portfolio/presentation/copy/categoryLabels.constant";
+import { PROJECTION_SCOPE_VALUES } from "@/features/Portfolio/presentation/projectionScope.enum";
+import { createInvestmentChartData } from "@/features/Portfolio/presentation/utils/createInvestmentChartData.util";
+import { DETAIL_SERIES_VALUES } from "@/features/Portfolio/presentation/detailSeries.enum";
+import { investmentDetailSeriesKey } from "@/features/Portfolio/presentation/utils/investmentDetailSeriesKey.util";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
+import { RateNoteTooltip } from "@/features/Portfolio/presentation/components/RateNoteTooltip";
+import { InvestmentGrowthPercentFormulaTooltip } from "@/features/Portfolio/presentation/components/InvestmentGrowthPercentFormulaTooltip";
+import { getInvestmentGrowthPercent } from "@/features/Portfolio/presentation/utils/getInvestmentGrowthPercent.util";
+import { getEmptyYAxisProps } from "@/features/Portfolio/presentation/utils/getEmptyYAxisProps.util";
+import { areChartSeriesHidden } from "@/features/Portfolio/presentation/utils/areChartSeriesHidden.util";
+import { ChartSeriesToggle } from "@/features/Portfolio/presentation/components/ChartSeriesToggle";
+
+// --- Constants ---
+
+const {
   DEFAULT_HORIZON_YEARS,
   HORIZON_STEP,
   MAX_ANNUAL_RATE_PCT,
   MAX_HORIZON_YEARS,
   MIN_ANNUAL_RATE_INPUT_PCT,
   MIN_HORIZON_YEARS,
-} from "../../domain/portfolio-constants";
-import { categoryLabels } from "../copy/category-labels";
-import { PROJECTION_SCOPE } from "../projection-scope";
-import { createInvestmentChartData } from "../utils/createInvestmentChartData";
-import { DETAIL_SERIES } from "../detail-series";
-import { investmentDetailSeriesKey } from "../utils/investmentDetailSeriesKey";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
-import { AbbreviatedValue } from "@/components/money/AbbreviatedValue";
-import { RateNoteTooltip } from "./RateNoteTooltip";
-import { InvestmentGrowthPercentFormulaTooltip } from "./InvestmentGrowthPercentFormulaTooltip";
-import { getInvestmentGrowthPercent } from "../utils/getInvestmentGrowthPercent";
-import { getEmptyYAxisProps } from "../utils/getEmptyYAxisProps";
-import { areChartSeriesHidden } from "../utils/areChartSeriesHidden";
-import { ChartSeriesToggle } from "./ChartSeriesToggle";
+} = PORTFOLIO_CONSTANTS;
+const { COLORS } = CHART_CONSTANTS;
+
+// --- Components ---
 
 export function InvestmentCard({
   investment,
@@ -59,6 +74,9 @@ export function InvestmentCard({
   index: number;
   model: LoadedDashboardModel;
 }) {
+
+  // --- Variables ---
+
   const {
     investmentYears,
     setInvestmentYears,
@@ -74,13 +92,19 @@ export function InvestmentCard({
   const Icon = categoryIcon(investment.category);
   const investmentChartData = createInvestmentChartData(projection);
   const growthPercent = getInvestmentGrowthPercent(projection.growth, projection.initialValue);
-  const investmentTotalKey = investmentDetailSeriesKey(investment.id, DETAIL_SERIES.total);
-  const investmentInvestedKey = investmentDetailSeriesKey(investment.id, DETAIL_SERIES.invested);
+  const investmentTotalKey = investmentDetailSeriesKey(investment.id, DETAIL_SERIES_VALUES.total);
+  const investmentInvestedKey = investmentDetailSeriesKey(
+    investment.id,
+    DETAIL_SERIES_VALUES.invested,
+  );
   const projectedLabel = projectedBalanceLabel(withInflation);
   const noVisibleChartSeries = areChartSeriesHidden(hiddenChartSeries, [
     investmentTotalKey,
     investmentInvestedKey,
   ]);
+
+  // --- Return ---
+
   return (
     <Card className="investment-card">
       <CardHeader className="investment-card-header">
@@ -137,7 +161,7 @@ export function InvestmentCard({
                   inflationRatePct={activeInflationRatePct}
                   realMode={withInflation}
                   years={years}
-                  scope={PROJECTION_SCOPE.investment}
+                  scope={PROJECTION_SCOPE_VALUES.investment}
                   holdingValues={projection.holdings.map(({ holding, finalValue }) => ({
                     label: holding.label,
                     value: finalValue,

@@ -1,20 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Columns3 } from "lucide-react";
-import { labels, projectedBalanceLabel } from "../copy/labels";
-import { copy } from "../copy/TableSection";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { Card, CardContent } from "@/components/ui/card";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
-import { getVisibleInvestmentTotal } from "../utils/getVisibleInvestmentTotal";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/TableSection.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { Card, CardContent } from "@/design-system/components/Card";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { getVisibleInvestmentTotal } from "@/features/Portfolio/presentation/utils/getVisibleInvestmentTotal.util";
+
+// --- Components ---
 
 export function TableSection({ model }: { model: LoadedDashboardModel }) {
+
+  // --- Variables ---
+
   const { portfolio, chartData, withInflation } = model;
   const projectedLabel = projectedBalanceLabel(withInflation);
+
+  // --- States ---
+
   const columnPickerRef = useRef<HTMLDetailsElement>(null);
   const [hiddenInvestmentIds, setHiddenInvestmentIds] = useState<Set<string>>(() => new Set());
   const visibleInvestments = portfolio.investments.filter(
     (investment) => !hiddenInvestmentIds.has(investment.id),
   );
+
+  // --- Effects ---
 
   useEffect(() => {
     function closeColumnPickerOnOutsidePointer(event: PointerEvent) {
@@ -25,17 +36,26 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
     }
 
     document.addEventListener("pointerdown", closeColumnPickerOnOutsidePointer);
+
     return () => document.removeEventListener("pointerdown", closeColumnPickerOnOutsidePointer);
   }, []);
+
+  // --- Handlers ---
 
   function toggleInvestment(investmentId: string) {
     setHiddenInvestmentIds((current) => {
       const next = new Set(current);
-      if (next.has(investmentId)) next.delete(investmentId);
-      else next.add(investmentId);
+      if (next.has(investmentId)) {
+        next.delete(investmentId);
+      } else {
+        next.add(investmentId);
+      }
+
       return next;
     });
   }
+
+  // --- Return ---
 
   return (
     <section className="table-section" aria-label={copy.evolucionAnoAAno}>
@@ -62,6 +82,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
             >
               {portfolio.investments.map((investment) => {
                 const visible = !hiddenInvestmentIds.has(investment.id);
+
                 return (
                   <label key={investment.id} className="table-column-option">
                     <input

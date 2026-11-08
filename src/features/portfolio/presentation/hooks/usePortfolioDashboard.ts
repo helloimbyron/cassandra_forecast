@@ -1,21 +1,21 @@
 import { useMemo, useRef, useState, type ChangeEvent, type DragEvent } from "react";
-import {
-  portfolioInitialValue,
-  getPortfolioSummaryInsights,
-  projectPortfolio,
-  type Portfolio,
-} from "@/lib/portfolio";
-import {
-  DEFAULT_HORIZON_YEARS,
-  MONTHS_PER_YEAR,
-  PERCENT_SCALE,
-} from "../../domain/portfolio-constants";
-import { updateInvestment } from "../../application/updateInvestment";
-import { readPortfolioFile } from "../../application/readPortfolioFile";
-import { importMessages } from "../../application/importMessages";
-import { createPortfolioChartData } from "../utils/createPortfolioChartData";
-import { formatPortfolioDate } from "../utils/formatPortfolioDate";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
+import { portfolioInitialValue } from "@/features/Portfolio/domain/portfolioInitialValue.util";
+import { getPortfolioSummaryInsights } from "@/features/Portfolio/domain/getPortfolioSummaryInsights.util";
+import { projectPortfolio } from "@/features/Portfolio/domain/projectPortfolio.util";
+import type { Portfolio } from "@/features/Portfolio/domain/Portfolio.type";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { updateInvestment } from "@/features/Portfolio/domain/updateInvestment.util";
+import { readPortfolioFile } from "@/features/Portfolio/infrastructure/readPortfolioFile.service";
+import { importMessages } from "@/features/Portfolio/infrastructure/importMessages.constant";
+import { createPortfolioChartData } from "@/features/Portfolio/presentation/utils/createPortfolioChartData.util";
+import { formatPortfolioDate } from "@/features/Portfolio/presentation/utils/formatPortfolioDate.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+
+// --- Constants ---
+
+const { DEFAULT_HORIZON_YEARS, MONTHS_PER_YEAR, PERCENT_SCALE } = PORTFOLIO_CONSTANTS;
+
+// --- Types ---
 
 type HorizonMap = Record<string, number>;
 
@@ -24,15 +24,20 @@ type NavigationCallbacks = {
   onExampleLoadFailed?: () => void;
 };
 
+// --- Hooks ---
+
 export function usePortfolioDashboard({
   onPortfolioLoaded,
   onExampleLoadFailed,
 }: NavigationCallbacks = {}) {
+
+  // --- States ---
+
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null);
   const [withInflation, setWithInflation] = useState(false);
   const [inflationRatePct, setInflationRatePct] = useState(0);
   const [portfolioImportRevision, setPortfolioImportRevision] = useState(0);
-  const [totalYears, setTotalYears] = useState(DEFAULT_HORIZON_YEARS);
+  const [totalYears, setTotalYears] = useState<number>(DEFAULT_HORIZON_YEARS);
   const [investmentYears, setInvestmentYears] = useState<HorizonMap>({});
   const [hiddenChartSeries, setHiddenChartSeries] = useState<Set<string>>(() => new Set());
   const [fileName, setFileName] = useState("");
@@ -42,8 +47,13 @@ export function usePortfolioDashboard({
   const importRequest = useRef(0);
   const exampleAbort = useRef<AbortController | null>(null);
 
+  // --- Variables ---
+
   const initial = portfolio ? portfolioInitialValue(portfolio) : 0;
   const activeInflationRatePct = withInflation ? inflationRatePct : 0;
+
+  // --- Hooks ---
+
   const nominalInvestmentProjections = useMemo(
     () => (portfolio ? projectPortfolio(portfolio, totalYears, 0) : []),
     [portfolio, totalYears],
@@ -103,18 +113,24 @@ export function usePortfolioDashboard({
     [portfolio, totalYears, initial, activeInflationRatePct],
   );
 
+  // --- Handlers ---
+
   function startImportRequest() {
     importRequest.current += 1;
     exampleAbort.current?.abort();
     exampleAbort.current = null;
     setError("");
+
     return importRequest.current;
   }
 
   async function parseAndLoadFile(file: File, requestId: number) {
     try {
       const nextPortfolio = await readPortfolioFile(file);
-      if (requestId !== importRequest.current) return false;
+      if (requestId !== importRequest.current) {
+
+        return false;
+      }
       setPortfolio(nextPortfolio);
       setWithInflation(false);
       setInflationRatePct(nextPortfolio.inflation.annualRatePct);
@@ -128,17 +144,22 @@ export function usePortfolioDashboard({
       );
       setTotalYears(DEFAULT_HORIZON_YEARS);
       onPortfolioLoaded?.();
+
       return true;
     } catch (issue) {
       if (requestId === importRequest.current) {
         setError(issue instanceof Error ? issue.message : importMessages.unreadable);
       }
+
       return false;
     }
   }
 
   async function loadFile(file?: File) {
-    if (!file) return;
+    if (!file) {
+
+      return;
+    }
     const requestId = startImportRequest();
     await parseAndLoadFile(file, requestId);
   }
@@ -149,14 +170,22 @@ export function usePortfolioDashboard({
     exampleAbort.current = controller;
     try {
       const response = await fetch("/portfolio.example.json", { signal: controller.signal });
-      if (!response.ok) throw new Error(importMessages.unreadable);
+      if (!response.ok) {
+
+        throw new Error(importMessages.unreadable);
+      }
       const example = await response.text();
-      if (requestId !== importRequest.current) return;
+      if (requestId !== importRequest.current) {
+
+        return;
+      }
       const loaded = await parseAndLoadFile(
         new File([example], "portfolio.example.json", { type: "application/json" }),
         requestId,
       );
-      if (!loaded && requestId === importRequest.current) onExampleLoadFailed?.();
+      if (!loaded && requestId === importRequest.current) {
+        onExampleLoadFailed?.();
+      }
     } catch (issue) {
       if (requestId === importRequest.current && !controller.signal.aborted) {
         setError(issue instanceof Error ? issue.message : importMessages.unreadable);
@@ -206,7 +235,10 @@ export function usePortfolioDashboard({
 
   function setRate(investmentId: string, value: string) {
     const nextRate = Number(value);
-    if (!Number.isFinite(nextRate)) return;
+    if (!Number.isFinite(nextRate)) {
+
+      return;
+    }
     setPortfolio((current) =>
       current
         ? updateInvestment(current, investmentId, (investment) => ({
@@ -219,7 +251,10 @@ export function usePortfolioDashboard({
 
   function setContribution(investmentId: string, holdingId: string, value: string) {
     const contribution = Number(value);
-    if (!Number.isFinite(contribution) || contribution < 0) return;
+    if (!Number.isFinite(contribution) || contribution < 0) {
+
+      return;
+    }
     setPortfolio((current) =>
       current
         ? updateInvestment(current, investmentId, (investment) => ({
@@ -237,13 +272,19 @@ export function usePortfolioDashboard({
   function toggleChartSeries(seriesKey: string) {
     setHiddenChartSeries((current) => {
       const next = new Set(current);
-      if (next.has(seriesKey)) next.delete(seriesKey);
-      else next.add(seriesKey);
+      if (next.has(seriesKey)) {
+        next.delete(seriesKey);
+      } else {
+        next.add(seriesKey);
+      }
+
       return next;
     });
   }
 
   const portfolioMeta = portfolio ? formatPortfolioDate(portfolio.asOf) : "";
+
+  // --- Return ---
 
   return {
     portfolio,

@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+// --- Props ---
+
 type ChartSeriesToggleProps = {
   checked: boolean;
   color: string;
@@ -9,6 +11,8 @@ type ChartSeriesToggleProps = {
   swatch: "line" | "dot";
 };
 
+// --- Components ---
+
 export function ChartSeriesToggle({
   checked,
   color,
@@ -17,6 +21,7 @@ export function ChartSeriesToggle({
   onChange,
   swatch,
 }: ChartSeriesToggleProps) {
+
   return (
     <label className={checked ? "series-toggle" : "series-toggle is-hidden"}>
       <input type="checkbox" checked={checked} onChange={onChange} />

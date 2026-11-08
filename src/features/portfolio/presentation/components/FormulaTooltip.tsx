@@ -1,8 +1,10 @@
-import { copy } from "../copy/FormulaTooltip";
+import { copy } from "@/features/Portfolio/presentation/copy/FormulaTooltip.constant";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { X } from "lucide-react";
 import { Dialog as DialogPrimitive } from "radix-ui";
+
+// --- Components ---
 
 export function FormulaTooltip({
   label,
@@ -21,7 +23,13 @@ export function FormulaTooltip({
   children: ReactNode;
   className?: string;
 }) {
+
+  // --- States ---
+
   const [open, setOpen] = useState(false);
+
+  // --- Return ---
+
   return (
     <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
       <DialogPrimitive.Trigger asChild>

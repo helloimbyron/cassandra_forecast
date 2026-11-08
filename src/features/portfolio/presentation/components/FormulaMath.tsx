@@ -1,6 +1,8 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
+// --- Components ---
+
 export function FormulaMath({
   tex,
   label,
@@ -10,11 +12,16 @@ export function FormulaMath({
   label: string;
   className?: string;
 }) {
+
+  // --- Variables ---
+
   const html = katex.renderToString(tex, {
     displayMode: true,
     output: "htmlAndMathml",
     throwOnError: false,
   });
+
+  // --- Return ---
 
   return (
     <div

@@ -1,10 +1,11 @@
-import { FormulaStep } from "./FormulaStep";
-import { labels, signedOutcomeLabel } from "../copy/labels";
-import { copy } from "../copy/HeroCard";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { DebouncedSlider } from "@/components/ui/DebouncedSlider";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { texText } from "../utils/texText";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/HeroCard.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import {
   ArrowDown,
   ArrowUp,
@@ -16,14 +17,20 @@ import {
 } from "lucide-react";
 import { Landmark } from "lucide-react";
 import { Calculator, Info } from "lucide-react";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
-import { AbbreviatedValue } from "@/components/money/AbbreviatedValue";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { FormulaTooltip } from "./FormulaTooltip";
-import { MAX_HORIZON_YEARS, MIN_HORIZON_YEARS } from "../../domain/portfolio-constants";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
 import { useState } from "react";
-import { InflationControls } from "./InflationControls";
+import { InflationControls } from "@/features/Portfolio/presentation/components/InflationControls";
+
+// --- Constants ---
+
+const { MAX_HORIZON_YEARS, MIN_HORIZON_YEARS } = PORTFOLIO_CONSTANTS;
+
+// --- Components ---
 
 export function HeroCard({
   model,
@@ -32,6 +39,9 @@ export function HeroCard({
   model: LoadedDashboardModel;
   heroCardRef?: (node: HTMLElement | null) => void;
 }) {
+
+  // --- Variables ---
+
   const {
     portfolio,
     totalYears,
@@ -48,6 +58,9 @@ export function HeroCard({
     summaryInsights,
     totalGrowth,
   } = model;
+
+  // --- States ---
+
   const [draftYearsState, setDraftYears] = useState({
     years: totalYears,
     committedYears: totalYears,
@@ -57,6 +70,9 @@ export function HeroCard({
   const horizonProgress =
     (draftYears - MIN_HORIZON_YEARS) / (MAX_HORIZON_YEARS - MIN_HORIZON_YEARS);
   const thumbPosition = `calc(${horizonProgress * 100}% + ${10 - horizonProgress * 20}px)`;
+
+  // --- Return ---
+
   return (
     <section ref={heroCardRef} className="hero-card" aria-labelledby="total-title">
       <div

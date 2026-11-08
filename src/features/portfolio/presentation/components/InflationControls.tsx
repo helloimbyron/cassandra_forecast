@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { Info, Link2 } from "lucide-react";
-import { DebouncedSlider } from "@/components/ui/DebouncedSlider";
-import { copy } from "../copy/Header";
-import { labels } from "../copy/labels";
-import {
-  INFLATION_RATE_STEP_PCT,
-  MAX_INFLATION_RATE_PCT,
-  MIN_INFLATION_RATE_PCT,
-} from "../../domain/portfolio-constants";
-import { formatInflationRate } from "../utils/formatInflationRate";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { FormulaTooltip } from "./FormulaTooltip";
+import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { copy } from "@/features/Portfolio/presentation/copy/Header.constant";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { formatInflationRate } from "@/features/Portfolio/presentation/utils/formatInflationRate.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
+
+// --- Constants ---
+
+const { INFLATION_RATE_STEP_PCT, MAX_INFLATION_RATE_PCT, MIN_INFLATION_RATE_PCT } =
+  PORTFOLIO_CONSTANTS;
+
+// --- Types ---
 
 type InflationSource = {
   url: string;
   note: string;
   initialRatePct: number;
 };
+
+// --- Components ---
 
 export function InflationControls({
   className,
@@ -35,16 +40,24 @@ export function InflationControls({
   onInflationRateChange: (rate: number) => void;
   source?: InflationSource;
 }) {
+
+  // --- States ---
+
   const [draftRateState, setDraftRate] = useState({
     rate: inflationRatePct,
     committedRate: inflationRatePct,
   });
+
+  // --- Variables ---
+
   const draftRate =
     draftRateState.committedRate === inflationRatePct ? draftRateState.rate : inflationRatePct;
   const displayedRate = formatInflationRate(inflationRatePct);
   const draftProgress =
     (draftRate - MIN_INFLATION_RATE_PCT) / (MAX_INFLATION_RATE_PCT - MIN_INFLATION_RATE_PCT);
   const draftThumbPosition = `calc(${draftProgress * 100}% + ${10 - draftProgress * 20}px)`;
+
+  // --- Return ---
 
   return (
     <div className={`inflation-controls inflation-controls-${layout} ${className}`}>

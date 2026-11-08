@@ -1,12 +1,19 @@
-import { labels, projectedBalanceLabel } from "../copy/labels";
-import { copy } from "../copy/PortfolioChartPanel";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { compactMoney } from "../utils/compactMoney";
-import { investmentSeriesKey } from "../utils/investmentSeriesKey";
-import { COLORS, TOTAL_SERIES_KEY, INVESTED_SERIES_KEY } from "../chart-constants";
-import { PortfolioTooltip } from "./PortfolioTooltip";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/PortfolioChartPanel.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { Badge } from "@/design-system/components/Badge";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/design-system/components/Card";
+import { compactMoney } from "@/features/Portfolio/presentation/utils/compactMoney.util";
+import { investmentSeriesKey } from "@/features/Portfolio/presentation/utils/investmentSeriesKey.util";
+import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/chartConstants.constant";
+import { PortfolioTooltip } from "@/features/Portfolio/presentation/components/PortfolioTooltip";
 import {
   Area,
   AreaChart,
@@ -17,12 +24,21 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatYears } from "../utils/formatYears";
-import { getEmptyYAxisProps } from "../utils/getEmptyYAxisProps";
-import { areChartSeriesHidden } from "../utils/areChartSeriesHidden";
-import { ChartSeriesToggle } from "./ChartSeriesToggle";
+import { formatYears } from "@/features/Portfolio/presentation/utils/formatYears.util";
+import { getEmptyYAxisProps } from "@/features/Portfolio/presentation/utils/getEmptyYAxisProps.util";
+import { areChartSeriesHidden } from "@/features/Portfolio/presentation/utils/areChartSeriesHidden.util";
+import { ChartSeriesToggle } from "@/features/Portfolio/presentation/components/ChartSeriesToggle";
+
+// --- Constants ---
+
+const { COLORS, TOTAL_SERIES_KEY, INVESTED_SERIES_KEY } = CHART_CONSTANTS;
+
+// --- Components ---
 
 export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) {
+
+  // --- Variables ---
+
   const {
     portfolio,
     totalYears,
@@ -39,6 +55,9 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
     ...portfolio.investments.map((investment) => investmentSeriesKey(investment.id)),
   ];
   const noVisibleChartSeries = areChartSeriesHidden(hiddenChartSeries, portfolioChartSeriesKeys);
+
+  // --- Return ---
+
   return (
     <Card className="panel-card chart-panel">
       <CardHeader className="panel-header">
@@ -135,6 +154,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
             },
           ].map(({ key, label, color, dashed }) => {
             const hidden = hiddenChartSeries.has(key);
+
             return (
               <ChartSeriesToggle
                 key={key}
@@ -151,6 +171,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
           {portfolio.investments.map((investment, index) => {
             const seriesKey = investmentSeriesKey(investment.id);
             const hidden = hiddenChartSeries.has(seriesKey);
+
             return (
               <ChartSeriesToggle
                 key={investment.id}

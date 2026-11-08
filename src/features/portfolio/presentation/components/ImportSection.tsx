@@ -1,12 +1,20 @@
-import { copy } from "../copy/ImportSection";
-import type { DashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { Button } from "@/components/ui/button";
+import { copy } from "@/features/Portfolio/presentation/copy/ImportSection.constant";
+import type { DashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { Button } from "@/design-system/components/Button";
 import { Eye } from "lucide-react";
 import { Upload } from "lucide-react";
 import { Download } from "lucide-react";
 
+// --- Components ---
+
 export function ImportSection({ model }: { model: DashboardModel }) {
+
+  // --- Variables ---
+
   const { error, dragging, setDragging, fileInput, onFileChange, onDrop, loadExample } = model;
+
+  // --- Return ---
+
   return (
     <section className="import-section" aria-labelledby="onboarding-title">
       <div

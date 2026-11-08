@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/design-system/components/Card";
 
 export function Metric({
   icon,
@@ -16,6 +16,7 @@ export function Metric({
   positive?: boolean;
   tooltip?: ReactNode;
 }) {
+
   return (
     <Card className="metric-card">
       <CardContent>

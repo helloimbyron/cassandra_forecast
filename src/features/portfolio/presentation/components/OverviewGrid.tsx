@@ -1,8 +1,9 @@
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { PortfolioChartPanel } from "./PortfolioChartPanel";
-import { AllocationPanel } from "./AllocationPanel";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { PortfolioChartPanel } from "@/features/Portfolio/presentation/components/PortfolioChartPanel";
+import { AllocationPanel } from "@/features/Portfolio/presentation/components/AllocationPanel";
 
 export function OverviewGrid({ model }: { model: LoadedDashboardModel }) {
+
   return (
     <section className="overview-grid">
       <PortfolioChartPanel model={model} />

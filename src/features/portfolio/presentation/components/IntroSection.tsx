@@ -1,7 +1,8 @@
-import { copy } from "../copy/IntroSection";
+import { copy } from "@/features/Portfolio/presentation/copy/IntroSection.constant";
 import { PiggyBank } from "lucide-react";
 
 export function IntroSection() {
+
   return (
     <section className="intro-section" aria-labelledby="onboarding-title">
       <div className="intro-grid">

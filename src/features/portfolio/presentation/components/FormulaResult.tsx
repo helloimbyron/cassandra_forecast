@@ -1,6 +1,6 @@
-import { texText } from "../utils/texText";
-import { FormulaMath } from "./FormulaMath";
-import { copy } from "../copy/FormulaResult";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { copy } from "@/features/Portfolio/presentation/copy/FormulaResult.constant";
 
 export function FormulaResult({
   name,
@@ -11,6 +11,7 @@ export function FormulaResult({
   value: string;
   rounded?: boolean;
 }) {
+
   return (
     <FormulaMath
       className="formula-math-result"

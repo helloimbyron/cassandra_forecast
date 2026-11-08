@@ -1,0 +1,1 @@
+export const SCIENTIFIC_THRESHOLD = 1e33;

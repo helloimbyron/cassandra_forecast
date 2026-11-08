@@ -42,11 +42,11 @@ La interfaz usa una sola familia, **Geist Variable**, y parte del modo oscuro. E
 los mismos roles semánticos y puede elegirse desde el encabezado. Tailwind Preflight normaliza los
 estilos del navegador; las reglas base de Cassandra se añaden encima, sin un segundo reset.
 
-Las decisiones visuales se definen en `src/styles/tokens.css`: paletas, escala tipográfica,
+Las decisiones visuales se definen en `src/design-system/styles/tokens.css`: paletas, escala tipográfica,
 espaciados, dimensiones de componentes, grosores, radios, movimiento y capas. Los estilos de
 secciones y los componentes consumen esos tokens, no valores improvisados. Las únicas medidas
-literales de las hojas de estilo son las condiciones de los tres breakpoints mobile-first
-(30, 46 y 66 rem), porque CSS no permite usar variables personalizadas dentro de media queries;
+literales de las hojas de estilo son las condiciones de los cuatro breakpoints mobile-first
+(30, 46, 66 y 74 rem), porque CSS no permite usar variables personalizadas dentro de media queries;
 una prueba comprueba que coincidan con los tokens documentados. Las posiciones calculadas a partir
 de datos de una gráfica no son decisiones del sistema visual.
 
@@ -57,6 +57,7 @@ fuera del sistema. Valida también el diseño a 320 px, el foco de teclado y el 
 
 ```sh
 pnpm test
+pnpm test:e2e
 pnpm check
 pnpm lint
 pnpm lint:styles

@@ -1,9 +1,0 @@
-export const MONEY_LOCALE = "es-EC" as const;
-export const MONEY_CURRENCY = "USD" as const;
-export const THOUSAND = 1e3;
-export const MILLION = 1e6;
-export const BILLION = 1e9;
-export const SCIENTIFIC_DISPLAY_THRESHOLD = 1e15;
-export const THOUSAND_SUFFIX = " K" as const;
-export const MILLION_SUFFIX = " M" as const;
-export const DOLLAR_SIGN = "$" as const;

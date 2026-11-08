@@ -1,25 +1,38 @@
-import { copy } from "../copy/ThemeToggle";
+import { copy } from "@/features/Portfolio/presentation/copy/ThemeToggle.constant";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/design-system/components/Button";
 import { Sun } from "lucide-react";
 import { Moon } from "lucide-react";
-import { THEME_DARK, THEME_LIGHT, THEME_STORAGE_KEY } from "@/shared/theme/theme-constants";
+import { THEME_CONSTANTS } from "@/design-system/theme/themeConstants.constant";
+
+// --- Constants ---
+
+const { THEME_DARK, THEME_LIGHT, THEME_STORAGE_KEY } = THEME_CONSTANTS;
+
+// --- Types ---
 
 type Theme = typeof THEME_DARK | typeof THEME_LIGHT;
 
+// --- Components ---
+
 export function ThemeToggle() {
+
+  // --- States ---
+
   const [theme, setTheme] = useState<Theme>(() =>
     typeof document !== "undefined" && document.documentElement.classList.contains(THEME_DARK)
       ? THEME_DARK
       : THEME_LIGHT,
   );
 
+  // --- Handlers ---
+
   function toggleTheme() {
     let next: Theme = theme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
     try {
       localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
-      // If persistence is blocked, retain the dark default.
+      // Si el almacenamiento está bloqueado, conserva el tema oscuro predeterminado.
       next = THEME_DARK;
     }
     document.documentElement.classList.toggle(THEME_DARK, next === THEME_DARK);
@@ -32,6 +45,8 @@ export function ThemeToggle() {
       );
     setTheme(next);
   }
+
+  // --- Return ---
 
   return (
     <Button

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "../../design-system/styles/tokens.css";
+@import "../../design-system/styles/foundation.css";
+@import "../../design-system/styles/primitives.css";
+@import "../../features/Portfolio/presentation/styles/import.css";
+@import "../../features/Portfolio/presentation/styles/dashboard-heading-hero.css";
+@import "../../features/Portfolio/presentation/styles/overview.css";
+@import "../../features/Portfolio/presentation/styles/investments.css";
+@import "../../features/Portfolio/presentation/styles/table-closing.css";
+@import "../../features/Portfolio/presentation/styles/responsive.css";

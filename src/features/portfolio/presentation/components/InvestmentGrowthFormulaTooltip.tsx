@@ -1,13 +1,17 @@
-import { FormulaStep } from "./FormulaStep";
-import { labels, projectedBalanceLabel, signedOutcomeLabel } from "../copy/labels";
-import { copy } from "../copy/InvestmentGrowthFormulaTooltip";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/InvestmentGrowthFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import type { InvestmentProjection } from "@/lib/portfolio";
-import { texText } from "../utils/texText";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { FormulaTooltip } from "./FormulaTooltip";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import type { InvestmentProjection } from "@/features/Portfolio/domain/InvestmentProjection.type";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
+
+// --- Components ---
 
 export function InvestmentGrowthFormulaTooltip({
   projection,
@@ -20,12 +24,17 @@ export function InvestmentGrowthFormulaTooltip({
   inflationRatePct?: number;
   realMode?: boolean;
 }) {
+
+  // --- Variables ---
+
   const finalLabel = years === 0 ? labels.currentValue : projectedBalanceLabel(realMode);
   const displayedDifference =
     Math.round(projection.finalValue * 100) -
     Math.round(projection.initialValue * 100) -
     Math.round(projection.totalContributions * 100);
   const roundedDifference = displayedDifference !== Math.round(projection.growth * 100);
+
+  // --- Return ---
 
   return (
     <FormulaTooltip

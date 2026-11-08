@@ -1,9 +1,17 @@
-import { copy } from "../copy/InvestmentsSection";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { InvestmentCard } from "./InvestmentCard";
+import { copy } from "@/features/Portfolio/presentation/copy/InvestmentsSection.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { InvestmentCard } from "@/features/Portfolio/presentation/components/InvestmentCard";
+
+// --- Components ---
 
 export function InvestmentsSection({ model }: { model: LoadedDashboardModel }) {
+
+  // --- Variables ---
+
   const { portfolio } = model;
+
+  // --- Return ---
+
   return (
     <section className="investments-section" aria-label={copy.investmentDetail}>
       <div className="section-heading">

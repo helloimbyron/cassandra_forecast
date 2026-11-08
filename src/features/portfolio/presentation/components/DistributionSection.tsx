@@ -1,4 +1,4 @@
-import { FormulaStep } from "./FormulaStep";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
 import { useState, type KeyboardEvent, type PointerEvent } from "react";
 import {
   Area,
@@ -18,45 +18,51 @@ import {
   PiggyBank,
 } from "lucide-react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { NumericUnitInput } from "@/components/financial/NumericUnitInput";
-import { Label } from "@/components/ui/label";
-import { DebouncedSlider } from "@/components/ui/DebouncedSlider";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
-import { AbbreviatedValue } from "@/components/money/AbbreviatedValue";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { formatNumericUnitValue } from "@/shared/format/format-numeric-unit-input";
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/design-system/components/Card";
+import { Badge } from "@/design-system/components/Badge";
+import { NumericUnitInput } from "@/features/Portfolio/presentation/components/NumericUnitInput";
+import { Label } from "@/design-system/components/Label";
+import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatNumericUnitValue } from "@/features/Portfolio/presentation/format/formatNumericUnitValue.util";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { estimateAdditionalPortfolioDepletionMonths } from "@/features/Portfolio/domain/estimateAdditionalPortfolioDepletionMonths.util";
+import { simulatePortfolioDistribution } from "@/features/Portfolio/domain/simulatePortfolioDistribution.util";
+import type { DistributionPoint } from "@/features/Portfolio/domain/DistributionPoint.type";
+import { annualRateForMonthlyWithdrawal } from "@/features/Portfolio/domain/annualRateForMonthlyWithdrawal.util";
+import { distributionAssetsWithReturn } from "@/features/Portfolio/domain/distributionAssetsWithReturn.util";
+import { monthlyWithdrawalForAnnualRate } from "@/features/Portfolio/domain/monthlyWithdrawalForAnnualRate.util";
+import { selectedDistributionAnnualReturnPct } from "@/features/Portfolio/domain/selectedDistributionAnnualReturnPct.util";
+import { withdrawalRateSliderMax } from "@/features/Portfolio/domain/withdrawalRateSliderMax.util";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { copy } from "@/features/Portfolio/presentation/copy/DistributionSection.constant";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
+import { compactMoney } from "@/features/Portfolio/presentation/utils/compactMoney.util";
+import { adjacentStepValue } from "@/features/Portfolio/presentation/utils/adjacentStepValue.util";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { formatYears } from "@/features/Portfolio/presentation/utils/formatYears.util";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
+import { Metric } from "@/features/Portfolio/presentation/components/Metric";
+
+// --- Constants ---
+
+const {
   DEFAULT_HORIZON_YEARS,
   MAX_HORIZON_YEARS,
   MIN_HORIZON_YEARS,
   MONTHS_PER_YEAR,
   PERCENT_SCALE,
-} from "../../domain/portfolio-constants";
-import {
-  estimateAdditionalPortfolioDepletionMonths,
-  simulatePortfolioDistribution,
-  type DistributionPoint,
-} from "../../domain/simulate-distribution";
-import {
-  annualRateForMonthlyWithdrawal,
-  distributionAssetsWithReturn,
-  monthlyWithdrawalForAnnualRate,
-  selectedDistributionAnnualReturnPct,
-  withdrawalRateSliderMax,
-} from "../../domain/withdrawal-mode";
-import type { LoadedDashboardModel } from "../hooks/usePortfolioDashboard";
-import { copy } from "../copy/DistributionSection";
-import { texText } from "../utils/texText";
-import { compactMoney } from "../utils/compactMoney";
-import { adjacentStepValue } from "../utils/adjacentStepValue";
-import { labels } from "../copy/labels";
-import { formatYears } from "../utils/formatYears";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { FormulaTooltip } from "./FormulaTooltip";
-import { Metric } from "./Metric";
+} = PORTFOLIO_CONSTANTS;
 
 const DEFAULT_ANNUAL_WITHDRAWAL_RATE = 4;
 const MAX_ANNUAL_WITHDRAWAL_RATE = 20;
@@ -70,8 +76,11 @@ const DEFAULT_DISTRIBUTION_YEARS = DEFAULT_HORIZON_YEARS;
 function formatDuration(months: number) {
   const years = Math.floor(months / MONTHS_PER_YEAR);
   const remainingMonths = months % MONTHS_PER_YEAR;
+
   return copy.depletionAt(years, remainingMonths);
 }
+
+// --- Components ---
 
 function DistributionTooltip({
   active,
@@ -82,9 +91,18 @@ function DistributionTooltip({
   payload?: Array<{ value?: number; color?: string; payload?: DistributionPoint }>;
   label?: string | number;
 }) {
-  if (!active || !payload?.length) return null;
+  if (!active || !payload?.length) {
+
+    return null;
+  }
+
+  // --- Variables ---
+
   const balance = payload[0]?.value ?? 0;
   const year = Number(label ?? payload[0]?.payload?.year ?? 0);
+
+  // --- Return ---
+
   return (
     <div className="chart-tooltip">
       <span>{copy.year(year)}</span>
@@ -107,6 +125,7 @@ function RateFormula({
   label?: string;
 }) {
   const monthlyRate = Math.pow(1 + annualReturnPct / PERCENT_SCALE, 1 / MONTHS_PER_YEAR) - 1;
+
   return (
     <>
       <FormulaMath
@@ -127,7 +146,11 @@ function RateFormula({
 }
 
 function DistributionAssumptionTooltip({ withInflation }: { withInflation: boolean }) {
+
+  // --- States ---
+
   const [open, setOpen] = useState(false);
+
   return (
     <TooltipPrimitive.Provider delayDuration={250}>
       <TooltipPrimitive.Root open={open} onOpenChange={setOpen}>
@@ -137,7 +160,9 @@ function DistributionAssumptionTooltip({ withInflation }: { withInflation: boole
             className="formula-tooltip-trigger distribution-heading-info-trigger"
             aria-label={copy.assumptionAriaLabel}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
-              if (event.pointerType === "touch") setOpen(true);
+              if (event.pointerType === "touch") {
+                setOpen(true);
+              }
             }}
           >
             <Info className="icon-sm" aria-hidden="true" />
@@ -156,6 +181,7 @@ function DistributionAssumptionTooltip({ withInflation }: { withInflation: boole
 
 function DistributionLabelTooltip({ text, label }: { text: string; label: string }) {
   const [open, setOpen] = useState(false);
+
   return (
     <TooltipPrimitive.Provider delayDuration={250}>
       <TooltipPrimitive.Root open={open} onOpenChange={setOpen}>
@@ -165,7 +191,9 @@ function DistributionLabelTooltip({ text, label }: { text: string; label: string
             className="formula-tooltip-trigger distribution-heading-info-trigger"
             aria-label={label}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
-              if (event.pointerType === "touch") setOpen(true);
+              if (event.pointerType === "touch") {
+                setOpen(true);
+              }
             }}
           >
             <Info className="icon-sm" aria-hidden="true" />
@@ -192,7 +220,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
     summaryInsights,
   } = model;
   const modeKey = withInflation ? "real" : "nominal";
-  const [years, setYears] = useState(DEFAULT_DISTRIBUTION_YEARS);
+  const [years, setYears] = useState<number>(DEFAULT_DISTRIBUTION_YEARS);
   const [withdrawalMode, setWithdrawalMode] = useState<"monthly" | "percentage">("monthly");
   const [manualWithdrawalByMode, setManualWithdrawalByMode] = useState<
     Record<typeof modeKey, number | null>
@@ -306,8 +334,13 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
             ? copy.durationNoHorizonFormulaStep
             : copy.durationLastsFormulaStep;
 
+  // --- Handlers ---
+
   function changeWithdrawalMode(nextMode: "monthly" | "percentage") {
-    if (nextMode === withdrawalMode) return;
+    if (nextMode === withdrawalMode) {
+
+      return;
+    }
     if (nextMode === "percentage") {
       const equivalentRate = annualRateForMonthlyWithdrawal(monthlyWithdrawal, totalAtHorizon);
       setManualWithdrawalRate(Math.max(0, equivalentRate));
@@ -324,7 +357,10 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
   function handleRateKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const upward = event.key === "ArrowRight" || event.key === "ArrowUp";
     const downward = event.key === "ArrowLeft" || event.key === "ArrowDown";
-    if (!upward && !downward) return;
+    if (!upward && !downward) {
+
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     const value = adjacentStepValue(annualReturnPct, RATE_STEP, upward ? 1 : -1);

@@ -1,15 +1,21 @@
-import { labels } from "../copy/labels";
-import { copy } from "../copy/Header";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { copy } from "@/features/Portfolio/presentation/copy/Header.constant";
 import { Upload } from "lucide-react";
-import { BrandMark } from "./BrandMark";
-import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "@/components/ui/button";
+import { BrandMark } from "@/features/Portfolio/presentation/components/BrandMark";
+import { ThemeToggle } from "@/features/Portfolio/presentation/components/ThemeToggle";
+import { Button } from "@/design-system/components/Button";
 import type { MouseEvent } from "react";
-import type { Portfolio } from "@/lib/portfolio";
-import { DebouncedSlider } from "@/components/ui/DebouncedSlider";
-import { MAX_HORIZON_YEARS, MIN_HORIZON_YEARS } from "../../domain/portfolio-constants";
-import { copy as heroCopy } from "../copy/HeroCard";
-import { InflationControls } from "./InflationControls";
+import type { Portfolio } from "@/features/Portfolio/domain/Portfolio.type";
+import { DebouncedSlider } from "@/design-system/components/DebouncedSlider";
+import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/portfolioConstants.constant";
+import { copy as heroCopy } from "@/features/Portfolio/presentation/copy/HeroCard.constant";
+import { InflationControls } from "@/features/Portfolio/presentation/components/InflationControls";
+
+// --- Constants ---
+
+const { MAX_HORIZON_YEARS, MIN_HORIZON_YEARS } = PORTFOLIO_CONSTANTS;
+
+// --- Components ---
 
 export function Header({
   onNavigateHome,
@@ -34,12 +40,19 @@ export function Header({
   withInflation: boolean;
   onWithInflationChange: (enabled: boolean) => void;
 }) {
+
+  // --- Handlers ---
+
   function handleBrandClick(event: MouseEvent<HTMLAnchorElement>) {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+
       return;
+    }
     event.preventDefault();
     onNavigateHome();
   }
+
+  // --- Return ---
 
   return (
     <header

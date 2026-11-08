@@ -13,7 +13,7 @@ const config = {
   semi: true,
   singleQuote: false,
   tabWidth: 2,
-  tailwindStylesheet: "./src/styles/global.css",
+  tailwindStylesheet: "./src/app/styles/global.css",
   trailingComma: "all",
   useTabs: false,
 };

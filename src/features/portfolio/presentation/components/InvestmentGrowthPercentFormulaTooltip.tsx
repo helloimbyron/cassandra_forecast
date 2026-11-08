@@ -1,13 +1,14 @@
-import { FormulaStep } from "./FormulaStep";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
 import { Calculator } from "lucide-react";
-import { labels, signedOutcomeLabel } from "../copy/labels";
-import { copy } from "../copy/InvestmentGrowthPercentFormulaTooltip";
-import type { InvestmentProjection } from "../../domain/investment-projection";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { texText } from "../utils/texText";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { FormulaTooltip } from "./FormulaTooltip";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
+import { copy } from "@/features/Portfolio/presentation/copy/InvestmentGrowthPercentFormulaTooltip.constant";
+import type { InvestmentProjection } from "@/features/Portfolio/domain/InvestmentProjection.type";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
 
 export function InvestmentGrowthPercentFormulaTooltip({
   projection,
@@ -16,6 +17,7 @@ export function InvestmentGrowthPercentFormulaTooltip({
   projection: InvestmentProjection;
   value: number | null;
 }) {
+
   return (
     <FormulaTooltip
       label={`${value === null ? labels.growthPercent : signedOutcomeLabel(value)} de ${projection.investment.name}`}

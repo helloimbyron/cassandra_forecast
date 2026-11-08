@@ -1,0 +1,50 @@
+---
+import "@/app/styles/global.css";
+import { siteCopy } from "@/app/copy/site.constant";
+import { THEME_CONSTANTS } from "@/design-system/theme/themeConstants.constant";
+
+const { DARK_THEME_COLOR, LIGHT_THEME_COLOR, THEME_DARK, THEME_LIGHT, THEME_STORAGE_KEY } =
+  THEME_CONSTANTS;
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title = siteCopy.title, description = siteCopy.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class={THEME_DARK}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content={DARK_THEME_COLOR} />
+    <script
+      define:vars={{
+        themeStorageKey: THEME_STORAGE_KEY,
+        lightTheme: THEME_LIGHT,
+        themeLightColor: LIGHT_THEME_COLOR,
+      }}
+    >
+      try {
+        if (localStorage.getItem(themeStorageKey) === lightTheme) {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light");
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", themeLightColor);
+        }
+      } catch {
+        // La navegación privada puede bloquear el acceso al almacenamiento; se conserva el tema oscuro predeterminado.
+      }
+    </script>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

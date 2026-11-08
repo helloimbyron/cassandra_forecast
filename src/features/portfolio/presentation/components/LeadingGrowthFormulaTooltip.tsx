@@ -1,13 +1,13 @@
-import { FormulaStep } from "./FormulaStep";
-import { labels } from "../copy/labels";
-import { copy } from "../copy/LeadingGrowthFormulaTooltip";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { copy } from "@/features/Portfolio/presentation/copy/LeadingGrowthFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import type { InvestmentProjection } from "@/lib/portfolio";
-import { texText } from "../utils/texText";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { FormulaTooltip } from "./FormulaTooltip";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import type { InvestmentProjection } from "@/features/Portfolio/domain/InvestmentProjection.type";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
 
 export function LeadingGrowthFormulaTooltip({
   projections,
@@ -16,6 +16,7 @@ export function LeadingGrowthFormulaTooltip({
   projections: InvestmentProjection[];
   leader: InvestmentProjection | null;
 }) {
+
   return (
     <FormulaTooltip
       label={labels.leadingGrowth}

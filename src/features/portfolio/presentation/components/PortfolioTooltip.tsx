@@ -1,5 +1,7 @@
-import { labels } from "../copy/labels";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+
+// --- Components ---
 
 export function PortfolioTooltip({
   active,
@@ -10,7 +12,13 @@ export function PortfolioTooltip({
   payload?: Array<{ name?: string; value?: number; color?: string }>;
   label?: string;
 }) {
-  if (!active || !payload?.length) return null;
+  if (!active || !payload?.length) {
+
+    return null;
+  }
+
+  // --- Variables ---
+
   const items = [...payload]
     .reverse()
     .filter(
@@ -20,7 +28,13 @@ export function PortfolioTooltip({
         item.name === labels.projectedValueReal ||
         item.name === labels.totalInvested,
     );
-  if (!items.length) return null;
+  if (!items.length) {
+
+    return null;
+  }
+
+  // --- Return ---
+
   return (
     <div className="chart-tooltip">
       <span>{label}</span>

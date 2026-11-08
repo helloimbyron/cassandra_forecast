@@ -1,8 +1,16 @@
-import { copy } from "../copy/DashboardHeading";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
+import { copy } from "@/features/Portfolio/presentation/copy/DashboardHeading.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+
+// --- Components ---
 
 export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
+
+  // --- Variables ---
+
   const { error, fileInput, onFileChange } = model;
+
+  // --- Return ---
+
   return (
     <section className="dashboard-heading" aria-label={copy.carteraImportada}>
       <div>

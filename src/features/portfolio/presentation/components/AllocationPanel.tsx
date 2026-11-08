@@ -1,15 +1,33 @@
-import { labels } from "../copy/labels";
-import { copy } from "../copy/AllocationPanel";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
-import { AbbreviatedValue } from "@/components/money/AbbreviatedValue";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { COLORS } from "../chart-constants";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { copy } from "@/features/Portfolio/presentation/copy/AllocationPanel.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/design-system/components/Card";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/chartConstants.constant";
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
+// --- Constants ---
+
+const { COLORS } = CHART_CONSTANTS;
+
+// --- Components ---
+
 export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
+
+  // --- Variables ---
+
   const { portfolio, initial } = model;
+
+  // --- Return ---
+
   return (
     <Card className="panel-card allocation-panel">
       <CardHeader className="panel-header">
@@ -64,6 +82,7 @@ export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
               (sum, holding) => sum + holding.currentValue,
               0,
             );
+
             return (
               <div className="allocation-row" key={investment.id}>
                 <span className="allocation-name">

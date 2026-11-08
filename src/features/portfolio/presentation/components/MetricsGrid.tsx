@@ -1,24 +1,31 @@
-import { FormulaStep } from "./FormulaStep";
-import { labels, projectedBalanceLabel, signedOutcomeLabel } from "../copy/labels";
-import { formatMonths } from "../utils/formatMonths";
-import { copy } from "../copy/MetricsGrid";
-import type { LoadedDashboardModel } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
-import { formatAbbreviatedValue } from "@/shared/format/format-abbreviated-value";
-import { texText } from "../utils/texText";
+import { FormulaStep } from "@/features/Portfolio/presentation/components/FormulaStep";
+import { labels } from "@/features/Portfolio/presentation/copy/labels.constant";
+import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
+import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
+import { formatMonths } from "@/features/Portfolio/presentation/utils/formatMonths.util";
+import { copy } from "@/features/Portfolio/presentation/copy/MetricsGrid.constant";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { ArrowDownToLine } from "lucide-react";
 import { ChartNoAxesCombined } from "lucide-react";
 import { Calculator } from "lucide-react";
 import { Trophy } from "lucide-react";
-import { AbbreviatedMoney } from "@/components/money/AbbreviatedMoney";
-import { AbbreviatedValue } from "@/components/money/AbbreviatedValue";
-import { FormulaMath } from "./FormulaMath";
-import { FormulaResult } from "./FormulaResult";
-import { MonthlyBalanceExamples } from "./MonthlyBalanceExamples";
-import { FormulaTooltip } from "./FormulaTooltip";
-import { LeadingGrowthFormulaTooltip } from "./LeadingGrowthFormulaTooltip";
-import { Metric } from "./Metric";
+import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
+import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
+import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
+import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";
+import { MonthlyBalanceExamples } from "@/features/Portfolio/presentation/components/MonthlyBalanceExamples";
+import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
+import { LeadingGrowthFormulaTooltip } from "@/features/Portfolio/presentation/components/LeadingGrowthFormulaTooltip";
+import { Metric } from "@/features/Portfolio/presentation/components/Metric";
+
+// --- Components ---
 
 export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
+
+  // --- Variables ---
+
   const {
     totalYears,
     initial,
@@ -35,6 +42,9 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
     withInflation,
   } = model;
   const projectedLabel = projectedBalanceLabel(withInflation);
+
+  // --- Return ---
+
   return (
     <section className="metrics-grid" aria-label={copy.indicadoresDeCartera}>
       <Metric
