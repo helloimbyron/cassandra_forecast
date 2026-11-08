@@ -8,7 +8,6 @@ const { MONTHS_PER_YEAR, PERCENT_SCALE } = PORTFOLIO_CONSTANTS;
 
 export function annualRateForMonthlyWithdrawal(monthlyWithdrawal: number, projectedTotal: number) {
   if (projectedTotal <= 0) {
-
     return 0;
   }
 

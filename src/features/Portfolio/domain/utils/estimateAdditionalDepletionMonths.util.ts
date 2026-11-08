@@ -17,27 +17,22 @@ export function estimateAdditionalDepletionMonths(
   annualReturnPct: number,
 ): number | null {
   if (!Number.isFinite(initialBalance) || initialBalance < 0) {
-
     throw new RangeError("Initial balance must be a non-negative number.");
   }
 
   if (!Number.isFinite(monthlyWithdrawal) || monthlyWithdrawal < 0) {
-
     throw new RangeError("Monthly withdrawal must be a non-negative number.");
   }
 
   if (!Number.isFinite(annualReturnPct) || annualReturnPct <= -PERCENT_SCALE) {
-
     throw new RangeError("Annual return must be greater than -100%.");
   }
 
   if (initialBalance === 0) {
-
     return 0;
   }
 
   if (monthlyWithdrawal === 0) {
-
     return null;
   }
 
@@ -45,7 +40,6 @@ export function estimateAdditionalDepletionMonths(
   const monthlyRate = monthlyFactor - 1;
 
   if (monthlyRate === 0) {
-
     return Math.ceil(initialBalance / monthlyWithdrawal);
   }
 
@@ -53,7 +47,6 @@ export function estimateAdditionalDepletionMonths(
     const sustainableBalance = monthlyWithdrawal / monthlyRate;
 
     if (initialBalance >= sustainableBalance) {
-
       return null;
     }
 

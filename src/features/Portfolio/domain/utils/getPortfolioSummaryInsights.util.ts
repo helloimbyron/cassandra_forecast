@@ -22,7 +22,6 @@ export function getPortfolioSummaryInsights(
   const leadingGrowthInvestment = investmentProjections.reduce<InvestmentProjection | null>(
     (leader, projection) => {
       if (projection.growth <= 0) {
-
         return leader;
       }
 

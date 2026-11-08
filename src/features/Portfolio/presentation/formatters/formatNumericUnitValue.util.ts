@@ -13,6 +13,5 @@ const formatNumber = new Intl.NumberFormat(MONEY_LOCALE, {
 // --- Utils ---
 
 export function formatNumericUnitValue(value: number) {
-
   return formatNumber.format(value);
 }

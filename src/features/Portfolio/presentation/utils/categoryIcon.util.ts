@@ -25,6 +25,5 @@ const CATEGORY_ICONS = {
 // --- Utils ---
 
 export function categoryIcon(category: InvestmentCategory) {
-
   return CATEGORY_ICONS[category];
 }

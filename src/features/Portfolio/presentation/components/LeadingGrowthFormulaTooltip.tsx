@@ -16,7 +16,6 @@ export function LeadingGrowthFormulaTooltip({
   projections: InvestmentProjection[];
   leader: InvestmentProjection | null;
 }) {
-
   return (
     <FormulaTooltip
       label={labels.leadingGrowth}

@@ -23,7 +23,6 @@ import { Metric } from "@/features/Portfolio/presentation/components/Metric";
 // --- Components ---
 
 export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
-
   // --- Variables ---
 
   const {

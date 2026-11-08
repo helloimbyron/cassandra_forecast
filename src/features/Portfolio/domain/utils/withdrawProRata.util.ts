@@ -2,7 +2,6 @@ export function withdrawProRata(grownBalances: number[], monthlyWithdrawal: numb
   const availableBalance = grownBalances.reduce((sum, balance) => sum + balance, 0);
 
   if (availableBalance <= monthlyWithdrawal) {
-
     return grownBalances.map(() => 0);
   }
 

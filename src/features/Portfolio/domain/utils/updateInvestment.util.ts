@@ -6,7 +6,6 @@ export function updateInvestment(
   investmentId: string,
   updater: (investment: Investment) => Investment,
 ): Portfolio {
-
   return {
     ...portfolio,
     investments: portfolio.investments.map((investment) =>

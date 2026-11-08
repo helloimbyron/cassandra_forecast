@@ -47,7 +47,6 @@ describe("public example portfolio", () => {
     const exampleBitcoin = examplePortfolio.investments.find(({ id }) => id === "bitcoin");
     expect(exampleBitcoin).toBeDefined();
     if (!exampleBitcoin) {
-
       return;
     }
 

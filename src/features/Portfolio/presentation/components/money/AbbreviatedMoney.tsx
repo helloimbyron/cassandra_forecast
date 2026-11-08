@@ -6,7 +6,6 @@ export function AbbreviatedMoney({
   className,
   interaction,
 }: MoneyProps & { interaction?: "interactive" | "text" }) {
-
   return (
     <AbbreviatedValue
       value={value}

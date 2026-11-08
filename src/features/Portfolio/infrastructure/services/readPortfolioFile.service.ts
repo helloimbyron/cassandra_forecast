@@ -11,11 +11,9 @@ const { MAX_IMPORT_BYTES } = PORTFOLIO_CONSTANTS;
 
 export async function readPortfolioFile(file: File): Promise<Portfolio> {
   if (file.size > MAX_IMPORT_BYTES) {
-
     throw new Error(importMessages.tooLarge);
   }
   if (!file.name.toLowerCase().endsWith(".json")) {
-
     throw new Error(importMessages.wrongExtension);
   }
   const parsed: unknown = JSON.parse(await file.text());

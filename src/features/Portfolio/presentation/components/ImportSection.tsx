@@ -8,7 +8,6 @@ import { Download } from "lucide-react";
 // --- Components ---
 
 export function ImportSection({ model }: { model: DashboardModel }) {
-
   // --- Variables ---
 
   const { error, dragging, setDragging, fileInput, onFileChange, onDrop, loadExample } = model;

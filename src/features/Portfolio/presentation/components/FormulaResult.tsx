@@ -11,7 +11,6 @@ export function FormulaResult({
   value: string;
   rounded?: boolean;
 }) {
-
   return (
     <FormulaMath
       className="formula-math-result"

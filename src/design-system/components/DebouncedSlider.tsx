@@ -21,7 +21,6 @@ export function DebouncedSlider({
   onDraftValueChange,
   ...props
 }: DebouncedSliderProps) {
-
   // --- States ---
 
   const [draft, setDraft] = useState(value);
@@ -52,7 +51,6 @@ export function DebouncedSlider({
 
   useEffect(() => {
     if (areNumberArraysEqual(valueRef.current, value)) {
-
       return;
     }
     valueRef.current = value;

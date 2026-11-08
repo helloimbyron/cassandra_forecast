@@ -69,7 +69,6 @@ export const copy = {
   depletionDuration: (duration: string) => `El dinero duraría hasta ${duration}`,
   depletionAt: (years: number, months: number) => {
     if (years === 0) {
-
       return `${months} ${months === 1 ? "mes" : "meses"}`;
     }
 

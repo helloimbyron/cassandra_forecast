@@ -12,7 +12,6 @@ export function FormulaMath({
   label: string;
   className?: string;
 }) {
-
   // --- Variables ---
 
   const html = katex.renderToString(tex, {

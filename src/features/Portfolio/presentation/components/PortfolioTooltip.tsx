@@ -13,7 +13,6 @@ export function PortfolioTooltip({
   label?: string;
 }) {
   if (!active || !payload?.length) {
-
     return null;
   }
 
@@ -29,7 +28,6 @@ export function PortfolioTooltip({
         item.name === labels.totalInvested,
     );
   if (!items.length) {
-
     return null;
   }
 

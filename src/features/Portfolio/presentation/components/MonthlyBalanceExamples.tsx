@@ -33,7 +33,6 @@ export function MonthlyBalanceExamples({
   finalLabel: string;
   finalValue: number;
 }) {
-
   // --- Variables ---
 
   const shownMonths = new Set(

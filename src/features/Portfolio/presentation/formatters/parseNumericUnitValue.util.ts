@@ -2,7 +2,6 @@ export function parseNumericUnitValue(text: string): number | null {
   const normalized = text.trim().replace(",", ".");
 
   if (!normalized || normalized === "-" || normalized === "." || normalized === "-.") {
-
     return null;
   }
 

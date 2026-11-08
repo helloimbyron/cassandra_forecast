@@ -92,7 +92,6 @@ function DistributionTooltip({
   label?: string | number;
 }) {
   if (!active || !payload?.length) {
-
     return null;
   }
 
@@ -146,7 +145,6 @@ function RateFormula({
 }
 
 function DistributionAssumptionTooltip({ withInflation }: { withInflation: boolean }) {
-
   // --- States ---
 
   const [open, setOpen] = useState(false);
@@ -338,7 +336,6 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
 
   function changeWithdrawalMode(nextMode: "monthly" | "percentage") {
     if (nextMode === withdrawalMode) {
-
       return;
     }
     if (nextMode === "percentage") {
@@ -358,7 +355,6 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
     const upward = event.key === "ArrowRight" || event.key === "ArrowUp";
     const downward = event.key === "ArrowLeft" || event.key === "ArrowDown";
     if (!upward && !downward) {
-
       return;
     }
     event.preventDefault();

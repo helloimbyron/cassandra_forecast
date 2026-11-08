@@ -11,7 +11,6 @@ import { getVisibleInvestmentTotal } from "@/features/Portfolio/presentation/uti
 // --- Components ---
 
 export function TableSection({ model }: { model: LoadedDashboardModel }) {
-
   // --- Variables ---
 
   const { portfolio, chartData, withInflation } = model;

@@ -46,7 +46,6 @@ export function ProjectedValueFormulaTooltip({
   holdingValues?: Array<{ label: string; value: number }>;
   holdingLabel?: string;
 }) {
-
   // --- Variables ---
 
   const effectiveAnnualRatePct = realAnnualRatePct(annualRatePct, inflationRatePct);

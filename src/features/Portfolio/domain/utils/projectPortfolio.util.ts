@@ -7,7 +7,6 @@ export function projectPortfolio(
   years: number,
   inflationRatePct = 0,
 ): InvestmentProjection[] {
-
   return portfolio.investments.map((investment) =>
     projectInvestment(investment, years, inflationRatePct),
   );

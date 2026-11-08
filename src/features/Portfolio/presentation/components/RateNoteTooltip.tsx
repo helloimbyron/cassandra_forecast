@@ -11,12 +11,10 @@ export function RateNoteTooltip({
   investmentName: string;
   note: string | null | undefined;
 }) {
-
   // --- States ---
 
   const [open, setOpen] = useState(false);
   if (!note?.trim()) {
-
     return null;
   }
 

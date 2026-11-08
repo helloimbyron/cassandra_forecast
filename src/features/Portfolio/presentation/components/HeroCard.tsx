@@ -39,7 +39,6 @@ export function HeroCard({
   model: LoadedDashboardModel;
   heroCardRef?: (node: HTMLElement | null) => void;
 }) {
-
   // --- Variables ---
 
   const {

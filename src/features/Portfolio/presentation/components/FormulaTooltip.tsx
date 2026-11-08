@@ -23,7 +23,6 @@ export function FormulaTooltip({
   children: ReactNode;
   className?: string;
 }) {
-
   // --- States ---
 
   const [open, setOpen] = useState(false);

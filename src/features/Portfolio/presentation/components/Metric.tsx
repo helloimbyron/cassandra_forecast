@@ -16,7 +16,6 @@ export function Metric({
   positive?: boolean;
   tooltip?: ReactNode;
 }) {
-
   return (
     <Card className="metric-card">
       <CardContent>

@@ -31,7 +31,6 @@ export function NumericUnitInput({
   unit,
   onChange,
 }: Props) {
-
   // --- Variables ---
 
   const increment = step ?? (unit === "money" ? 10 : 0.1);
@@ -105,7 +104,6 @@ export function NumericUnitInput({
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key !== "ArrowUp" && event.key !== "ArrowDown") {
-
       return;
     }
     event.preventDefault();

@@ -1,6 +1,5 @@
 export function getEmptyYAxisProps(allSeriesHidden: boolean) {
   if (!allSeriesHidden) {
-
     return {};
   }
 

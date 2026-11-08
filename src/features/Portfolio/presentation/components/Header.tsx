@@ -40,12 +40,10 @@ export function Header({
   withInflation: boolean;
   onWithInflationChange: (enabled: boolean) => void;
 }) {
-
   // --- Handlers ---
 
   function handleBrandClick(event: MouseEvent<HTMLAnchorElement>) {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-
       return;
     }
     event.preventDefault();

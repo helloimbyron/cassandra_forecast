@@ -3,15 +3,12 @@ import { describe, expect, it } from "vitest";
 
 const sourceDirectory = new URL("../../../src/", import.meta.url);
 function readSourceFiles(directory: URL): Array<{ path: string; source: string }> {
-
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const entryUrl = new URL(entry.name, directory);
     if (entry.isDirectory()) {
-
       return readSourceFiles(new URL(`${entry.name}/`, directory));
     }
     if (!/\.(?:astro|ts|tsx)$/.test(entry.name)) {
-
       return [];
     }
 

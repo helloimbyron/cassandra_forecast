@@ -10,7 +10,6 @@ export function moneyWeightedMonthlyReturn(
     finalValue <= 0 ||
     initialValue + monthlyContribution * months <= 0
   ) {
-
     return null;
   }
 

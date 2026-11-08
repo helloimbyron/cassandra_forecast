@@ -30,7 +30,6 @@ export function usePortfolioDashboard({
   onPortfolioLoaded,
   onExampleLoadFailed,
 }: NavigationCallbacks = {}) {
-
   // --- States ---
 
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null);
@@ -128,7 +127,6 @@ export function usePortfolioDashboard({
     try {
       const nextPortfolio = await readPortfolioFile(file);
       if (requestId !== importRequest.current) {
-
         return false;
       }
       setPortfolio(nextPortfolio);
@@ -157,7 +155,6 @@ export function usePortfolioDashboard({
 
   async function loadFile(file?: File) {
     if (!file) {
-
       return;
     }
     const requestId = startImportRequest();
@@ -171,12 +168,10 @@ export function usePortfolioDashboard({
     try {
       const response = await fetch("/portfolio.example.json", { signal: controller.signal });
       if (!response.ok) {
-
         throw new Error(importMessages.unreadable);
       }
       const example = await response.text();
       if (requestId !== importRequest.current) {
-
         return;
       }
       const loaded = await parseAndLoadFile(
@@ -236,7 +231,6 @@ export function usePortfolioDashboard({
   function setRate(investmentId: string, value: string) {
     const nextRate = Number(value);
     if (!Number.isFinite(nextRate)) {
-
       return;
     }
     setPortfolio((current) =>
@@ -252,7 +246,6 @@ export function usePortfolioDashboard({
   function setContribution(investmentId: string, holdingId: string, value: string) {
     const contribution = Number(value);
     if (!Number.isFinite(contribution) || contribution < 0) {
-
       return;
     }
     setPortfolio((current) =>

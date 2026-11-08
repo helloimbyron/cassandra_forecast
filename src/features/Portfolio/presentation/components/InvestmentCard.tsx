@@ -74,7 +74,6 @@ export function InvestmentCard({
   index: number;
   model: LoadedDashboardModel;
 }) {
-
   // --- Variables ---
 
   const {

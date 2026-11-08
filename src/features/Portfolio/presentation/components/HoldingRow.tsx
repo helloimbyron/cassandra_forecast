@@ -31,7 +31,6 @@ export function HoldingRow({
   realMode?: boolean;
   setContribution: DashboardModel["setContribution"];
 }) {
-
   // --- Variables ---
 
   const { holding, finalValue, totalContributions } = projection;

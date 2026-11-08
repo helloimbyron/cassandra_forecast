@@ -15,11 +15,9 @@ import { copy as tableCopy } from "@/features/Portfolio/presentation/constants/T
 import { projectedPositionLabel } from "../../../../../src/features/Portfolio/presentation/utils/projectedPositionLabel.util";
 
 function collectTypeScriptFiles(directory: string): string[] {
-
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
     if (entry.isDirectory()) {
-
       return collectTypeScriptFiles(path);
     }
 
@@ -48,17 +46,14 @@ function findUnusedCopyCatalogKeys(copyCatalogPaths: string[], consumerPaths: st
     const aliases = new Map<string, string>();
     for (const statement of source.statements) {
       if (!ts.isImportDeclaration(statement) || !ts.isStringLiteral(statement.moduleSpecifier)) {
-
         continue;
       }
       const resolvedPath = resolveTypeScriptImport(path, statement.moduleSpecifier.text);
       if (!resolvedPath || !statement.importClause || !statement.importClause.namedBindings) {
-
         continue;
       }
       const namedBindings = statement.importClause.namedBindings;
       if (!ts.isNamedImports(namedBindings)) {
-
         continue;
       }
       for (const element of namedBindings.elements) {

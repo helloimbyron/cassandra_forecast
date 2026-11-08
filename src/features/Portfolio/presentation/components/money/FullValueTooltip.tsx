@@ -9,7 +9,6 @@ import { moneyCopy } from "@/features/Portfolio/presentation/constants/moneyCopy
 // --- Components ---
 
 export function FullValueTooltip({ value, className }: MoneyProps) {
-
   // --- States ---
 
   const [open, setOpen] = useState(false);

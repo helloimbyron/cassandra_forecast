@@ -10,7 +10,6 @@ const { scientificUsd } = MONEY_FORMATTERS;
 // --- Utils ---
 
 export function formatFullMoneyDisplay(value: number): string {
-
   return Math.abs(value) >= SCIENTIFIC_DISPLAY_THRESHOLD
     ? scientificUsd.format(value)
     : formatFullUsd(value);

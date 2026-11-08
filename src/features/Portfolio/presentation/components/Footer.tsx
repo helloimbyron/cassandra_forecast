@@ -2,7 +2,6 @@ import { labels } from "@/features/Portfolio/presentation/constants/labels.const
 import { copy } from "@/features/Portfolio/presentation/constants/Footer.constant";
 
 export function Footer() {
-
   return (
     <footer className="footer">
       <span>{labels.brand}</span>

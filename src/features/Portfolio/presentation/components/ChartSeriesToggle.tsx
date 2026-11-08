@@ -21,7 +21,6 @@ export function ChartSeriesToggle({
   onChange,
   swatch,
 }: ChartSeriesToggleProps) {
-
   return (
     <label className={checked ? "series-toggle" : "series-toggle is-hidden"}>
       <input type="checkbox" checked={checked} onChange={onChange} />

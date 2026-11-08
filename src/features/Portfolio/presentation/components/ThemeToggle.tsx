@@ -16,7 +16,6 @@ type Theme = typeof THEME_DARK | typeof THEME_LIGHT;
 // --- Components ---
 
 export function ThemeToggle() {
-
   // --- States ---
 
   const [theme, setTheme] = useState<Theme>(() =>

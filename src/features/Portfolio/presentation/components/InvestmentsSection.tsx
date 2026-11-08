@@ -5,7 +5,6 @@ import { InvestmentCard } from "@/features/Portfolio/presentation/components/Inv
 // --- Components ---
 
 export function InvestmentsSection({ model }: { model: LoadedDashboardModel }) {
-
   // --- Variables ---
 
   const { portfolio } = model;

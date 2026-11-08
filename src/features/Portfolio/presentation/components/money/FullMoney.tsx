@@ -11,7 +11,6 @@ const { SCIENTIFIC_DISPLAY_THRESHOLD } = MONEY_CONSTANTS;
 
 export function FullMoney({ value, className }: MoneyProps) {
   if (Math.abs(value) >= SCIENTIFIC_DISPLAY_THRESHOLD) {
-
     return <FullValueTooltip value={value} className={className} />;
   }
 

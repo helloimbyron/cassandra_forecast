@@ -3,7 +3,6 @@ import { PortfolioChartPanel } from "@/features/Portfolio/presentation/component
 import { AllocationPanel } from "@/features/Portfolio/presentation/components/AllocationPanel";
 
 export function OverviewGrid({ model }: { model: LoadedDashboardModel }) {
-
   return (
     <section className="overview-grid">
       <PortfolioChartPanel model={model} />

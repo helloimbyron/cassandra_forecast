@@ -4,7 +4,6 @@ import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/typ
 // --- Components ---
 
 export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
-
   // --- Variables ---
 
   const { error, fileInput, onFileChange } = model;

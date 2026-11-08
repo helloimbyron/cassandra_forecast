@@ -19,7 +19,6 @@ type DashboardPage = "home" | "dashboard";
 // --- Components ---
 
 export function Dashboard({ initialPage = "home" }: { initialPage?: DashboardPage }) {
-
   // --- States ---
 
   const [page, setPage] = useState<DashboardPage>(initialPage);

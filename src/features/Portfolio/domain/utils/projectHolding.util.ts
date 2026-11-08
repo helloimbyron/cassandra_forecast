@@ -26,15 +26,12 @@ export function projectHolding(
   inflationRatePct = 0,
 ): HoldingProjection {
   if (!Number.isInteger(years) || years < MIN_HORIZON_YEARS || years > MAX_HORIZON_YEARS) {
-
     throw new RangeError(portfolioMessages.horizonRange);
   }
   if (!Number.isFinite(annualRatePct) || annualRatePct <= MIN_ANNUAL_RATE_PCT) {
-
     throw new RangeError(portfolioMessages.annualRateRange);
   }
   if (!Number.isFinite(inflationRatePct) || inflationRatePct <= MIN_ANNUAL_RATE_PCT) {
-
     throw new RangeError("La inflación anual debe ser mayor que -100 %.");
   }
 

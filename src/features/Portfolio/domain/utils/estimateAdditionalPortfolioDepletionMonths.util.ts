@@ -15,19 +15,16 @@ export function estimateAdditionalPortfolioDepletionMonths(
   validateDistributionAssets(assets);
 
   if (!Number.isFinite(monthlyWithdrawal) || monthlyWithdrawal < 0) {
-
     throw new RangeError("Monthly withdrawal must be a non-negative number.");
   }
 
   let balances = assets.map((asset) => asset.balance);
 
   if (balances.reduce((sum, balance) => sum + balance, 0) === 0) {
-
     return 0;
   }
 
   if (monthlyWithdrawal === 0) {
-
     return null;
   }
 
@@ -36,7 +33,6 @@ export function estimateAdditionalPortfolioDepletionMonths(
     const availableBalance = grownBalancesForMonth.reduce((sum, balance) => sum + balance, 0);
 
     if (availableBalance <= monthlyWithdrawal) {
-
       return month;
     }
 

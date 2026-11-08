@@ -6,6 +6,5 @@ export function Card({
   size = "default",
   ...props
 }: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
-
   return <div data-slot="card" data-size={size} className={cn("ui-card", className)} {...props} />;
 }

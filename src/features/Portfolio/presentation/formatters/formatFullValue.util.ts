@@ -23,12 +23,10 @@ export function formatFullValue(
   precision: ValuePrecision = "standard",
 ): string {
   if (!Number.isFinite(value)) {
-
     return "—";
   }
 
   if (unit === "currency") {
-
     return fullUsd.format(value);
   }
 

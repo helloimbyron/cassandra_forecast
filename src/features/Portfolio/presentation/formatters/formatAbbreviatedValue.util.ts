@@ -34,12 +34,10 @@ export function formatAbbreviatedValue(
   precision: ValuePrecision = "standard",
 ): string {
   if (!Number.isFinite(value)) {
-
     return "—";
   }
 
   if (Math.abs(value) >= SCIENTIFIC_THRESHOLD) {
-
     return unit === "currency" ? scientificUsd.format(value) : `${scientificNumber.format(value)}%`;
   }
 
@@ -47,7 +45,6 @@ export function formatAbbreviatedValue(
 
   if (!suffix) {
     if (precision === "axis") {
-
       return unit === "currency" ? `$${axisNumber.format(value)}` : `${axisNumber.format(value)}%`;
     }
 

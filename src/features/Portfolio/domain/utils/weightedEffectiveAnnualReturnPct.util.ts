@@ -11,17 +11,14 @@ export function weightedEffectiveAnnualReturnPct(
 ): number | null {
   positions.forEach(({ balance, annualReturnPct }) => {
     if (!Number.isFinite(balance) || balance < 0) {
-
       throw new RangeError("Position balances must be non-negative numbers.");
     }
     if (!Number.isFinite(annualReturnPct) || annualReturnPct <= -PERCENT_SCALE) {
-
       throw new RangeError("Annual returns must be greater than -100%.");
     }
   });
   const totalBalance = positions.reduce((total, position) => total + position.balance, 0);
   if (totalBalance <= 0) {
-
     return null;
   }
 

@@ -12,7 +12,6 @@ function Slider({
   max = 100,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
-
   // --- Variables ---
 
   const _values = React.useMemo(

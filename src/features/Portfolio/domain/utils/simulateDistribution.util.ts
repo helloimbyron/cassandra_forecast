@@ -20,22 +20,18 @@ export function simulateDistribution(
   years: number,
 ): DistributionProjection {
   if (!Number.isFinite(initialBalance) || initialBalance < 0) {
-
     throw new RangeError("Initial balance must be a non-negative number.");
   }
 
   if (!Number.isFinite(monthlyWithdrawal) || monthlyWithdrawal < 0) {
-
     throw new RangeError("Monthly withdrawal must be a non-negative number.");
   }
 
   if (!Number.isFinite(annualReturnPct) || annualReturnPct <= -PERCENT_SCALE) {
-
     throw new RangeError("Annual return must be greater than -100%.");
   }
 
   if (!Number.isInteger(years) || years < MIN_HORIZON_YEARS || years > MAX_HORIZON_YEARS) {
-
     throw new RangeError("Distribution horizon must be between 0 and 40 whole years.");
   }
 

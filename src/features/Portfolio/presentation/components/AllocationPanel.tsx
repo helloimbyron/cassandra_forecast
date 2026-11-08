@@ -21,7 +21,6 @@ const { COLORS } = CHART_CONSTANTS;
 // --- Components ---
 
 export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
-
   // --- Variables ---
 
   const { portfolio, initial } = model;

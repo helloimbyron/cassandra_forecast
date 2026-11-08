@@ -40,7 +40,6 @@ export function InflationControls({
   onInflationRateChange: (rate: number) => void;
   source?: InflationSource;
 }) {
-
   // --- States ---
 
   const [draftRateState, setDraftRate] = useState({

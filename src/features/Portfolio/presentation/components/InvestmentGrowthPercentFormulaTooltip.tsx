@@ -17,7 +17,6 @@ export function InvestmentGrowthPercentFormulaTooltip({
   projection: InvestmentProjection;
   value: number | null;
 }) {
-
   return (
     <FormulaTooltip
       label={`${value === null ? labels.growthPercent : signedOutcomeLabel(value)} de ${projection.investment.name}`}

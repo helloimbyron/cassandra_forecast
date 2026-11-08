@@ -36,7 +36,6 @@ const { COLORS, TOTAL_SERIES_KEY, INVESTED_SERIES_KEY } = CHART_CONSTANTS;
 // --- Components ---
 
 export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) {
-
   // --- Variables ---
 
   const {

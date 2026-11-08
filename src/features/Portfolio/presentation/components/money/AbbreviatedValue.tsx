@@ -23,7 +23,6 @@ export function AbbreviatedValue({
   className,
   interaction = "interactive",
 }: AbbreviatedValueProps) {
-
   // --- States ---
 
   const [open, setOpen] = useState(false);
@@ -35,7 +34,6 @@ export function AbbreviatedValue({
   const abbreviated = displayValue !== fullValue;
 
   if (interaction === "text" || !abbreviated) {
-
     return <span className={className}>{displayValue}</span>;
   }
 

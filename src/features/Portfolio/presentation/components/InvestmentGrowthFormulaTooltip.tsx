@@ -24,7 +24,6 @@ export function InvestmentGrowthFormulaTooltip({
   inflationRatePct?: number;
   realMode?: boolean;
 }) {
-
   // --- Variables ---
 
   const finalLabel = years === 0 ? labels.currentValue : projectedBalanceLabel(realMode);

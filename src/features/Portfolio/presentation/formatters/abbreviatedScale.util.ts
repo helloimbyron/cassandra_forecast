@@ -12,7 +12,6 @@ export function abbreviatedScale(value: number, precision: ValuePrecision = "sta
   const magnitude = Math.abs(value);
 
   if (!Number.isFinite(magnitude) || magnitude >= SCIENTIFIC_THRESHOLD) {
-
     return { scale: 1, suffix: "" };
   }
 
