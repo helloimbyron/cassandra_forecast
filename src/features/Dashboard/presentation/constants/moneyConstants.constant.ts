@@ -1,5 +1,7 @@
+import { FORMATTING_LOCALE } from "@/libraries/i18n";
+
 export const MONEY_CONSTANTS = {
-  MONEY_LOCALE: "es-EC",
+  MONEY_LOCALE: FORMATTING_LOCALE,
   MONEY_CURRENCY: "USD",
   THOUSAND: 1e3,
   MILLION: 1e6,

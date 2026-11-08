@@ -2,8 +2,7 @@ import type { Holding } from "@/shared/domain/types/Holding.type";
 import type { HoldingProjection } from "@/shared/domain/types/HoldingProjection.type";
 import type { ProjectionPoint } from "@/shared/domain/types/ProjectionPoint.type";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
-
-import { portfolioMessages } from "@/shared/domain/types/portfolioMessages.constant";
+import { portfolioMessages } from "@/shared/domain/copies/portfolioMessages.copy";
 import { monthlyInflationFactor } from "@/features/Dashboard/domain/utils/monthlyInflationFactor.util";
 import { monthlyRateFromAnnualPct } from "@/features/Dashboard/domain/utils/monthlyRateFromAnnualPct.util";
 import { realAnnualRatePct } from "@/features/Dashboard/domain/utils/realAnnualRatePct.util";
@@ -32,7 +31,7 @@ export function projectHolding(
     throw new RangeError(portfolioMessages.annualRateRange);
   }
   if (!Number.isFinite(inflationRatePct) || inflationRatePct <= MIN_ANNUAL_RATE_PCT) {
-    throw new RangeError("La inflación anual debe ser mayor que -100 %.");
+    throw new RangeError(t("dashboard.errors.inflationMinimum"));
   }
 
   const monthlyInflation = monthlyInflationFactor(inflationRatePct);
@@ -59,3 +58,4 @@ export function projectHolding(
 
   return { holding, points, finalValue: balance, totalContributions: contributions };
 }
+import { t } from "@/libraries/i18n";

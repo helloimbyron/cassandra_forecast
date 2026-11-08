@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Columns3 } from "lucide-react";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/TableSection.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
+import { tableSectionCopy } from "@/features/Dashboard/presentation/copies/tableSection.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { Card } from "@/design-system/components/cards/Card";
 import { CardContent } from "@/design-system/components/cards/CardContent";
@@ -58,19 +58,22 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="table-section" aria-label={copy.evolucionAnoAAno}>
+    <section className="table-section" aria-label={tableSectionCopy.evolucionAnoAAno}>
       <div className="section-heading table-section-heading">
         <div className="eyebrow">
-          <span className="eyebrow-line" /> {copy.evolucionAnoAAno}
+          <span className="eyebrow-line" /> {tableSectionCopy.evolucionAnoAAno}
         </div>
         <div className="table-controls">
           <details ref={columnPickerRef} className="table-column-picker">
-            <summary aria-label={copy.seleccionarColumnas}>
+            <summary aria-label={tableSectionCopy.seleccionarColumnas}>
               <Columns3 className="icon-sm" aria-hidden="true" />
               <span>
-                {copy.columnas}
+                {tableSectionCopy.columnas}
                 <small>
-                  {copy.columnasVisibles(visibleInvestments.length, portfolio.investments.length)}
+                  {tableSectionCopy.columnasVisibles(
+                    visibleInvestments.length,
+                    portfolio.investments.length,
+                  )}
                 </small>
               </span>
               <ChevronDown className="icon-sm" aria-hidden="true" />
@@ -78,7 +81,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
             <div
               className="table-column-options"
               role="group"
-              aria-label={copy.seleccionarColumnas}
+              aria-label={tableSectionCopy.seleccionarColumnas}
             >
               {portfolio.investments.map((investment) => {
                 const visible = !hiddenInvestmentIds.has(investment.id);
@@ -89,7 +92,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
                       type="checkbox"
                       checked={visible}
                       onChange={() => toggleInvestment(investment.id)}
-                      aria-label={copy.showInvestmentColumn(investment.name)}
+                      aria-label={tableSectionCopy.showInvestmentColumn(investment.name)}
                     />
                     <span>{investment.name}</span>
                   </label>
@@ -107,12 +110,12 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
               style={{ minWidth: `${(visibleInvestments.length + 2) * 8}rem` }}
             >
               <caption id="year-table-caption" className="visually-hidden">
-                {copy.tablaProyeccionAccesible(projectedLabel)}
+                {tableSectionCopy.tablaProyeccionAccesible(projectedLabel)}
               </caption>
               <thead>
                 <tr>
                   <th id="year-column-heading" scope="col">
-                    {copy.ano}
+                    {tableSectionCopy.ano}
                   </th>
                   {visibleInvestments.map((investment, investmentIndex) => (
                     <th
@@ -125,7 +128,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
                     </th>
                   ))}
                   <th id="total-column-heading" className="table-total-heading" scope="col">
-                    {copy.total}
+                    {tableSectionCopy.total}
                   </th>
                 </tr>
               </thead>
@@ -143,7 +146,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
                       headers="year-column-heading"
                       className="table-year"
                     >
-                      {index === 0 ? labels.today : copy.yearNumber(index)}
+                      {index === 0 ? labels.today : tableSectionCopy.yearNumber(index)}
                     </th>
                     {visibleInvestments.map((investment, investmentIndex) => (
                       <td

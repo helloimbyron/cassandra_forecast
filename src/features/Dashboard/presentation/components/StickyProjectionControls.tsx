@@ -1,8 +1,9 @@
 import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { copy as heroCopy } from "@/features/Dashboard/presentation/constants/HeroCard.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
+import { heroCardCopy } from "@/features/Dashboard/presentation/copies/heroCard.copy";
 
 export function StickyProjectionControls({
   totalYears,
@@ -25,10 +26,10 @@ export function StickyProjectionControls({
         <div className="sticky-horizon-control">
           <div className="sticky-control-label">
             <span>{labels.totalHorizon}</span>
-            <strong>{totalYears === 0 ? labels.today : `${totalYears} ${labels.years}`}</strong>
+            <strong>{totalYears === 0 ? labels.today : formatYears(totalYears)}</strong>
           </div>
           <DebouncedSlider
-            aria-label={heroCopy.plazoTotalAnos}
+            aria-label={heroCardCopy.plazoTotalAnos}
             min={PORTFOLIO_CONSTANTS.MIN_HORIZON_YEARS}
             max={PORTFOLIO_CONSTANTS.MAX_HORIZON_YEARS}
             step={1}

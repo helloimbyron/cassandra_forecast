@@ -1,4 +1,4 @@
-import { copy } from "@/features/Dashboard/presentation/constants/MonthlyBalanceExamples.constant";
+import { monthlyBalanceExamplesCopy } from "@/features/Dashboard/presentation/copies/monthlyBalanceExamples.copy";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";
@@ -55,7 +55,11 @@ export function MonthlyBalanceExamples({
   // --- Return ---
 
   return (
-    <div className="formula-month-examples" role="list" aria-label={copy.ejemplosDelCalculoMesAMes}>
+    <div
+      className="formula-month-examples"
+      role="list"
+      aria-label={monthlyBalanceExamplesCopy.ejemplosDelCalculoMesAMes}
+    >
       {examples.map((example, index) => {
         const priorShownMonth = examples[index - 1]?.month ?? 0;
         const skipped = example.month - priorShownMonth - 1;
@@ -65,24 +69,24 @@ export function MonthlyBalanceExamples({
           <div className="formula-month-example" role="listitem" key={example.month}>
             {skipped > 0 && (
               <p className="formula-month-gap">
-                {copy.meses}
-                {priorShownMonth + 1} {copy.al}
+                {monthlyBalanceExamplesCopy.meses}
+                {priorShownMonth + 1} {monthlyBalanceExamplesCopy.al}
                 {example.month - 1}
-                {copy.seRepiteLaMismaOperacionUnoPor}
+                {monthlyBalanceExamplesCopy.seRepiteLaMismaOperacionUnoPor}
               </p>
             )}
             <strong className="formula-month-label">
-              {copy.mes}
+              {monthlyBalanceExamplesCopy.mes}
               {example.month}
-              {isLast ? copy.lastMonth : ""}
+              {isLast ? monthlyBalanceExamplesCopy.lastMonth : ""}
             </strong>
             <FormulaMath
-              label={copy.calculationForMonth(example.month)}
+              label={monthlyBalanceExamplesCopy.calculationForMonth(example.month)}
               className="formula-math-substitution"
               tex={`${texText(formatAbbreviatedValue(example.previous, "currency"))} \\times (1 + ${texText(monthlyRateDisplay)}) + ${texText(formatAbbreviatedValue(monthlyContribution, "currency"))}${inflationRatePct === 0 ? "" : ` \\div (1 + ${texText(formatAbbreviatedValue(inflationRatePct, "percent", "precise"))})^{${example.month}/12}`}`}
             />
             <FormulaResult
-              name={isLast ? finalLabel : copy.valueAtMonth(example.month)}
+              name={isLast ? finalLabel : monthlyBalanceExamplesCopy.valueAtMonth(example.month)}
               value={formatAbbreviatedValue(isLast ? finalValue : example.balance, "currency")}
               rounded
             />

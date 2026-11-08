@@ -1,5 +1,6 @@
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { useState, type KeyboardEvent, type PointerEvent } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Area,
   AreaChart,
@@ -41,12 +42,12 @@ import { monthlyWithdrawalForAnnualRate } from "@/features/Dashboard/domain/util
 import { selectedDistributionAnnualReturnPct } from "@/features/Dashboard/domain/utils/selectedDistributionAnnualReturnPct.util";
 import { withdrawalRateSliderMax } from "@/features/Dashboard/domain/utils/withdrawalRateSliderMax.util";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import { copy } from "@/features/Dashboard/presentation/constants/DistributionSection.constant";
+import { distributionSectionCopy } from "@/features/Dashboard/presentation/copies/distributionSection.copy";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { compactMoney } from "@/features/Dashboard/presentation/utils/compactMoney.util";
 import { adjacentStepValue } from "@/features/Dashboard/presentation/utils/adjacentStepValue.util";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { formatYears } from "@/features/Dashboard/presentation/utils/formatYears.util";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";
 import { FormulaResult } from "@/features/Dashboard/presentation/components/FormulaResult";
 import { FormulaTooltip } from "@/features/Dashboard/presentation/components/FormulaTooltip";
@@ -75,7 +76,7 @@ function formatDuration(months: number) {
   const years = Math.floor(months / MONTHS_PER_YEAR);
   const remainingMonths = months % MONTHS_PER_YEAR;
 
-  return copy.depletionAt(years, remainingMonths);
+  return distributionSectionCopy.depletionAt(years, remainingMonths);
 }
 
 // --- Components ---
@@ -102,10 +103,10 @@ function DistributionTooltip({
 
   return (
     <div className="chart-tooltip">
-      <span>{copy.year(year)}</span>
+      <span>{distributionSectionCopy.year(year)}</span>
       <div style={{ color: payload[0]?.color }}>
         <i style={{ background: payload[0]?.color }} />
-        {copy.balance}
+        {distributionSectionCopy.balance}
         <strong>
           <AbbreviatedMoney value={balance} interaction="text" />
         </strong>
@@ -116,7 +117,7 @@ function DistributionTooltip({
 
 function RateFormula({
   annualReturnPct,
-  label = copy.annualRateLabel,
+  label = distributionSectionCopy.annualRateLabel,
 }: {
   annualReturnPct: number;
   label?: string;
@@ -126,16 +127,16 @@ function RateFormula({
   return (
     <>
       <FormulaMath
-        label={`${label}: ${copy.monthlyRateLabel}`}
-        tex={`${texText(copy.monthlyRateLabel)} = (1 + ${texText(label)})^{1/12} - 1`}
+        label={`${label}: ${distributionSectionCopy.monthlyRateLabel}`}
+        tex={`${texText(distributionSectionCopy.monthlyRateLabel)} = (1 + ${texText(label)})^{1/12} - 1`}
       />
       <FormulaMath
         className="formula-math-substitution"
-        label={`${label}: ${copy.monthlyRateLabel}`}
+        label={`${label}: ${distributionSectionCopy.monthlyRateLabel}`}
         tex={`(1 + ${texText(formatAbbreviatedValue(annualReturnPct, "percent", "precise"))})^{1/12} - 1`}
       />
       <FormulaResult
-        name={`${label}: ${copy.monthlyRateLabel}`}
+        name={`${label}: ${distributionSectionCopy.monthlyRateLabel}`}
         value={formatAbbreviatedValue(monthlyRate * PERCENT_SCALE, "percent", "precise")}
       />
     </>
@@ -154,7 +155,7 @@ function DistributionAssumptionTooltip({ withInflation }: { withInflation: boole
           <button
             type="button"
             className="formula-tooltip-trigger distribution-heading-info-trigger"
-            aria-label={copy.assumptionAriaLabel}
+            aria-label={distributionSectionCopy.assumptionAriaLabel}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
               if (event.pointerType === "touch") {
                 setOpen(true);
@@ -166,7 +167,9 @@ function DistributionAssumptionTooltip({ withInflation }: { withInflation: boole
         </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content className="rate-note-tooltip-content" side="top" sideOffset={6}>
-            {withInflation ? copy.realAssumption : copy.assumption}
+            {withInflation
+              ? distributionSectionCopy.realAssumption
+              : distributionSectionCopy.assumption}
             <TooltipPrimitive.Arrow className="money-tooltip-arrow" />
           </TooltipPrimitive.Content>
         </TooltipPrimitive.Portal>
@@ -207,6 +210,7 @@ function DistributionLabelTooltip({ text, label }: { text: string; label: string
 }
 
 export function DistributionSection({ model }: { model: LoadedDashboardModel }) {
+  const { t } = useTranslation();
   const {
     totalAtHorizon,
     investmentProjections,
@@ -251,10 +255,10 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
       : nominalMonthlyWithdrawal;
   const withdrawalInputLabel =
     withdrawalMode === "percentage"
-      ? copy.annualRate
+      ? distributionSectionCopy.annualRate
       : withInflation
-        ? copy.realMonthlyWithdrawal
-        : copy.withdrawal;
+        ? distributionSectionCopy.realMonthlyWithdrawal
+        : distributionSectionCopy.withdrawal;
   const portfolioAnnualizedReturnPct = summaryInsights.annualizedReturnPct;
   const annualReturnPct = selectedDistributionAnnualReturnPct(
     portfolioAnnualizedReturnPct,
@@ -297,38 +301,38 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
     : null;
   const depletionLabel =
     projection.depletionMonth === 0
-      ? copy.depletedAtStart
+      ? distributionSectionCopy.depletedAtStart
       : projection.depletionMonth !== null
-        ? copy.depletionDuration(formatDuration(projection.depletionMonth))
+        ? distributionSectionCopy.depletionDuration(formatDuration(projection.depletionMonth))
         : additionalDepletionMonth !== null
-          ? copy.surplusDuration(formatDuration(additionalDepletionMonth))
+          ? distributionSectionCopy.surplusDuration(formatDuration(additionalDepletionMonth))
           : projection.finalBalance > 0
-            ? copy.noAdditionalDepletion
+            ? distributionSectionCopy.noAdditionalDepletion
             : years === 0
-              ? copy.noHorizon
-              : copy.lastsFullHorizon(years);
+              ? distributionSectionCopy.noHorizon
+              : distributionSectionCopy.lastsFullHorizon(years);
   const durationNote =
     projection.depletionMonth !== null
-      ? copy.depletedNote
+      ? distributionSectionCopy.depletedNote
       : additionalDepletionMonth !== null
-        ? copy.surplusNote(years)
+        ? distributionSectionCopy.surplusNote(years)
         : projection.finalBalance > 0
-          ? copy.noAdditionalDepletionNote
+          ? distributionSectionCopy.noAdditionalDepletionNote
           : totalAtHorizon === 0
-            ? copy.noCapital
+            ? distributionSectionCopy.noCapital
             : years === 0
-              ? copy.noHorizon
-              : copy.lastsAtLeast(years);
+              ? distributionSectionCopy.noHorizon
+              : distributionSectionCopy.lastsAtLeast(years);
   const durationFormulaStep =
     projection.depletionMonth !== null
-      ? copy.durationDepletedFormulaStep
+      ? distributionSectionCopy.durationDepletedFormulaStep
       : additionalDepletionMonth !== null
-        ? copy.additionalDurationFormulaStep
+        ? distributionSectionCopy.additionalDurationFormulaStep
         : projection.finalBalance > 0
-          ? copy.noAdditionalDepletionFormulaStep
+          ? distributionSectionCopy.noAdditionalDepletionFormulaStep
           : years === 0
-            ? copy.durationNoHorizonFormulaStep
-            : copy.durationLastsFormulaStep;
+            ? distributionSectionCopy.durationNoHorizonFormulaStep
+            : distributionSectionCopy.durationLastsFormulaStep;
 
   // --- Handlers ---
 
@@ -367,7 +371,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
         <div>
           <div className="distribution-title-row">
             <h2 id="distribution-title" className="eyebrow">
-              <span className="eyebrow-line" /> {copy.title}
+              <span className="eyebrow-line" /> {t("dashboard.distributionSection.copy.title.p1")}
             </h2>
             <DistributionAssumptionTooltip withInflation={withInflation} />
           </div>
@@ -377,8 +381,10 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
       <Card className="panel-card distribution-panel">
         <CardHeader className="panel-header">
           <div>
-            <CardTitle>{copy.chartTitle(withInflation)}</CardTitle>
-            <CardDescription>{copy.chartDescription(withInflation)}</CardDescription>
+            <CardTitle>{distributionSectionCopy.chartTitle(withInflation)}</CardTitle>
+            <CardDescription>
+              {distributionSectionCopy.chartDescription(withInflation)}
+            </CardDescription>
           </div>
           <Badge variant="outline">{years === 0 ? labels.today : formatYears(years)}</Badge>
         </CardHeader>
@@ -386,7 +392,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
           <div
             className="chart-wrap distribution-chart"
             role="img"
-            aria-label={`${copy.chartTitle(withInflation)}, ${years} ${years === 1 ? "año" : "años"}`}
+            aria-label={`${distributionSectionCopy.chartTitle(withInflation)}, ${distributionSectionCopy.yearCount(years)}`}
           >
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
@@ -413,7 +419,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                 <Area
                   type="monotone"
                   dataKey="balance"
-                  name={copy.balance}
+                  name={distributionSectionCopy.balance}
                   stroke="var(--chart-1)"
                   fill="var(--chart-1)"
                   fillOpacity={0.1}
@@ -430,17 +436,19 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
             </ResponsiveContainer>
           </div>
 
-          <div className="distribution-controls" role="group" aria-label={copy.controls}>
+          <div
+            className="distribution-controls"
+            role="group"
+            aria-label={distributionSectionCopy.controls}
+          >
             <div className="distribution-control">
               <div className="distribution-control-heading">
-                <Label htmlFor="distribution-years">{copy.horizon}</Label>
-                <strong>
-                  {years} {years === 1 ? "año" : "años"}
-                </strong>
+                <Label htmlFor="distribution-years">{distributionSectionCopy.horizon}</Label>
+                <strong>{distributionSectionCopy.yearCount(years)}</strong>
               </div>
               <DebouncedSlider
                 id="distribution-years"
-                aria-label={copy.horizon}
+                aria-label={distributionSectionCopy.horizon}
                 min={MIN_HORIZON_YEARS}
                 max={MAX_HORIZON_YEARS}
                 step={1}
@@ -448,8 +456,8 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                 onValueChange={(value) => setYears(value[0] ?? DEFAULT_DISTRIBUTION_YEARS)}
               />
               <div className="range-labels">
-                <span>{copy.zeroYears}</span>
-                <span>{copy.fortyYears}</span>
+                <span>{distributionSectionCopy.zeroYears}</span>
+                <span>{distributionSectionCopy.fortyYears}</span>
               </div>
             </div>
 
@@ -467,8 +475,8 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   </Label>
                   {withdrawalMode === "monthly" && firstNominalMonthlyWithdrawal !== null && (
                     <DistributionLabelTooltip
-                      label={copy.realMonthlyWithdrawal}
-                      text={copy.realWithdrawalNominalEquivalent(
+                      label={distributionSectionCopy.realMonthlyWithdrawal}
+                      text={distributionSectionCopy.realWithdrawalNominalEquivalent(
                         formatAbbreviatedValue(firstNominalMonthlyWithdrawal, "currency"),
                         totalYears,
                       )}
@@ -478,12 +486,12 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                 <div
                   className="distribution-mode-toggle"
                   role="group"
-                  aria-label={copy.withdrawalMode}
+                  aria-label={distributionSectionCopy.withdrawalMode}
                 >
                   <button
                     type="button"
-                    aria-label={copy.monthlyMode}
-                    title={copy.monthlyMode}
+                    aria-label={distributionSectionCopy.monthlyMode}
+                    title={distributionSectionCopy.monthlyMode}
                     aria-pressed={withdrawalMode === "monthly"}
                     onClick={toggleWithdrawalMode}
                   >
@@ -491,8 +499,8 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   </button>
                   <button
                     type="button"
-                    aria-label={copy.percentageMode}
-                    title={copy.percentageMode}
+                    aria-label={distributionSectionCopy.percentageMode}
+                    title={distributionSectionCopy.percentageMode}
                     aria-pressed={withdrawalMode === "percentage"}
                     onClick={toggleWithdrawalMode}
                   >
@@ -561,26 +569,38 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               <div className="distribution-control-heading">
                 <div className="distribution-label-group">
                   <Label htmlFor="distribution-return">
-                    {withInflation ? copy.realAnnualReturn : copy.annualReturn}
+                    {withInflation
+                      ? distributionSectionCopy.realAnnualReturn
+                      : distributionSectionCopy.annualReturn}
                   </Label>
                   <DistributionLabelTooltip
-                    label={withInflation ? copy.realAnnualReturn : copy.annualReturn}
+                    label={
+                      withInflation
+                        ? distributionSectionCopy.realAnnualReturn
+                        : distributionSectionCopy.annualReturn
+                    }
                     text={
                       rateWasUnavailable
-                        ? copy.noCalculatedReturn
+                        ? distributionSectionCopy.noCalculatedReturn
                         : manualAnnualReturn === null
-                          ? copy.portfolioReturnExplanation(
+                          ? distributionSectionCopy.portfolioReturnExplanation(
                               formattedAnnualReturnPct,
                               totalYears,
                               withInflation,
                             )
-                          : copy.manualReturnExplanation(formattedAnnualReturnPct)
+                          : distributionSectionCopy.manualReturnExplanation(
+                              formattedAnnualReturnPct,
+                            )
                     }
                   />
                 </div>
                 <NumericUnitInput
                   id="distribution-return"
-                  label={withInflation ? copy.realAnnualReturn : copy.annualReturn}
+                  label={
+                    withInflation
+                      ? distributionSectionCopy.realAnnualReturn
+                      : distributionSectionCopy.annualReturn
+                  }
                   value={annualReturnPct}
                   min={rateSliderMin}
                   max={rateSliderMax}
@@ -591,7 +611,11 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               </div>
               <div onKeyDownCapture={handleRateKeyDown}>
                 <DebouncedSlider
-                  aria-label={withInflation ? copy.realAnnualReturn : copy.annualReturn}
+                  aria-label={
+                    withInflation
+                      ? distributionSectionCopy.realAnnualReturn
+                      : distributionSectionCopy.annualReturn
+                  }
                   min={rateSliderMin}
                   max={rateSliderMax}
                   step={RATE_STEP}
@@ -609,23 +633,26 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
           </div>
           {rateWasUnavailable && (
             <p className="distribution-note" role="status">
-              {copy.noCalculatedReturn}
+              {distributionSectionCopy.noCalculatedReturn}
             </p>
           )}
         </CardContent>
       </Card>
 
-      <section className="distribution-insights" aria-label={copy.insightsAriaLabel}>
+      <section
+        className="distribution-insights"
+        aria-label={distributionSectionCopy.insightsAriaLabel}
+      >
         <Metric
           icon={<ArrowDownToLine className="icon-sm" />}
-          label={copy.annualWithdrawal}
+          label={distributionSectionCopy.annualWithdrawal}
           value={<AbbreviatedMoney value={annualWithdrawal} />}
-          note={copy.planned}
+          note={distributionSectionCopy.planned}
           tooltip={
             <FormulaTooltip
-              label={copy.annualWithdrawal}
-              intro={copy.annualFormulaIntro}
-              example={copy.annualExample(
+              label={distributionSectionCopy.annualWithdrawal}
+              intro={distributionSectionCopy.annualFormulaIntro}
+              example={distributionSectionCopy.annualExample(
                 formatAbbreviatedValue(monthlyWithdrawal, "currency"),
                 formatAbbreviatedValue(annualWithdrawal, "currency"),
               )}
@@ -633,18 +660,20 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
             >
               <ol className="formula-tooltip-copy">
                 <FormulaStep>
-                  <span className="formula-step-description">{copy.annualFormulaStep}</span>
+                  <span className="formula-step-description">
+                    {distributionSectionCopy.annualFormulaStep}
+                  </span>
                   <FormulaMath
-                    label={`${copy.annualWithdrawalLabel} = ${copy.monthlyWithdrawalLabel} × 12`}
-                    tex={`${texText(copy.annualWithdrawalLabel)} = ${texText(copy.monthlyWithdrawalLabel)} \\times 12`}
+                    label={`${distributionSectionCopy.annualWithdrawalLabel} = ${distributionSectionCopy.monthlyWithdrawalLabel} × 12`}
+                    tex={`${texText(distributionSectionCopy.annualWithdrawalLabel)} = ${texText(distributionSectionCopy.monthlyWithdrawalLabel)} \\times 12`}
                   />
                   <FormulaMath
-                    label={copy.annualWithdrawalLabel}
+                    label={distributionSectionCopy.annualWithdrawalLabel}
                     className="formula-math-substitution"
                     tex={`${texText(formatAbbreviatedValue(monthlyWithdrawal, "currency"))} \\times 12`}
                   />
                   <FormulaResult
-                    name={copy.annualWithdrawalLabel}
+                    name={distributionSectionCopy.annualWithdrawalLabel}
                     value={formatAbbreviatedValue(annualWithdrawal, "currency")}
                   />
                 </FormulaStep>
@@ -654,7 +683,11 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
         />
         <Metric
           icon={<ChartNoAxesCombined className="icon-sm" />}
-          label={withdrawalMode === "monthly" ? copy.annualRate : copy.equivalentMonthlyWithdrawal}
+          label={
+            withdrawalMode === "monthly"
+              ? distributionSectionCopy.annualRate
+              : distributionSectionCopy.equivalentMonthlyWithdrawal
+          }
           value={
             withdrawalMode === "monthly" ? (
               annualWithdrawalPct === null ? (
@@ -666,27 +699,33 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               <AbbreviatedMoney value={monthlyWithdrawal} />
             )
           }
-          note={withdrawalMode === "monthly" ? copy.percentNote : copy.equivalentMonthlyNote}
+          note={
+            withdrawalMode === "monthly"
+              ? distributionSectionCopy.percentNote
+              : distributionSectionCopy.equivalentMonthlyNote
+          }
           tooltip={
             <FormulaTooltip
               label={
-                withdrawalMode === "monthly" ? copy.annualRate : copy.equivalentMonthlyWithdrawal
+                withdrawalMode === "monthly"
+                  ? distributionSectionCopy.annualRate
+                  : distributionSectionCopy.equivalentMonthlyWithdrawal
               }
               intro={
                 withdrawalMode === "monthly"
-                  ? copy.percentFormulaIntro
-                  : copy.equivalentMonthlyFormulaIntro
+                  ? distributionSectionCopy.percentFormulaIntro
+                  : distributionSectionCopy.equivalentMonthlyFormulaIntro
               }
               example={
                 withdrawalMode === "monthly"
                   ? annualWithdrawalPct === null
                     ? undefined
-                    : copy.percentExample(
+                    : distributionSectionCopy.percentExample(
                         formatAbbreviatedValue(annualWithdrawal, "currency"),
                         formatAbbreviatedValue(totalAtHorizon, "currency"),
                         formatAbbreviatedValue(annualWithdrawalPct, "percent"),
                       )
-                  : copy.monthlyExample(
+                  : distributionSectionCopy.monthlyExample(
                       formatAbbreviatedValue(totalAtHorizon, "currency"),
                       formatAbbreviatedValue(annualWithdrawalRatePct, "percent"),
                       formatAbbreviatedValue(monthlyWithdrawal, "currency"),
@@ -698,28 +737,28 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                 <ol className="formula-tooltip-copy">
                   <FormulaStep>
                     <span className="formula-step-description">
-                      {copy.equivalentMonthlyFormulaStep}
+                      {distributionSectionCopy.equivalentMonthlyFormulaStep}
                     </span>
                     <FormulaMath
                       label={
-                        copy.monthlyWithdrawalLabel +
+                        distributionSectionCopy.monthlyWithdrawalLabel +
                         " = (" +
-                        copy.initialTotalLabel +
+                        distributionSectionCopy.initialTotalLabel +
                         " × " +
-                        copy.annualWithdrawalRateLabel +
+                        distributionSectionCopy.annualWithdrawalRateLabel +
                         ") ÷ 12"
                       }
                       tex={
-                        texText(copy.monthlyWithdrawalLabel) +
+                        texText(distributionSectionCopy.monthlyWithdrawalLabel) +
                         " = \\frac{" +
-                        texText(copy.initialTotalLabel) +
+                        texText(distributionSectionCopy.initialTotalLabel) +
                         " \\times " +
-                        texText(copy.annualWithdrawalRateLabel) +
+                        texText(distributionSectionCopy.annualWithdrawalRateLabel) +
                         "}{12}"
                       }
                     />
                     <FormulaMath
-                      label={copy.equivalentMonthlyFormulaStep}
+                      label={distributionSectionCopy.equivalentMonthlyFormulaStep}
                       className="formula-math-substitution"
                       tex={
                         "\\frac{" +
@@ -730,7 +769,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                       }
                     />
                     <FormulaResult
-                      name={copy.equivalentMonthlyWithdrawal}
+                      name={distributionSectionCopy.equivalentMonthlyWithdrawal}
                       value={formatAbbreviatedValue(monthlyWithdrawal, "currency")}
                     />
                   </FormulaStep>
@@ -738,22 +777,26 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               ) : (
                 <ol className="formula-tooltip-copy">
                   <FormulaStep>
-                    <span className="formula-step-description">{copy.percentFormulaStep}</span>
+                    <span className="formula-step-description">
+                      {distributionSectionCopy.percentFormulaStep}
+                    </span>
                     <FormulaMath
-                      label={`${copy.annualWithdrawalLabel} ÷ ${copy.initialTotalLabel} × 100`}
-                      tex={`\\frac{${texText(copy.annualWithdrawalLabel)}}{${texText(copy.initialTotalLabel)}} \\times 100`}
+                      label={`${distributionSectionCopy.annualWithdrawalLabel} ÷ ${distributionSectionCopy.initialTotalLabel} × 100`}
+                      tex={`\\frac{${texText(distributionSectionCopy.annualWithdrawalLabel)}}{${texText(distributionSectionCopy.initialTotalLabel)}} \\times 100`}
                     />
                     {annualWithdrawalPct === null ? (
-                      <p className="formula-no-result">{copy.noCapitalForPercent}</p>
+                      <p className="formula-no-result">
+                        {distributionSectionCopy.noCapitalForPercent}
+                      </p>
                     ) : (
                       <>
                         <FormulaMath
-                          label={copy.percentFormulaStep}
+                          label={distributionSectionCopy.percentFormulaStep}
                           className="formula-math-substitution"
                           tex={`\\frac{${texText(formatAbbreviatedValue(annualWithdrawal, "currency"))}}{${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))}} \\times 100`}
                         />
                         <FormulaResult
-                          name={copy.annualRate}
+                          name={distributionSectionCopy.annualRate}
                           value={formatAbbreviatedValue(annualWithdrawalPct, "percent")}
                         />
                       </>
@@ -766,14 +809,14 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
         />
         <Metric
           icon={<PiggyBank className="icon-sm" />}
-          label={copy.endingBalance}
+          label={distributionSectionCopy.endingBalance}
           value={<AbbreviatedMoney value={projection.finalBalance} />}
-          note={copy.endingNote(years)}
+          note={distributionSectionCopy.endingNote(years)}
           tooltip={
             <FormulaTooltip
-              label={copy.endingBalance}
-              intro={copy.endingFormulaIntro}
-              example={copy.endingExample(
+              label={distributionSectionCopy.endingBalance}
+              intro={distributionSectionCopy.endingFormulaIntro}
+              example={distributionSectionCopy.endingExample(
                 formatAbbreviatedValue(totalAtHorizon, "currency"),
                 formatAbbreviatedValue(monthlyWithdrawal, "currency"),
                 years,
@@ -783,20 +826,22 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
             >
               <ol className="formula-tooltip-copy">
                 <FormulaStep>
-                  <span className="formula-step-description">{copy.balanceFormulaStep}</span>
+                  <span className="formula-step-description">
+                    {distributionSectionCopy.balanceFormulaStep}
+                  </span>
                   <FormulaMath
-                    label={`${copy.balanceLabel} inicial = ${copy.initialTotalLabel}`}
-                    tex={`B_0 = ${texText(copy.initialTotalLabel)}`}
+                    label={`${distributionSectionCopy.balanceLabel} inicial = ${distributionSectionCopy.initialTotalLabel}`}
+                    tex={`B_0 = ${texText(distributionSectionCopy.initialTotalLabel)}`}
                   />
                   <FormulaMath
                     className="formula-math-substitution"
-                    label={`${copy.balanceLabel} inicial`}
+                    label={`${distributionSectionCopy.balanceLabel} inicial`}
                     tex={`B_0 = ${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))}`}
                   />
                   <span className="formula-step-description">
                     {manualAnnualReturn === null
-                      ? copy.individualReturnsStep
-                      : copy.manualReturnStep}
+                      ? distributionSectionCopy.individualReturnsStep
+                      : distributionSectionCopy.manualReturnStep}
                   </span>
                   {investmentProjections.map((investmentProjection, index) => (
                     <div
@@ -810,24 +855,24 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                     </div>
                   ))}
                   <FormulaMath
-                    label={copy.grownBalanceFormulaLabel}
+                    label={distributionSectionCopy.grownBalanceFormulaLabel}
                     tex={`B_{j,m}^{+} = B_{j,m-1} \\times (1 + r_{j,m})`}
                   />
                   <FormulaMath
-                    label={copy.proRataWithdrawalFormulaLabel}
+                    label={distributionSectionCopy.proRataWithdrawalFormulaLabel}
                     tex={`R_{j,m} = R_m \\times \\frac{B_{j,m}^{+}}{\\sum_i B_{i,m}^{+}}`}
                   />
                   <FormulaMath
-                    label={copy.balanceAfterWithdrawalFormulaLabel}
+                    label={distributionSectionCopy.balanceAfterWithdrawalFormulaLabel}
                     tex={`B_{j,m} = \\max(0, B_{j,m}^{+} - R_{j,m})`}
                   />
                   <FormulaMath
                     className="formula-math-substitution"
-                    label={copy.withdrawalSubstitutionLabel}
+                    label={distributionSectionCopy.withdrawalSubstitutionLabel}
                     tex={`${texText(formatAbbreviatedValue(monthlyWithdrawal, "currency"))} \\text{ USD/mes}`}
                   />
                   <FormulaResult
-                    name={copy.finalBalanceLabel}
+                    name={distributionSectionCopy.finalBalanceLabel}
                     value={formatAbbreviatedValue(projection.finalBalance, "currency")}
                   />
                 </FormulaStep>
@@ -837,14 +882,14 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
         />
         <Metric
           icon={<Clock3 className="icon-sm" />}
-          label={copy.duration}
+          label={distributionSectionCopy.duration}
           value={depletionLabel}
           note={durationNote}
           tooltip={
             <FormulaTooltip
-              label={copy.duration}
-              intro={copy.durationFormulaIntro}
-              example={copy.durationExample(
+              label={distributionSectionCopy.duration}
+              intro={distributionSectionCopy.durationFormulaIntro}
+              example={distributionSectionCopy.durationExample(
                 formatAbbreviatedValue(monthlyWithdrawal, "currency"),
                 depletionLabel,
               )}
@@ -854,10 +899,13 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                 <FormulaStep>
                   <span className="formula-step-description">{durationFormulaStep}</span>
                   {projection.depletionMonth === 0 ? (
-                    <FormulaMath label={copy.depletionCalculationLabel} tex="B_0 = 0" />
+                    <FormulaMath
+                      label={distributionSectionCopy.depletionCalculationLabel}
+                      tex="B_0 = 0"
+                    />
                   ) : projection.depletionMonth !== null ? (
                     <FormulaMath
-                      label={copy.depletionCalculationLabel}
+                      label={distributionSectionCopy.depletionCalculationLabel}
                       tex={`\\min(m: 1 \\leq m \\leq ${texText(String(distributionMonthCount))}, B_m = 0) = ${texText(String(projection.depletionMonth))}`}
                     />
                   ) : additionalDepletionMonth !== null ? (
@@ -865,47 +913,56 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                       {projection.finalAssets.map((asset, index) => (
                         <FormulaMath
                           key={investmentProjections[index]?.investment.id ?? index}
-                          label={investmentProjections[index]?.investment.name ?? copy.balanceLabel}
+                          label={
+                            investmentProjections[index]?.investment.name ??
+                            distributionSectionCopy.balanceLabel
+                          }
                           tex={`B_{j,0} = ${texText(formatAbbreviatedValue(asset.balance, "currency"))}`}
                         />
                       ))}
                       <FormulaMath
-                        label={copy.grownBalanceFormulaLabel}
+                        label={distributionSectionCopy.grownBalanceFormulaLabel}
                         tex={`B_{j,k}^{+} = B_{j,k-1} \\times (1 + r_{j,k})`}
                       />
                       <FormulaMath
-                        label={copy.proRataWithdrawalFormulaLabel}
+                        label={distributionSectionCopy.proRataWithdrawalFormulaLabel}
                         tex={`R_{j,k} = R_k \\times \\frac{B_{j,k}^{+}}{\\sum_i B_{i,k}^{+}}`}
                       />
                       <FormulaMath
-                        label={copy.balanceAfterWithdrawalFormulaLabel}
+                        label={distributionSectionCopy.balanceAfterWithdrawalFormulaLabel}
                         tex={`B_{j,k} = \\max(0, B_{j,k}^{+} - R_{j,k})`}
                       />
                       <FormulaMath
-                        label={copy.additionalDurationResultLabel}
-                        tex={`\\min(k: k \\geq 1, S_k = 0) = ${texText(String(additionalDepletionMonth))} \\text{ meses}`}
+                        label={distributionSectionCopy.additionalDurationResultLabel}
+                        tex={`\\min(k: k \\geq 1, S_k = 0) = ${texText(String(additionalDepletionMonth))} \\text{${distributionSectionCopy.additionalDepletionMonthsUnit}}`}
                       />
                     </>
                   ) : projection.finalBalance > 0 ? (
                     <>
                       <FormulaMath
-                        label={copy.balanceAtSelectedHorizonLabel}
+                        label={distributionSectionCopy.balanceAtSelectedHorizonLabel}
                         tex={`S_0 = ${texText(formatAbbreviatedValue(projection.finalBalance, "currency"))}`}
                       />
-                      <FormulaMath label={copy.durationLabel} tex={`S_k > 0, \\quad k \\geq 1`} />
+                      <FormulaMath
+                        label={distributionSectionCopy.durationLabel}
+                        tex={`S_k > 0, \\quad k \\geq 1`}
+                      />
                     </>
                   ) : years === 0 ? (
                     <FormulaMath
-                      label={copy.yearsLabel}
+                      label={distributionSectionCopy.yearsLabel}
                       tex={`N = ${texText(String(distributionMonthCount))}`}
                     />
                   ) : (
                     <FormulaMath
-                      label={copy.durationLabel}
+                      label={distributionSectionCopy.durationLabel}
                       tex={`B_m > 0, \\quad 1 \\leq m \\leq ${texText(String(distributionMonthCount))}`}
                     />
                   )}
-                  <FormulaResult name={copy.durationLabel} value={depletionLabel} />
+                  <FormulaResult
+                    name={distributionSectionCopy.durationLabel}
+                    value={depletionLabel}
+                  />
                 </FormulaStep>
               </ol>
             </FormulaTooltip>

@@ -1,4 +1,4 @@
-import { copy } from "@/shared/presentation/constants/ThemeToggle.constant";
+import { themeToggleCopy } from "@/shared/presentation/copies/themeToggle.copy";
 import { useState } from "react";
 import { Button } from "@/design-system/components/Button";
 import { Sun } from "lucide-react";
@@ -53,7 +53,9 @@ export function ThemeToggle() {
       variant="outline"
       className="theme-toggle"
       onClick={toggleTheme}
-      aria-label={theme === THEME_DARK ? copy.activarModoClaro : copy.activarModoOscuro}
+      aria-label={
+        theme === THEME_DARK ? themeToggleCopy.activarModoClaro : themeToggleCopy.activarModoOscuro
+      }
       aria-pressed={theme === THEME_LIGHT}
     >
       {theme === THEME_DARK ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}

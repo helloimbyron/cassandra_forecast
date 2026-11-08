@@ -1,11 +1,11 @@
-import { brandLabel } from "@/shared/presentation/constants/brand.constant";
-import { copy } from "@/shared/presentation/constants/Footer.constant";
+import { brandLabel } from "@/shared/presentation/copies/brand.copy";
+import { footerCopy } from "@/shared/presentation/copies/footer.copy";
 
 export function Footer() {
   return (
     <footer className="footer">
       <span>{brandLabel}</span>
-      <a href="#inicio">{copy.volverArriba}</a>
+      <a href="#inicio">{footerCopy.volverArriba}</a>
     </footer>
   );
 }

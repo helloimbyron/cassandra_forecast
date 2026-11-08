@@ -1,4 +1,4 @@
-import { copy } from "@/features/Home/ImportSection.constant";
+import { importSectionCopy } from "@/features/Home/presentation/copies/importSection.copy";
 import type { PortfolioImportController } from "@/shared/presentation/types/PortfolioImportController.type";
 import { Button } from "@/design-system/components/Button";
 import { Eye } from "lucide-react";
@@ -27,10 +27,10 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
       >
         <div className="import-actions">
           <Button size="lg" onClick={() => fileInput.current?.click()}>
-            <Upload className="icon-sm" /> {copy.cargarMiJson}
+            <Upload className="icon-sm" /> {importSectionCopy.cargarMiJson}
           </Button>
           <Button size="lg" variant="outline" onClick={() => void loadExample()}>
-            <Eye className="icon-sm" /> {copy.mostrarEjemplo}
+            <Eye className="icon-sm" /> {importSectionCopy.mostrarEjemplo}
           </Button>
         </div>
         {error && (
@@ -39,9 +39,9 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
           </p>
         )}
         <div className="import-meta">
-          <span className="drop-hint">{copy.oArrastraAquiTuArchivoJson}</span>
+          <span className="drop-hint">{importSectionCopy.oArrastraAquiTuArchivoJson}</span>
           <a className="sample-link" href="/portfolio.example.json" download>
-            <Download className="icon-sm" /> {copy.descargarFormatoDeEjemplo}
+            <Download className="icon-sm" /> {importSectionCopy.descargarFormatoDeEjemplo}
           </a>
         </div>
         <input
@@ -50,7 +50,7 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
           type="file"
           accept=".json,application/json"
           onChange={onFileChange}
-          aria-label={copy.seleccionarArchivoJsonDeCartera}
+          aria-label={importSectionCopy.seleccionarArchivoJsonDeCartera}
         />
       </div>
     </section>

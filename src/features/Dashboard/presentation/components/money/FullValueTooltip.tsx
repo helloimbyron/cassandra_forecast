@@ -4,7 +4,7 @@ import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { formatFullMoneyDisplay } from "@/features/Dashboard/presentation/formatters/formatFullMoneyDisplay.util";
 import { formatFullUsd } from "@/features/Dashboard/presentation/formatters/formatFullUsd.util";
 import type { MoneyProps } from "@/features/Dashboard/presentation/types/MoneyProps.type";
-import { moneyCopy } from "@/features/Dashboard/presentation/constants/moneyCopy.constant";
+import { moneyCopy } from "@/features/Dashboard/presentation/copies/moneyCopy.copy";
 
 // --- Components ---
 

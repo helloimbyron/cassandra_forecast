@@ -1,6 +1,6 @@
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/PortfolioChartPanel.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
+import { portfolioChartPanelCopy } from "@/features/Dashboard/presentation/copies/portfolioChartPanel.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { Badge } from "@/design-system/components/Badge";
 import { Card } from "@/design-system/components/cards/Card";
@@ -22,7 +22,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { formatYears } from "@/features/Dashboard/presentation/utils/formatYears.util";
+import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
 import { getEmptyYAxisProps } from "@/features/Dashboard/presentation/utils/getEmptyYAxisProps.util";
 import { areChartSeriesHidden } from "@/features/Dashboard/presentation/utils/areChartSeriesHidden.util";
 import { ChartSeriesToggle } from "@/features/Dashboard/presentation/components/ChartSeriesToggle";
@@ -59,8 +59,10 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
     <Card className="panel-card chart-panel">
       <CardHeader className="panel-header">
         <div>
-          <CardTitle>{copy.proyeccionDeLaCartera}</CardTitle>
-          <CardDescription>{copy.elEfectoDelTiempoSobreTuCapital}</CardDescription>
+          <CardTitle>{portfolioChartPanelCopy.proyeccionDeLaCartera}</CardTitle>
+          <CardDescription>
+            {portfolioChartPanelCopy.elEfectoDelTiempoSobreTuCapital}
+          </CardDescription>
         </div>
         <Badge variant="outline">{totalYears === 0 ? labels.today : formatYears(totalYears)}</Badge>
       </CardHeader>
@@ -135,7 +137,11 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
             </AreaChart>
           </ResponsiveContainer>
         </div>
-        <div className="investment-legend" role="group" aria-label={copy.seriesDeLaProyeccion}>
+        <div
+          className="investment-legend"
+          role="group"
+          aria-label={portfolioChartPanelCopy.seriesDeLaProyeccion}
+        >
           {[
             {
               key: TOTAL_SERIES_KEY,

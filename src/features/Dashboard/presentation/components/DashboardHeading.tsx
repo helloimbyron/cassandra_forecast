@@ -1,4 +1,4 @@
-import { copy } from "@/features/Dashboard/presentation/constants/DashboardHeading.constant";
+import { dashboardHeadingCopy } from "@/features/Dashboard/presentation/copies/dashboardHeading.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 
 // --- Components ---
@@ -11,10 +11,10 @@ export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="dashboard-heading" aria-label={copy.carteraImportada}>
+    <section className="dashboard-heading" aria-label={dashboardHeadingCopy.carteraImportada}>
       <div>
         <div className="eyebrow">
-          <span className="eyebrow-line" /> {copy.resumenDeCartera}
+          <span className="eyebrow-line" /> {dashboardHeadingCopy.resumenDeCartera}
         </div>
       </div>
       <input
@@ -23,7 +23,7 @@ export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
         type="file"
         accept=".json,application/json"
         onChange={onFileChange}
-        aria-label={copy.seleccionarOtroArchivoJson}
+        aria-label={dashboardHeadingCopy.seleccionarOtroArchivoJson}
       />
       {error && (
         <p className="error-message dashboard-error" role="alert">

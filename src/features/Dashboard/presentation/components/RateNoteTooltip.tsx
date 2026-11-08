@@ -1,6 +1,6 @@
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
-import { copy } from "@/features/Dashboard/presentation/constants/InvestmentCard.constant";
+import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";
 
 // --- Components ---
 
@@ -27,7 +27,7 @@ export function RateNoteTooltip({
           <button
             type="button"
             className="formula-tooltip-trigger rate-note-tooltip-trigger"
-            aria-label={copy.rateNote(investmentName)}
+            aria-label={investmentCardCopy.rateNote(investmentName)}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
               if (event.pointerType === "touch") {
                 setOpen(true);
@@ -35,7 +35,7 @@ export function RateNoteTooltip({
             }}
           >
             <span className="rate-note-question-mark" aria-hidden="true">
-              {copy.questionMark}
+              {investmentCardCopy.questionMark}
             </span>
           </button>
         </TooltipPrimitive.Trigger>

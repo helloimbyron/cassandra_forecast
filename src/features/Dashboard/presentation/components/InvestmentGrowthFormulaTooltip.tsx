@@ -1,8 +1,8 @@
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
-import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/InvestmentGrowthFormulaTooltip.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
+import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
+import { investmentGrowthFormulaTooltipCopy } from "@/features/Dashboard/presentation/copies/investmentGrowthFormulaTooltip.copy";
 import { Calculator } from "lucide-react";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
@@ -37,11 +37,16 @@ export function InvestmentGrowthFormulaTooltip({
 
   return (
     <FormulaTooltip
-      label={`${signedOutcomeLabel(projection.growth)} de ${projection.investment.name}`}
+      label={investmentGrowthFormulaTooltipCopy.investmentOutcomeLabel(
+        signedOutcomeLabel(projection.growth),
+        projection.investment.name,
+      )}
       intro={
-        years === 0 ? copy.hoyTodaviaNoTranscurreTiempoNiSe : copy.esLaDiferenciaEntreElValorFinal
+        years === 0
+          ? investmentGrowthFormulaTooltipCopy.hoyTodaviaNoTranscurreTiempoNiSe
+          : investmentGrowthFormulaTooltipCopy.esLaDiferenciaEntreElValorFinal
       }
-      example={copy.example(
+      example={investmentGrowthFormulaTooltipCopy.example(
         formatAbbreviatedValue(projection.finalValue, "currency"),
         formatAbbreviatedValue(projection.initialValue, "currency"),
         formatAbbreviatedValue(projection.totalContributions, "currency"),
@@ -52,20 +57,22 @@ export function InvestmentGrowthFormulaTooltip({
     >
       <ol className="formula-tooltip-copy">
         <FormulaStep>
-          <span className="formula-step-description">{copy.restaElValorQueYaTenianSus}</span>
+          <span className="formula-step-description">
+            {investmentGrowthFormulaTooltipCopy.restaElValorQueYaTenianSus}
+          </span>
           <FormulaMath
-            label={copy.differenceLabel(finalLabel)}
+            label={investmentGrowthFormulaTooltipCopy.differenceLabel(finalLabel)}
             tex={`${texText(finalLabel)} - ${texText(labels.currentCapital)} - ${texText(labels.totalContributed)}`}
           />
         </FormulaStep>
         <FormulaStep>
           <span className="formula-step-description">
             {roundedDifference
-              ? copy.sustituyeLosImportesVisiblesElResultadoUsa
-              : copy.substituteInvestmentAmounts}
+              ? investmentGrowthFormulaTooltipCopy.sustituyeLosImportesVisiblesElResultadoUsa
+              : investmentGrowthFormulaTooltipCopy.substituteInvestmentAmounts}
           </span>
           <FormulaMath
-            label={copy.investmentGrowthSubstitution}
+            label={investmentGrowthFormulaTooltipCopy.investmentGrowthSubstitution}
             className="formula-math-substitution"
             tex={`${texText(formatAbbreviatedValue(projection.finalValue, "currency"))} - ${texText(formatAbbreviatedValue(projection.initialValue, "currency"))} - ${texText(formatAbbreviatedValue(projection.totalContributions, "currency"))}`}
           />

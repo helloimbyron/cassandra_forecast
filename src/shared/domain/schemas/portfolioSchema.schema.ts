@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { investmentSchema } from "@/shared/domain/types/investmentSchema.schema";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
-import { portfolioMessages } from "@/shared/domain/types/portfolioMessages.constant";
+import { portfolioMessages } from "@/shared/domain/copies/portfolioMessages.copy";
 
 // --- Constants ---
 

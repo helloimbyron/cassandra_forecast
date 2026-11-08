@@ -1,7 +1,7 @@
 import { portfolioSchema } from "@/shared/domain/schemas/portfolioSchema.schema";
 import type { Portfolio } from "@/shared/domain/types/Portfolio.type";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
-import { importMessages } from "@/shared/infrastructure/constants/importMessages.constant";
+import { importMessages } from "@/shared/infrastructure/copies/importMessages.copy";
 
 // --- Constants ---
 
@@ -21,8 +21,9 @@ export async function readPortfolioFile(file: File): Promise<Portfolio> {
   if (!result.success) {
     const first = result.error.issues[0];
     const where = first?.path.length ? ` (${first.path.join(" → ")})` : "";
+    const message = first?.code === "custom" ? first.message : importMessages.invalidShape;
 
-    throw new Error(`${first?.message ?? importMessages.invalidShape}${where}`);
+    throw new Error(`${message}${where}`);
   }
 
   return result.data;

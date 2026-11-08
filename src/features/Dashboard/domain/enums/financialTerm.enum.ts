@@ -1,0 +1,13 @@
+import { t } from "@/libraries/i18n";
+export const FINANCIAL_TERM_VALUES = {
+  PROJECTED_BALANCE: t("dashboard.financialTerm.FINANCIAL_TERM_VALUES.PROJECTED_BALANCE.p1"),
+  EFFECTIVE_ANNUAL_RETURN: t(
+    "dashboard.financialTerm.FINANCIAL_TERM_VALUES.EFFECTIVE_ANNUAL_RETURN.p1",
+  ),
+  PORTFOLIO_ANNUAL_RETURN: t(
+    "dashboard.financialTerm.FINANCIAL_TERM_VALUES.PORTFOLIO_ANNUAL_RETURN.p1",
+  ),
+  GAIN_ON_INVESTED: t("dashboard.financialTerm.FINANCIAL_TERM_VALUES.GAIN_ON_INVESTED.p1"),
+  PURCHASING_POWER: t("dashboard.financialTerm.FINANCIAL_TERM_VALUES.PURCHASING_POWER.p1"),
+  CURRENT_CAPITAL: t("dashboard.financialTerm.FINANCIAL_TERM_VALUES.CURRENT_CAPITAL.p1"),
+} as const;

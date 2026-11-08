@@ -1,7 +1,7 @@
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
-import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/InvestmentCard.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
+import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
+import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import type { Investment } from "@/shared/domain/types/Investment.type";
 import { createElement, type CSSProperties } from "react";
@@ -33,9 +33,9 @@ import { InvestmentGrowthFormulaTooltip } from "@/features/Dashboard/presentatio
 import { ProjectedValueFormulaTooltip } from "@/features/Dashboard/presentation/components/ProjectedValueFormulaTooltip";
 import { PortfolioTooltip } from "@/features/Dashboard/presentation/components/PortfolioTooltip";
 import { HoldingRow } from "@/features/Dashboard/presentation/components/HoldingRow";
-import { formatYears } from "@/features/Dashboard/presentation/utils/formatYears.util";
+import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
-import { categoryLabels } from "@/features/Dashboard/presentation/constants/categoryLabels.constant";
+import { categoryLabels } from "@/features/Dashboard/presentation/copies/categoryLabels.copy";
 import { PROJECTION_SCOPE_VALUES } from "@/features/Dashboard/presentation/enums/projectionScope.enum";
 import { createInvestmentChartData } from "@/features/Dashboard/presentation/utils/createInvestmentChartData.util";
 import { DETAIL_SERIES_VALUES } from "@/features/Dashboard/presentation/enums/detailSeries.enum";
@@ -116,7 +116,9 @@ export function InvestmentCard({
             <CardTitle>{investment.name}</CardTitle>
             <CardDescription>
               {investment.holdings.length}{" "}
-              {investment.holdings.length === 1 ? copy.posicion : copy.posiciones}
+              {investment.holdings.length === 1
+                ? investmentCardCopy.posicion
+                : investmentCardCopy.posiciones}
             </CardDescription>
           </div>
         </div>
@@ -127,8 +129,8 @@ export function InvestmentCard({
               href={investment.rateSource.url}
               target="_blank"
               rel="noreferrer"
-              aria-label={copy.rateSource(investment.rateSource.asOf)}
-              title={copy.rateSource(investment.rateSource.asOf)}
+              aria-label={investmentCardCopy.rateSource(investment.rateSource.asOf)}
+              title={investmentCardCopy.rateSource(investment.rateSource.asOf)}
             >
               <Link2 className="icon-sm" aria-hidden="true" />
             </a>
@@ -217,7 +219,7 @@ export function InvestmentCard({
         <div
           className="chart-wrap investment-chart"
           role="img"
-          aria-label={copy.chartFor(investment.name, years)}
+          aria-label={investmentCardCopy.chartFor(investment.name, years)}
         >
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
@@ -281,7 +283,7 @@ export function InvestmentCard({
         <div
           className="investment-legend investment-chart-legend"
           role="group"
-          aria-label={copy.seriesFor(investment.name)}
+          aria-label={investmentCardCopy.seriesFor(investment.name)}
         >
           <ChartSeriesToggle
             checked={!hiddenChartSeries.has(investmentTotalKey)}
@@ -307,7 +309,7 @@ export function InvestmentCard({
           </div>
           <DebouncedSlider
             id={`horizon-${investment.id}`}
-            aria-label={copy.horizonFor(investment.name)}
+            aria-label={investmentCardCopy.horizonFor(investment.name)}
             min={MIN_HORIZON_YEARS}
             max={MAX_HORIZON_YEARS}
             step={HORIZON_STEP}
@@ -321,7 +323,7 @@ export function InvestmentCard({
           />
           <div className="range-labels">
             <span>{labels.zeroToday}</span>
-            <span>{copy.text40}</span>
+            <span>{investmentCardCopy.text40}</span>
           </div>
         </div>
 
@@ -340,7 +342,11 @@ export function InvestmentCard({
             <RateNoteTooltip investmentName={investment.name} note={investment.rateNote} />
           </div>
         </div>
-        <div className="holding-list" role="table" aria-label={copy.positionsFor(investment.name)}>
+        <div
+          className="holding-list"
+          role="table"
+          aria-label={investmentCardCopy.positionsFor(investment.name)}
+        >
           <div className="holding-table-header" role="row">
             <span role="columnheader">{labels.position}</span>
             <span role="columnheader">{labels.currentValue}</span>

@@ -11,7 +11,7 @@ import { monthlyWithdrawalForAnnualRate } from "@/features/Dashboard/domain/util
 import { selectedDistributionAnnualReturnPct } from "@/features/Dashboard/domain/utils/selectedDistributionAnnualReturnPct.util";
 import { weightedEffectiveAnnualReturnPct } from "@/features/Dashboard/domain/utils/weightedEffectiveAnnualReturnPct.util";
 import { withdrawalRateSliderMax } from "@/features/Dashboard/domain/utils/withdrawalRateSliderMax.util";
-import { copy } from "@/features/Dashboard/presentation/constants/DistributionSection.constant";
+import { distributionSectionCopy } from "@/features/Dashboard/presentation/copies/distributionSection.copy";
 
 describe("retirement distribution projection", () => {
   it("returns only the starting balance when the selected horizon is zero", () => {
@@ -224,17 +224,17 @@ describe("retirement return assumption", () => {
 
   it("falls back to zero when no portfolio TIR can be calculated", () => {
     expect(selectedDistributionAnnualReturnPct(null, null)).toBe(0);
-    expect(copy.noCalculatedReturn).toContain("0 %");
+    expect(distributionSectionCopy.noCalculatedReturn).toContain("0 %");
   });
 
   it("explains the current percentage for calculated and manual distribution returns", () => {
-    expect(copy.portfolioReturnExplanation("2,61 %", 20, true)).toContain(
+    expect(distributionSectionCopy.portfolioReturnExplanation("2,61 %", 20, true)).toContain(
       "La tasa anual es 2,61 %, porque corresponde a la rentabilidad anualizada (TIR) de toda tu cartera durante 20 años",
     );
-    expect(copy.portfolioReturnExplanation("5,25 %", 1, false)).not.toContain(
+    expect(distributionSectionCopy.portfolioReturnExplanation("5,25 %", 1, false)).not.toContain(
       "descuenta la inflación",
     );
-    expect(copy.manualReturnExplanation("4,50 %")).toContain(
+    expect(distributionSectionCopy.manualReturnExplanation("4,50 %")).toContain(
       "La tasa anual es 4,50 %, porque la elegiste para este escenario de retiro",
     );
   });

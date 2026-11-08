@@ -1,0 +1,1257 @@
+{
+  "home": {
+    "importSection": {
+      "copy": {
+        "cargarMiJson": {
+          "p1": "Cargar mis inversiones"
+        },
+        "mostrarEjemplo": {
+          "p1": "Probar con un ejemplo"
+        },
+        "seleccionarArchivoJsonDeCartera": {
+          "p1": "Elegir archivo JSON con mis inversiones"
+        },
+        "oArrastraAquiTuArchivoJson": {
+          "p1": "o arrastra aquí tu archivo .json"
+        },
+        "descargarFormatoDeEjemplo": {
+          "p1": "Descargar archivo de ejemplo"
+        }
+      }
+    },
+    "introSection": {
+      "copy": {
+        "exploraEl": {
+          "p1": "Explora el"
+        },
+        "futuro": {
+          "p1": "futuro"
+        },
+        "deTuCartera": {
+          "p1": "de tus inversiones"
+        },
+        "cargaTuCarteraEnJson": {
+          "p1": "Carga tus inversiones o prueba el ejemplo para explorar qué podría pasar con tu dinero. Los resultados no están garantizados."
+        }
+      }
+    }
+  },
+  "shared": {
+    "importMessages": {
+      "importMessages": {
+        "tooLarge": {
+          "p1": "El archivo pesa más de 1 MB. Usa uno más pequeño e inténtalo de nuevo."
+        },
+        "wrongExtension": {
+          "p1": "Selecciona un archivo con extensión .json."
+        },
+        "invalidShape": {
+          "p1": "El archivo no tiene el formato esperado. Compáralo con el ejemplo descargable."
+        },
+        "unreadable": {
+          "p1": "No se pudo leer el archivo. Comprueba que sea un JSON válido y vuelve a intentarlo."
+        }
+      }
+    },
+    "portfolioMessages": {
+      "portfolioMessages": {
+        "horizonRange": {
+          "p1": "El plazo debe ser de 0 a 40 años."
+        },
+        "annualRateRange": {
+          "p1": "La tasa anual no puede ser -100 % ni menor."
+        },
+        "duplicateInvestment": {
+          "p1": "Hay dos inversiones con el mismo ID: ",
+          "p2": ""
+        },
+        "duplicateHolding": {
+          "p1": "Hay dos posiciones de una inversión con el mismo ID: ",
+          "p2": ""
+        }
+      }
+    },
+    "brand": {
+      "brandLabel": {
+        "p1": "CASSANDRA"
+      }
+    },
+    "footer": {
+      "copy": {
+        "volverArriba": {
+          "p1": "Volver arriba ↑"
+        }
+      }
+    },
+    "header": {
+      "copy": {
+        "headerActions": {
+          "p1": "Acciones del encabezado"
+        },
+        "cambiarJson": {
+          "p1": "Cambiar archivo de inversiones"
+        },
+        "cassandraInicio": {
+          "p1": "Cassandra, inicio"
+        },
+        "inflationMode": {
+          "p1": "Cómo mostrar el efecto de la inflación"
+        },
+        "withoutInflation": {
+          "p1": "Sin inflación"
+        },
+        "withInflation": {
+          "p1": "Con inflación"
+        },
+        "inflationSlider": {
+          "p1": "Inflación anual"
+        },
+        "inflationHelpTitle": {
+          "p1": "¿Qué cambia al descontar la inflación?"
+        },
+        "inflationHelpTrigger": {
+          "p1": "Explicar qué significa poder de compra"
+        },
+        "inflationHelp": {
+          "p1": "La inflación hace que una misma cantidad compre menos con el tiempo. «Sin inflación» muestra el saldo futuro sin descontar ese efecto. «Con inflación» muestra el poder de compra de esos mismos dólares después de descontarlo. La inflación sigue existiendo: solo cambia cómo se muestran las cifras. No cambia tus aportes. La inflación es un supuesto y el resultado no está garantizado."
+        },
+        "inflationHelpExample": {
+          "p1": "Ejemplo con la tasa actual: si la inflación fuera ",
+          "p2": ", $100 dentro de un año tendrían el poder de compra actual de ",
+          "p3": "."
+        },
+        "inflationSliderAriaLabel": {
+          "p1": "Inflación anual, porcentaje"
+        },
+        "inflationSourceAriaLabel": {
+          "p1": "Fuente de inflación inicial del JSON (",
+          "p2": "%). Abrir fuente"
+        }
+      }
+    },
+    "themeToggle": {
+      "copy": {
+        "activarModoClaro": {
+          "p1": "Activar modo claro"
+        },
+        "activarModoOscuro": {
+          "p1": "Activar modo oscuro"
+        }
+      }
+    },
+    "bootstrapErrors": {
+      "missingRoot": "No se encontró el elemento raíz de Cassandra."
+    }
+  },
+  "site": {
+    "title": "Cassandra · Explora cómo podría cambiar tu dinero",
+    "description": "Prueba escenarios para tus inversiones y mira qué podría pasar con el tiempo."
+  },
+  "dashboard": {
+    "allocationPanel": {
+      "copy": {
+        "composicionActual": {
+          "p1": "¿Dónde está tu dinero hoy?"
+        },
+        "capitalDistributionByInvestment": {
+          "p1": "¿Cuánto tienes en cada inversión?"
+        }
+      }
+    },
+    "financialTerm": {
+      "FINANCIAL_TERM_VALUES": {
+        "PROJECTED_BALANCE": {
+          "p1": "Saldo futuro"
+        },
+        "EFFECTIVE_ANNUAL_RETURN": {
+          "p1": "Tasa anual"
+        },
+        "PORTFOLIO_ANNUAL_RETURN": {
+          "p1": "Rendimiento anual de toda tu cartera"
+        },
+        "GAIN_ON_INVESTED": {
+          "p1": "Ganancia/Pérdida sobre lo invertido"
+        },
+        "PURCHASING_POWER": {
+          "p1": "Poder de compra"
+        },
+        "CURRENT_CAPITAL": {
+          "p1": "Saldo actual"
+        }
+      }
+    },
+    "distributionSection": {
+      "copy": {
+        "title": {
+          "p1": "¿Cuánto podrías retirar?"
+        },
+        "chartTitle": {
+          "p1": "Saldo futuro ajustado después de los retiros",
+          "p2": "Saldo futuro después de los retiros"
+        },
+        "chartDescription": {
+          "p1": "El saldo que quedaría al final de cada año, expresado en poder de compra después de descontar la inflación.",
+          "p2": "El saldo que quedaría al final de cada año después de tus retiros."
+        },
+        "insightsAriaLabel": {
+          "p1": "Resultados de los retiros"
+        },
+        "balance": {
+          "p1": "Saldo restante"
+        },
+        "year": {
+          "p1": "Inicio",
+          "p2": "Año ",
+          "p3": ""
+        },
+        "controls": {
+          "p1": "Prueba distintos retiros"
+        },
+        "horizon": {
+          "p1": "Durante cuántos años retirarías"
+        },
+        "withdrawal": {
+          "p1": "¿Cuánto retirarás cada mes?"
+        },
+        "withdrawalMode": {
+          "p1": "Cómo elegir el retiro"
+        },
+        "monthlyMode": {
+          "p1": "Elegir un monto mensual fijo"
+        },
+        "assumptionAriaLabel": {
+          "p1": "Información sobre esta proyección"
+        },
+        "realMonthlyWithdrawal": {
+          "p1": "Retiro mensual ajustado"
+        },
+        "zeroYears": {
+          "p1": "0 años"
+        },
+        "fortyYears": {
+          "p1": "40 años"
+        },
+        "noCalculatedReturn": {
+          "p1": "No hay saldo para calcular una tasa conjunta; se usa 0 % como punto de partida."
+        },
+        "assumption": {
+          "p1": "Este es solo un ejemplo de lo que podría pasar: supone un retiro fijo y tasas que no cambian. No reproduce contratos ni incluye inflación, impuestos, comisiones o cambios del mercado."
+        },
+        "realWithdrawalNominalEquivalent": {
+          "p1": "Si empiezas a retirar dentro de ",
+          "p2": " ",
+          "p3": "año",
+          "p4": "años",
+          "p5": ", necesitarías ",
+          "p6": " al mes para mantener el poder de compra del monto elegido. La simulación descuenta la inflación supuesta."
+        },
+        "realAssumption": {
+          "p1": "Los importes se muestran según su poder de compra, después de descontar la inflación. El retiro busca conservar ese poder de compra y se reparte entre las inversiones según su saldo. Se usan tasas supuestas; no incluye impuestos, comisiones, cambios del mercado ni restricciones para retirar dinero."
+        },
+        "portfolioReturnExplanation": {
+          "p1": "La tasa anual es ",
+          "p2": ", porque corresponde a la rentabilidad anualizada (TIR) de toda tu cartera durante ",
+          "p3": " ",
+          "p4": "año",
+          "p5": "años",
+          "p6": " de acumulación; incluye el saldo inicial y los aportes",
+          "p7": " y descuenta la inflación",
+          "p8": "",
+          "p9": ". Se aplica por igual a todas las inversiones para simular los retiros. Es un supuesto: el rendimiento futuro puede ser distinto."
+        },
+        "manualReturnExplanation": {
+          "p1": "La tasa anual es ",
+          "p2": ", porque la elegiste para este escenario de retiro. Reemplaza por igual las tasas de todas las inversiones. El rendimiento futuro puede ser distinto."
+        },
+        "equivalentMonthlyWithdrawal": {
+          "p1": "Retiro mensual"
+        },
+        "equivalentMonthlyNote": {
+          "p1": "El monto mensual que resulta del porcentaje elegido sobre el saldo al empezar los retiros."
+        },
+        "endingBalance": {
+          "p1": "Saldo restante al final"
+        },
+        "planned": {
+          "p1": "Retiro de un mes × 12"
+        },
+        "percentNote": {
+          "p1": "Se calcula una sola vez con el saldo al empezar los retiros. Después retiras el mismo monto cada mes, no un porcentaje nuevo del saldo restante."
+        },
+        "endingNote": {
+          "p1": "Sin periodo de retiros",
+          "p2": "Después de ",
+          "p3": " ",
+          "p4": "año",
+          "p5": "años",
+          "p6": ""
+        },
+        "depletedAtStart": {
+          "p1": "Agotado al inicio"
+        },
+        "noCapital": {
+          "p1": "No hay dinero para retirar"
+        },
+        "noHorizon": {
+          "p1": "Sin periodo seleccionado"
+        },
+        "lastsFullHorizon": {
+          "p1": "El dinero alcanzaría para ",
+          "p2": " ",
+          "p3": "año",
+          "p4": "años",
+          "p5": ""
+        },
+        "lastsAtLeast": {
+          "p1": "El saldo no se agota durante los ",
+          "p2": " ",
+          "p3": "año",
+          "p4": "años",
+          "p5": " que elegiste."
+        },
+        "surplusDuration": {
+          "p1": "Duraría ",
+          "p2": " más"
+        },
+        "surplusNote": {
+          "p1": "Este tiempo adicional se cuenta después de los ",
+          "p2": " ",
+          "p3": "año",
+          "p4": "años",
+          "p5": " que elegiste."
+        },
+        "noAdditionalDepletion": {
+          "p1": "No se agotaría"
+        },
+        "noAdditionalDepletionNote": {
+          "p1": "Con estos retiros y tasas supuestas, la simulación no encuentra un momento en que llegue a cero. No es una garantía."
+        },
+        "depletionDuration": {
+          "p1": "El dinero duraría hasta ",
+          "p2": ""
+        },
+        "depletionAt": {
+          "p1": "",
+          "p2": " ",
+          "p3": "mes",
+          "p4": "meses",
+          "p5": "",
+          "p6": "",
+          "p7": " ",
+          "p8": "año",
+          "p9": "años",
+          "p10": "",
+          "p11": "",
+          "p12": " ",
+          "p13": "año",
+          "p14": "años",
+          "p15": ", ",
+          "p16": " ",
+          "p17": "mes",
+          "p18": "meses",
+          "p19": ""
+        },
+        "depletedNote": {
+          "p1": "El saldo llega a $0,00 al terminar ese mes; el tiempo indicado es desde el inicio."
+        },
+        "annualFormulaIntro": {
+          "p1": "Suma lo que sacarías en 12 meses si retiras el mismo monto cada mes."
+        },
+        "annualExample": {
+          "p1": "Con tu elección, sacarías ",
+          "p2": " cada mes; en 12 meses serían ",
+          "p3": "."
+        },
+        "percentExample": {
+          "p1": "Con tu elección, retirar ",
+          "p2": " en un año equivale a ",
+          "p3": " de los ",
+          "p4": " con los que empezarías. El monto mensual queda fijo."
+        },
+        "monthlyExample": {
+          "p1": "Con ",
+          "p2": " al empezar y ",
+          "p3": " para todo el año, podrías retirar ",
+          "p4": " al mes durante 12 meses. Después el monto mensual queda fijo."
+        },
+        "endingExample": {
+          "p1": "Empezarías con ",
+          "p2": ", retirarías ",
+          "p3": " al mes durante ",
+          "p4": " ",
+          "p5": "año",
+          "p6": "años",
+          "p7": " y quedarían ",
+          "p8": " según las tasas supuestas. No está garantizado."
+        },
+        "durationExample": {
+          "p1": "Con retiros de ",
+          "p2": " al mes, la simulación muestra: ",
+          "p3": ". No es una garantía."
+        },
+        "percentFormulaIntro": {
+          "p1": "Compara lo que retirarías en 12 meses con el saldo que tendrías al empezar los retiros. El porcentaje se fija una sola vez."
+        },
+        "endingFormulaIntro": {
+          "p1": "Cada mes el saldo cambia por la tasa supuesta y luego se descuenta lo que retiras. Así se obtiene lo que quedaría al final."
+        },
+        "durationFormulaIntro": {
+          "p1": "La app avanza mes a mes hasta que el dinero llegue a cero. Si todavía queda saldo al terminar los años elegidos, continúa con los mismos supuestos."
+        },
+        "annualFormulaStep": {
+          "p1": "Multiplica el retiro de un mes por los 12 meses del año."
+        },
+        "percentFormulaStep": {
+          "p1": "Divide el retiro de 12 meses entre el ",
+          "p2": " y multiplica por 100."
+        },
+        "equivalentMonthlyFormulaIntro": {
+          "p1": "Toma el porcentaje elegido del saldo al empezar los retiros y lo reparte en 12 pagos mensuales iguales."
+        },
+        "equivalentMonthlyFormulaStep": {
+          "p1": "Multiplica el ",
+          "p2": " por el porcentaje elegido y divide el resultado entre 12."
+        },
+        "balanceFormulaStep": {
+          "p1": "Cada inversión cambia según su ",
+          "p2": ". Al final del mes, el retiro sale de todas según cuánto dinero queda en cada una."
+        },
+        "individualReturnsStep": {
+          "p1": "La TIR anualizada de toda la cartera se aplica por igual a cada inversión durante esta simulación de retiro."
+        },
+        "manualReturnStep": {
+          "p1": "La tasa que elegiste reemplaza las tasas de todas las inversiones solo en este escenario."
+        },
+        "grownBalanceFormulaLabel": {
+          "p1": "Saldo de cada inversión después del cambio del mes"
+        },
+        "proRataWithdrawalFormulaLabel": {
+          "p1": "El retiro se reparte según el saldo de cada inversión"
+        },
+        "balanceAfterWithdrawalFormulaLabel": {
+          "p1": "Saldo de cada inversión después de retirar"
+        },
+        "withdrawalSubstitutionLabel": {
+          "p1": "Retiro mensual seleccionado"
+        },
+        "durationDepletedFormulaStep": {
+          "p1": "Cuenta desde el inicio hasta el primer mes en que el saldo llega a $0."
+        },
+        "additionalDurationFormulaStep": {
+          "p1": "Parte del dinero que queda al terminar los años elegidos y sigue mes a mes con las mismas tasas y retiros hasta llegar a $0."
+        },
+        "noAdditionalDepletionFormulaStep": {
+          "p1": "La simulación no encuentra un mes en que el saldo llegue a $0 con estos valores."
+        },
+        "balanceAtSelectedHorizonLabel": {
+          "p1": "Saldo al final del plazo elegido"
+        },
+        "additionalDurationResultLabel": {
+          "p1": "Meses adicionales hasta agotar el saldo"
+        },
+        "durationLastsFormulaStep": {
+          "p1": "El saldo se mantiene por encima de cero durante el plazo seleccionado."
+        },
+        "durationNoHorizonFormulaStep": {
+          "p1": "No hay meses de retiro seleccionados que evaluar."
+        },
+        "noCapitalForPercent": {
+          "p1": "Sin ",
+          "p2": " no se puede calcular un porcentaje."
+        },
+        "yearsLabel": {
+          "p1": "Años"
+        },
+        "annualWithdrawalLabel": {
+          "p1": "Retiro anual"
+        },
+        "monthlyRateLabel": {
+          "p1": "Tasa usada cada mes"
+        },
+        "balanceLabel": {
+          "p1": "Saldo"
+        },
+        "depletionCalculationLabel": {
+          "p1": "Primer mes de agotamiento"
+        },
+        "monthlyWithdrawalLabel": {
+          "p1": "Retiro mensual"
+        },
+        "finalBalanceLabel": {
+          "p1": "Saldo final"
+        },
+        "yearCount_one": "{{count}} año",
+        "yearCount_other": "{{count}} años"
+      },
+      "labels": {
+        "withdrawalRate": "Retiro anual del saldo futuro (%)",
+        "annualWithdrawal": "Lo que retirarías en un año",
+        "duration": "¿Cuánto duraría el dinero?",
+        "additionalDepletionMonthsUnit": " meses"
+      }
+    },
+    "dashboardHeading": {
+      "copy": {
+        "carteraImportada": {
+          "p1": "Inversiones cargadas"
+        },
+        "resumenDeCartera": {
+          "p1": "Resumen de tus inversiones"
+        },
+        "cambiarJson": {
+          "p1": "Cambiar archivo"
+        },
+        "seleccionarOtroArchivoJson": {
+          "p1": "Elegir otro archivo JSON con inversiones"
+        }
+      }
+    },
+    "formulaResult": {
+      "copy": {
+        "label": {
+          "p1": "",
+          "p2": ": ",
+          "p3": "; las cifras visibles están redondeadas",
+          "p4": "",
+          "p5": ": ",
+          "p6": ""
+        }
+      }
+    },
+    "formulaTooltip": {
+      "copy": {
+        "cerrarFormula": {
+          "p1": "Cerrar explicación del cálculo"
+        },
+        "formulaFor": {
+          "p1": "Ver cómo se calcula ",
+          "p2": ""
+        }
+      }
+    },
+    "heroCard": {
+      "copy": {
+        "balances": {
+          "p1": "Balances"
+        },
+        "results": {
+          "p1": "Resultados"
+        },
+        "returnLabel": {
+          "p1": "Retorno"
+        },
+        "comparisonValues": {
+          "p1": "Poder de compra y saldo futuro"
+        },
+        "comparisonInfoTitle": {
+          "p1": "Por qué aparecen dos cantidades"
+        },
+        "comparisonInfoTrigger": {
+          "p1": "Entender la diferencia entre el saldo futuro y el poder de compra"
+        },
+        "comparisonInfoIntro": {
+          "p1": "Es el mismo saldo futuro visto de dos formas: el monto que podrías tener y lo que ese monto podría comprar después de descontar la inflación. No sumes ambas cifras."
+        },
+        "contributionComparison": {
+          "p1": "Aportes futuros y su poder de compra"
+        },
+        "contributions": {
+          "p1": "Aportes"
+        },
+        "contributionsInfoTitle": {
+          "p1": "Cómo leer los aportes"
+        },
+        "contributionsInfoTrigger": {
+          "p1": "Entender los aportes y la inflación"
+        },
+        "contributionsInfoIntro": {
+          "p1": "No son dos grupos de aportes: es el mismo dinero visto de dos formas."
+        },
+        "contributionsInfoExplanation": {
+          "p1": "La cifra de saldo futuro suma los dólares que aportarías. Poder de compra muestra cuánto podrían comprar esos mismos aportes después de descontar la inflación. No son aportes adicionales."
+        },
+        "balanceComparisonExample": {
+          "p1": "Por ejemplo, podrías tener ",
+          "p2": " al final; después de descontar la inflación, tendrían un poder de compra equivalente a ",
+          "p3": ". Es un escenario, no una promesa."
+        },
+        "contributionsComparisonExample": {
+          "p1": "Si tus aportes futuros sumaran ",
+          "p2": ", su poder de compra actual equivaldría a ",
+          "p3": ". No sumes ambas cifras."
+        },
+        "nominalContributions": {
+          "p1": "Aportes que harías"
+        },
+        "nominalContributionsShort": {
+          "p1": "Total futuro"
+        },
+        "realContributionsShort": {
+          "p1": "Poder de compra"
+        },
+        "desgloseDeLaProyeccion": {
+          "p1": "De dónde sale el resultado"
+        },
+        "esLaDiferenciaEntreElValorFinal": {
+          "p1": "Al saldo futuro se le restan el saldo actual y los aportes que harías. Si el resultado es positivo, sería una ganancia; si es negativo, una pérdida."
+        },
+        "growthExample": {
+          "p1": "Con tus cifras: ",
+          "p2": " de saldo futuro menos ",
+          "p3": " de saldo actual y ",
+          "p4": " que aportarías da ",
+          "p5": ". Las cantidades mostradas están redondeadas."
+        },
+        "growthPercentExample": {
+          "p1": "Con tus cifras: ",
+          "p2": " de resultado frente a ",
+          "p3": " de saldo actual equivale a ",
+          "p4": ". Los aportes futuros afectan la ganancia o pérdida, pero no se incluyen en la cantidad usada para dividir."
+        },
+        "separaElDineroQuePusisteDelValor": {
+          "p1": "Separa el saldo actual y los aportes futuros del saldo que podrías tener al final."
+        },
+        "valorProyectadoMenosCapitalActualYAportes": {
+          "p1": "",
+          "p2": " menos ",
+          "p3": " y aportes futuros"
+        },
+        "restaElCapitalActualYTodosLos": {
+          "p1": "Resta el saldo actual y todos los aportes futuros."
+        },
+        "sustitucionDeValoresDelCrecimiento": {
+          "p1": "Con tus cantidades"
+        },
+        "mideElCrecimientoFrenteAlCapitalQue": {
+          "p1": "Compara la ganancia o pérdida con el saldo actual. Los aportes futuros afectan el resultado, pero no la cantidad usada para dividir."
+        },
+        "usaElCapitalActualComoReferenciaNo": {
+          "p1": "Divide entre el saldo actual; no suma los aportes futuros en esa cantidad."
+        },
+        "crecimientoDivididoParaCapitalActualPor100": {
+          "p1": "",
+          "p2": " ÷ ",
+          "p3": " × 100"
+        },
+        "sustituyeLosImportesYExpresaLaComparacion": {
+          "p1": "Sustituye los importes y expresa la comparación en porcentaje."
+        },
+        "sustitucionDeValoresDelCrecimientoPorcentual": {
+          "p1": "Con tus cantidades, en porcentaje"
+        },
+        "anos": {
+          "p1": " años"
+        },
+        "plazoTotalAnos": {
+          "p1": "Plazo total, años"
+        },
+        "noCurrentCapital": {
+          "p1": "No hay capital actual: dividir entre cero no está definido, así que este porcentaje no se puede calcular."
+        }
+      }
+    },
+    "investmentCard": {
+      "copy": {
+        "posicion": {
+          "p1": "posición"
+        },
+        "posiciones": {
+          "p1": "posiciones"
+        },
+        "text40": {
+          "p1": "40"
+        },
+        "questionMark": {
+          "p1": "?"
+        },
+        "rateSource": {
+          "p1": "Ver de dónde sale la ",
+          "p2": "",
+          "p3": " · ",
+          "p4": "",
+          "p5": "",
+          "p6": ""
+        },
+        "rateNote": {
+          "p1": "Leer nota de la ",
+          "p2": " de ",
+          "p3": ""
+        },
+        "chartFor": {
+          "p1": "Cómo podría cambiar ",
+          "p2": " durante ",
+          "p3": " años"
+        },
+        "seriesFor": {
+          "p1": "Líneas del gráfico de ",
+          "p2": ""
+        },
+        "horizonFor": {
+          "p1": "Plazo de ",
+          "p2": ", años"
+        },
+        "positionsFor": {
+          "p1": "Posiciones de ",
+          "p2": ""
+        },
+        "contributionFor": {
+          "p1": "Aporte mensual para ",
+          "p2": ""
+        }
+      }
+    },
+    "investmentGrowthFormulaTooltip": {
+      "copy": {
+        "hoyTodaviaNoTranscurreTiempoNiSe": {
+          "p1": "Si eliges hoy como fecha final, aún no pasó tiempo ni se sumaron aportes: el cambio es cero."
+        },
+        "esLaDiferenciaEntreElValorFinal": {
+          "p1": "Para calcular la ganancia o pérdida, resta del saldo futuro el saldo actual de esta inversión y los aportes que harías."
+        },
+        "restaElValorQueYaTenianSus": {
+          "p1": "Resta el saldo actual de todas sus posiciones y los aportes que harías después."
+        },
+        "sustituyeLosImportesVisiblesElResultadoUsa": {
+          "p1": "Sustituye los importes visibles. El resultado usa valores sin redondear, por eso aparece ≈."
+        },
+        "substituteInvestmentAmounts": {
+          "p1": "Usa las cantidades de esta inversión."
+        },
+        "investmentGrowthSubstitution": {
+          "p1": "Con las cantidades de esta inversión"
+        },
+        "example": {
+          "p1": "Con esta inversión: ",
+          "p2": " de saldo futuro menos ",
+          "p3": " de saldo actual y ",
+          "p4": " en aportes futuros da ",
+          "p5": ". Las cifras visibles están redondeadas."
+        },
+        "differenceLabel": {
+          "p1": "",
+          "p2": " menos valor actual y total aportado"
+        }
+      },
+      "dynamic": {
+        "investmentOutcomeLabel": "{{outcome}} de {{investmentName}}"
+      }
+    },
+    "investmentGrowthPercentFormulaTooltip": {
+      "copy": {
+        "intro": {
+          "p1": "Compara la ganancia o pérdida de esta inversión con su saldo actual. Los aportes futuros afectan el resultado, pero no la cantidad usada para dividir."
+        },
+        "description": {
+          "p1": "Divide la ganancia o pérdida entre el ",
+          "p2": " y multiplica por 100."
+        },
+        "expressionLabel": {
+          "p1": "",
+          "p2": " ÷ ",
+          "p3": " × 100"
+        },
+        "noCurrentValue": {
+          "p1": "No se puede calcular porque el ",
+          "p2": " de esta inversión es cero."
+        },
+        "substitutionDescription": {
+          "p1": "Usa las cantidades de esta inversión."
+        },
+        "substitutionLabel": {
+          "p1": "Con las cantidades de esta inversión"
+        },
+        "example": {
+          "p1": "Con esta inversión: ",
+          "p2": " de resultado frente a ",
+          "p3": " de saldo actual da ",
+          "p4": ". Los aportes futuros afectan el resultado, pero no se incluyen en la cantidad usada para dividir."
+        }
+      }
+    },
+    "investmentsSection": {
+      "copy": {
+        "investmentDetail": {
+          "p1": "CADA INVERSIÓN POR SEPARADO"
+        }
+      }
+    },
+    "labels": {
+      "labels": {
+        "projectedValueReal": {
+          "p1": "",
+          "p2": " ajustado"
+        },
+        "totalInvested": {
+          "p1": "Saldo actual + aportes"
+        },
+        "growth": {
+          "p1": "Resultado"
+        },
+        "growthPercent": {
+          "p1": "Cambio frente al saldo actual (%)"
+        },
+        "plannedContributions": {
+          "p1": "Aportes que harías"
+        },
+        "monthlyContribution": {
+          "p1": "Aporte mensual"
+        },
+        "realAnnualRate": {
+          "p1": "Tasa anual ajustada"
+        },
+        "realAnnualReturn": {
+          "p1": "Rendimiento anual ajustado"
+        },
+        "horizon": {
+          "p1": "Plazo"
+        },
+        "totalHorizon": {
+          "p1": "Plazo total"
+        },
+        "today": {
+          "p1": "Hoy"
+        },
+        "leadingGrowth": {
+          "p1": "Inversión con mayor ganancia"
+        },
+        "position": {
+          "p1": "Posición"
+        },
+        "totalContributed": {
+          "p1": "Total aportado"
+        },
+        "projectionMonths": {
+          "p1": "Meses calculados"
+        },
+        "newBalance": {
+          "p1": "Saldo nuevo"
+        },
+        "previousBalance": {
+          "p1": "Saldo anterior"
+        },
+        "monthlyRate": {
+          "p1": "Tasa mensual"
+        },
+        "brand": {
+          "p1": "CASSANDRA"
+        },
+        "percentSymbol": {
+          "p1": "%"
+        },
+        "years": {
+          "p1": "años"
+        },
+        "months": {
+          "p1": "meses"
+        },
+        "etf": {
+          "p1": "Fondo cotizado (ETF)"
+        },
+        "crypto": {
+          "p1": "Criptomoneda"
+        },
+        "savings": {
+          "p1": "Ahorro"
+        },
+        "commodity": {
+          "p1": "Materia prima"
+        },
+        "cash": {
+          "p1": "Efectivo"
+        },
+        "policy": {
+          "p1": "Póliza"
+        },
+        "investment": {
+          "p1": "Inversión"
+        },
+        "other": {
+          "p1": "Otro"
+        },
+        "zeroToday": {
+          "p1": "0 · Hoy"
+        },
+        "fortyYears": {
+          "p1": "40 años"
+        },
+        "inflation": {
+          "p1": "inflación"
+        },
+        "annualInflation": {
+          "p1": "inflación anual"
+        }
+      }
+    },
+    "leadingGrowthFormulaTooltip": {
+      "copy": {
+        "seComparanLosCrecimientosDeTodosLos": {
+          "p1": "Compara cuánto ganarías en cada inversión. Solo se destaca una que muestre una ganancia positiva."
+        },
+        "calculateEachInvestmentGrowthFirst": {
+          "p1": "En cada inversión, resta al saldo final el dinero que ya tenías y los aportes que harías."
+        },
+        "eachInvestmentGrowthEqualsValue": {
+          "p1": "",
+          "p2": " de cada inversión = ",
+          "p3": " − ",
+          "p4": " − ",
+          "p5": ""
+        },
+        "comparaLosResultadosSiDosParecenIguales": {
+          "p1": "Compara las ganancias. Si dos parecen iguales, se comparan sus cantidades sin redondear."
+        },
+        "seEligeElMaximoEntreLosCrecimientos": {
+          "p1": "Se elige la ganancia positiva más alta entre las inversiones"
+        },
+        "positiveInvestmentGrowths": {
+          "p1": "Ganancias positivas de las inversiones"
+        },
+        "growthByInvestment": {
+          "p1": "Resultado por inversión"
+        },
+        "noInvestmentHasPositiveGrowth": {
+          "p1": "Ninguna inversión muestra una ganancia positiva; por eso no hay una que destacar."
+        }
+      }
+    },
+    "metricsGrid": {
+      "copy": {
+        "indicadoresDeCartera": {
+          "p1": "Otras formas de entender el resultado"
+        },
+        "comparaElCrecimientoOLaPerdidaCon": {
+          "p1": "Compara la ganancia o pérdida con el saldo actual más los aportes futuros. No es una tasa anual ni el costo original de compra."
+        },
+        "investedExample": {
+          "p1": "Con tus cifras, ",
+          "p2": " de saldo actual más ",
+          "p3": " de aportes futuros suman ",
+          "p4": ". Comparar la ganancia o pérdida de ",
+          "p5": " con esa suma da ",
+          "p6": ". Esta referencia no es el costo original de compra. Las cifras están redondeadas."
+        },
+        "annualExample": {
+          "p1": "Con un saldo actual de ",
+          "p2": ", aportes de ",
+          "p3": " al mes y un saldo final",
+          "p4": " expresado en poder de compra",
+          "p5": "",
+          "p6": " de ",
+          "p7": ", el rendimiento anual de toda la cartera sería ",
+          "p8": ". También importa cuándo entra cada aporte",
+          "p9": "; este cálculo descuenta la inflación",
+          "p10": "",
+          "p11": "."
+        },
+        "primeroSumaTodoElDineroQueHabras": {
+          "p1": "Suma el saldo actual y los aportes futuros. Esta referencia no es el costo original de compra."
+        },
+        "totalInvertidoIgualACapitalActualMas": {
+          "p1": "",
+          "p2": " = ",
+          "p3": " + ",
+          "p4": ""
+        },
+        "sustitucionDelTotalInvertido": {
+          "p1": "Con tus cantidades"
+        },
+        "comparaElCrecimientoConEseTotalY": {
+          "p1": "Después divide la ganancia o pérdida entre ese total y multiplícala por 100. Este porcentaje no compara con el precio que pagaste originalmente."
+        },
+        "crecimientoDivididoParaTotalInvertidoPorCien": {
+          "p1": "",
+          "p2": " ÷ ",
+          "p3": " × 100"
+        },
+        "sustitucionDeValoresDeLaGananciaSobre": {
+          "p1": "Con tus cantidades: ",
+          "p2": ""
+        },
+        "sumaDeAportesMensualesPorPosicion": {
+          "p1": "La suma de lo que agregarías cada mes a todas tus inversiones."
+        },
+        "noCalculableHoy": {
+          "p1": "Todavía no hay tiempo transcurrido"
+        },
+        "anualizadoConAportesMensuales": {
+          "p1": "Muestra el ritmo anual de este escenario. Tiene en cuenta cuándo harías cada aporte; no es un promedio simple ni garantiza ganancias."
+        },
+        "gananciaAcumuladaSobreInvertido": {
+          "p1": "Cambio total hasta hoy; no es una tasa anual.",
+          "p2": "Cambio total durante ",
+          "p3": " ",
+          "p4": "año",
+          "p5": "años",
+          "p6": "; no es una tasa anual."
+        },
+        "saldoSignificaElValorDeTodaTu": {
+          "p1": "Esta cifra resume el cambio de toda tu cartera como si ocurriera a un ritmo anual constante. Considera cuándo entra cada aporte; no es el promedio de las tasas de tus inversiones ni una garantía."
+        },
+        "saldoRealSignificaElValorDeTodaTu": {
+          "p1": "El rendimiento anual ajustado resume el ritmo anual de toda tu cartera después de descontar la inflación. Considera cuándo entra cada aporte; no es el promedio de las tasas de tus inversiones ni una garantía."
+        },
+        "hoyNoHanTranscurridoMesesParaCalcular": {
+          "p1": "Hoy no han transcurrido meses para calcular una tasa."
+        },
+        "expresaElHorizonteEnMesesCadaAno": {
+          "p1": "Expresa el plazo en meses: cada año tiene doce."
+        },
+        "mesesDeProyeccionIgualAPlazoTotal": {
+          "p1": "Meses de proyección = ",
+          "p2": " × 12"
+        },
+        "meses": {
+          "p1": "Meses"
+        },
+        "sustitucionDelPlazoEnAnos": {
+          "p1": "Con el plazo que elegiste"
+        },
+        "alFinalDeCadaMesPrimeroSe": {
+          "p1": "Cada mes, primero cambia el saldo según la tasa y después se suma tu aporte. En el siguiente mes también cuenta el cambio del mes anterior."
+        },
+        "realContributionStep": {
+          "p1": "Cada mes, el saldo cambia según la tasa y luego se suma el aporte ajustado por la inflación, para expresarlo en poder de compra."
+        },
+        "reglaDelSaldoMensual": {
+          "p1": "Regla del saldo mensual"
+        },
+        "laAppPruebaYAjustaLaTasa": {
+          "p1": "La app busca un ritmo mensual que, después de "
+        },
+        "mesesElSaldoCoincideConElValor": {
+          "p1": "meses, el ",
+          "p2": " coincida con el saldo final."
+        },
+        "sigueElValorDeLaCarteraCada": {
+          "p1": "Sigue el saldo de la cartera: cada resultado inicia el mes siguiente. Entre los meses mostrados, se repite la misma operación. «≈» indica que los valores visibles están redondeados."
+        },
+        "convierteEsaTasaMensualEnUnaTasa": {
+          "p1": "Muestra el ritmo de 12 meses seguidos. Cada mes parte del resultado del anterior: por eso no basta con multiplicar por 12."
+        },
+        "formulaDeTasaAnualEquivalente": {
+          "p1": "Fórmula de ",
+          "p2": ""
+        },
+        "sustitucionDeTasaAnualEquivalente": {
+          "p1": "Con tus cifras: ",
+          "p2": ""
+        },
+        "sinCrecimientoPositivoEnEstePlazo": {
+          "p1": "Ninguna inversión muestra una ganancia positiva"
+        },
+        "noInvestedCapital": {
+          "p1": "El saldo actual más los aportes es cero: no se puede dividir entre cero, así que este porcentaje no se calcula."
+        },
+        "noRateAvailable": {
+          "p1": "No hay datos suficientes para calcular la tasa: se necesita un saldo final positivo y un saldo actual o aportes."
+        }
+      }
+    },
+    "monthlyBalanceExamples": {
+      "copy": {
+        "ejemplosDelCalculoMesAMes": {
+          "p1": "Mira cómo cambia el saldo en distintos meses"
+        },
+        "meses": {
+          "p1": "Meses "
+        },
+        "al": {
+          "p1": "al "
+        },
+        "seRepiteLaMismaOperacionUnoPor": {
+          "p1": ": el cálculo continúa mes a mes aunque no se muestren todos."
+        },
+        "mes": {
+          "p1": "Mes "
+        },
+        "lastMonth": {
+          "p1": " · último mes"
+        },
+        "calculationForMonth": {
+          "p1": "Mes ",
+          "p2": ": el saldo anterior cambia según la tasa mensual y después se suma tu aporte"
+        },
+        "valueAtMonth": {
+          "p1": "Valor al terminar el mes ",
+          "p2": ""
+        }
+      }
+    },
+    "portfolioChartPanel": {
+      "copy": {
+        "proyeccionDeLaCartera": {
+          "p1": "¿Cómo podría cambiar tu dinero?"
+        },
+        "elEfectoDelTiempoSobreTuCapital": {
+          "p1": "Compara el saldo futuro con el saldo actual más los aportes que harías. Esta referencia no es el precio que pagaste originalmente por tus inversiones."
+        },
+        "seriesDeLaProyeccion": {
+          "p1": "Líneas del gráfico"
+        }
+      }
+    },
+    "projectedValueFormulaTooltip": {
+      "copy": {
+        "estaPosicion": {
+          "p1": "esta posición"
+        },
+        "positionExample": {
+          "p1": "Con un saldo actual de ",
+          "p2": " y aportes de ",
+          "p3": " al mes durante ",
+          "p4": " ",
+          "p5": "año",
+          "p6": "años",
+          "p7": ", este escenario daría ",
+          "p8": "",
+          "p9": " de poder de compra, tras descontar la inflación",
+          "p10": " de saldo futuro",
+          "p11": ". La tasa usada puede no cumplirse."
+        },
+        "partsExample": {
+          "p1": "Con las cifras de tus posiciones (",
+          "p2": "), el total sería ",
+          "p3": ". Las cantidades visibles están redondeadas."
+        },
+        "singlePositionInvestmentExplanation": {
+          "p1": "Esta inversión tiene una sola posición. Su total es el ",
+          "p2": " de esa posición."
+        },
+        "noHayOtrasPosicionesQueSumar": {
+          "p1": "No hay otras posiciones que sumar."
+        },
+        "investmentTotalCombinesPositionValues": {
+          "p1": "Para saber cuánto podrías tener en esta inversión, suma el saldo de todas sus posiciones."
+        },
+        "sumaElValorProyectadoDeCadaPosicion": {
+          "p1": "Suma el saldo futuro de cada posición."
+        },
+        "sustituyeLosImportesMostradosElTotalUsa": {
+          "p1": "Sustituye los importes mostrados; el total usa valores sin redondear."
+        },
+        "sustituyeCadaPosicionPorSuImporteProyectado": {
+          "p1": "Usa la cantidad calculada para cada posición."
+        },
+        "saldoSignificaElValorDeEstaPosicion": {
+          "p1": "Este saldo futuro es lo que podrías tener en esta posición. Cada mes primero se aplica la tasa anual convertida a mensual y después se suma tu aporte."
+        },
+        "saldoRealSignificaElValorDeEstaPosicion": {
+          "p1": "El ",
+          "p2": " muestra cuánto podría valer esta posición en poder de compra, después de descontar la inflación. Cada aporte se ajusta según la inflación acumulada hasta el mes en que se suma."
+        },
+        "buscaLaTasaMensualQueAplicadaDurante": {
+          "p1": "Convierte la tasa anual en una tasa para cada mes. Como cada mes parte del saldo anterior, no basta con dividirla entre 12."
+        },
+        "tasaMensualEquivalenteAPartirDeLa": {
+          "p1": "Tasa mensual equivalente a partir del ",
+          "p2": ""
+        },
+        "tasaMensualEquivalente": {
+          "p1": "Tasa usada cada mes"
+        },
+        "sustitucionDeLaTasaAnualParaObtener": {
+          "p1": "Con la ",
+          "p2": " de esta inversión"
+        },
+        "convierteElPlazoEnMesesParaSaber": {
+          "p1": "Convierte el plazo en meses para saber cuántas veces se aplicará la regla."
+        },
+        "mesesDeProyeccionAPartirDelPlazo": {
+          "p1": "Meses que se calculan según el plazo"
+        },
+        "sustitucionDelPlazoParaObtenerLosMeses": {
+          "p1": "Con los años que elegiste"
+        },
+        "fisherSubstitution": {
+          "p1": "Tasa anual ajustada, después de descontar inflación"
+        },
+        "nominalContributionRule": {
+          "p1": "Así cambia el saldo cada mes"
+        },
+        "realContributionRule": {
+          "p1": "Así cambia el saldo en poder de compra cada mes"
+        },
+        "inflationAdjustedMonthlyContribution": {
+          "p1": "Ajusta cada aporte mensual por la inflación antes de sumarlo, para expresarlo en poder de compra."
+        },
+        "nominalMonthlyContribution": {
+          "p1": "Suma el mismo aporte en dólares al final de cada mes."
+        },
+        "miraComoElResultadoDeUnMes": {
+          "p1": "El saldo de cada mes inicia el siguiente. Los meses intermedios se calculan igual, aunque no aparezcan todos aquí. «≈» indica que los valores visibles están redondeados."
+        }
+      },
+      "dynamic": {
+        "positionsLabel": "{{projectedLabel}} de las posiciones"
+      }
+    },
+    "position": {
+      "positionCopy": {
+        "projectedValueFor": {
+          "p1": "",
+          "p2": "",
+          "p3": " ajustado",
+          "p4": " en “",
+          "p5": "”"
+        }
+      }
+    },
+    "tableSection": {
+      "copy": {
+        "evolucionAnoAAno": {
+          "p1": "Tu dinero, año por año"
+        },
+        "ano": {
+          "p1": "Año"
+        },
+        "total": {
+          "p1": "Total"
+        },
+        "columnas": {
+          "p1": "Inversiones"
+        },
+        "seleccionarColumnas": {
+          "p1": "Elegir qué inversiones aparecen en la tabla"
+        },
+        "columnasVisibles": {
+          "p1": "",
+          "p2": " de ",
+          "p3": ""
+        },
+        "showInvestmentColumn": {
+          "p1": "Mostrar columna ",
+          "p2": ""
+        },
+        "tablaProyeccionAccesible": {
+          "p1": "",
+          "p2": ", año por año, en cada inversión y en total."
+        },
+        "yearNumber": {
+          "p1": "Año ",
+          "p2": ""
+        }
+      }
+    },
+    "outcomes": {
+      "gain": "Ganancia",
+      "gainOnInvested": "Ganancia sobre lo invertido",
+      "loss": "Pérdida",
+      "lossOnInvested": "Pérdida sobre lo invertido",
+      "result": "Resultado"
+    },
+    "errors": {
+      "inflationMinimum": "La inflación anual debe ser mayor que -100 %."
+    },
+    "moneyCopy": {
+      "fullAmount": "Cantidad completa: {{full}}",
+      "abbreviatedAmount": "Se muestra {{abbreviated}}; la cantidad completa es {{full}}",
+      "abbreviatedValue": "Se muestra {{abbreviated}}; el valor completo es {{full}}"
+    },
+    "timeUnits": {
+      "year_one": "{{count}} año",
+      "year_other": "{{count}} años",
+      "month_one": "{{count}} mes",
+      "month_other": "{{count}} meses"
+    }
+  }
+}

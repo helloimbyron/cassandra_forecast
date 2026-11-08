@@ -1,5 +1,5 @@
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { copy } from "@/features/Dashboard/presentation/constants/AllocationPanel.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { allocationPanelCopy } from "@/features/Dashboard/presentation/copies/allocationPanel.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { Card } from "@/design-system/components/cards/Card";
 import { CardHeader } from "@/design-system/components/cards/CardHeader";
@@ -29,8 +29,8 @@ export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
     <Card className="panel-card allocation-panel">
       <CardHeader className="panel-header">
         <div>
-          <CardTitle>{copy.composicionActual}</CardTitle>
-          <CardDescription>{copy.capitalDistributionByInvestment}</CardDescription>
+          <CardTitle>{allocationPanelCopy.composicionActual}</CardTitle>
+          <CardDescription>{allocationPanelCopy.capitalDistributionByInvestment}</CardDescription>
         </div>
       </CardHeader>
       <CardContent>

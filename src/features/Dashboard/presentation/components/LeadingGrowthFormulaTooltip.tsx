@@ -1,6 +1,6 @@
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { copy } from "@/features/Dashboard/presentation/constants/LeadingGrowthFormulaTooltip.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { leadingGrowthFormulaTooltipCopy } from "@/features/Dashboard/presentation/copies/leadingGrowthFormulaTooltip.copy";
 import { Calculator } from "lucide-react";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
@@ -19,30 +19,33 @@ export function LeadingGrowthFormulaTooltip({
   return (
     <FormulaTooltip
       label={labels.leadingGrowth}
-      intro={copy.seComparanLosCrecimientosDeTodosLos}
+      intro={leadingGrowthFormulaTooltipCopy.seComparanLosCrecimientosDeTodosLos}
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
     >
       <ol className="formula-tooltip-copy">
         <FormulaStep>
           <span className="formula-step-description">
-            {copy.calculateEachInvestmentGrowthFirst}
+            {leadingGrowthFormulaTooltipCopy.calculateEachInvestmentGrowthFirst}
           </span>
           <FormulaMath
-            label={copy.eachInvestmentGrowthEqualsValue}
+            label={leadingGrowthFormulaTooltipCopy.eachInvestmentGrowthEqualsValue}
             tex={`${texText(labels.projectedValue)} - ${texText(labels.currentCapital)} - ${texText(labels.totalContributed)}`}
           />
         </FormulaStep>
         <FormulaStep>
           <span className="formula-step-description">
-            {copy.comparaLosResultadosSiDosParecenIguales}
+            {leadingGrowthFormulaTooltipCopy.comparaLosResultadosSiDosParecenIguales}
           </span>
           {leader && (
             <FormulaMath
-              label={copy.seEligeElMaximoEntreLosCrecimientos}
-              tex={`\\max\\left(${texText(copy.positiveInvestmentGrowths)}\\right)`}
+              label={leadingGrowthFormulaTooltipCopy.seEligeElMaximoEntreLosCrecimientos}
+              tex={`\\max\\left(${texText(leadingGrowthFormulaTooltipCopy.positiveInvestmentGrowths)}\\right)`}
             />
           )}
-          <ul className="formula-growth-comparison" aria-label={copy.growthByInvestment}>
+          <ul
+            className="formula-growth-comparison"
+            aria-label={leadingGrowthFormulaTooltipCopy.growthByInvestment}
+          >
             {projections.map((projection) => (
               <li
                 className={projection === leader ? "is-leading" : undefined}
@@ -59,7 +62,9 @@ export function LeadingGrowthFormulaTooltip({
               value={formatAbbreviatedValue(leader.growth, "currency")}
             />
           ) : (
-            <p className="formula-no-result">{copy.noInvestmentHasPositiveGrowth}</p>
+            <p className="formula-no-result">
+              {leadingGrowthFormulaTooltipCopy.noInvestmentHasPositiveGrowth}
+            </p>
           )}
         </FormulaStep>
       </ol>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Info, Link2 } from "lucide-react";
 import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
-import { copy } from "@/shared/presentation/constants/Header.constant";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
+import { headerCopy } from "@/shared/presentation/copies/header.copy";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { formatInflationRate } from "@/features/Dashboard/presentation/utils/formatInflationRate.util";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
@@ -64,7 +64,7 @@ export function InflationControls({
         {layout === "card" && (
           <div className="inflation-card-heading">
             <div className="inflation-slider-heading">
-              <span>{copy.inflationSlider}</span>
+              <span>{headerCopy.inflationSlider}</span>
               {withInflation && (
                 <strong>
                   {displayedRate}
@@ -77,32 +77,32 @@ export function InflationControls({
         <div
           className="distribution-mode-toggle inflation-mode-toggle"
           role="group"
-          aria-label={copy.inflationMode}
+          aria-label={headerCopy.inflationMode}
         >
           <button
             type="button"
             aria-pressed={!withInflation}
             onClick={() => onWithInflationChange(!withInflation)}
           >
-            {copy.withoutInflation}
+            {headerCopy.withoutInflation}
           </button>
           <button
             type="button"
             aria-pressed={withInflation}
             onClick={() => onWithInflationChange(!withInflation)}
           >
-            {copy.withInflation}
+            {headerCopy.withInflation}
           </button>
         </div>
         {layout === "card" && (
           <FormulaTooltip
-            label={copy.inflationHelpTitle}
-            intro={copy.inflationHelp}
-            example={copy.inflationHelpExample(
+            label={headerCopy.inflationHelpTitle}
+            intro={headerCopy.inflationHelp}
+            example={headerCopy.inflationHelpExample(
               `${displayedRate}%`,
               formatAbbreviatedValue(100 / (1 + inflationRatePct / 100), "currency"),
             )}
-            triggerLabel={copy.inflationHelpTrigger}
+            triggerLabel={headerCopy.inflationHelpTrigger}
             trigger={<Info className="icon-sm" aria-hidden="true" />}
           >
             {null}
@@ -115,7 +115,7 @@ export function InflationControls({
             target="_blank"
             rel="noreferrer"
             title={source.note}
-            aria-label={copy.inflationSourceAriaLabel(source.initialRatePct)}
+            aria-label={headerCopy.inflationSourceAriaLabel(source.initialRatePct)}
           >
             <Link2 className="icon-sm" aria-hidden="true" />
           </a>
@@ -125,7 +125,7 @@ export function InflationControls({
         <div className="inflation-slider-control">
           {layout === "inline" && (
             <div className="inflation-slider-heading">
-              <span>{copy.inflationSlider}</span>
+              <span>{headerCopy.inflationSlider}</span>
               <strong>
                 {displayedRate}
                 {labels.percentSymbol}
@@ -146,7 +146,7 @@ export function InflationControls({
           )}
           <div className="inflation-slider-wrap">
             <DebouncedSlider
-              aria-label={copy.inflationSliderAriaLabel}
+              aria-label={headerCopy.inflationSliderAriaLabel}
               min={MIN_INFLATION_RATE_PCT}
               max={MAX_INFLATION_RATE_PCT}
               step={INFLATION_RATE_STEP_PCT}

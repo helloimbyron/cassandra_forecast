@@ -1,7 +1,8 @@
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/HeroCard.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
+import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
+import { heroCardCopy } from "@/features/Dashboard/presentation/copies/heroCard.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
@@ -81,24 +82,24 @@ export function HeroCard({
       >
         <div className="hero-total">
           <div className="hero-value-label hero-grid-subtitle">
-            <p>{withInflation ? copy.realValue : copy.nominalValue}</p>
+            <p>{withInflation ? heroCardCopy.realValue : heroCardCopy.nominalValue}</p>
             {withInflation && (
               <FormulaTooltip
-                label={copy.comparisonInfoTitle}
-                intro={copy.comparisonInfoIntro}
-                triggerLabel={copy.comparisonInfoTrigger}
+                label={heroCardCopy.comparisonInfoTitle}
+                intro={heroCardCopy.comparisonInfoIntro}
+                triggerLabel={heroCardCopy.comparisonInfoTrigger}
                 className="hero-comparison-info-trigger"
                 trigger={<Info className="icon-sm" aria-hidden="true" />}
               >
                 <div className="hero-comparison-info-copy">
                   <p>
-                    {copy.balanceComparisonExample(
+                    {heroCardCopy.balanceComparisonExample(
                       formatAbbreviatedValue(model.nominalTotalAtHorizon, "currency"),
                       formatAbbreviatedValue(model.realTotalAtHorizon, "currency"),
                     )}
                   </p>
                   <p>
-                    {copy.contributionsComparisonExample(
+                    {heroCardCopy.contributionsComparisonExample(
                       formatAbbreviatedValue(nominalTotalContributions, "currency"),
                       formatAbbreviatedValue(realTotalContributions, "currency"),
                     )}
@@ -119,13 +120,17 @@ export function HeroCard({
               className="hero-breakdown-heading hero-breakdown-heading-spacer"
               aria-hidden="true"
             />
-            <span className="hero-grid-subtitle">{copy.nominalValue}</span>
+            <span className="hero-grid-subtitle">{heroCardCopy.nominalValue}</span>
             <strong className="hero-grid-value">
               <AbbreviatedMoney value={model.nominalTotalAtHorizon} />
             </strong>
           </div>
         )}
-        <div className="hero-side-stat hero-current-stat" role="group" aria-label={copy.balances}>
+        <div
+          className="hero-side-stat hero-current-stat"
+          role="group"
+          aria-label={heroCardCopy.balances}
+        >
           <div
             className="hero-breakdown-heading hero-breakdown-heading-spacer"
             aria-hidden="true"
@@ -142,20 +147,20 @@ export function HeroCard({
         <div
           className="hero-side-stat hero-contributions-stat"
           role="group"
-          aria-label={copy.contributions}
+          aria-label={heroCardCopy.contributions}
         >
           <h4 className="hero-breakdown-heading">
-            {copy.contributions}
+            {heroCardCopy.contributions}
             {withInflation && (
               <FormulaTooltip
-                label={copy.contributionsInfoTitle}
-                intro={copy.contributionsInfoIntro}
-                triggerLabel={copy.contributionsInfoTrigger}
+                label={heroCardCopy.contributionsInfoTitle}
+                intro={heroCardCopy.contributionsInfoIntro}
+                triggerLabel={heroCardCopy.contributionsInfoTrigger}
                 className="hero-contributions-info-trigger"
                 trigger={<Info className="icon-sm" aria-hidden="true" />}
               >
                 <div className="hero-comparison-info-copy">
-                  <p>{copy.contributionsInfoExplanation}</p>
+                  <p>{heroCardCopy.contributionsInfoExplanation}</p>
                 </div>
               </FormulaTooltip>
             )}
@@ -166,7 +171,7 @@ export function HeroCard({
                 <div className="hero-balance-value">
                   <span className="hero-grid-subtitle">
                     <ShoppingCart className="icon-sm" aria-hidden="true" />{" "}
-                    {copy.realContributionsShort}
+                    {heroCardCopy.realContributionsShort}
                   </span>
                   <strong className="hero-grid-value">
                     <AbbreviatedMoney value={totalContributions} />
@@ -175,7 +180,7 @@ export function HeroCard({
                 <div className="hero-balance-value">
                   <span className="hero-grid-subtitle">
                     <ChartNoAxesCombined className="icon-sm" aria-hidden="true" />{" "}
-                    {copy.nominalContributionsShort}
+                    {heroCardCopy.nominalContributionsShort}
                   </span>
                   <strong className="hero-grid-value">
                     <AbbreviatedMoney value={nominalTotalContributions} />
@@ -185,7 +190,8 @@ export function HeroCard({
             ) : (
               <div className="hero-balance-value">
                 <span className="hero-grid-subtitle">
-                  <PiggyBank className="icon-sm" aria-hidden="true" /> {copy.nominalContributions}
+                  <PiggyBank className="icon-sm" aria-hidden="true" />{" "}
+                  {heroCardCopy.nominalContributions}
                 </span>
                 <strong className="hero-grid-value">
                   <AbbreviatedMoney value={nominalTotalContributions} />
@@ -194,9 +200,13 @@ export function HeroCard({
             )}
           </div>
         </div>
-        <div className="hero-side-stat hero-growth-stat" role="group" aria-label={copy.results}>
-          <h4 className="hero-breakdown-heading">{copy.results}</h4>
-          <div className="hero-growth-values" role="group" aria-label={copy.results}>
+        <div
+          className="hero-side-stat hero-growth-stat"
+          role="group"
+          aria-label={heroCardCopy.results}
+        >
+          <h4 className="hero-breakdown-heading">{heroCardCopy.results}</h4>
+          <div className="hero-growth-values" role="group" aria-label={heroCardCopy.results}>
             <div className="hero-result-metric">
               <span className="hero-result-label hero-grid-subtitle">
                 {totalGrowth > 0 ? (
@@ -212,8 +222,8 @@ export function HeroCard({
                 <AbbreviatedMoney value={totalGrowth} />
                 <FormulaTooltip
                   label={signedOutcomeLabel(totalGrowth)}
-                  intro={copy.esLaDiferenciaEntreElValorFinal}
-                  example={copy.growthExample(
+                  intro={heroCardCopy.esLaDiferenciaEntreElValorFinal}
+                  example={heroCardCopy.growthExample(
                     formatAbbreviatedValue(totalAtHorizon, "currency"),
                     formatAbbreviatedValue(initial, "currency"),
                     formatAbbreviatedValue(totalContributions, "currency"),
@@ -224,19 +234,19 @@ export function HeroCard({
                   <ol className="formula-tooltip-copy">
                     <FormulaStep>
                       <span className="formula-step-description">
-                        {copy.separaElDineroQuePusisteDelValor}
+                        {heroCardCopy.separaElDineroQuePusisteDelValor}
                       </span>
                       <FormulaMath
-                        label={copy.valorProyectadoMenosCapitalActualYAportes}
+                        label={heroCardCopy.valorProyectadoMenosCapitalActualYAportes}
                         tex={`${texText(labels.projectedValue)} - ${texText(labels.currentCapital)} - ${texText(labels.plannedContributions)}`}
                       />
                     </FormulaStep>
                     <FormulaStep>
                       <span className="formula-step-description">
-                        {copy.restaElCapitalActualYTodosLos}
+                        {heroCardCopy.restaElCapitalActualYTodosLos}
                       </span>
                       <FormulaMath
-                        label={copy.sustitucionDeValoresDelCrecimiento}
+                        label={heroCardCopy.sustitucionDeValoresDelCrecimiento}
                         className="formula-math-substitution"
                         tex={`${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))} - ${texText(formatAbbreviatedValue(initial, "currency"))} - ${texText(formatAbbreviatedValue(totalContributions, "currency"))}`}
                       />
@@ -252,7 +262,7 @@ export function HeroCard({
             <div className="hero-result-metric">
               <span className="hero-result-label hero-grid-subtitle">
                 <Percent className="icon-sm" aria-hidden="true" />
-                {copy.returnLabel}
+                {heroCardCopy.returnLabel}
               </span>
               <div
                 className="hero-result-value hero-grid-value"
@@ -274,11 +284,11 @@ export function HeroCard({
                       ? labels.growthPercent
                       : signedOutcomeLabel(summaryInsights.growthPctOfCurrent)
                   }
-                  intro={copy.mideElCrecimientoFrenteAlCapitalQue}
+                  intro={heroCardCopy.mideElCrecimientoFrenteAlCapitalQue}
                   example={
                     summaryInsights.growthPctOfCurrent === null
                       ? undefined
-                      : copy.growthPercentExample(
+                      : heroCardCopy.growthPercentExample(
                           formatAbbreviatedValue(totalGrowth, "currency"),
                           formatAbbreviatedValue(initial, "currency"),
                           formatAbbreviatedValue(summaryInsights.growthPctOfCurrent, "percent"),
@@ -289,22 +299,22 @@ export function HeroCard({
                   <ol className="formula-tooltip-copy">
                     <FormulaStep>
                       <span className="formula-step-description">
-                        {copy.usaElCapitalActualComoReferenciaNo}
+                        {heroCardCopy.usaElCapitalActualComoReferenciaNo}
                       </span>
                       <FormulaMath
-                        label={copy.crecimientoDivididoParaCapitalActualPor100}
+                        label={heroCardCopy.crecimientoDivididoParaCapitalActualPor100}
                         tex={`\\frac{${texText(labels.growth)}}{${texText(labels.currentCapital)}} \\times 100`}
                       />
                     </FormulaStep>
                     <FormulaStep>
                       <span className="formula-step-description">
                         {summaryInsights.growthPctOfCurrent === null
-                          ? copy.noCurrentCapital
-                          : copy.sustituyeLosImportesYExpresaLaComparacion}
+                          ? heroCardCopy.noCurrentCapital
+                          : heroCardCopy.sustituyeLosImportesYExpresaLaComparacion}
                       </span>
                       {summaryInsights.growthPctOfCurrent !== null && (
                         <FormulaMath
-                          label={copy.sustitucionDeValoresDelCrecimientoPorcentual}
+                          label={heroCardCopy.sustitucionDeValoresDelCrecimientoPorcentual}
                           className="formula-math-substitution"
                           tex={`\\frac{${texText(formatAbbreviatedValue(totalGrowth, "currency"))}}{${texText(formatAbbreviatedValue(initial, "currency"))}} \\times 100`}
                         />
@@ -330,7 +340,7 @@ export function HeroCard({
         <div className="hero-horizon">
           <div className="horizon-label">
             <span>{labels.totalHorizon}</span>
-            <strong>{totalYears === 0 ? labels.today : `${totalYears} ${labels.years}`}</strong>
+            <strong>{totalYears === 0 ? labels.today : formatYears(totalYears)}</strong>
           </div>
           <div className="range-labels">
             <span>{labels.zeroToday}</span>
@@ -338,7 +348,7 @@ export function HeroCard({
           </div>
           <div className="hero-slider-wrap">
             <DebouncedSlider
-              aria-label={copy.plazoTotalAnos}
+              aria-label={heroCardCopy.plazoTotalAnos}
               min={MIN_HORIZON_YEARS}
               max={MAX_HORIZON_YEARS}
               step={1}
@@ -354,7 +364,7 @@ export function HeroCard({
               aria-hidden="true"
             >
               {draftYears}
-              {copy.anos}
+              {heroCardCopy.anos}
             </span>
           </div>
         </div>

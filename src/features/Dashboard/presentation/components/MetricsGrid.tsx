@@ -1,9 +1,9 @@
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
-import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
-import { formatMonths } from "@/features/Dashboard/presentation/utils/formatMonths.util";
-import { copy } from "@/features/Dashboard/presentation/constants/MetricsGrid.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
+import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
+import { formatMonths } from "@/features/Dashboard/domain/utils/formatMonths.util";
+import { metricsGridCopy } from "@/features/Dashboard/presentation/copies/metricsGrid.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
@@ -45,7 +45,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="metrics-grid" aria-label={copy.indicadoresDeCartera}>
+    <section className="metrics-grid" aria-label={metricsGridCopy.indicadoresDeCartera}>
       <Metric
         icon={<ChartNoAxesCombined className="icon-sm" />}
         label={
@@ -60,7 +60,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
             <AbbreviatedValue value={summaryInsights.gainPctOfInvested} unit="percent" />
           )
         }
-        note={copy.gananciaAcumuladaSobreInvertido(totalYears)}
+        note={metricsGridCopy.gananciaAcumuladaSobreInvertido(totalYears)}
         positive={
           summaryInsights.gainPctOfInvested !== null && summaryInsights.gainPctOfInvested > 0
         }
@@ -71,11 +71,11 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                 ? labels.returnOnInvestment
                 : signedOutcomeLabel(summaryInsights.gainPctOfInvested, "invested")
             }
-            intro={copy.comparaElCrecimientoOLaPerdidaCon}
+            intro={metricsGridCopy.comparaElCrecimientoOLaPerdidaCon}
             example={
               summaryInsights.gainPctOfInvested === null
                 ? undefined
-                : copy.investedExample(
+                : metricsGridCopy.investedExample(
                     formatAbbreviatedValue(initial, "currency"),
                     formatAbbreviatedValue(totalContributions, "currency"),
                     formatAbbreviatedValue(totalInvested, "currency"),
@@ -88,14 +88,14 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
             <ol className="formula-tooltip-copy">
               <FormulaStep>
                 <span className="formula-step-description">
-                  {copy.primeroSumaTodoElDineroQueHabras}
+                  {metricsGridCopy.primeroSumaTodoElDineroQueHabras}
                 </span>
                 <FormulaMath
-                  label={copy.totalInvertidoIgualACapitalActualMas}
+                  label={metricsGridCopy.totalInvertidoIgualACapitalActualMas}
                   tex={`${texText(labels.totalInvested)} = ${texText(labels.currentCapital)} + ${texText(labels.plannedContributions)}`}
                 />
                 <FormulaMath
-                  label={copy.sustitucionDelTotalInvertido}
+                  label={metricsGridCopy.sustitucionDelTotalInvertido}
                   className="formula-math-substitution"
                   tex={`${texText(formatAbbreviatedValue(initial, "currency"))} + ${texText(formatAbbreviatedValue(totalContributions, "currency"))}`}
                 />
@@ -107,16 +107,16 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
               <FormulaStep>
                 <span className="formula-step-description">
                   {summaryInsights.gainPctOfInvested === null
-                    ? copy.noInvestedCapital
-                    : copy.comparaElCrecimientoConEseTotalY}
+                    ? metricsGridCopy.noInvestedCapital
+                    : metricsGridCopy.comparaElCrecimientoConEseTotalY}
                 </span>
                 <FormulaMath
-                  label={copy.crecimientoDivididoParaTotalInvertidoPorCien}
+                  label={metricsGridCopy.crecimientoDivididoParaTotalInvertidoPorCien}
                   tex={`\\frac{${texText(labels.growth)}}{${texText(labels.totalInvested)}} \\times 100`}
                 />
                 {summaryInsights.gainPctOfInvested !== null && (
                   <FormulaMath
-                    label={copy.sustitucionDeValoresDeLaGananciaSobre}
+                    label={metricsGridCopy.sustitucionDeValoresDeLaGananciaSobre}
                     className="formula-math-substitution"
                     tex={`\\frac{${texText(formatAbbreviatedValue(totalGrowth, "currency"))}}{${texText(formatAbbreviatedValue(totalInvested, "currency"))}} \\times 100`}
                   />
@@ -136,7 +136,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
         icon={<ArrowDownToLine className="icon-sm" />}
         label={labels.monthlyContribution}
         value={<AbbreviatedMoney value={summaryInsights.monthlyContributionTotal} />}
-        note={copy.sumaDeAportesMensualesPorPosicion}
+        note={metricsGridCopy.sumaDeAportesMensualesPorPosicion}
       />
       <Metric
         icon={<ChartNoAxesCombined className="icon-sm" />}
@@ -148,7 +148,11 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
             <AbbreviatedValue value={summaryInsights.annualizedReturnPct} unit="percent" />
           )
         }
-        note={totalYears === 0 ? copy.noCalculableHoy : copy.anualizadoConAportesMensuales}
+        note={
+          totalYears === 0
+            ? metricsGridCopy.noCalculableHoy
+            : metricsGridCopy.anualizadoConAportesMensuales
+        }
         positive={
           summaryInsights.annualizedReturnPct !== null && summaryInsights.annualizedReturnPct > 0
         }
@@ -157,13 +161,13 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
             label={withInflation ? labels.realAnnualReturn : labels.annualReturn}
             intro={
               activeInflationRatePct > 0
-                ? copy.saldoRealSignificaElValorDeTodaTu
-                : copy.saldoSignificaElValorDeTodaTu
+                ? metricsGridCopy.saldoRealSignificaElValorDeTodaTu
+                : metricsGridCopy.saldoSignificaElValorDeTodaTu
             }
             example={
               summaryInsights.annualizedReturnPct === null
                 ? undefined
-                : copy.annualExample(
+                : metricsGridCopy.annualExample(
                     formatAbbreviatedValue(initial, "currency"),
                     formatAbbreviatedValue(summaryInsights.monthlyContributionTotal, "currency"),
                     formatAbbreviatedValue(totalAtHorizon, "currency"),
@@ -178,22 +182,22 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                 <FormulaStep>
                   <span className="formula-step-description">
                     {totalYears === 0
-                      ? copy.hoyNoHanTranscurridoMesesParaCalcular
-                      : copy.noRateAvailable}
+                      ? metricsGridCopy.hoyNoHanTranscurridoMesesParaCalcular
+                      : metricsGridCopy.noRateAvailable}
                   </span>
                 </FormulaStep>
               ) : (
                 <>
                   <FormulaStep>
                     <span className="formula-step-description">
-                      {copy.expresaElHorizonteEnMesesCadaAno}
+                      {metricsGridCopy.expresaElHorizonteEnMesesCadaAno}
                     </span>
                     <FormulaMath
-                      label={copy.mesesDeProyeccionIgualAPlazoTotal}
-                      tex={`${texText(copy.meses)} = ${texText(labels.totalHorizon)} \\times 12`}
+                      label={metricsGridCopy.mesesDeProyeccionIgualAPlazoTotal}
+                      tex={`${texText(metricsGridCopy.meses)} = ${texText(labels.totalHorizon)} \\times 12`}
                     />
                     <FormulaMath
-                      label={copy.sustitucionDelPlazoEnAnos}
+                      label={metricsGridCopy.sustitucionDelPlazoEnAnos}
                       className="formula-math-substitution"
                       tex={`${totalYears} \\times 12`}
                     />
@@ -205,22 +209,22 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                   <FormulaStep>
                     <span className="formula-step-description">
                       {activeInflationRatePct > 0
-                        ? copy.realContributionStep
-                        : copy.alFinalDeCadaMesPrimeroSe}
+                        ? metricsGridCopy.realContributionStep
+                        : metricsGridCopy.alFinalDeCadaMesPrimeroSe}
                     </span>
                     <FormulaMath
-                      label={copy.reglaDelSaldoMensual}
+                      label={metricsGridCopy.reglaDelSaldoMensual}
                       tex={
                         activeInflationRatePct > 0
-                          ? `${texText(labels.newBalance)} = ${texText(labels.previousBalance)} \\times (1 + ${texText(labels.monthlyRate)}) + ${texText(labels.monthlyContribution)} / (1 + ${texText("inflación anual")})^{m/12}`
+                          ? `${texText(labels.newBalance)} = ${texText(labels.previousBalance)} \\times (1 + ${texText(labels.monthlyRate)}) + ${texText(labels.monthlyContribution)} / (1 + ${texText(labels.annualInflation)})^{m/12}`
                           : `${texText(labels.newBalance)} = ${texText(labels.previousBalance)} \\times (1 + ${texText(labels.monthlyRate)}) + ${texText(labels.monthlyContribution)}`
                       }
                     />
                   </FormulaStep>
                   <FormulaStep>
                     <span className="formula-step-description">
-                      {copy.laAppPruebaYAjustaLaTasa}
-                      {returnMonthCount} {copy.mesesElSaldoCoincideConElValor}
+                      {metricsGridCopy.laAppPruebaYAjustaLaTasa}
+                      {returnMonthCount} {metricsGridCopy.mesesElSaldoCoincideConElValor}
                     </span>
                     <FormulaResult
                       name={labels.monthlyRate}
@@ -229,7 +233,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                   </FormulaStep>
                   <FormulaStep>
                     <span className="formula-step-description">
-                      {copy.sigueElValorDeLaCarteraCada}
+                      {metricsGridCopy.sigueElValorDeLaCarteraCada}
                     </span>
                     <MonthlyBalanceExamples
                       initialBalance={initial}
@@ -244,14 +248,14 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                   </FormulaStep>
                   <FormulaStep>
                     <span className="formula-step-description">
-                      {copy.convierteEsaTasaMensualEnUnaTasa}
+                      {metricsGridCopy.convierteEsaTasaMensualEnUnaTasa}
                     </span>
                     <FormulaMath
-                      label={copy.formulaDeTasaAnualEquivalente}
+                      label={metricsGridCopy.formulaDeTasaAnualEquivalente}
                       tex={`(1 + ${texText(labels.monthlyRate)})^{12} - 1`}
                     />
                     <FormulaMath
-                      label={copy.sustitucionDeTasaAnualEquivalente}
+                      label={metricsGridCopy.sustitucionDeTasaAnualEquivalente}
                       className="formula-math-substitution"
                       tex={`(1 + ${texText(monthlyReturnDisplay ?? "0,00%")})^{12} - 1`}
                     />
@@ -281,7 +285,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
         }
         note={
           summaryInsights.leadingGrowthInvestment?.investment.name ??
-          copy.sinCrecimientoPositivoEnEstePlazo
+          metricsGridCopy.sinCrecimientoPositivoEnEstePlazo
         }
         positive={Boolean(summaryInsights.leadingGrowthInvestment)}
         tooltip={

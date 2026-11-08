@@ -1,8 +1,9 @@
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { Calculator } from "lucide-react";
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { signedOutcomeLabel } from "@/features/Dashboard/presentation/utils/signedOutcomeLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/InvestmentGrowthPercentFormulaTooltip.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
+import { investmentGrowthPercentFormulaTooltipCopy } from "@/features/Dashboard/presentation/copies/investmentGrowthPercentFormulaTooltip.copy";
+import { investmentGrowthFormulaTooltipCopy } from "@/features/Dashboard/presentation/copies/investmentGrowthFormulaTooltip.copy";
 import type { InvestmentProjection } from "@/shared/domain/types/InvestmentProjection.type";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
@@ -19,12 +20,15 @@ export function InvestmentGrowthPercentFormulaTooltip({
 }) {
   return (
     <FormulaTooltip
-      label={`${value === null ? labels.growthPercent : signedOutcomeLabel(value)} de ${projection.investment.name}`}
-      intro={copy.intro}
+      label={investmentGrowthFormulaTooltipCopy.investmentOutcomeLabel(
+        value === null ? labels.growthPercent : signedOutcomeLabel(value),
+        projection.investment.name,
+      )}
+      intro={investmentGrowthPercentFormulaTooltipCopy.intro}
       example={
         value === null
           ? undefined
-          : copy.example(
+          : investmentGrowthPercentFormulaTooltipCopy.example(
               formatAbbreviatedValue(projection.growth, "currency"),
               formatAbbreviatedValue(projection.initialValue, "currency"),
               formatAbbreviatedValue(value, "percent"),
@@ -35,20 +39,24 @@ export function InvestmentGrowthPercentFormulaTooltip({
     >
       <ol className="formula-tooltip-copy">
         <FormulaStep>
-          <span className="formula-step-description">{copy.description}</span>
+          <span className="formula-step-description">
+            {investmentGrowthPercentFormulaTooltipCopy.description}
+          </span>
           <FormulaMath
-            label={copy.expressionLabel}
+            label={investmentGrowthPercentFormulaTooltipCopy.expressionLabel}
             tex={`\\frac{${texText(labels.growth)}}{${texText(labels.currentCapital)}} \\times 100`}
           />
         </FormulaStep>
         <FormulaStep>
           <span className="formula-step-description">
-            {value === null ? copy.noCurrentValue : copy.substitutionDescription}
+            {value === null
+              ? investmentGrowthPercentFormulaTooltipCopy.noCurrentValue
+              : investmentGrowthPercentFormulaTooltipCopy.substitutionDescription}
           </span>
           {value !== null && (
             <>
               <FormulaMath
-                label={copy.substitutionLabel}
+                label={investmentGrowthPercentFormulaTooltipCopy.substitutionLabel}
                 className="formula-math-substitution"
                 tex={`\\frac{${texText(formatAbbreviatedValue(projection.growth, "currency"))}}{${texText(formatAbbreviatedValue(projection.initialValue, "currency"))}} \\times 100`}
               />

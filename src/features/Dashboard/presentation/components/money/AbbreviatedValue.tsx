@@ -4,7 +4,7 @@ import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { formatFullValue } from "@/features/Dashboard/presentation/formatters/formatFullValue.util";
 import type { ValueUnit } from "@/features/Dashboard/presentation/types/ValueUnit.type";
-import { moneyCopy } from "@/features/Dashboard/presentation/constants/moneyCopy.constant";
+import { moneyCopy } from "@/features/Dashboard/presentation/copies/moneyCopy.copy";
 
 // --- Props ---
 

@@ -1,7 +1,9 @@
-import { copy } from "@/features/Home/IntroSection.constant";
 import { PiggyBank } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function IntroSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="intro-section" aria-labelledby="onboarding-title">
       <div className="intro-grid">
@@ -14,9 +16,11 @@ export function IntroSection() {
             </div>
           </div>
           <h1 id="onboarding-title">
-            {copy.exploraEl} <em>{copy.futuro}</em> {copy.deTuCartera}
+            {t("home.introSection.copy.exploraEl.p1")}{" "}
+            <em>{t("home.introSection.copy.futuro.p1")}</em>{" "}
+            {t("home.introSection.copy.deTuCartera.p1")}
           </h1>
-          <p className="intro-copy">{copy.cargaTuCarteraEnJson}</p>
+          <p className="intro-copy">{t("home.introSection.copy.cargaTuCarteraEnJson.p1")}</p>
         </div>
       </div>
     </section>

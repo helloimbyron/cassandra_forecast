@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { copy } from "@/features/Dashboard/presentation/constants/HeroCard.constant";
+import { heroCardCopy } from "@/features/Dashboard/presentation/copies/heroCard.copy";
 
 const heroCardSource = readFileSync(
   new URL(
@@ -26,7 +26,9 @@ const responsiveStyles = readFileSync(
 
 describe("HeroCard balance and purchasing-power summary", () => {
   it("orders the summary metrics and makes the active inflation mode primary", () => {
-    expect(heroCardSource).toContain("<p>{withInflation ? copy.realValue : copy.nominalValue}</p>");
+    expect(heroCardSource).toContain(
+      "<p>{withInflation ? heroCardCopy.realValue : heroCardCopy.nominalValue}</p>",
+    );
     expect(heroCardSource).toContain(
       "withInflation ? model.realTotalAtHorizon : model.nominalTotalAtHorizon",
     );
@@ -35,9 +37,9 @@ describe("HeroCard balance and purchasing-power summary", () => {
     expect(heroCardSource).toContain("hero-main-with-inflation");
     expect(heroCardSource).toContain("hero-main-without-inflation");
     expect(heroCardSource).toContain("withInflation ? (");
-    expect(heroCardSource).toContain("{copy.realContributionsShort}");
-    expect(heroCardSource).toContain("{copy.nominalContributionsShort}");
-    expect(heroCardSource).toContain("{copy.nominalContributions}");
+    expect(heroCardSource).toContain("{heroCardCopy.realContributionsShort}");
+    expect(heroCardSource).toContain("{heroCardCopy.nominalContributionsShort}");
+    expect(heroCardSource).toContain("{heroCardCopy.nominalContributions}");
     expect(heroCardSource).toContain('<ShoppingCart className="icon-sm" aria-hidden="true" />');
     expect(heroCardSource).toContain(
       '<ChartNoAxesCombined className="icon-sm" aria-hidden="true" />',
@@ -45,24 +47,24 @@ describe("HeroCard balance and purchasing-power summary", () => {
     expect(heroCardSource).toContain('<PiggyBank className="icon-sm" aria-hidden="true" />');
     expect(heroCardSource).toContain('<Percent className="icon-sm" aria-hidden="true" />');
     expect(heroCardSource).toContain('<Info className="icon-sm" aria-hidden="true" />');
-    expect(heroCardSource.match(/label={copy\.contributionsInfoTitle}/g)).toHaveLength(1);
+    expect(heroCardSource.match(/label={heroCardCopy\.contributionsInfoTitle}/g)).toHaveLength(1);
     expect(heroCardSource).toContain('className="hero-contributions-info-trigger"');
-    expect(heroCardSource).toContain("{copy.contributionsInfoExplanation}");
-    expect(copy.contributionsInfoExplanation).toContain("No son aportes adicionales");
+    expect(heroCardSource).toContain("{heroCardCopy.contributionsInfoExplanation}");
+    expect(heroCardCopy.contributionsInfoExplanation).toContain("No son aportes adicionales");
     expect(heroCardSource.indexOf('<h4 className="hero-breakdown-heading">')).toBeLessThan(
       heroCardSource.indexOf('className="hero-contributions-info-trigger"'),
     );
     expect(heroCardSource.indexOf('className="hero-contributions-info-trigger"')).toBeLessThan(
-      heroCardSource.indexOf("{copy.nominalContributionsShort}"),
+      heroCardSource.indexOf("{heroCardCopy.nominalContributionsShort}"),
     );
     expect(heroCardSource).toContain('className="hero-side-stat hero-current-stat"');
     expect(heroCardSource).toContain('className="hero-side-stat hero-contributions-stat"');
     expect(heroCardSource).toContain('className="hero-side-stat hero-growth-stat"');
     expect(heroCardSource).toContain('className="hero-result-value hero-grid-value"');
     expect(heroCardSource).toContain('className="hero-value-label hero-grid-subtitle"');
-    expect(heroCardSource).toContain("{copy.balances}");
-    expect(heroCardSource).toContain("{copy.results}");
-    expect(heroCardSource).toContain("{copy.returnLabel}");
+    expect(heroCardSource).toContain("{heroCardCopy.balances}");
+    expect(heroCardSource).toContain("{heroCardCopy.results}");
+    expect(heroCardSource).toContain("{heroCardCopy.returnLabel}");
     const metricOrder = [
       'className="hero-total"',
       'className="hero-value-secondary"',
@@ -99,8 +101,8 @@ describe("HeroCard balance and purchasing-power summary", () => {
   });
 
   it("explains the balance and contribution comparison with current formatted amounts", () => {
-    const balanceExample = copy.balanceComparisonExample("$189,98K", "$20,82K");
-    const contributionExample = copy.contributionsComparisonExample("$91,2K", "$36,59K");
+    const balanceExample = heroCardCopy.balanceComparisonExample("$189,98K", "$20,82K");
+    const contributionExample = heroCardCopy.contributionsComparisonExample("$91,2K", "$36,59K");
 
     expect(balanceExample).toContain("$189,98K al final");
     expect(balanceExample).toContain("$20,82K");
@@ -108,7 +110,7 @@ describe("HeroCard balance and purchasing-power summary", () => {
     expect(contributionExample).toContain("$91,2K");
     expect(contributionExample).toContain("poder de compra actual");
     expect(contributionExample).toContain("$36,59K");
-    expect(copy.comparisonInfoIntro).toContain("No sumes ambas cifras");
+    expect(heroCardCopy.comparisonInfoIntro).toContain("No sumes ambas cifras");
     expect(balanceExample).not.toMatch(/2026/i);
     expect(contributionExample).not.toMatch(/2026|inflación/i);
   });

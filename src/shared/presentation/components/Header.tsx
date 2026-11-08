@@ -1,5 +1,5 @@
-import { brandLabel } from "@/shared/presentation/constants/brand.constant";
-import { copy } from "@/shared/presentation/constants/Header.constant";
+import { brandLabel } from "@/shared/presentation/copies/brand.copy";
+import { headerCopy } from "@/shared/presentation/copies/header.copy";
 import { Upload } from "lucide-react";
 import { BrandMark } from "@/shared/presentation/components/BrandMark";
 import { ThemeToggle } from "@/shared/presentation/components/ThemeToggle";
@@ -38,7 +38,7 @@ export function Header({
           className="brand"
           href={homeHref}
           onClick={handleBrandClick}
-          aria-label={copy.cassandraInicio}
+          aria-label={headerCopy.cassandraInicio}
         >
           <span className="brand-mark">
             <BrandMark />
@@ -47,7 +47,7 @@ export function Header({
         </a>
       </div>
       {projectionControls}
-      <div className="topbar-actions" role="group" aria-label={copy.headerActions}>
+      <div className="topbar-actions" role="group" aria-label={headerCopy.headerActions}>
         {onChangeJson && (
           <Button
             type="button"
@@ -55,8 +55,8 @@ export function Header({
             size="icon"
             className="change-json-toggle"
             onClick={onChangeJson}
-            aria-label={copy.cambiarJson}
-            title={copy.cambiarJson}
+            aria-label={headerCopy.cambiarJson}
+            title={headerCopy.cambiarJson}
           >
             <Upload aria-hidden="true" />
           </Button>

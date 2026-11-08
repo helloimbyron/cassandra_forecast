@@ -69,7 +69,7 @@ describe("chart data transformation", () => {
     expect(rows).toHaveLength(2);
     expect(rows[0]?.year).toBe("Hoy");
     expect(rows[0]?.total).toBe(7_000);
-    expect(rows[1]?.year).toBe("1 años");
+    expect(rows[1]?.year).toBe("1 año");
     expect(Number(rows[1]?.total)).toBeGreaterThan(7_000);
     expect(rows[1]?.invested).toBeCloseTo(10_799.92, 8);
   });

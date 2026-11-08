@@ -1,6 +1,6 @@
-import { labels } from "@/features/Dashboard/presentation/constants/labels.constant";
-import { projectedBalanceLabel } from "@/features/Dashboard/presentation/utils/projectedBalanceLabel.util";
-import { copy } from "@/features/Dashboard/presentation/constants/InvestmentCard.constant";
+import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
+import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
+import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";
 import type { Investment } from "@/shared/domain/types/Investment.type";
 import type { HoldingProjection } from "@/shared/domain/types/HoldingProjection.type";
 import type { DashboardModel } from "@/features/Dashboard/presentation/types/DashboardModel.type";
@@ -56,7 +56,7 @@ export function HoldingRow({
         </label>
         <NumericUnitInput
           id={`contribution-${holding.id}`}
-          label={copy.contributionFor(holding.label)}
+          label={investmentCardCopy.contributionFor(holding.label)}
           unit="money"
           min={MIN_CONTRIBUTION}
           value={holding.monthlyContribution}

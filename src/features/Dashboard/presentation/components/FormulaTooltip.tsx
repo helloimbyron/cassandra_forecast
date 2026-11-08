@@ -1,4 +1,4 @@
-import { copy } from "@/features/Dashboard/presentation/constants/FormulaTooltip.constant";
+import { formulaTooltipCopy } from "@/features/Dashboard/presentation/copies/formulaTooltip.copy";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { X } from "lucide-react";
@@ -35,7 +35,7 @@ export function FormulaTooltip({
         <button
           type="button"
           className={className ? `formula-tooltip-trigger ${className}` : "formula-tooltip-trigger"}
-          aria-label={triggerLabel ?? copy.formulaFor(label)}
+          aria-label={triggerLabel ?? formulaTooltipCopy.formulaFor(label)}
         >
           {trigger}
         </button>
@@ -49,7 +49,11 @@ export function FormulaTooltip({
             {example && <p className="formula-tooltip-example">{example}</p>}
           </div>
           <DialogPrimitive.Close asChild>
-            <button className="formula-dialog-close" type="button" aria-label={copy.cerrarFormula}>
+            <button
+              className="formula-dialog-close"
+              type="button"
+              aria-label={formulaTooltipCopy.cerrarFormula}
+            >
               <X className="icon-sm" aria-hidden="true" />
             </button>
           </DialogPrimitive.Close>
