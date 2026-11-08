@@ -1,14 +1,8 @@
 ---
 import SiteLayout from "@/app/layouts/SiteLayout.astro";
-import { Dashboard } from "@/features/Portfolio/portfolio.client";
+import { DashboardRoute } from "@/app/client";
 ---
 
 <SiteLayout>
-  <script is:inline>
-    const navigationEntry = performance.getEntriesByType("navigation")[0];
-    if (navigationEntry?.type === "reload") {
-      window.location.replace("/");
-    }
-  </script>
-  <Dashboard initialPage="dashboard" client:load />
+  <DashboardRoute client:load />
 </SiteLayout>

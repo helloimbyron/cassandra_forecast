@@ -1,0 +1,107 @@
+
+
+.intro-section {
+  padding-block: var(--space-6) var(--space-3);
+}
+
+.intro-grid {
+  min-height: 0;
+}
+
+.intro-orbit {
+  width: var(--size-11);
+  height: var(--size-7);
+}
+
+.orbit-one {
+  width: var(--size-8-5);
+  height: var(--size-5);
+}
+
+.orbit-two {
+  width: var(--size-10-5);
+  height: var(--size-6-25);
+}
+
+.orbit-core {
+  width: var(--space-6);
+  height: var(--space-6);
+  border-radius: var(--space-3);
+}
+
+h1 {
+  font-size: var(--text-intro-mobile);
+}
+
+.import-card {
+  min-height: var(--size-13);
+  padding: var(--space-5) var(--space-4);
+}
+
+.import-actions {
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.import-actions button {
+  width: 100%;
+  max-width: none;
+}
+
+.import-meta {
+  align-items: center;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+@media (width >= 30rem) {
+  h1 {
+    font-size: var(--text-intro);
+  }
+
+  .import-card {
+    min-height: var(--size-14);
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .import-actions {
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .import-actions button {
+    width: auto;
+    max-width: var(--size-15);
+  }
+
+  .import-meta {
+    flex-direction: row;
+    gap: var(--space-2) var(--space-3);
+  }
+}
+
+@media (width >= 46rem) {
+  .intro-section {
+    padding-block: var(--space-7) var(--space-5);
+  }
+
+  .intro-orbit {
+    width: var(--size-13);
+    height: var(--size-8-5);
+  }
+
+  .orbit-one {
+    width: var(--size-10-5);
+    height: var(--size-6-25);
+  }
+
+  .orbit-two {
+    width: var(--size-12-5);
+    height: var(--size-7-5);
+  }
+
+  .orbit-core {
+    width: var(--space-65);
+    height: var(--space-65);
+  }
+}

@@ -8,7 +8,10 @@ const tokens = readFileSync(
 const stylesDirectories = [
   new URL("../../../src/app/styles/", import.meta.url),
   new URL("../../../src/design-system/styles/", import.meta.url),
-  new URL("../../../src/features/Portfolio/presentation/styles/", import.meta.url),
+  new URL("../../../src/features/Dashboard/presentation/styles/", import.meta.url),
+  new URL("../../../src/features/Home/", import.meta.url),
+  new URL("../../../src/features/Home/presentation/styles/", import.meta.url),
+  new URL("../../../src/shared/presentation/styles/", import.meta.url),
 ];
 const styles = stylesDirectories.flatMap((directory) =>
   readdirSync(directory)
@@ -63,7 +66,7 @@ describe("design-system contract", () => {
 
   it("does not size presentation icons individually", () => {
     const components = new URL(
-      "../../../src/features/Portfolio/presentation/components/",
+      "../../../src/features/Dashboard/presentation/components/",
       import.meta.url,
     );
     for (const name of readdirSync(components).filter((file) => file.endsWith(".tsx"))) {

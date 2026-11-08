@@ -5,9 +5,11 @@
 @import "../../design-system/styles/tokens.css";
 @import "../../design-system/styles/foundation.css";
 @import "../../design-system/styles/primitives.css";
-@import "../../features/Portfolio/presentation/styles/import.css";
-@import "../../features/Portfolio/presentation/styles/dashboard-heading-hero.css";
-@import "../../features/Portfolio/presentation/styles/overview.css";
-@import "../../features/Portfolio/presentation/styles/investments.css";
-@import "../../features/Portfolio/presentation/styles/table-closing.css";
-@import "../../features/Portfolio/presentation/styles/responsive.css";
+@import "../../features/Home/home.css";
+@import "../../features/Home/presentation/styles/responsive.css";
+@import "../../features/Dashboard/presentation/styles/dashboard-heading-hero.css";
+@import "../../features/Dashboard/presentation/styles/overview.css";
+@import "../../features/Dashboard/presentation/styles/investments.css";
+@import "../../features/Dashboard/presentation/styles/table-closing.css";
+@import "../../features/Dashboard/presentation/styles/responsive.css";
+@import "../../shared/presentation/styles/responsive.css";

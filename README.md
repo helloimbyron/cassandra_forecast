@@ -1,6 +1,6 @@
 # Cassandra · visualizador de inversiones
 
-Sitio estático con Astro, React, shadcn/ui y Recharts para explorar proyecciones compuestas desde un JSON local.
+Sitio estático con Astro, React, shadcn/ui y Recharts para explorar proyecciones compuestas desde un JSON local. La experiencia se divide en las features `Home` (bienvenida e importación) y `Dashboard` (proyecciones); el modelo de cartera y su importación compartidos viven en `src/shared`.
 
 ## Ejecutar localmente
 
@@ -20,7 +20,7 @@ pnpm preview
 
 ## Importar tu cartera
 
-Desde la pantalla inicial (`/`), selecciona tu propio JSON. Tras cargarlo, la aplicación abre `/dashboard`; la marca Cassandra vuelve a `/` y descarta la cartera. La ruta `/dashboard` abierta directamente muestra el JSON público de ejemplo, mientras que recargarla vuelve a `/`. Las carteras importadas solo viven en memoria y no se guardan en el navegador. El archivo inicial está en `data/portfolio.json`. **La carpeta `data/` está excluida de Git y ese archivo no se incluye en `dist/`.** No lo subas a un alojamiento público.
+Desde la pantalla inicial (`/`), selecciona tu propio JSON. Tras cargarlo, la aplicación abre `/dashboard`; la marca Cassandra vuelve a `/` y descarta la cartera. La ruta `/dashboard`, abierta directamente o recargada sin una cartera en memoria, muestra el JSON público de ejemplo. Las carteras importadas solo viven en memoria y no se guardan en el navegador. El archivo inicial está en `data/portfolio.json`. **La carpeta `data/` está excluida de Git y ese archivo no se incluye en `dist/`.** No lo subas a un alojamiento público.
 
 `public/portfolio.example.json` es un ejemplo ilustrativo para explorar la app o descargar el formato. «Mostrar Ejemplo» carga esa cartera en el dashboard; el enlace inferior descarga el JSON. Los rendimientos del ejemplo son supuestos para comparar escenarios, no ofertas ni recomendaciones financieras. Las notas de cada inversión enlazan fuentes públicas y aclaran si la cifra procede de un tarifario o es una hipótesis editable. Por ejemplo, el BCE publica un promedio de ahorro, no un rendimiento garantizado para cada cuenta; el 5% de Bitcoin es un supuesto fijo, no una predicción de su precio volátil. Los $8,33 mensuales de los plazos fijos suman $99,96 al año; el modelo no simula un depósito único anual de $100.
 

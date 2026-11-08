@@ -1,8 +1,9 @@
 ---
 import SiteLayout from "@/app/layouts/SiteLayout.astro";
-import { Dashboard } from "@/features/Portfolio/portfolio.client";
+import { HomeRoute } from "@/app/client";
 ---
 
 <SiteLayout>
-  <Dashboard initialPage="home" client:load />
+  <HomeRoute client:load />
 </SiteLayout>
+
