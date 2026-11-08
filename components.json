@@ -13,9 +13,9 @@
   "iconLibrary": "lucide",
   "rtl": false,
   "aliases": {
-    "components": "@/design-system/components",
+    "components": "@/libraries/shadcn/components",
     "utils": "@/libraries/shadcn/utils/cn.util",
-    "ui": "@/design-system/components",
+    "ui": "@/libraries/shadcn/components",
     "hooks": "@/features/Portfolio/presentation/hooks"
   },
   "menuColor": "default",

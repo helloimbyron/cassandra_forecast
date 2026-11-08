@@ -8,6 +8,7 @@ const tokens = readFileSync(
 const stylesDirectories = [
   new URL("../../../src/app/styles/", import.meta.url),
   new URL("../../../src/design-system/styles/", import.meta.url),
+  new URL("../../../src/libraries/shadcn/styles/", import.meta.url),
   new URL("../../../src/features/Dashboard/presentation/styles/", import.meta.url),
   new URL("../../../src/features/Home/", import.meta.url),
   new URL("../../../src/features/Home/presentation/styles/", import.meta.url),

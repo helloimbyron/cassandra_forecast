@@ -1,6 +1,6 @@
 import { importSectionCopy } from "@/features/Home/presentation/copies/importSection.copy";
 import type { PortfolioImportController } from "@/shared/presentation/types/PortfolioImportController.type";
-import { Button } from "@/design-system/components/Button";
+import { Button } from "@/libraries/shadcn/components/Button";
 import { Eye } from "lucide-react";
 import { Upload } from "lucide-react";
 import { Download } from "lucide-react";

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Slider } from "@/design-system/components/sliders/Slider";
-import { INPUT_DEBOUNCE_MS } from "@/design-system/constants/inputDebounceMs.constant";
+import { Slider } from "@/libraries/shadcn/components/Slider";
+import { INPUT_DEBOUNCE_MS } from "@/libraries/cassandra/constants/inputDebounceMs.constant";
 import { createDebouncedCallback } from "@/shared/utils/createDebouncedCallback.util";
 import { areNumberArraysEqual } from "@/shared/utils/areNumberArraysEqual.util";
 

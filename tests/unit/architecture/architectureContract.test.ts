@@ -103,7 +103,12 @@ describe("architecture contract", () => {
   it("keeps generator aliases aligned with resolvable modules", () => {
     const config = JSON.parse(
       readFileSync(new URL("../../../components.json", import.meta.url), "utf8"),
-    ) as { aliases: { lib?: string; utils: string } };
+    ) as { aliases: { components: string; lib?: string; ui: string; utils: string } };
+    expect(config.aliases.components).toBe("@/libraries/shadcn/components");
+    expect(config.aliases.ui).toBe("@/libraries/shadcn/components");
+    expect(
+      existsSync(new URL("../../../src/libraries/shadcn/components/", import.meta.url)),
+    ).toBe(true);
     expect(config.aliases.utils).toBe("@/libraries/shadcn/utils/cn.util");
     expect(
       existsSync(new URL("../../../src/libraries/shadcn/utils/cn.util.ts", import.meta.url)),

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type ChangeEvent, type KeyboardEvent } from "react";
-import { Input } from "@/design-system/components/Input";
+import { Input } from "@/libraries/shadcn/components/Input";
 import { formatNumericUnitValue } from "@/features/Dashboard/presentation/formatters/formatNumericUnitValue.util";
 import { parseNumericUnitValue } from "@/features/Dashboard/presentation/formatters/parseNumericUnitValue.util";
 import { adjacentStepValue } from "@/features/Dashboard/presentation/utils/adjacentStepValue.util";
-import { INPUT_DEBOUNCE_MS } from "@/design-system/constants/inputDebounceMs.constant";
+import { INPUT_DEBOUNCE_MS } from "@/libraries/cassandra/constants/inputDebounceMs.constant";
 import { createDebouncedCallback } from "@/shared/utils/createDebouncedCallback.util";
 
 // --- Props ---

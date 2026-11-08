@@ -1,4 +1,4 @@
-import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
+import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";

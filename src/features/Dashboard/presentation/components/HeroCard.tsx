@@ -4,7 +4,7 @@ import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util"
 import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
 import { heroCardCopy } from "@/features/Dashboard/presentation/copies/heroCard.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
+import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import {

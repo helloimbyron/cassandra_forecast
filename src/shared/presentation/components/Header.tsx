@@ -3,7 +3,7 @@ import { headerCopy } from "@/shared/presentation/copies/header.copy";
 import { Upload } from "lucide-react";
 import { BrandMark } from "@/shared/presentation/components/BrandMark";
 import { ThemeToggle } from "@/shared/presentation/components/ThemeToggle";
-import { Button } from "@/design-system/components/Button";
+import { Button } from "@/libraries/shadcn/components/Button";
 import type { MouseEvent, ReactNode } from "react";
 
 // --- Components ---

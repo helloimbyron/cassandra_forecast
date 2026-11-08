@@ -1,6 +1,6 @@
 import { themeToggleCopy } from "@/shared/presentation/copies/themeToggle.copy";
 import { useState } from "react";
-import { Button } from "@/design-system/components/Button";
+import { Button } from "@/libraries/shadcn/components/Button";
 import { Sun } from "lucide-react";
 import { Moon } from "lucide-react";
 import { THEME_CONSTANTS } from "@/design-system/themes/themeConstants.constant";

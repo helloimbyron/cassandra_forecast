@@ -1,11 +1,11 @@
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { allocationPanelCopy } from "@/features/Dashboard/presentation/copies/allocationPanel.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import { Card } from "@/design-system/components/cards/Card";
-import { CardHeader } from "@/design-system/components/cards/CardHeader";
-import { CardTitle } from "@/design-system/components/cards/CardTitle";
-import { CardDescription } from "@/design-system/components/cards/CardDescription";
-import { CardContent } from "@/design-system/components/cards/CardContent";
+import { Card } from "@/libraries/shadcn/components/cards/Card";
+import { CardHeader } from "@/libraries/shadcn/components/cards/CardHeader";
+import { CardTitle } from "@/libraries/shadcn/components/cards/CardTitle";
+import { CardDescription } from "@/libraries/shadcn/components/cards/CardDescription";
+import { CardContent } from "@/libraries/shadcn/components/cards/CardContent";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 import { AbbreviatedValue } from "@/features/Dashboard/presentation/components/money/AbbreviatedValue";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";

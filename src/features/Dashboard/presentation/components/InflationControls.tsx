@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Info, Link2 } from "lucide-react";
-import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
+import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { headerCopy } from "@/shared/presentation/copies/header.copy";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";

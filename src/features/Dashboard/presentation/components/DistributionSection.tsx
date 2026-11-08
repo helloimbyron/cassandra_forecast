@@ -19,15 +19,15 @@ import {
   PiggyBank,
 } from "lucide-react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
-import { Card } from "@/design-system/components/cards/Card";
-import { CardContent } from "@/design-system/components/cards/CardContent";
-import { CardDescription } from "@/design-system/components/cards/CardDescription";
-import { CardHeader } from "@/design-system/components/cards/CardHeader";
-import { CardTitle } from "@/design-system/components/cards/CardTitle";
-import { Badge } from "@/design-system/components/Badge";
+import { Card } from "@/libraries/shadcn/components/cards/Card";
+import { CardContent } from "@/libraries/shadcn/components/cards/CardContent";
+import { CardDescription } from "@/libraries/shadcn/components/cards/CardDescription";
+import { CardHeader } from "@/libraries/shadcn/components/cards/CardHeader";
+import { CardTitle } from "@/libraries/shadcn/components/cards/CardTitle";
+import { Badge } from "@/libraries/shadcn/components/Badge";
 import { NumericUnitInput } from "@/features/Dashboard/presentation/components/NumericUnitInput";
-import { Label } from "@/design-system/components/Label";
-import { DebouncedSlider } from "@/design-system/components/sliders/DebouncedSlider";
+import { Label } from "@/libraries/shadcn/components/Label";
+import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 import { AbbreviatedValue } from "@/features/Dashboard/presentation/components/money/AbbreviatedValue";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
