@@ -1,0 +1,20 @@
+export const PORTFOLIO_SCHEMA_VERSION = 1 as const;
+import { MONEY_CURRENCY } from "../../../shared/format/money-constants";
+
+export const PORTFOLIO_CURRENCY = MONEY_CURRENCY;
+export const DEFAULT_HORIZON_YEARS = 20;
+export const MIN_HORIZON_YEARS = 0;
+export const MAX_HORIZON_YEARS = 40;
+export const MONTHS_PER_YEAR = 12;
+export const PERCENT_SCALE = 100;
+export const MIN_ANNUAL_RATE_PCT = -100;
+export const MIN_ANNUAL_RATE_INPUT_PCT = -99;
+export const MAX_ANNUAL_RATE_PCT = 1000;
+export const ANNUAL_RATE_INPUT_STEP = 0.01;
+export const MIN_CONTRIBUTION = 0;
+export const CONTRIBUTION_INPUT_STEP = 10;
+export const HORIZON_STEP = 1;
+export const MIN_INFLATION_RATE_PCT = 0.05;
+export const MAX_INFLATION_RATE_PCT = 10;
+export const INFLATION_RATE_STEP_PCT = 0.05;
+export const MAX_IMPORT_BYTES = 1_000_000;

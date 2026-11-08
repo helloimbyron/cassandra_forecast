@@ -1,0 +1,176 @@
+/* Import state */
+.intro-section {
+  padding: var(--space-7) 0 var(--space-5);
+}
+
+.intro-grid {
+  min-height: 0;
+}
+
+.intro-content {
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 auto var(--space-3);
+  color: var(--text-strong);
+  font-size: var(--text-intro);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tighter);
+  line-height: var(--leading-tight);
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+h1 em {
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-tighter);
+}
+
+.intro-copy {
+  max-width: var(--size-42);
+  margin: 0 auto;
+  color: var(--text-soft);
+  font-size: var(--text-card-title);
+  line-height: var(--leading-body);
+}
+
+.intro-orbit {
+  position: relative;
+  width: var(--size-13);
+  max-width: 100%;
+  height: var(--size-8-5);
+  display: grid;
+  place-items: center;
+  margin: 0 auto var(--space-3);
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: var(--line-thin) solid var(--border);
+  border-radius: 50%;
+}
+
+.orbit-one {
+  width: var(--size-10-5);
+  height: var(--size-6-25);
+  transform: translate(-50%, -50%) rotate(-25deg);
+}
+
+.orbit-two {
+  width: var(--size-12-5);
+  height: var(--size-7-5);
+  transform: translate(-50%, -50%) rotate(35deg);
+}
+
+.orbit-core {
+  position: relative;
+  z-index: var(--layer-content);
+  width: var(--space-65);
+  height: var(--space-65);
+  display: grid;
+  place-items: center;
+  border-radius: var(--space-3);
+  color: var(--primary);
+  background: var(--surface-tint);
+  box-shadow: var(--shadow-card);
+}
+
+.import-section {
+  width: min(100%, var(--size-58));
+  margin-inline: auto;
+  padding: 0 0 var(--space-7);
+}
+
+.import-card {
+  min-height: var(--size-14);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-5);
+  border: var(--line-medium) dashed var(--input);
+  border-radius: var(--radius-card);
+  background: var(--surface-raised);
+  text-align: center;
+  transition:
+    background var(--motion-slow),
+    border-color var(--motion-slow);
+}
+
+.import-card.is-dragging {
+  background: var(--surface-tint);
+  border-color: var(--primary);
+}
+
+.import-actions {
+  width: min(100%, var(--size-32));
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-inline: auto;
+}
+
+.import-actions button {
+  min-height: var(--control-height);
+  flex: 1;
+  max-width: var(--size-15);
+  gap: var(--space-1);
+  padding-inline: var(--space-35);
+}
+
+.sample-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--space-5);
+  color: var(--primary);
+  font-size: var(--text-meta);
+  text-decoration: underline;
+  text-underline-offset: var(--underline-offset);
+  font-weight: var(--font-weight-medium);
+}
+
+.import-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-1);
+  border-top: var(--line-thin) solid var(--border-subtle);
+  padding-top: var(--space-2);
+}
+
+.import-conventions-note {
+  max-width: var(--size-48);
+  margin: 0 auto;
+  color: var(--text-soft);
+  font-size: var(--text-meta);
+  line-height: var(--leading-body);
+}
+
+.sample-link:hover {
+  color: var(--accent-foreground);
+}
+
+.drop-hint {
+  color: var(--text-soft);
+  font-size: var(--text-meta);
+}
+
+.error-message {
+  margin: var(--space-3) 0 0 !important;
+  color: var(--destructive) !important;
+  font-size: var(--text-body) !important;
+  font-weight: var(--font-weight-semibold);
+}
+
+.import-card > .error-message {
+  text-align: center;
+}

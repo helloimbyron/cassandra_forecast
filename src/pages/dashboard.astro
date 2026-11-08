@@ -1,0 +1,12 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Dashboard from "../components/Dashboard";
+---
+
+<SiteLayout>
+  <script is:inline>
+    const navigationEntry = performance.getEntriesByType("navigation")[0];
+    if (navigationEntry?.type === "reload") window.location.replace("/");
+  </script>
+  <Dashboard initialPage="dashboard" client:load />
+</SiteLayout>

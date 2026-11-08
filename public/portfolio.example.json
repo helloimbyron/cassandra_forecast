@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "currency": "USD",
+  "asOf": "2026-11-07",
+  "inflation": {
+    "annualRatePct": 2.1,
+    "note": "El BCE proyecta una inflación promedio anual de 2,1% para 2026. Se mantiene constante en la proyección como supuesto ilustrativo, no como pronóstico a largo plazo.",
+    "source": {
+      "url": "https://www.bce.fin.ec/el-bce-eleva-a-27-la-prevision-de-crecimiento-economico-de-ecuador-para-2026/",
+      "asOf": "2026-09-15"
+    }
+  },
+  "investments": [
+    {
+      "id": "plazo-fijo-banco-ecuador",
+      "name": "Plazo fijo bancario (ECU)",
+      "category": "policy",
+      "annualRatePct": 4,
+      "rateNote": "Rendimiento efectivo anual supuesto de 4%. Como referencia, el tarifario de Banco Pichincha publica 4,10% para $500–$4.999,99 a 361 días o más en agencia (noviembre de 2026). La proyección usa un rendimiento constante; el depósito real tiene plazo y condiciones propios.",
+      "rateSource": {
+        "url": "https://www.pichincha.com/sites/default/files/documents/2026-10/tarifario-web-noviembre-2026.pdf",
+        "asOf": "2026-11"
+      },
+      "holdings": [
+        {
+          "id": "plazo-fijo-banco-position",
+          "label": "Depósito inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 8.33
+        }
+      ]
+    },
+    {
+      "id": "plazo-fijo-cooperativa-ecuador",
+      "name": "Plazo fijo en cooperativa (ECU)",
+      "category": "policy",
+      "annualRatePct": 6,
+      "rateNote": "Rendimiento efectivo anual supuesto de 6%. Como referencia, el tarifario público de CACEL indica 6,40% para personas naturales hasta $10.000 a más de 360 días (mayo de 2026). No es una oferta ni contempla depósitos mensuales en un plazo fijo.",
+      "rateSource": {
+        "url": "https://www.cacel.com.ec/wp-content/uploads/2026/05/tarifario_mayo_2026_V2.pdf",
+        "asOf": "2026-05"
+      },
+      "holdings": [
+        {
+          "id": "plazo-fijo-cooperativa-position",
+          "label": "Depósito inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 8.33
+        }
+      ]
+    },
+    {
+      "id": "cuenta-ahorro-ecuador",
+      "name": "Cuenta de ahorro (ECU)",
+      "category": "savings",
+      "annualRatePct": 1,
+      "rateNote": "Rendimiento efectivo anual supuesto de 1%, inferior al promedio de 1,60% para depósitos de ahorro publicado por el BCE en noviembre de 2026. Las tasas de cuentas concretas varían según banco, cuenta y saldo; algunas pagan menos o 0%.",
+      "rateSource": {
+        "url": "https://contenido.bce.fin.ec/documentos/Estadisticas/SectorMonFin/TasasInteres/Indice.htm",
+        "asOf": "2026-11"
+      },
+      "holdings": [
+        {
+          "id": "cuenta-ahorro-initial",
+          "label": "Saldo inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 0
+        }
+      ]
+    },
+    {
+      "id": "ftse-all-world",
+      "name": "FTSE All-World (VWRA.UK)",
+      "category": "etf",
+      "annualRatePct": 5,
+      "rateNote": "Rendimiento efectivo anual supuesto de 5%, en un escenario nominal ilustrativo; no es una tasa publicada por el fondo ni un pronóstico del FTSE All-World. Vanguard publica rangos hipotéticos a diez años para acciones de EE. UU. e internacionales; el 5% es editable para una cartera global diversificada. Los rendimientos pasados o las perspectivas no garantizan resultados.",
+      "rateSource": {
+        "url": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/vemo-return-forecasts.html",
+        "asOf": "2026-09-30"
+      },
+      "holdings": [
+        {
+          "id": "ftse-all-world-initial",
+          "label": "Inversión inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 0
+        },
+        {
+          "id": "ftse-all-world-monthly",
+          "label": "Aporte mensual",
+          "currentValue": 0,
+          "monthlyContribution": 100
+        }
+      ]
+    },
+    {
+      "id": "sp500",
+      "name": "SP500",
+      "category": "etf",
+      "annualRatePct": 5,
+      "rateNote": "Rendimiento efectivo anual supuesto de 5%, en un escenario nominal ilustrativo; no es un rendimiento garantizado del S&P 500. Vanguard publica un rango hipotético anualizado de 4,8–6,8% para acciones estadounidenses a diez años (corte 30-09-2026); el 5% es editable y no es un pronóstico específico del índice.",
+      "rateSource": {
+        "url": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/vemo-return-forecasts.html",
+        "asOf": "2026-09-30"
+      },
+      "holdings": [
+        {
+          "id": "sp500-initial",
+          "label": "Inversión inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 0
+        },
+        {
+          "id": "sp500-monthly",
+          "label": "Aporte mensual",
+          "currentValue": 0,
+          "monthlyContribution": 100
+        }
+      ]
+    },
+    {
+      "id": "oro",
+      "name": "Oro",
+      "category": "commodity",
+      "annualRatePct": 2,
+      "rateNote": "Rendimiento efectivo anual supuesto de 2%, en un escenario nominal para el ejemplo; no es una tasa publicada, promesa ni pronóstico de iShares. El oro fluctúa: la página pública de iShares muestra exposición al precio del oro y advierte que el valor puede bajar o subir; el rendimiento futuro es incierto.",
+      "rateSource": {
+        "url": "https://www.ishares.com/us/products/239561/ishares-gold-trust-fund",
+        "asOf": "2026-11-06"
+      },
+      "holdings": [
+        {
+          "id": "oro-initial",
+          "label": "Inversión inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 0
+        }
+      ]
+    },
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "category": "crypto",
+      "annualRatePct": 5,
+      "rateNote": "Rendimiento efectivo anual supuesto de 5%, en un escenario nominal hipotético y editable para modelar compras mensuales; no es una tasa publicada, rendimiento esperado ni predicción. Bitcoin puede subir o bajar bruscamente; la SEC advierte sobre su volatilidad y riesgo de pérdida.",
+      "rateSource": {
+        "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/crypto-asset-related-investments",
+        "asOf": "2026-11-07"
+      },
+      "holdings": [
+        {
+          "id": "bitcoin-monthly",
+          "label": "Compra mensual",
+          "currentValue": 0,
+          "monthlyContribution": 100
+        }
+      ]
+    },
+    {
+      "id": "dinero-efectivo",
+      "name": "Dinero en efectivo",
+      "category": "cash",
+      "annualRatePct": 0,
+      "rateNote": "Rendimiento efectivo anual supuesto de 0%: los $1.000 permanecen constantes en dólares corrientes. La pérdida de poder adquisitivo por la inflación de la cartera se refleja en el modo «Con inflación».",
+      "rateSource": null,
+      "holdings": [
+        {
+          "id": "dinero-efectivo-initial",
+          "label": "Saldo inicial",
+          "currentValue": 1000,
+          "monthlyContribution": 0
+        }
+      ]
+    }
+  ]
+}
