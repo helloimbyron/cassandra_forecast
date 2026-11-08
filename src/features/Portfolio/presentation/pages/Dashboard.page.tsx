@@ -18,7 +18,7 @@ type DashboardPage = "home" | "dashboard";
 
 // --- Components ---
 
-export default function Dashboard({ initialPage = "home" }: { initialPage?: DashboardPage }) {
+export function Dashboard({ initialPage = "home" }: { initialPage?: DashboardPage }) {
 
   // --- States ---
 
@@ -98,10 +98,12 @@ export default function Dashboard({ initialPage = "home" }: { initialPage?: Dash
       if (window.location.pathname === "/") {
         clearPortfolio();
         setPage("home");
-      } else if (window.location.pathname === "/dashboard") {
-        setPage("dashboard");
-        if (!portfolio) {
-          void loadExample();
+      } else {
+        if (window.location.pathname === "/dashboard") {
+          setPage("dashboard");
+          if (!portfolio) {
+            void loadExample();
+          }
         }
       }
     }

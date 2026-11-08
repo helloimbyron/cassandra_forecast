@@ -15,15 +15,21 @@ import { copy as tableCopy } from "@/features/Portfolio/presentation/constants/T
 import { projectedPositionLabel } from "../../../../../src/features/Portfolio/presentation/utils/projectedPositionLabel.util";
 
 function collectTypeScriptFiles(directory: string): string[] {
+
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
-    if (entry.isDirectory()) return collectTypeScriptFiles(path);
+    if (entry.isDirectory()) {
+
+      return collectTypeScriptFiles(path);
+    }
+
     return /\.tsx?$/.test(entry.name) ? [path] : [];
   });
 }
 
 function resolveTypeScriptImport(importer: string, modulePath: string) {
   const base = resolve(dirname(importer), modulePath);
+
   return [base, `${base}.ts`, `${base}.tsx`, join(base, "index.ts"), join(base, "index.tsx")].find(
     (path) => existsSync(path),
   );
@@ -41,13 +47,20 @@ function findUnusedCopyCatalogKeys(copyCatalogPaths: string[], consumerPaths: st
     );
     const aliases = new Map<string, string>();
     for (const statement of source.statements) {
-      if (!ts.isImportDeclaration(statement) || !ts.isStringLiteral(statement.moduleSpecifier))
+      if (!ts.isImportDeclaration(statement) || !ts.isStringLiteral(statement.moduleSpecifier)) {
+
         continue;
+      }
       const resolvedPath = resolveTypeScriptImport(path, statement.moduleSpecifier.text);
-      if (!resolvedPath || !statement.importClause || !statement.importClause.namedBindings)
+      if (!resolvedPath || !statement.importClause || !statement.importClause.namedBindings) {
+
         continue;
+      }
       const namedBindings = statement.importClause.namedBindings;
-      if (!ts.isNamedImports(namedBindings)) continue;
+      if (!ts.isNamedImports(namedBindings)) {
+
+        continue;
+      }
       for (const element of namedBindings.elements) {
         if (
           element.propertyName?.text === "copy" ||
@@ -93,7 +106,9 @@ function findUnusedCopyCatalogKeys(copyCatalogPaths: string[], consumerPaths: st
         for (const property of node.initializer.properties) {
           if (ts.isPropertyAssignment(property) || ts.isMethodDeclaration(property)) {
             const name = property.name;
-            if (ts.isIdentifier(name) || ts.isStringLiteral(name)) keys.push(name.text);
+            if (ts.isIdentifier(name) || ts.isStringLiteral(name)) {
+              keys.push(name.text);
+            }
           }
         }
       }
@@ -101,6 +116,7 @@ function findUnusedCopyCatalogKeys(copyCatalogPaths: string[], consumerPaths: st
     };
     visit(source);
     const usedKeys = references.get(path) ?? new Set<string>();
+
     return keys.filter((key) => !usedKeys.has(key)).map((key) => `${path}:${key}`);
   });
 }
@@ -141,8 +157,9 @@ describe("UI copy catalogs", () => {
           ts.ScriptKind.TSX,
         );
         const visit = (node: ts.Node) => {
-          if (ts.isJsxText(node) && node.getText(source).trim())
+          if (ts.isJsxText(node) && node.getText(source).trim()) {
             violations.push(`${file}: JSX text`);
+          }
           if (
             ts.isJsxAttribute(node) &&
             visibleAttributes.has(node.name.getText(source)) &&

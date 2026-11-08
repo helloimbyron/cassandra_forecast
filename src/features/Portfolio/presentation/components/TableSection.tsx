@@ -3,7 +3,7 @@ import { ChevronDown, Columns3 } from "lucide-react";
 import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
 import { copy } from "@/features/Portfolio/presentation/constants/TableSection.constant";
-import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/types/LoadedDashboardModel.type";
 import { Card, CardContent } from "@/design-system/components/Card";
 import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
 import { getVisibleInvestmentTotal } from "@/features/Portfolio/presentation/utils/getVisibleInvestmentTotal.util";

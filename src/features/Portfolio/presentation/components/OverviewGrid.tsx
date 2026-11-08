@@ -1,4 +1,4 @@
-import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/types/LoadedDashboardModel.type";
 import { PortfolioChartPanel } from "@/features/Portfolio/presentation/components/PortfolioChartPanel";
 import { AllocationPanel } from "@/features/Portfolio/presentation/components/AllocationPanel";
 

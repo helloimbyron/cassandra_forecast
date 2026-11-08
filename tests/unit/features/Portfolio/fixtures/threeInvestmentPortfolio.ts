@@ -6,5 +6,6 @@ export function threeInvestmentPortfolio(example: Portfolio): Portfolio {
   third.id = "third-example";
   third.holdings[0]!.id = "third-example-holding";
   portfolio.investments.push(third);
+
   return portfolio;
 }

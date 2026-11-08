@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatAbbreviatedValue } from "../../../../../src/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "../../../../../src/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 
 describe("presentation percent formatting", () => {
   it("shows ordinary percentages at two decimals", () => {

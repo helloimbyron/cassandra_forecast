@@ -9,7 +9,7 @@ import { readPortfolioFile } from "@/features/Portfolio/infrastructure/services/
 import { importMessages } from "@/features/Portfolio/infrastructure/constants/importMessages.constant";
 import { createPortfolioChartData } from "@/features/Portfolio/presentation/utils/createPortfolioChartData.util";
 import { formatPortfolioDate } from "@/features/Portfolio/presentation/utils/formatPortfolioDate.util";
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 
 // --- Constants ---
 
@@ -331,6 +331,3 @@ export function usePortfolioDashboard({
     portfolioMeta,
   };
 }
-
-export type DashboardModel = ReturnType<typeof usePortfolioDashboard>;
-export type LoadedDashboardModel = DashboardModel & { portfolio: Portfolio };

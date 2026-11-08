@@ -4,7 +4,7 @@ import { labels } from "@/features/Portfolio/presentation/constants/labels.const
 import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
 import { copy } from "@/features/Portfolio/presentation/constants/InvestmentGrowthPercentFormulaTooltip.constant";
 import type { InvestmentProjection } from "@/features/Portfolio/domain/types/InvestmentProjection.type";
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";
 import { FormulaResult } from "@/features/Portfolio/presentation/components/FormulaResult";

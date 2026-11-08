@@ -1,6 +1,6 @@
 import { MONEY_CONSTANTS } from "@/features/Portfolio/presentation/constants/moneyConstants.constant";
-import { MONEY_FORMATTERS } from "@/features/Portfolio/presentation/format/moneyFormatters";
-import { NUMBER_FORMATTERS } from "@/features/Portfolio/presentation/format/numberFormatters";
+import { MONEY_FORMATTERS } from "@/features/Portfolio/presentation/constants/moneyFormatters.constant";
+import { NUMBER_FORMATTERS } from "@/features/Portfolio/presentation/constants/numberFormatters.constant";
 import type { ValuePrecision } from "@/features/Portfolio/presentation/types/ValuePrecision.type";
 import type { ValueUnit } from "@/features/Portfolio/presentation/types/ValueUnit.type";
 

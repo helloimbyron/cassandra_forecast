@@ -1,5 +1,5 @@
 import { copy } from "@/features/Portfolio/presentation/constants/InvestmentsSection.constant";
-import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/types/LoadedDashboardModel.type";
 import { InvestmentCard } from "@/features/Portfolio/presentation/components/InvestmentCard";
 
 // --- Components ---

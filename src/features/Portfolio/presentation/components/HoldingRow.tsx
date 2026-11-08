@@ -3,7 +3,7 @@ import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/p
 import { copy } from "@/features/Portfolio/presentation/constants/InvestmentCard.constant";
 import type { Investment } from "@/features/Portfolio/domain/types/Investment.type";
 import type { HoldingProjection } from "@/features/Portfolio/domain/types/HoldingProjection.type";
-import type { DashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { DashboardModel } from "@/features/Portfolio/presentation/types/DashboardModel.type";
 import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
 import { NumericUnitInput } from "@/features/Portfolio/presentation/components/NumericUnitInput";
 import { ProjectedValueFormulaTooltip } from "@/features/Portfolio/presentation/components/ProjectedValueFormulaTooltip";

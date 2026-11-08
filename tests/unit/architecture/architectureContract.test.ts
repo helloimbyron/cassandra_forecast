@@ -3,12 +3,15 @@ import { describe, expect, it } from "vitest";
 
 const sourceDirectory = new URL("../../../src/", import.meta.url);
 function readSourceFiles(directory: URL): Array<{ path: string; source: string }> {
+
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const entryUrl = new URL(entry.name, directory);
     if (entry.isDirectory()) {
+
       return readSourceFiles(new URL(`${entry.name}/`, directory));
     }
     if (!/\.(?:astro|ts|tsx)$/.test(entry.name)) {
+
       return [];
     }
 
@@ -17,6 +20,13 @@ function readSourceFiles(directory: URL): Array<{ path: string; source: string }
 }
 
 describe("architecture contract", () => {
+  it("stores feature directory names with their exact casing", () => {
+    const featureNames = readdirSync(new URL("../../../src/features/", import.meta.url));
+
+    expect(featureNames).toContain("Portfolio");
+    expect(featureNames).not.toContain("portfolio");
+  });
+
   it("keeps routes and feature layers within their ownership boundaries", () => {
     const sourceFiles = readSourceFiles(sourceDirectory);
     const domainFiles = sourceFiles.filter(({ path }) => path.includes("/Portfolio/domain/"));
@@ -72,10 +82,13 @@ describe("architecture contract", () => {
       "utf8",
     );
 
-    expect(dashboardPage).toContain("@/features/Portfolio/client");
-    expect(homePage).toContain("@/features/Portfolio/client");
+    expect(dashboardPage).toContain("@/features/Portfolio/portfolio.client");
+    expect(homePage).toContain("@/features/Portfolio/portfolio.client");
     expect(
-      readFileSync(new URL("../../../src/features/Portfolio/client.ts", import.meta.url), "utf8"),
+      readFileSync(
+        new URL("../../../src/features/Portfolio/portfolio.client.ts", import.meta.url),
+        "utf8",
+      ),
     ).toContain("Dashboard");
     expect(
       readFileSync(new URL("../../../src/features/Portfolio/index.ts", import.meta.url), "utf8"),

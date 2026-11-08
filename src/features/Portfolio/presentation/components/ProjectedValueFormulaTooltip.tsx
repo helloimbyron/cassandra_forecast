@@ -3,7 +3,7 @@ import { labels } from "@/features/Portfolio/presentation/constants/labels.const
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
 import { copy } from "@/features/Portfolio/presentation/constants/ProjectedValueFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { projectedPositionLabel } from "@/features/Portfolio/presentation/utils/projectedPositionLabel.util";
 import { formatMonths } from "@/features/Portfolio/presentation/utils/formatMonths.util";

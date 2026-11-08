@@ -4,8 +4,8 @@ import {
   formatAxisUsd,
   formatFullUsd,
 } from "../../../../../src/features/Portfolio";
-import { formatAbbreviatedValue } from "../../../../../src/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
-import { formatFullValue } from "../../../../../src/features/Portfolio/presentation/format/formatFullValue.util";
+import { formatAbbreviatedValue } from "../../../../../src/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
+import { formatFullValue } from "../../../../../src/features/Portfolio/presentation/formatters/formatFullValue.util";
 
 const visible = (value: string) => value.replaceAll("\u200b", "");
 

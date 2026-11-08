@@ -1,4 +1,4 @@
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 
 export function PlainMoney({ value, className }: { value: number; className?: string }) {
 

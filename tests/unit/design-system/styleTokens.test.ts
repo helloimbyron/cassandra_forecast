@@ -19,6 +19,7 @@ function palettes() {
     );
   const dark = read(blocks.find((block) => !block[1])?.[2] ?? "");
   const light = { ...dark, ...read(blocks.find((block) => block[1])?.[2] ?? "") };
+
   return { light, dark };
 }
 
@@ -28,14 +29,17 @@ function luminance(hex: string) {
     .match(/.{2}/g)!
     .map((channel) => {
       const value = parseInt(channel, 16) / 255;
+
       return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
     });
+
   return channels[0]! * 0.2126 + channels[1]! * 0.7152 + channels[2]! * 0.0722;
 }
 
 function contrast(first: string, second: string) {
   const a = luminance(first);
   const b = luminance(second);
+
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 }
 

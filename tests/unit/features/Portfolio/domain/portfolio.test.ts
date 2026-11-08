@@ -46,7 +46,10 @@ describe("public example portfolio", () => {
   it("accepts crypto and other categories", () => {
     const exampleBitcoin = examplePortfolio.investments.find(({ id }) => id === "bitcoin");
     expect(exampleBitcoin).toBeDefined();
-    if (!exampleBitcoin) return;
+    if (!exampleBitcoin) {
+
+      return;
+    }
 
     for (const category of ["crypto", "commodity", "cash", "savings", "other"] as const) {
       const parsed = portfolioSchema.safeParse({

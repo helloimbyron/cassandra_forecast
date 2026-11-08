@@ -6,7 +6,7 @@ const beta = fileURLToPath(new URL("./fixtures/portfolio-beta.json", import.meta
 
 async function openHydratedHome(page: Page) {
   await page.goto("/");
-  // Astro initially serves HTML; wait for React's file handlers before clicking.
+  // ? Espera a que React hidrate la página antes de usar los controles de importación.
   await page.waitForFunction(() => !document.querySelector("astro-island")?.hasAttribute("ssr"));
 }
 

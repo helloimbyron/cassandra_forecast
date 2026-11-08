@@ -20,7 +20,7 @@ export type { InvestmentProjection } from "@/features/Portfolio/domain/types/Inv
 export type { PortfolioSummaryInsights } from "@/features/Portfolio/domain/types/PortfolioSummaryInsights.type";
 export type { DistributionPoint } from "@/features/Portfolio/domain/types/DistributionPoint.type";
 export type { DistributionProjection } from "@/features/Portfolio/domain/types/DistributionProjection.type";
-export { formatFullUsd } from "./presentation/format/formatFullUsd.util";
-export { formatFullMoneyDisplay } from "./presentation/format/formatFullMoneyDisplay.util";
-export { formatAbbreviatedUsd } from "./presentation/format/formatAbbreviatedUsd.util";
-export { formatAxisUsd } from "./presentation/format/formatAxisUsd.util";
+export { formatFullUsd } from "./presentation/formatters/formatFullUsd.util";
+export { formatFullMoneyDisplay } from "./presentation/formatters/formatFullMoneyDisplay.util";
+export { formatAbbreviatedUsd } from "./presentation/formatters/formatAbbreviatedUsd.util";
+export { formatAxisUsd } from "./presentation/formatters/formatAxisUsd.util";

@@ -5,7 +5,7 @@ import { copy } from "@/features/Portfolio/presentation/constants/Header.constan
 import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { PORTFOLIO_CONSTANTS } from "@/features/Portfolio/domain/constants/portfolioConstants.constant";
 import { formatInflationRate } from "@/features/Portfolio/presentation/utils/formatInflationRate.util";
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 import { FormulaTooltip } from "@/features/Portfolio/presentation/components/FormulaTooltip";
 
 // --- Constants ---

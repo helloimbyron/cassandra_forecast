@@ -1,1 +1,1 @@
-export { formatAxisUsd as compactMoney } from "@/features/Portfolio/presentation/format/formatAxisUsd.util";
+export { formatAxisUsd as compactMoney } from "@/features/Portfolio/presentation/formatters/formatAxisUsd.util";

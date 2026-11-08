@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/design-system/components/Button";
 import { Sun } from "lucide-react";
 import { Moon } from "lucide-react";
-import { THEME_CONSTANTS } from "@/design-system/theme/themeConstants.constant";
+import { THEME_CONSTANTS } from "@/design-system/themes/themeConstants.constant";
 
 // --- Constants ---
 

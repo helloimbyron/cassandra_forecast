@@ -2,7 +2,7 @@ import { FormulaStep } from "@/features/Portfolio/presentation/components/Formul
 import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { copy } from "@/features/Portfolio/presentation/constants/LeadingGrowthFormulaTooltip.constant";
 import { Calculator } from "lucide-react";
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 import type { InvestmentProjection } from "@/features/Portfolio/domain/types/InvestmentProjection.type";
 import { texText } from "@/features/Portfolio/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Portfolio/presentation/components/FormulaMath";

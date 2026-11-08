@@ -1,5 +1,5 @@
 import { copy } from "@/features/Portfolio/presentation/constants/ImportSection.constant";
-import type { DashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { DashboardModel } from "@/features/Portfolio/presentation/types/DashboardModel.type";
 import { Button } from "@/design-system/components/Button";
 import { Eye } from "lucide-react";
 import { Upload } from "lucide-react";

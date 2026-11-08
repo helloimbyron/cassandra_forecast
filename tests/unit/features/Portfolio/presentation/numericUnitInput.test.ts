@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { formatNumericUnitValue } from "../../../../../src/features/Portfolio/presentation/format/formatNumericUnitValue.util";
-import { parseNumericUnitValue } from "../../../../../src/features/Portfolio/presentation/format/parseNumericUnitValue.util";
+import { formatNumericUnitValue } from "../../../../../src/features/Portfolio/presentation/formatters/formatNumericUnitValue.util";
+import { parseNumericUnitValue } from "../../../../../src/features/Portfolio/presentation/formatters/parseNumericUnitValue.util";
 
 describe("financial numeric input formatting", () => {
   it("formats two decimals with the es-EC decimal comma and no grouping", () => {

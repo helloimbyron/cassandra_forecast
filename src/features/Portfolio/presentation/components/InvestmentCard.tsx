@@ -2,7 +2,7 @@ import { labels } from "@/features/Portfolio/presentation/constants/labels.const
 import { projectedBalanceLabel } from "@/features/Portfolio/presentation/utils/projectedBalanceLabel.util";
 import { signedOutcomeLabel } from "@/features/Portfolio/presentation/utils/signedOutcomeLabel.util";
 import { copy } from "@/features/Portfolio/presentation/constants/InvestmentCard.constant";
-import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/types/LoadedDashboardModel.type";
 import type { Investment } from "@/features/Portfolio/domain/types/Investment.type";
 import { createElement, type CSSProperties } from "react";
 import { Badge } from "@/design-system/components/Badge";

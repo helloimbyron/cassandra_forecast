@@ -1,6 +1,6 @@
 import { labels } from "@/features/Portfolio/presentation/constants/labels.constant";
 import { copy } from "@/features/Portfolio/presentation/constants/AllocationPanel.constant";
-import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/types/LoadedDashboardModel.type";
 import {
   Card,
   CardHeader,
@@ -10,7 +10,7 @@ import {
 } from "@/design-system/components/Card";
 import { AbbreviatedMoney } from "@/features/Portfolio/presentation/components/money/AbbreviatedMoney";
 import { AbbreviatedValue } from "@/features/Portfolio/presentation/components/money/AbbreviatedValue";
-import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/format/formatAbbreviatedValue.util";
+import { formatAbbreviatedValue } from "@/features/Portfolio/presentation/formatters/formatAbbreviatedValue.util";
 import { CHART_CONSTANTS } from "@/features/Portfolio/presentation/constants/chartConstants.constant";
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 

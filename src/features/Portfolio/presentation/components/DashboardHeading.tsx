@@ -1,5 +1,5 @@
 import { copy } from "@/features/Portfolio/presentation/constants/DashboardHeading.constant";
-import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/hooks/usePortfolioDashboard";
+import type { LoadedDashboardModel } from "@/features/Portfolio/presentation/types/LoadedDashboardModel.type";
 
 // --- Components ---
 
