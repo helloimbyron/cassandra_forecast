@@ -56,5 +56,3 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
     </section>
   );
 }
-
-

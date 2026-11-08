@@ -10,10 +10,12 @@ import type { MouseEvent, ReactNode } from "react";
 
 export function Header({
   onNavigateHome,
+  homeHref,
   onChangeJson,
   projectionControls,
 }: {
   onNavigateHome: () => void;
+  homeHref: string;
   onChangeJson?: () => void;
   projectionControls?: ReactNode;
 }) {
@@ -32,7 +34,12 @@ export function Header({
   return (
     <header className={`topbar${projectionControls ? "has-projection-controls" : ""}`}>
       <div className="brand-group">
-        <a className="brand" href="/" onClick={handleBrandClick} aria-label={copy.cassandraInicio}>
+        <a
+          className="brand"
+          href={homeHref}
+          onClick={handleBrandClick}
+          aria-label={copy.cassandraInicio}
+        >
           <span className="brand-mark">
             <BrandMark />
           </span>

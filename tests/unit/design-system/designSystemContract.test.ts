@@ -27,9 +27,9 @@ describe("design-system contract", () => {
     expect(tokens.indexOf(":root {")).toBeLessThan(tokens.indexOf(":root.light {"));
     expect(tokens).toContain('--font-body: "Geist Variable"');
     expect(tokens).toContain("--font-display: var(--font-body)");
-    expect(
-      readFileSync(new URL("../../../src/app/layouts/SiteLayout.astro", import.meta.url), "utf8"),
-    ).toContain('<html lang="es" class={THEME_DARK}>');
+    expect(readFileSync(new URL("../../../index.html", import.meta.url), "utf8")).toContain(
+      '<html lang="es" class="dark">',
+    );
   });
 
   it("keeps visual literals in the token sheet", () => {

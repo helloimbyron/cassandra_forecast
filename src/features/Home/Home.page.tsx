@@ -10,4 +10,3 @@ export function HomePage({ model }: { model: PortfolioImportController }) {
     </>
   );
 }
-

@@ -6,8 +6,7 @@ const beta = fileURLToPath(new URL("./fixtures/portfolio-beta.json", import.meta
 
 async function openHydratedHome(page: Page) {
   await page.goto("/");
-  // ? Espera a que React hidrate la página antes de usar los controles de importación.
-  await page.waitForFunction(() => !document.querySelector("astro-island")?.hasAttribute("ssr"));
+  await page.getByRole("button", { name: /ejemplo/i }).waitFor();
 }
 
 async function expectSingleDashboard(page: Page) {

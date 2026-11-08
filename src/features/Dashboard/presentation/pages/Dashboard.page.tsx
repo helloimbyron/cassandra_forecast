@@ -12,9 +12,17 @@ export function DashboardPage({
   model,
   heroCardRef,
 }: {
-  model: LoadedDashboardModel;
+  model: LoadedDashboardModel | null;
   heroCardRef: RefCallback<HTMLElement>;
 }) {
+  if (!model) {
+    return (
+      <p role="status" className="drop-hint">
+        Cargando ejemplo…
+      </p>
+    );
+  }
+
   return (
     <>
       <DashboardHeading model={model} />

@@ -1,4 +1,3 @@
-
 .hero-main,
 .hero-main-without-inflation {
   grid-template-columns: repeat(2, minmax(0, 1fr));

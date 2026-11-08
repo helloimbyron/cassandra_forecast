@@ -9,4 +9,3 @@ export type PortfolioImportController = {
   onDrop: (event: DragEvent<HTMLDivElement>) => void;
   loadExample: () => Promise<void>;
 };
-

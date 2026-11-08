@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0e1624" />
+    <meta
+      name="description"
+      content="Prueba escenarios para tus inversiones y mira qué podría pasar con el tiempo."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Cassandra</title>
+
+    <script>
+      try {
+        if (localStorage.getItem("cassandra-theme") === "light") {
+          document.documentElement.classList.replace("dark", "light");
+          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f7fa");
+        }
+      } catch {
+        // La navegación privada puede bloquear el acceso al almacenamiento; se conserva el tema oscuro predeterminado.
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/app/bootstrap/index.tsx"></script>
+  </body>
+</html>

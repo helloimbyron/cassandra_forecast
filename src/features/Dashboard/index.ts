@@ -24,3 +24,7 @@ export { formatFullUsd } from "./presentation/formatters/formatFullUsd.util";
 export { formatFullMoneyDisplay } from "./presentation/formatters/formatFullMoneyDisplay.util";
 export { formatAbbreviatedUsd } from "./presentation/formatters/formatAbbreviatedUsd.util";
 export { formatAxisUsd } from "./presentation/formatters/formatAxisUsd.util";
+export { DashboardPage } from "./presentation/pages/Dashboard.page";
+export { StickyProjectionControls } from "./presentation/components/StickyProjectionControls";
+export { useDashboardModel } from "./presentation/hooks/useDashboardModel";
+export type { LoadedDashboardModel } from "./presentation/types/LoadedDashboardModel.type";
