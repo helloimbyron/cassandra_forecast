@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "currency": "USD",
+  "asOf": "2026-11-08",
+  "inflation": {
+    "annualRatePct": 2,
+    "note": "Supuesto de prueba",
+    "source": {
+      "url": "https://example.com/inflation",
+      "asOf": "2026-11-08"
+    }
+  },
+  "investments": [
+    {
+      "id": "fixture-alpha",
+      "name": "Cartera Alfa",
+      "category": "cash",
+      "annualRatePct": 5,
+      "holdings": [
+        {
+          "id": "fixture-alpha-holding",
+          "label": "Saldo Alfa",
+          "currentValue": 1000,
+          "monthlyContribution": 10
+        }
+      ]
+    }
+  ]
+}

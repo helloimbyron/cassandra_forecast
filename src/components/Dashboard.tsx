@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { usePortfolioDashboard } from "@/features/portfolio/presentation/hooks/usePortfolioDashboard";
 import { Header } from "@/features/portfolio/presentation/components/Header";
 import { IntroSection } from "@/features/portfolio/presentation/components/IntroSection";
@@ -112,25 +112,21 @@ export default function Dashboard({ initialPage = "home" }: { initialPage?: Dash
         {page === "home" && !loadedModel ? (
           <ImportSection model={model} />
         ) : loadedModel ? (
-          <>
+          <Fragment key={loadedModel.portfolioImportRevision}>
             <DashboardHeading model={loadedModel} />
 
-            <HeroCard
-              key={loadedModel.portfolioImportRevision}
-              model={loadedModel}
-              heroCardRef={setHeroCardRef}
-            />
+            <HeroCard model={loadedModel} heroCardRef={setHeroCardRef} />
 
             <MetricsGrid model={loadedModel} />
 
             <OverviewGrid model={loadedModel} />
 
-            <DistributionSection key={loadedModel.portfolioImportRevision} model={loadedModel} />
+            <DistributionSection model={loadedModel} />
 
-            <InvestmentsSection key={loadedModel.portfolioImportRevision} model={loadedModel} />
+            <InvestmentsSection model={loadedModel} />
 
-            <TableSection key={loadedModel.portfolioImportRevision} model={loadedModel} />
-          </>
+            <TableSection model={loadedModel} />
+          </Fragment>
         ) : (
           <p role="status" className="drop-hint">
             Cargando ejemplo…

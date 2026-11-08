@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "currency": "USD",
+  "asOf": "2026-11-08",
+  "inflation": {
+    "annualRatePct": 2,
+    "note": "Supuesto de prueba",
+    "source": {
+      "url": "https://example.com/inflation",
+      "asOf": "2026-11-08"
+    }
+  },
+  "investments": [
+    {
+      "id": "fixture-beta-one",
+      "name": "Cartera Beta Uno",
+      "category": "cash",
+      "annualRatePct": 5,
+      "holdings": [
+        {
+          "id": "fixture-beta-one-holding",
+          "label": "Saldo Beta Uno",
+          "currentValue": 1000,
+          "monthlyContribution": 10
+        }
+      ]
+    },
+    {
+      "id": "fixture-beta-two",
+      "name": "Cartera Beta Dos",
+      "category": "savings",
+      "annualRatePct": 4,
+      "holdings": [
+        {
+          "id": "fixture-beta-two-holding",
+          "label": "Saldo Beta Dos",
+          "currentValue": 2000,
+          "monthlyContribution": 20
+        }
+      ]
+    }
+  ]
+}
