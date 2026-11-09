@@ -148,14 +148,6 @@ h1 em {
   padding-top: var(--space-2);
 }
 
-.import-conventions-note {
-  max-width: var(--size-48);
-  margin: 0 auto;
-  color: var(--text-soft);
-  font-size: var(--text-meta);
-  line-height: var(--leading-body);
-}
-
 .sample-link:hover {
   color: var(--accent-foreground);
 }

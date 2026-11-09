@@ -9,26 +9,6 @@
   padding: var(--space-6) 0 var(--space-4);
 }
 
-.dashboard-heading h2 {
-  margin: var(--space-1) 0 var(--space-05);
-  font-size: var(--text-section);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--tracking-tight);
-  line-height: var(--leading-tight);
-}
-
-.data-stamp {
-  margin: 0;
-  color: var(--text-soft);
-  font-size: var(--text-meta);
-  overflow-wrap: anywhere;
-}
-
-.stamp-divider {
-  padding-inline: var(--space-05);
-  color: var(--brand-dot);
-}
-
 .dashboard-error {
   flex-basis: 100%;
 }
@@ -192,19 +172,23 @@
 
 .formula-tooltip-trigger {
   display: inline-flex;
+  flex: none;
   align-items: center;
   justify-content: center;
+  width: var(--space-35);
+  height: var(--space-35);
   min-width: var(--space-4);
   min-height: var(--space-4);
-  margin: 0;
+  margin: 0 0 0 var(--space-1);
   padding: 0;
   border: 0;
-  color: inherit;
+  color: var(--primary);
   background: transparent;
   font: inherit;
   line-height: inherit;
   text-align: inherit;
   cursor: pointer;
+  opacity: var(--emphasis-opacity);
 }
 
 .formula-tooltip-trigger:focus-visible {
@@ -213,28 +197,15 @@
   border-radius: var(--space-05);
 }
 
-.formula-tooltip-trigger:not(.hero-total-trigger) {
-  width: var(--space-35);
-  height: var(--space-35);
-  flex: none;
-  margin-left: var(--space-1);
-  color: var(--primary);
-  opacity: var(--emphasis-opacity);
-}
-
-.hero-card .formula-tooltip-trigger:not(.hero-total-trigger) {
+.hero-card .formula-tooltip-trigger {
   color: var(--hero-accent);
 }
 
-.summary-value-row,
 .metric-value-row {
   display: flex;
   align-items: center;
   gap: var(--space-075);
   min-width: 0;
-}
-
-.metric-value-row {
   margin-top: var(--space-2);
 }
 

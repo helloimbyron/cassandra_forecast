@@ -19,12 +19,6 @@
   line-height: var(--leading-tight);
 }
 
-.section-heading > p {
-  max-width: var(--size-25);
-  margin: 0;
-  color: var(--text-soft);
-}
-
 .investment-grid,
 .investment-growth-values {
   display: grid;
@@ -96,18 +90,6 @@
 .investment-icon svg {
   width: var(--investment-symbol-size);
   height: var(--investment-symbol-size);
-}
-
-.investment-identity h3 {
-  font-size: var(--text-card-title);
-  font-weight: var(--font-weight-semibold);
-  overflow-wrap: anywhere;
-}
-
-.investment-identity p {
-  margin-top: var(--space-05);
-  color: var(--text-soft);
-  font-size: var(--text-meta);
 }
 
 .investment-card-content {
@@ -275,7 +257,6 @@
 }
 
 .rate-note-tooltip-trigger {
-  margin-left: 0;
   cursor: help;
 }
 
@@ -392,10 +373,6 @@
 
 .holding-contribution {
   align-items: end;
-}
-
-.contribution-total {
-  color: var(--primary);
 }
 
 .money-tooltip-trigger {

@@ -94,18 +94,6 @@
   padding: var(--space-4) var(--space-4) var(--space-3);
 }
 
-.panel-header h3 {
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--leading-tight);
-}
-
-.panel-header p {
-  margin-top: var(--space-05);
-  color: var(--text-soft);
-  font-size: var(--text-meta);
-}
-
 .panel-header [data-slot="badge"],
 .investment-card-header [data-slot="badge"] {
   color: var(--foreground);
@@ -340,12 +328,6 @@
   margin: 0;
 }
 
-.distribution-heading p {
-  max-width: var(--size-42);
-  margin: var(--space-1) 0 0;
-  color: var(--text-soft);
-}
-
 .distribution-panel {
   overflow: hidden;
 }
@@ -531,16 +513,11 @@
   background: var(--card);
 }
 
-.distribution-note,
-.distribution-disclaimer {
+.distribution-note {
   margin: var(--space-3) 0 0;
-  color: var(--text-soft);
+  color: var(--primary);
   font-size: var(--text-meta);
   line-height: var(--leading-snug);
-}
-
-.distribution-note {
-  color: var(--primary);
 }
 
 .distribution-insights {
