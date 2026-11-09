@@ -1,3 +1,4 @@
+import "./ImportSection.css.ts";
 import { importSectionCopy } from "@/features/Home/presentation/copies/importSection.copy";
 import type { PortfolioImportController } from "@/shared/presentation/types/PortfolioImportController.type";
 import { Button } from "@/libraries/shadcn/components/Button";
@@ -18,6 +19,7 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
     <section className="import-section" aria-labelledby="onboarding-title">
       <div
         className={`import-card ${dragging ? "is-dragging" : ""}`}
+        data-testid="home-import-card"
         onDragOver={(event) => {
           event.preventDefault();
           setDragging(true);

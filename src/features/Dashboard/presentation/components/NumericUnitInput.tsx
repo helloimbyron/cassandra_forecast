@@ -1,3 +1,4 @@
+import "./NumericUnitInput.css.ts";
 import { useEffect, useRef, useState, type ChangeEvent, type KeyboardEvent } from "react";
 import { Input } from "@/libraries/shadcn/components/Input";
 import { formatNumericUnitValue } from "@/features/Dashboard/presentation/formatters/formatNumericUnitValue.util";

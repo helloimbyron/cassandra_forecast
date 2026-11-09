@@ -16,7 +16,8 @@ async function visualColors(page: import("@playwright/test").Page) {
       card: tokens.getPropertyValue("--surface-raised").trim(),
       primary: tokens.getPropertyValue("--primary").trim(),
       bodyColor: getComputedStyle(document.body).backgroundColor,
-      cardColor: getComputedStyle(document.querySelector(".import-card")!).backgroundColor,
+      cardColor: getComputedStyle(document.querySelector('[data-testid="home-import-card"]')!)
+        .backgroundColor,
       resolvedBackground: resolveColor("var(--background)"),
       resolvedCard: resolveColor("var(--surface-raised)"),
     };
@@ -28,16 +29,16 @@ test("direct dashboard navigation loads the example and the brand returns home",
 }) => {
   await page.goto("/dashboard");
   await expect(page).toHaveURL(/\/dashboard$/);
-  await expect(page.locator("main > .hero-card")).toHaveCount(1);
-  await expect(page.locator(".investment-card").first()).toBeVisible();
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-investment-card").first()).toBeVisible();
 
   await page
     .getByRole("link", { name: /cassandra/i })
     .first()
     .click();
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator("main > .import-section")).toBeVisible();
-  await expect(page.locator("main > .hero-card")).toHaveCount(0);
+  await expect(page.getByTestId("home-import-card")).toBeVisible();
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(0);
 });
 
 test("the home route loads the example and browser history switches between views", async ({
@@ -46,30 +47,30 @@ test("the home route loads the example and browser history switches between view
   await page.goto("/");
   await page.waitForLoadState("networkidle");
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator("main > .import-section")).toBeVisible();
-  await expect(page.locator("main > .hero-card")).toHaveCount(0);
+  await expect(page.getByTestId("home-import-card")).toBeVisible();
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(0);
 
   await page.getByRole("button", { name: /probar con un ejemplo/i }).click();
   await expect(page).toHaveURL(/\/dashboard$/);
-  await expect(page.locator("main > .hero-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(1);
 
   await page.goBack();
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator("main > .import-section")).toBeVisible();
+  await expect(page.getByTestId("home-import-card")).toBeVisible();
 
   await page.goForward();
   await expect(page).toHaveURL(/\/dashboard$/);
-  await expect(page.locator("main > .hero-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(1);
 });
 
 test("reloading the dashboard returns to the home route", async ({ page }) => {
   await page.goto("/dashboard");
-  await expect(page.locator("main > .hero-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(1);
 
   await page.reload();
 
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator("main > .import-section")).toBeVisible();
+  await expect(page.getByTestId("home-import-card")).toBeVisible();
 });
 
 test("the initial theme follows the stored preference", async ({ page }) => {
@@ -100,11 +101,14 @@ test("mobile theme toggle updates surfaces and browser color in both modes", asy
   expect(iconSvg).toContain(`fill="${dark.background}"`);
   expect(iconSvg).toContain(`stroke="${dark.primary}"`);
 
-  await page.locator(".theme-toggle").click();
+  await page.getByTestId("theme-toggle").click();
 
   const light = await visualColors(page);
   expect(light.bodyColor).toBe(light.resolvedBackground);
-  await expect(page.locator(".import-card")).toHaveCSS("background-color", light.resolvedCard);
+  await expect(page.getByTestId("home-import-card")).toHaveCSS(
+    "background-color",
+    light.resolvedCard,
+  );
   expect(light.background).not.toBe(dark.background);
   await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
     "content",

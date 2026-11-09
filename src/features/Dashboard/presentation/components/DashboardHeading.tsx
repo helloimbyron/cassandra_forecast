@@ -1,3 +1,4 @@
+import "./DashboardHeading.css.ts";
 import { dashboardHeadingCopy } from "@/features/Dashboard/presentation/copies/dashboardHeading.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 

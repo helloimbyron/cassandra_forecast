@@ -1,3 +1,4 @@
+import "./FormulaMath.css.ts";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 

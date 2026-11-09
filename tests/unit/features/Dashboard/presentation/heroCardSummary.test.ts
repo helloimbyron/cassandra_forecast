@@ -11,14 +11,15 @@ const heroCardSource = readFileSync(
 );
 const heroStyles = readFileSync(
   new URL(
-    "../../../../../src/features/Dashboard/presentation/styles/dashboard-heading-hero.css",
+    "../../../../../src/features/Dashboard/presentation/components/HeroCard.css.ts",
     import.meta.url,
   ),
   "utf8",
 );
-const responsiveStyles = readFileSync(
+const responsiveStyles = heroStyles;
+const horizonControlStyles = readFileSync(
   new URL(
-    "../../../../../src/features/Dashboard/presentation/styles/responsive.css",
+    "../../../../../src/features/Dashboard/presentation/components/HeroHorizonControl.css.ts",
     import.meta.url,
   ),
   "utf8",
@@ -75,29 +76,29 @@ describe("HeroCard balance and purchasing-power summary", () => {
     expect(metricOrder.every((index) => index >= 0)).toBe(true);
     expect(metricOrder).toEqual([...metricOrder].sort((left, right) => left - right));
 
-    const secondaryStyles = heroStyles.match(/\.hero-value-secondary\s*\{([^}]+)\}/)?.[1] ?? "";
+    const secondaryStyles =
+      heroStyles.match(/globalStyle\("\.hero-value-secondary", (\{[^;]+\}) as/s)?.[1] ?? "";
     const dividerStyles =
-      heroStyles.match(/\.hero-contributions-stat,\s*\.hero-growth-stat\s*\{([^}]+)\}/)?.[1] ?? "";
-    expect(secondaryStyles).not.toContain("border-left");
-    expect(dividerStyles).toContain("border-left");
+      heroStyles.match(
+        /globalStyle\("\.hero-contributions-stat,\\n\.hero-growth-stat", (\{[^;]+\}) as/s,
+      )?.[1] ?? "";
+    expect(secondaryStyles).not.toContain("borderLeft");
+    expect(dividerStyles).toContain("borderLeft");
     expect(heroStyles).toContain("hero-main-without-inflation");
     expect(heroStyles).toContain("hero-main-with-inflation .hero-total");
-    expect(heroStyles).toContain("white-space: nowrap;");
-    expect(heroStyles).toContain("align-items: center;");
-    expect(responsiveStyles).toContain("grid-template-rows: subgrid;");
-    expect(responsiveStyles.match(/\.hero-total h3\s*\{\s*grid-row: 2 \/ span 2;/g)).toHaveLength(
-      1,
+    expect(heroStyles).toContain('whiteSpace: "nowrap"');
+    expect(heroStyles).toContain('alignItems: "center"');
+    expect(responsiveStyles).toContain('gridTemplateRows: "subgrid"');
+    expect(responsiveStyles).toMatch(/hero-total h3[\s\S]*?gridRow: "2 \/ span 2"/);
+    expect(responsiveStyles).toMatch(
+      /hero-main[\s\S]*?gridTemplateColumns: "repeat\(2, minmax\(0, 1fr\)\)/,
     );
     expect(responsiveStyles).toMatch(
-      /\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/s,
+      /hero-main-without-inflation[\s\S]*?gridTemplateColumns: "repeat\(12, minmax\(0, 1fr\)\)/,
     );
-    expect(responsiveStyles).toMatch(
-      /@variant tablet[\s\S]*?\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-columns: repeat\(12, minmax\(0, 1fr\)\);/,
-    );
-    expect(responsiveStyles).toMatch(
-      /@variant extra-wide[\s\S]*?\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-rows: repeat\(3, auto\);/,
-    );
+    expect(responsiveStyles).toMatch(/hero-main[\s\S]*?gridTemplateRows: "repeat\(3, auto\)/);
     expect(responsiveStyles).toContain(".hero-current-stat .hero-breakdown-heading-spacer");
+    expect(horizonControlStyles).toContain('globalStyle(".hero-slider-tooltip"');
   });
 
   it("explains the balance and contribution comparison with current formatted amounts", () => {

@@ -1,3 +1,4 @@
+import "./AbbreviatedValue.css.ts";
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 import { cn } from "@/libraries/shadcn/utils/cn.util";

@@ -1,3 +1,4 @@
+import "./InvestmentsSection.css.ts";
 import { investmentsSectionCopy } from "@/features/Dashboard/presentation/copies/investmentsSection.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { InvestmentCard } from "@/features/Dashboard/presentation/components/InvestmentCard";

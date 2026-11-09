@@ -1,3 +1,4 @@
+import "./FormulaTooltip.css.ts";
 import { formulaTooltipCopy } from "@/features/Dashboard/presentation/copies/formulaTooltip.copy";
 import { useState } from "react";
 import type { ReactNode } from "react";

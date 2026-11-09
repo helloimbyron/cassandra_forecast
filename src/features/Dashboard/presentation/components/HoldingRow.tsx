@@ -1,3 +1,4 @@
+import "./HoldingRow.css.ts";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
 import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";

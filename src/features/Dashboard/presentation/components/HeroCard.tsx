@@ -1,10 +1,9 @@
+import "./HeroCard.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
-import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
 import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
 import { heroCardCopy } from "@/features/Dashboard/presentation/copies/heroCard.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
-import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import {
@@ -26,6 +25,7 @@ import { FormulaTooltip } from "@/features/Dashboard/presentation/components/For
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { useState } from "react";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";
+import { HeroHorizonControl } from "@/features/Dashboard/presentation/components/HeroHorizonControl";
 import { sliderTooltipPosition } from "@/design-system/utils/sliderTooltipPosition.util";
 
 // --- Constants ---
@@ -75,7 +75,12 @@ export function HeroCard({
   // --- Return ---
 
   return (
-    <section ref={heroCardRef} className="hero-card" aria-labelledby="total-title">
+    <section
+      ref={heroCardRef}
+      className="hero-card"
+      data-testid="dashboard-hero-card"
+      aria-labelledby="total-title"
+    >
       <div
         className={`hero-main ${
           withInflation ? "hero-main-with-inflation" : "hero-main-without-inflation"
@@ -338,37 +343,13 @@ export function HeroCard({
         </div>
       </div>
       <div className="hero-controls-grid">
-        <div className="hero-horizon">
-          <div className="horizon-label">
-            <span>{labels.totalHorizon}</span>
-            <strong>{totalYears === 0 ? labels.today : formatYears(totalYears)}</strong>
-          </div>
-          <div className="range-labels">
-            <span>{labels.zeroToday}</span>
-            <span>{labels.fortyYears}</span>
-          </div>
-          <div className="hero-slider-wrap">
-            <DebouncedSlider
-              aria-label={heroCardCopy.totalHorizonYears}
-              min={MIN_HORIZON_YEARS}
-              max={MAX_HORIZON_YEARS}
-              step={1}
-              value={[totalYears]}
-              onDraftValueChange={(value) =>
-                setDraftYears({ years: value[0] ?? totalYears, committedYears: totalYears })
-              }
-              onValueChange={(value) => setTotalHorizon(value[0] ?? totalYears)}
-            />
-            <span
-              className={`hero-slider-tooltip ${draftYears <= 3 ? "is-start" : draftYears >= 37 ? "is-end" : ""}`}
-              style={{ left: thumbPosition }}
-              aria-hidden="true"
-            >
-              {draftYears}
-              {heroCardCopy.years}
-            </span>
-          </div>
-        </div>
+        <HeroHorizonControl
+          totalYears={totalYears}
+          draftYears={draftYears}
+          thumbPosition={thumbPosition}
+          onDraftYearChange={(years) => setDraftYears({ years, committedYears: totalYears })}
+          onHorizonChange={setTotalHorizon}
+        />
         <InflationControls
           layout="card"
           className="hero-inflation-controls"

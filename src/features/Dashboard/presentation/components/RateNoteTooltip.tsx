@@ -1,3 +1,4 @@
+import "./RateNoteTooltip.css.ts";
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";

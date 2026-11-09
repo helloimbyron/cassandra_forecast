@@ -1,3 +1,4 @@
+import "./BrandMark.css.ts";
 import { PiggyBank } from "lucide-react";
 
 export function BrandMark() {

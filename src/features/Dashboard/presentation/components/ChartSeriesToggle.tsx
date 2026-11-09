@@ -1,3 +1,4 @@
+import "./ChartSeriesToggle.css.ts";
 import type { ReactNode } from "react";
 
 // --- Props ---

@@ -1,3 +1,4 @@
+import "./StickyProjectionControls.css.ts";
 import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";

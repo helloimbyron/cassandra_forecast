@@ -1,3 +1,4 @@
+import "./FormulaResult.css.ts";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";
 import { formulaResultCopy } from "@/features/Dashboard/presentation/copies/formulaResult.copy";

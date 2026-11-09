@@ -1,3 +1,4 @@
+import "./LeadingGrowthFormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { leadingGrowthFormulaTooltipCopy } from "@/features/Dashboard/presentation/copies/leadingGrowthFormulaTooltip.copy";

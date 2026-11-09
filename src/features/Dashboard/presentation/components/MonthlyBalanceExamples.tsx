@@ -1,3 +1,4 @@
+import "./MonthlyBalanceExamples.css.ts";
 import { monthlyBalanceExamplesCopy } from "@/features/Dashboard/presentation/copies/monthlyBalanceExamples.copy";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";

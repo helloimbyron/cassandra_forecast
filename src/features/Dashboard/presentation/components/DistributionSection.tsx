@@ -1,16 +1,8 @@
+import "./DistributionSection.css.ts";
 import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { useState, type KeyboardEvent, type PointerEvent } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import {
   ArrowDownToLine,
   Calculator,
@@ -36,7 +28,6 @@ import { formatNumericUnitValue } from "@/features/Dashboard/presentation/format
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { estimateAdditionalPortfolioDepletionMonths } from "@/features/Dashboard/domain/utils/estimateAdditionalPortfolioDepletionMonths.util";
 import { simulatePortfolioDistribution } from "@/features/Dashboard/domain/utils/simulatePortfolioDistribution.util";
-import type { DistributionPoint } from "@/shared/domain/types/DistributionPoint.type";
 import { annualRateForMonthlyWithdrawal } from "@/features/Dashboard/domain/utils/annualRateForMonthlyWithdrawal.util";
 import { distributionAssetsWithReturn } from "@/features/Dashboard/domain/utils/distributionAssetsWithReturn.util";
 import { monthlyWithdrawalForAnnualRate } from "@/features/Dashboard/domain/utils/monthlyWithdrawalForAnnualRate.util";
@@ -45,7 +36,6 @@ import { withdrawalRateSliderMax } from "@/features/Dashboard/domain/utils/withd
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 import { distributionSectionCopy } from "@/features/Dashboard/presentation/copies/distributionSection.copy";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
-import { compactMoney } from "@/features/Dashboard/presentation/utils/compactMoney.util";
 import { adjacentStepValue } from "@/features/Dashboard/presentation/utils/adjacentStepValue.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
@@ -53,6 +43,7 @@ import { FormulaMath } from "@/features/Dashboard/presentation/components/Formul
 import { FormulaResult } from "@/features/Dashboard/presentation/components/FormulaResult";
 import { FormulaTooltip } from "@/features/Dashboard/presentation/components/FormulaTooltip";
 import { Metric } from "@/features/Dashboard/presentation/components/Metric";
+import { DistributionChart } from "@/features/Dashboard/presentation/components/DistributionChart";
 
 // --- Constants ---
 
@@ -81,40 +72,6 @@ function formatDuration(months: number) {
 }
 
 // --- Components ---
-
-function DistributionTooltip({
-  active,
-  payload,
-  label,
-}: {
-  active?: boolean;
-  payload?: Array<{ value?: number; color?: string; payload?: DistributionPoint }>;
-  label?: string | number;
-}) {
-  if (!active || !payload?.length) {
-    return null;
-  }
-
-  // --- Variables ---
-
-  const balance = payload[0]?.value ?? 0;
-  const year = Number(label ?? payload[0]?.payload?.year ?? 0);
-
-  // --- Return ---
-
-  return (
-    <div className="chart-tooltip">
-      <span>{distributionSectionCopy.year(year)}</span>
-      <div style={{ color: payload[0]?.color }}>
-        <i style={{ background: payload[0]?.color }} />
-        {distributionSectionCopy.balance}
-        <strong>
-          <AbbreviatedMoney value={balance} interaction="text" />
-        </strong>
-      </div>
-    </div>
-  );
-}
 
 function RateFormula({
   annualReturnPct,
@@ -391,52 +348,12 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
           <Badge variant="outline">{years === 0 ? labels.today : formatYears(years)}</Badge>
         </CardHeader>
         <CardContent>
-          <div
-            className="chart-wrap distribution-chart"
-            role="img"
-            aria-label={`${distributionSectionCopy.chartTitle(withInflation)}, ${distributionSectionCopy.yearCount(years)}`}
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart accessibilityLayer data={projection.points} margin={chartVisual.margin}>
-                <CartesianGrid
-                  vertical={false}
-                  stroke="var(--chart-grid)"
-                  strokeDasharray={chartVisual.gridDasharray}
-                />
-                <XAxis
-                  dataKey="year"
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                  minTickGap={chartVisual.xMinTickGap}
-                />
-                <YAxis
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                  tickFormatter={compactMoney}
-                  width={chartVisual.distributionYAxisWidth}
-                />
-                <Tooltip content={<DistributionTooltip />} />
-                <Area
-                  type="monotone"
-                  dataKey="balance"
-                  name={distributionSectionCopy.balance}
-                  stroke="var(--chart-1)"
-                  fill="var(--chart-1)"
-                  fillOpacity={chartVisual.distributionFillOpacity}
-                  strokeWidth="var(--line-chart-highlight)"
-                  activeDot={{
-                    r: chartVisual.activeDotRadius,
-                    fill: "var(--chart-1)",
-                    stroke: "var(--card)",
-                    strokeWidth: chartVisual.activeDotStrokeWidth,
-                  }}
-                  isAnimationActive={false}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
+          <DistributionChart
+            points={projection.points}
+            chartVisual={chartVisual}
+            years={years}
+            withInflation={withInflation}
+          />
 
           <div
             className="distribution-controls"

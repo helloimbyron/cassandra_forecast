@@ -1,3 +1,4 @@
+import "./InflationControls.css.ts";
 import { useState } from "react";
 import { Info, Link2 } from "lucide-react";
 import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";

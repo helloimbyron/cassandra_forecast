@@ -1,3 +1,4 @@
+import "./TableSection.css.ts";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Columns3 } from "lucide-react";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";

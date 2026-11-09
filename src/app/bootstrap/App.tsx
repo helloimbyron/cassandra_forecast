@@ -1,3 +1,4 @@
+import "./App.css.ts";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router";
 import { usePortfolioSession } from "@/shared/presentation/hooks/usePortfolioSession";
@@ -83,7 +84,10 @@ export function App() {
 
     const observer = new IntersectionObserver(syncHeaderControlsVisibility, { threshold: 0 });
     observer.observe(heroCard);
-    window.addEventListener("scroll", syncHeaderControlsVisibility, { capture: true, passive: true });
+    window.addEventListener("scroll", syncHeaderControlsVisibility, {
+      capture: true,
+      passive: true,
+    });
     window.addEventListener("resize", syncHeaderControlsVisibility);
 
     return () => {

@@ -1,3 +1,4 @@
+import "./CardTitle.css.ts";
 import * as React from "react";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 

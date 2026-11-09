@@ -1,3 +1,4 @@
+import "./Slider.css.ts";
 import * as React from "react";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { Slider as SliderPrimitive } from "radix-ui";

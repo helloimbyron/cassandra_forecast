@@ -1,3 +1,4 @@
+import "./Header.css.ts";
 import { brandLabel } from "@/shared/presentation/copies/brand.copy";
 import { headerCopy } from "@/shared/presentation/copies/header.copy";
 import { Upload } from "lucide-react";

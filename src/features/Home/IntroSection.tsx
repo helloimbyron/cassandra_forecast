@@ -1,3 +1,4 @@
+import "./IntroSection.css.ts";
 import { PiggyBank } from "lucide-react";
 import { useTranslation } from "react-i18next";
 

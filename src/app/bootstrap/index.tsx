@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import "@/app/styles/global.css";
+import "@/app/styles/componentStyles.css.ts";
 import { App } from "./App";
 import { APP_PATHS } from "@/app/routes/appPaths";
 import { bootstrapErrors } from "@/app/bootstrap/copies/bootstrapErrors.copy";

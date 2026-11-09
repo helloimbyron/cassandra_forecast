@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import { defineConfig, type Plugin } from "vite";
 import messages from "./src/libraries/i18n/es.json" with { type: "json" };
 
@@ -47,7 +48,7 @@ function localizedHtml(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [designTokens(), react(), tailwindcss(), localizedHtml()],
+  plugins: [designTokens(), vanillaExtractPlugin(), react(), tailwindcss(), localizedHtml()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

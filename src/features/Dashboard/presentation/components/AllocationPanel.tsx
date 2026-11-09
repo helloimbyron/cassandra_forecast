@@ -1,3 +1,4 @@
+import "./AllocationPanel.css.ts";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { allocationPanelCopy } from "@/features/Dashboard/presentation/copies/allocationPanel.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";

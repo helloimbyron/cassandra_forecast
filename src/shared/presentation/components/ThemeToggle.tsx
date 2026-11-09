@@ -1,3 +1,4 @@
+import "./ThemeToggle.css.ts";
 import { themeToggleCopy } from "@/shared/presentation/copies/themeToggle.copy";
 import { useState } from "react";
 import { Button } from "@/libraries/shadcn/components/Button";
@@ -52,6 +53,7 @@ export function ThemeToggle() {
       type="button"
       variant="outline"
       className="theme-toggle"
+      data-testid="theme-toggle"
       onClick={toggleTheme}
       aria-label={
         theme === THEME_DARK ? themeToggleCopy.enableLightMode : themeToggleCopy.enableDarkMode

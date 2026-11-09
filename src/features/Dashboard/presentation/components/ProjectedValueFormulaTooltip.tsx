@@ -1,3 +1,4 @@
+import "./ProjectedValueFormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -16,6 +17,7 @@ import type { ProjectionScope } from "@/features/Dashboard/presentation/types/Pr
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { monthlyRateFromAnnualPct } from "@/features/Dashboard/domain/utils/monthlyRateFromAnnualPct.util";
 import { realAnnualRatePct } from "@/features/Dashboard/domain/utils/realAnnualRatePct.util";
+import { ProjectedInvestmentFormula } from "@/features/Dashboard/presentation/components/ProjectedInvestmentFormula";
 
 // --- Constants ---
 
@@ -63,34 +65,6 @@ export function ProjectedValueFormulaTooltip({
   if (scope === PROJECTION_SCOPE_VALUES.investment) {
     const values = holdingValues ?? [];
     const investmentValue = values.reduce((sum, holding) => sum + holding.value, 0);
-    if (values.length === 1) {
-      const investmentLabel = projectedPositionLabel(values[0]!.label, real);
-
-      return (
-        <FormulaTooltip
-          label={label}
-          intro={projectedValueFormulaTooltipCopy.singlePositionInvestmentExplanation}
-          example={projectedValueFormulaTooltipCopy.partsExample(
-            formatAbbreviatedValue(investmentValue, "currency"),
-            formatAbbreviatedValue(investmentValue, "currency"),
-          )}
-          trigger={<Calculator className="icon-sm" aria-hidden="true" />}
-        >
-          <ol className="formula-tooltip-copy formula-investment-expression">
-            <FormulaStep>
-              <span className="formula-step-description">
-                {projectedValueFormulaTooltipCopy.noOtherPositionsToAdd}
-              </span>
-              <FormulaResult
-                name={investmentLabel}
-                value={formatAbbreviatedValue(investmentValue, "currency")}
-              />
-            </FormulaStep>
-          </ol>
-        </FormulaTooltip>
-      );
-    }
-
     const expression = values
       .map(({ label: holdingName }) => texText(projectedPositionLabel(holdingName, real)))
       .join(" \\,+\\, ");
@@ -102,48 +76,15 @@ export function ProjectedValueFormulaTooltip({
       Math.round(investmentValue * PERCENT_SCALE);
 
     return (
-      <FormulaTooltip
+      <ProjectedInvestmentFormula
         label={label}
-        intro={projectedValueFormulaTooltipCopy.investmentTotalCombinesPositionValues}
-        example={projectedValueFormulaTooltipCopy.partsExample(
-          values.map(({ value }) => formatAbbreviatedValue(value, "currency")).join(" + "),
-          formatAbbreviatedValue(investmentValue, "currency"),
-        )}
-        trigger={<Calculator className="icon-sm" aria-hidden="true" />}
-      >
-        <ol className="formula-tooltip-copy formula-investment-expression">
-          <FormulaStep>
-            <span className="formula-step-description">
-              {projectedValueFormulaTooltipCopy.sumProjectedValueForEachPosition}
-            </span>
-            <FormulaMath
-              label={values
-                .map(({ label: holdingName }) => projectedPositionLabel(holdingName, real))
-                .join(" + ")}
-              tex={expression || texText("—")}
-            />
-          </FormulaStep>
-          <FormulaStep>
-            <span className="formula-step-description">
-              {amountsDifferAfterRounding
-                ? projectedValueFormulaTooltipCopy.useDisplayedAmountsForTotal
-                : projectedValueFormulaTooltipCopy.replaceEachPositionWithProjectedAmount}
-            </span>
-            <FormulaMath
-              label={values
-                .map(({ value }) => formatAbbreviatedValue(value, "currency"))
-                .join(" + ")}
-              className="formula-math-substitution"
-              tex={substitution || texText("—")}
-            />
-            <FormulaResult
-              name={projectedBalanceLabel(real)}
-              value={formatAbbreviatedValue(investmentValue, "currency")}
-              rounded={amountsDifferAfterRounding}
-            />
-          </FormulaStep>
-        </ol>
-      </FormulaTooltip>
+        real={real}
+        values={values}
+        investmentValue={investmentValue}
+        expression={expression}
+        substitution={substitution}
+        amountsDifferAfterRounding={amountsDifferAfterRounding}
+      />
     );
   }
 

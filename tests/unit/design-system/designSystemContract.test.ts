@@ -5,23 +5,37 @@ const tokens = readFileSync(
   new URL("../../../src/design-system/styles/tokens.css", import.meta.url),
   "utf8",
 );
-const stylesDirectories = [
-  new URL("../../../src/app/styles/", import.meta.url),
-  new URL("../../../src/design-system/styles/", import.meta.url),
-  new URL("../../../src/libraries/shadcn/styles/", import.meta.url),
-  new URL("../../../src/features/Dashboard/presentation/styles/", import.meta.url),
-  new URL("../../../src/features/Home/", import.meta.url),
-  new URL("../../../src/features/Home/presentation/styles/", import.meta.url),
-  new URL("../../../src/shared/presentation/styles/", import.meta.url),
-];
-const styles = stylesDirectories.flatMap((directory) =>
-  readdirSync(directory)
-    .filter((name) => name.endsWith(".css") && name !== "tokens.css")
-    .map((name) => ({
-      name,
-      source: readFileSync(new URL(name, directory), "utf8").replace(/\/\*[\s\S]*?\*\//g, ""),
-    })),
-);
+function styleSources(directory: URL): Array<{ name: string; source: string }> {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const url = new URL(entry.name + (entry.isDirectory() ? "/" : ""), directory);
+    if (entry.isDirectory()) return styleSources(url);
+    if (!/\.css(?:\.ts)?$/.test(entry.name) || entry.name === "tokens.css") return [];
+    return [
+      {
+        name: url.pathname,
+        source: readFileSync(url, "utf8").replace(/\/\*[\s\S]*?\*\//g, ""),
+      },
+    ];
+  });
+}
+const styles = styleSources(new URL("../../../src/", import.meta.url));
+
+function colorMixFunctions(source: string): string[] {
+  const functions: string[] = [];
+  let start = source.indexOf("color-mix(");
+  while (start !== -1) {
+    let depth = 0;
+    let end = start;
+    for (; end < source.length; end += 1) {
+      if (source[end] === "(") depth += 1;
+      if (source[end] === ")") depth -= 1;
+      if (depth === 0) break;
+    }
+    functions.push(source.slice(start, end + 1));
+    start = source.indexOf("color-mix(", end + 1);
+  }
+  return functions;
+}
 
 describe("design-system contract", () => {
   it("keeps dark as the base palette and one font family", () => {
@@ -41,7 +55,9 @@ describe("design-system contract", () => {
         .join("\n");
       expect(declarations, name).not.toMatch(/#[\da-f]{3,8}\b|\brgb\(/i);
       expect(declarations, name).not.toMatch(/(?<![\w-])-?\d+(?:\.\d+)?(?:px|rem|em|ms|s|ch)\b/);
-      expect(declarations, name).not.toMatch(/color-mix\([^;]*\b\d+%/);
+      for (const colorMix of colorMixFunctions(declarations)) {
+        expect(colorMix, name).not.toMatch(/\b\d+%/);
+      }
       expect(declarations, name).not.toMatch(/color-mix\([^;]*\b(?:white|black)\b/i);
     }
     const sourceRoots = [

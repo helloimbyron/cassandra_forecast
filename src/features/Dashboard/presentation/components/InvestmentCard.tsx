@@ -1,3 +1,4 @@
+import "./InvestmentCard.css.ts";
 import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -16,23 +17,11 @@ import { Label } from "@/libraries/shadcn/components/Label";
 import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { NumericUnitInput } from "@/features/Dashboard/presentation/components/NumericUnitInput";
 import { projectInvestment } from "@/features/Dashboard/domain/utils/projectInvestment.util";
-import { compactMoney } from "@/features/Dashboard/presentation/utils/compactMoney.util";
 import { categoryIcon } from "@/features/Dashboard/presentation/utils/categoryIcon.util";
 import { CHART_CONSTANTS } from "@/features/Dashboard/presentation/constants/chartConstants.constant";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Line,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { ArrowDown, ArrowUp, Link2, Minus } from "lucide-react";
 import { InvestmentGrowthFormulaTooltip } from "@/features/Dashboard/presentation/components/InvestmentGrowthFormulaTooltip";
 import { ProjectedValueFormulaTooltip } from "@/features/Dashboard/presentation/components/ProjectedValueFormulaTooltip";
-import { PortfolioTooltip } from "@/features/Dashboard/presentation/components/PortfolioTooltip";
 import { HoldingRow } from "@/features/Dashboard/presentation/components/HoldingRow";
 import { formatYears } from "@/features/Dashboard/domain/utils/formatYears.util";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
@@ -46,9 +35,7 @@ import { AbbreviatedValue } from "@/features/Dashboard/presentation/components/m
 import { RateNoteTooltip } from "@/features/Dashboard/presentation/components/RateNoteTooltip";
 import { InvestmentGrowthPercentFormulaTooltip } from "@/features/Dashboard/presentation/components/InvestmentGrowthPercentFormulaTooltip";
 import { getInvestmentGrowthPercent } from "@/features/Dashboard/presentation/utils/getInvestmentGrowthPercent.util";
-import { getEmptyYAxisProps } from "@/features/Dashboard/presentation/utils/getEmptyYAxisProps.util";
-import { areChartSeriesHidden } from "@/features/Dashboard/presentation/utils/areChartSeriesHidden.util";
-import { ChartSeriesToggle } from "@/features/Dashboard/presentation/components/ChartSeriesToggle";
+import { InvestmentChart } from "@/features/Dashboard/presentation/components/InvestmentChart";
 
 // --- Constants ---
 
@@ -97,15 +84,11 @@ export function InvestmentCard({
     DETAIL_SERIES_VALUES.invested,
   );
   const projectedLabel = projectedBalanceLabel(withInflation);
-  const noVisibleChartSeries = areChartSeriesHidden(hiddenChartSeries, [
-    investmentTotalKey,
-    investmentInvestedKey,
-  ]);
 
   // --- Return ---
 
   return (
-    <Card className="investment-card">
+    <Card className="investment-card" data-testid="dashboard-investment-card">
       <CardHeader className="investment-card-header">
         <div className="investment-identity">
           <span
@@ -218,96 +201,18 @@ export function InvestmentCard({
             </div>
           </div>
         </div>
-        <div
-          className="chart-wrap investment-chart"
-          role="img"
-          aria-label={investmentCardCopy.chartFor(investment.name, years)}
-        >
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart accessibilityLayer data={investmentChartData} margin={chartVisual.margin}>
-              <CartesianGrid
-                vertical={false}
-                stroke="var(--chart-grid)"
-                strokeDasharray={chartVisual.gridDasharray}
-              />
-              <XAxis
-                dataKey="year"
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                minTickGap={chartVisual.xMinTickGap}
-              />
-              <YAxis
-                {...getEmptyYAxisProps(noVisibleChartSeries)}
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                tickFormatter={compactMoney}
-                width={chartVisual.yAxisWidth}
-              />
-              <Tooltip content={<PortfolioTooltip />} />
-              <Area
-                type="monotone"
-                dataKey="total"
-                name={investment.name}
-                stroke={COLORS[index % COLORS.length]}
-                fill={COLORS[index % COLORS.length]}
-                fillOpacity={chartVisual.areaFillOpacity}
-                strokeWidth="var(--line-chart-subtle)"
-                isAnimationActive={false}
-                hide={hiddenChartSeries.has(investmentTotalKey)}
-              />
-              <Line
-                type="monotone"
-                dataKey="total"
-                name={projectedLabel}
-                stroke="var(--chart-1)"
-                strokeWidth="var(--line-focus)"
-                dot={years === 0}
-                activeDot={{
-                  r: chartVisual.activeDotRadius,
-                  fill: "var(--chart-1)",
-                  stroke: "var(--card)",
-                  strokeWidth: chartVisual.activeDotStrokeWidth,
-                }}
-                isAnimationActive={false}
-                hide={hiddenChartSeries.has(investmentTotalKey)}
-              />
-              <Line
-                type="monotone"
-                dataKey="invested"
-                name={labels.totalInvested}
-                stroke="var(--chart-invested)"
-                strokeWidth="var(--line-medium)"
-                strokeDasharray={chartVisual.investedDasharray}
-                dot={years === 0}
-                isAnimationActive={false}
-                hide={hiddenChartSeries.has(investmentInvestedKey)}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-        <div
-          className="investment-legend investment-chart-legend"
-          role="group"
-          aria-label={investmentCardCopy.seriesFor(investment.name)}
-        >
-          <ChartSeriesToggle
-            checked={!hiddenChartSeries.has(investmentTotalKey)}
-            onChange={() => toggleChartSeries(investmentTotalKey)}
-            swatch="line"
-            color="var(--chart-1)"
-            label={projectedLabel}
-          />
-          <ChartSeriesToggle
-            checked={!hiddenChartSeries.has(investmentInvestedKey)}
-            onChange={() => toggleChartSeries(investmentInvestedKey)}
-            swatch="line"
-            color="var(--chart-invested)"
-            dashed
-            label={labels.totalInvested}
-          />
-        </div>
+        <InvestmentChart
+          investment={investment}
+          index={index}
+          years={years}
+          chartData={investmentChartData}
+          chartVisual={chartVisual}
+          hiddenChartSeries={hiddenChartSeries}
+          totalSeriesKey={investmentTotalKey}
+          investedSeriesKey={investmentInvestedKey}
+          projectedLabel={projectedLabel}
+          onToggleSeries={toggleChartSeries}
+        />
 
         <div className="slider-block">
           <div className="slider-heading">
