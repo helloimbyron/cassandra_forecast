@@ -1,3 +1,4 @@
+import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
 import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
@@ -85,6 +86,7 @@ export function InvestmentCard({
     withInflation,
   } = model;
   const years = investmentYears[investment.id] ?? DEFAULT_HORIZON_YEARS;
+  const chartVisual = readChartVisualTokens();
   const projection = projectInvestment(investment, years, activeInflationRatePct);
   const Icon = categoryIcon(investment.category);
   const investmentChartData = createInvestmentChartData(projection);
@@ -110,7 +112,7 @@ export function InvestmentCard({
             className="investment-icon"
             style={{ "--investment-accent": COLORS[index % COLORS.length] } as CSSProperties}
           >
-            {createElement(Icon, { size: 17 })}
+            {createElement(Icon, { "aria-hidden": true })}
           </span>
           <div>
             <CardTitle>{investment.name}</CardTitle>
@@ -222,18 +224,18 @@ export function InvestmentCard({
           aria-label={investmentCardCopy.chartFor(investment.name, years)}
         >
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart
-              accessibilityLayer
-              data={investmentChartData}
-              margin={{ top: 14, right: 8, left: 2, bottom: 0 }}
-            >
-              <CartesianGrid vertical={false} stroke="var(--chart-grid)" strokeDasharray="4 5" />
+            <AreaChart accessibilityLayer data={investmentChartData} margin={chartVisual.margin}>
+              <CartesianGrid
+                vertical={false}
+                stroke="var(--chart-grid)"
+                strokeDasharray={chartVisual.gridDasharray}
+              />
               <XAxis
                 dataKey="year"
                 axisLine={false}
                 tickLine={false}
                 tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                minTickGap={22}
+                minTickGap={chartVisual.xMinTickGap}
               />
               <YAxis
                 {...getEmptyYAxisProps(noVisibleChartSeries)}
@@ -241,7 +243,7 @@ export function InvestmentCard({
                 tickLine={false}
                 tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
                 tickFormatter={compactMoney}
-                width={58}
+                width={chartVisual.yAxisWidth}
               />
               <Tooltip content={<PortfolioTooltip />} />
               <Area
@@ -250,7 +252,7 @@ export function InvestmentCard({
                 name={investment.name}
                 stroke={COLORS[index % COLORS.length]}
                 fill={COLORS[index % COLORS.length]}
-                fillOpacity={0.09}
+                fillOpacity={chartVisual.areaFillOpacity}
                 strokeWidth="var(--line-chart-subtle)"
                 isAnimationActive={false}
                 hide={hiddenChartSeries.has(investmentTotalKey)}
@@ -262,7 +264,12 @@ export function InvestmentCard({
                 stroke="var(--chart-1)"
                 strokeWidth="var(--line-focus)"
                 dot={years === 0}
-                activeDot={{ r: 5, fill: "var(--chart-1)", stroke: "var(--card)", strokeWidth: 2 }}
+                activeDot={{
+                  r: chartVisual.activeDotRadius,
+                  fill: "var(--chart-1)",
+                  stroke: "var(--card)",
+                  strokeWidth: chartVisual.activeDotStrokeWidth,
+                }}
                 isAnimationActive={false}
                 hide={hiddenChartSeries.has(investmentTotalKey)}
               />
@@ -272,7 +279,7 @@ export function InvestmentCard({
                 name={labels.totalInvested}
                 stroke="var(--chart-invested)"
                 strokeWidth="var(--line-medium)"
-                strokeDasharray="5 5"
+                strokeDasharray={chartVisual.investedDasharray}
                 dot={years === 0}
                 isAnimationActive={false}
                 hide={hiddenChartSeries.has(investmentInvestedKey)}

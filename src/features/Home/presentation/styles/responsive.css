@@ -52,7 +52,7 @@ h1 {
   gap: var(--space-1);
 }
 
-@media (width >= 30rem) {
+@variant compact {
   h1 {
     font-size: var(--text-intro);
   }
@@ -78,7 +78,7 @@ h1 {
   }
 }
 
-@media (width >= 46rem) {
+@variant tablet {
   .intro-section {
     padding-block: var(--space-7) var(--space-5);
   }

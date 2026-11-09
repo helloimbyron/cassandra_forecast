@@ -217,7 +217,7 @@
   overflow-wrap: anywhere;
 }
 
-@media (width >= 30rem) {
+@variant compact {
   .metrics-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -346,7 +346,7 @@
   }
 }
 
-@media (width >= 46rem) {
+@variant tablet {
   .hero-current-stat .hero-breakdown-heading-spacer {
     display: block;
   }
@@ -528,7 +528,7 @@
   }
 }
 
-@media (width >= 66rem) {
+@variant wide {
   .hero-controls-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-5);
@@ -568,7 +568,7 @@
   }
 }
 
-@media (width >= 74rem) {
+@variant extra-wide {
   .hero-main,
   .hero-main-without-inflation {
     grid-template-rows: repeat(3, auto);
@@ -739,7 +739,8 @@
     padding-top: 0;
     padding-left: var(--space-3);
     border-top: 0;
-    border-left: var(--line-thin) solid color-mix(in srgb, white var(--mix-80), transparent);
+    border-left: var(--line-thin) solid
+      color-mix(in srgb, var(--hero-text) var(--mix-80), transparent);
   }
 }
 

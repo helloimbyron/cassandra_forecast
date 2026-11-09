@@ -1,3 +1,4 @@
+import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { useState, type KeyboardEvent, type PointerEvent } from "react";
 import { useTranslation } from "react-i18next";
@@ -211,6 +212,7 @@ function DistributionLabelTooltip({ text, label }: { text: string; label: string
 
 export function DistributionSection({ model }: { model: LoadedDashboardModel }) {
   const { t } = useTranslation();
+  const chartVisual = readChartVisualTokens();
   const {
     totalAtHorizon,
     investmentProjections,
@@ -395,25 +397,25 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
             aria-label={`${distributionSectionCopy.chartTitle(withInflation)}, ${distributionSectionCopy.yearCount(years)}`}
           >
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart
-                accessibilityLayer
-                data={projection.points}
-                margin={{ top: 14, right: 8, left: 2, bottom: 0 }}
-              >
-                <CartesianGrid vertical={false} stroke="var(--chart-grid)" strokeDasharray="4 5" />
+              <AreaChart accessibilityLayer data={projection.points} margin={chartVisual.margin}>
+                <CartesianGrid
+                  vertical={false}
+                  stroke="var(--chart-grid)"
+                  strokeDasharray={chartVisual.gridDasharray}
+                />
                 <XAxis
                   dataKey="year"
                   axisLine={false}
                   tickLine={false}
                   tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                  minTickGap={22}
+                  minTickGap={chartVisual.xMinTickGap}
                 />
                 <YAxis
                   axisLine={false}
                   tickLine={false}
                   tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
                   tickFormatter={compactMoney}
-                  width={62}
+                  width={chartVisual.distributionYAxisWidth}
                 />
                 <Tooltip content={<DistributionTooltip />} />
                 <Area
@@ -422,13 +424,13 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   name={distributionSectionCopy.balance}
                   stroke="var(--chart-1)"
                   fill="var(--chart-1)"
-                  fillOpacity={0.1}
+                  fillOpacity={chartVisual.distributionFillOpacity}
                   strokeWidth="var(--line-chart-highlight)"
                   activeDot={{
-                    r: 5,
+                    r: chartVisual.activeDotRadius,
                     fill: "var(--chart-1)",
                     stroke: "var(--card)",
-                    strokeWidth: 2,
+                    strokeWidth: chartVisual.activeDotStrokeWidth,
                   }}
                   isAnimationActive={false}
                 />

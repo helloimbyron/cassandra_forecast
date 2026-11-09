@@ -92,6 +92,11 @@
   color: var(--investment-accent);
 }
 
+.investment-icon svg {
+  width: var(--investment-symbol-size);
+  height: var(--investment-symbol-size);
+}
+
 .investment-identity h3 {
   font-size: var(--text-card-title);
   font-weight: var(--font-weight-semibold);
@@ -737,7 +742,7 @@
   top: var(--space-3);
 }
 
-@media (width >= 30rem) {
+@variant compact {
   .formula-dialog-content {
     width: min(var(--size-42), calc(100vw - var(--space-5)));
     max-height: min(90dvh, var(--size-46));

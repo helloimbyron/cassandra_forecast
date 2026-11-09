@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0e1624" />
+    <meta name="theme-color" content="__DARK_THEME_COLOR__" />
     <meta name="description" content="__APP_DESCRIPTION__" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="__FAVICON_DATA_URI__" />
 
     <title>__APP_TITLE__</title>
 
@@ -14,7 +14,9 @@
       try {
         if (localStorage.getItem("cassandra-theme") === "light") {
           document.documentElement.classList.replace("dark", "light");
-          document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f7fa");
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", "__LIGHT_THEME_COLOR__");
         }
       } catch {
         // La navegación privada puede bloquear el acceso al almacenamiento; se conserva el tema oscuro predeterminado.

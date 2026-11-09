@@ -7,6 +7,7 @@ import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstant
 import { formatInflationRate } from "@/features/Dashboard/presentation/utils/formatInflationRate.util";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { FormulaTooltip } from "@/features/Dashboard/presentation/components/FormulaTooltip";
+import { sliderTooltipPosition } from "@/design-system/utils/sliderTooltipPosition.util";
 
 // --- Constants ---
 
@@ -54,7 +55,7 @@ export function InflationControls({
   const displayedRate = formatInflationRate(inflationRatePct);
   const draftProgress =
     (draftRate - MIN_INFLATION_RATE_PCT) / (MAX_INFLATION_RATE_PCT - MIN_INFLATION_RATE_PCT);
-  const draftThumbPosition = `calc(${draftProgress * 100}% + ${10 - draftProgress * 20}px)`;
+  const draftThumbPosition = sliderTooltipPosition(draftProgress);
 
   // --- Return ---
 

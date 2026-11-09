@@ -28,7 +28,7 @@ main {
   grid-row: 1;
 }
 
-@media (width >= 30rem) {
+@variant compact {
   .footer {
     flex-wrap: nowrap;
   }
@@ -38,7 +38,7 @@ main {
   }
 }
 
-@media (width >= 46rem) {
+@variant tablet {
   main {
     width: min(var(--content-width), calc(100% - var(--space-6)));
   }

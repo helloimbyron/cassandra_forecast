@@ -1,3 +1,4 @@
+import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
 import { portfolioChartPanelCopy } from "@/features/Dashboard/presentation/copies/portfolioChartPanel.copy";
@@ -46,6 +47,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
     withInflation,
   } = model;
   const projectedLabel = projectedBalanceLabel(withInflation);
+  const chartVisual = readChartVisualTokens();
   const portfolioChartSeriesKeys = [
     TOTAL_SERIES_KEY,
     INVESTED_SERIES_KEY,
@@ -67,24 +69,32 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
       <CardContent>
         <div className="chart-wrap total-chart">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart
-              accessibilityLayer
-              data={chartData}
-              margin={{ top: 14, right: 8, left: 2, bottom: 0 }}
-            >
+            <AreaChart accessibilityLayer data={chartData} margin={chartVisual.margin}>
               <defs>
                 <linearGradient id="totalFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--chart-1)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="var(--chart-1)" stopOpacity={0.015} />
+                  <stop
+                    offset={chartVisual.gradientStartOffset}
+                    stopColor="var(--chart-1)"
+                    stopOpacity={chartVisual.gradientStartOpacity}
+                  />
+                  <stop
+                    offset={chartVisual.gradientEndOffset}
+                    stopColor="var(--chart-1)"
+                    stopOpacity={chartVisual.gradientEndOpacity}
+                  />
                 </linearGradient>
               </defs>
-              <CartesianGrid vertical={false} stroke="var(--chart-grid)" strokeDasharray="4 5" />
+              <CartesianGrid
+                vertical={false}
+                stroke="var(--chart-grid)"
+                strokeDasharray={chartVisual.gridDasharray}
+              />
               <XAxis
                 dataKey="year"
                 axisLine={false}
                 tickLine={false}
                 tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
-                minTickGap={22}
+                minTickGap={chartVisual.xMinTickGap}
               />
               <YAxis
                 {...getEmptyYAxisProps(noVisibleChartSeries)}
@@ -92,7 +102,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
                 tickLine={false}
                 tick={{ fill: "var(--chart-axis)", fontSize: "var(--text-meta)" }}
                 tickFormatter={compactMoney}
-                width={58}
+                width={chartVisual.yAxisWidth}
               />
               <Tooltip content={<PortfolioTooltip />} />
               {investmentProjections.map((projection, index) => (
@@ -104,7 +114,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
                   stackId="investments"
                   stroke={COLORS[index % COLORS.length]}
                   fill={COLORS[index % COLORS.length]}
-                  fillOpacity={0.09}
+                  fillOpacity={chartVisual.areaFillOpacity}
                   strokeWidth="var(--line-chart-subtle)"
                   isAnimationActive={false}
                   hide={hiddenChartSeries.has(investmentSeriesKey(projection.investment.id))}
@@ -117,7 +127,12 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
                 stroke="var(--chart-1)"
                 strokeWidth="var(--line-focus)"
                 dot={totalYears === 0}
-                activeDot={{ r: 5, fill: "var(--chart-1)", stroke: "var(--card)", strokeWidth: 2 }}
+                activeDot={{
+                  r: chartVisual.activeDotRadius,
+                  fill: "var(--chart-1)",
+                  stroke: "var(--card)",
+                  strokeWidth: chartVisual.activeDotStrokeWidth,
+                }}
                 isAnimationActive={false}
                 hide={hiddenChartSeries.has(TOTAL_SERIES_KEY)}
               />
@@ -127,7 +142,7 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
                 name={labels.totalInvested}
                 stroke="var(--chart-invested)"
                 strokeWidth="var(--line-medium)"
-                strokeDasharray="5 5"
+                strokeDasharray={chartVisual.investedDasharray}
                 dot={totalYears === 0}
                 isAnimationActive={false}
                 hide={hiddenChartSeries.has(INVESTED_SERIES_KEY)}

@@ -106,9 +106,9 @@ describe("architecture contract", () => {
     ) as { aliases: { components: string; lib?: string; ui: string; utils: string } };
     expect(config.aliases.components).toBe("@/libraries/shadcn/components");
     expect(config.aliases.ui).toBe("@/libraries/shadcn/components");
-    expect(
-      existsSync(new URL("../../../src/libraries/shadcn/components/", import.meta.url)),
-    ).toBe(true);
+    expect(existsSync(new URL("../../../src/libraries/shadcn/components/", import.meta.url))).toBe(
+      true,
+    );
     expect(config.aliases.utils).toBe("@/libraries/shadcn/utils/cn.util");
     expect(
       existsSync(new URL("../../../src/libraries/shadcn/utils/cn.util.ts", import.meta.url)),

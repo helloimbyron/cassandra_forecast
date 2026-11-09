@@ -97,6 +97,7 @@ h1 em {
   border: var(--line-medium) dashed var(--input);
   border-radius: var(--radius-card);
   background: var(--surface-raised);
+  box-shadow: var(--shadow-card);
   text-align: center;
   transition:
     background var(--motion-slow),

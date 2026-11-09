@@ -92,10 +92,10 @@ describe("HeroCard balance and purchasing-power summary", () => {
       /\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/s,
     );
     expect(responsiveStyles).toMatch(
-      /@media \(width >= 46rem\)[\s\S]*?\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-columns: repeat\(12, minmax\(0, 1fr\)\);/,
+      /@variant tablet[\s\S]*?\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-columns: repeat\(12, minmax\(0, 1fr\)\);/,
     );
     expect(responsiveStyles).toMatch(
-      /@media \(width >= 74rem\)[\s\S]*?\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-rows: repeat\(3, auto\);/,
+      /@variant extra-wide[\s\S]*?\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-rows: repeat\(3, auto\);/,
     );
     expect(responsiveStyles).toContain(".hero-current-stat .hero-breakdown-heading-spacer");
   });

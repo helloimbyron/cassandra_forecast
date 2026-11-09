@@ -9,7 +9,7 @@ export default {
     "at-rule-no-unknown": [
       true,
       {
-        ignoreAtRules: ["custom-variant", "theme"],
+        ignoreAtRules: ["custom-variant", "theme", "variant"],
       },
     ],
   },

@@ -107,7 +107,9 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
           <div className="table-scroll">
             <table
               aria-describedby="year-table-caption"
-              style={{ minWidth: `${(visibleInvestments.length + 2) * 8}rem` }}
+              style={{
+                minWidth: `calc(${visibleInvestments.length + 2} * var(--table-column-min-width))`,
+              }}
             >
               <caption id="year-table-caption" className="visually-hidden">
                 {tableSectionCopy.accessibleProjectionTable(projectedLabel)}

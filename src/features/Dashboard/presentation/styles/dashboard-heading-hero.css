@@ -40,8 +40,10 @@
   padding-bottom: calc(var(--space-5) + var(--space-2) + var(--space-075));
   border-radius: var(--radius-card);
   color: var(--hero-text);
-  background: var(--hero-bg);
-  box-shadow: var(--shadow-card);
+  background: var(--hero-gradient);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 var(--line-thin) color-mix(in srgb, var(--hero-text) var(--mix-20), transparent);
 }
 
 .hero-card::after {
@@ -220,7 +222,7 @@
   opacity: var(--emphasis-opacity);
 }
 
-.hero-side-stat .formula-tooltip-trigger {
+.hero-card .formula-tooltip-trigger:not(.hero-total-trigger) {
   color: var(--hero-accent);
 }
 
@@ -413,7 +415,7 @@
   align-items: stretch;
   gap: var(--space-5);
   padding-top: var(--space-4);
-  border-top: var(--line-thin) solid color-mix(in srgb, white var(--mix-80), transparent);
+  border-top: var(--line-thin) solid color-mix(in srgb, var(--hero-text) var(--mix-80), transparent);
 }
 
 .hero-horizon {

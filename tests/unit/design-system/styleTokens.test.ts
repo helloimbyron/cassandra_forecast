@@ -46,13 +46,19 @@ function contrast(first: string, second: string) {
 describe.each(Object.entries(palettes()))("%s palette", (_theme, tokens) => {
   it.each([
     ["--foreground", "--background"],
+    ["--foreground", "--popover"],
     ["--card-foreground", "--card"],
+    ["--popover-foreground", "--popover"],
+    ["--secondary-foreground", "--secondary"],
     ["--muted-foreground", "--background"],
     ["--muted-foreground", "--card"],
     ["--primary-foreground", "--primary"],
     ["--accent-foreground", "--accent"],
     ["--destructive", "--card"],
     ["--text-soft", "--card"],
+    ["--text-muted", "--card"],
+    ["--primary", "--card"],
+    ["--hero-text", "--hero-bg"],
     ["--hero-muted", "--hero-bg"],
     ["--chart-axis", "--card"],
   ])("keeps text %s on %s at or above 4.5:1", (foreground, background) => {
@@ -63,7 +69,11 @@ describe.each(Object.entries(palettes()))("%s palette", (_theme, tokens) => {
 
   it.each([
     ["--input", "--card"],
+    ["--border", "--card"],
     ["--focus-ring", "--background"],
+    ["--focus-ring", "--card"],
+    ["--hero-track", "--hero-bg"],
+    ["--hero-accent", "--hero-bg"],
     ["--chart-1", "--card"],
     ["--chart-2", "--card"],
     ["--chart-3", "--card"],
@@ -76,4 +86,23 @@ describe.each(Object.entries(palettes()))("%s palette", (_theme, tokens) => {
     expect(tokens[background]).toBeDefined();
     expect(contrast(tokens[foreground]!, tokens[background]!)).toBeGreaterThanOrEqual(3);
   });
+
+  it("avoids pure white and black palette values", () => {
+    expect(Object.values(tokens)).not.toContain("#ffffff");
+    expect(Object.values(tokens)).not.toContain("#000000");
+  });
+
+  it.each(["--hero-gradient-start", "--hero-gradient-mid", "--hero-gradient-end"])(
+    "keeps hero text readable over %s",
+    (stop) => {
+      expect(contrast(tokens["--hero-text"]!, tokens[stop]!)).toBeGreaterThanOrEqual(4.5);
+      expect(contrast(tokens["--hero-muted"]!, tokens[stop]!)).toBeGreaterThanOrEqual(4.5);
+      expect(contrast(tokens["--hero-accent"]!, tokens[stop]!)).toBeGreaterThanOrEqual(3);
+      expect(contrast(tokens["--hero-track"]!, tokens[stop]!)).toBeGreaterThanOrEqual(3);
+    },
+  );
+});
+
+it("avoids pure white and black in shadows and scrims", () => {
+  expect(css).not.toMatch(/#(?:fff|ffffff|000|000000)\b|rgb\(0 0 0\s*\//i);
 });

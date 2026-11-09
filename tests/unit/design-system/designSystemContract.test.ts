@@ -42,7 +42,30 @@ describe("design-system contract", () => {
       expect(declarations, name).not.toMatch(/#[\da-f]{3,8}\b|\brgb\(/i);
       expect(declarations, name).not.toMatch(/(?<![\w-])-?\d+(?:\.\d+)?(?:px|rem|em|ms|s|ch)\b/);
       expect(declarations, name).not.toMatch(/color-mix\([^;]*\b\d+%/);
+      expect(declarations, name).not.toMatch(/color-mix\([^;]*\b(?:white|black)\b/i);
     }
+    const sourceRoots = [
+      new URL("../../../src/", import.meta.url),
+      new URL("../../../public/", import.meta.url),
+    ];
+    function sourceFiles(directory: URL): URL[] {
+      return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+        const url = new URL(entry.name + (entry.isDirectory() ? "/" : ""), directory);
+        return entry.isDirectory()
+          ? sourceFiles(url)
+          : /\.(?:css|ts|tsx|svg|html)$/.test(entry.name) &&
+              url.pathname !==
+                new URL("../../../src/design-system/styles/tokens.css", import.meta.url).pathname
+            ? [url]
+            : [];
+      });
+    }
+    for (const file of sourceRoots.flatMap(sourceFiles)) {
+      expect(readFileSync(file, "utf8"), file.pathname).not.toMatch(/#[\da-f]{3,8}\b|\brgb\(/i);
+    }
+    expect(readFileSync(new URL("../../../index.html", import.meta.url), "utf8")).not.toMatch(
+      /#[\da-f]{3,8}\b|\brgb\(/i,
+    );
   });
 
   it("uses only the named mobile-first breakpoints", () => {
@@ -56,11 +79,9 @@ describe("design-system contract", () => {
       expect(tokens).toContain(`--breakpoint-${name}: ${value};`);
     }
     for (const { name, source } of styles) {
-      const conditions = [...source.matchAll(/@media\s*\((?:width\s*[^)]*)\)/g)].map(
-        (match) => match[0],
-      );
-      for (const condition of conditions) {
-        expect(condition, name).toMatch(/^@media \(width >= (?:30|46|66|74)rem\)$/);
+      expect(source, name).not.toMatch(/@media\s*\(width\s*>=/);
+      for (const match of source.matchAll(/@variant\s+([\w-]+)/g)) {
+        expect(["compact", "tablet", "wide", "extra-wide"], name).toContain(match[1]);
       }
     }
   });

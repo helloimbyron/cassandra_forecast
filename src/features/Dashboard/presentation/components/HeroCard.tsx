@@ -26,6 +26,7 @@ import { FormulaTooltip } from "@/features/Dashboard/presentation/components/For
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { useState } from "react";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";
+import { sliderTooltipPosition } from "@/design-system/utils/sliderTooltipPosition.util";
 
 // --- Constants ---
 
@@ -69,7 +70,7 @@ export function HeroCard({
     draftYearsState.committedYears === totalYears ? draftYearsState.years : totalYears;
   const horizonProgress =
     (draftYears - MIN_HORIZON_YEARS) / (MAX_HORIZON_YEARS - MIN_HORIZON_YEARS);
-  const thumbPosition = `calc(${horizonProgress * 100}% + ${10 - horizonProgress * 20}px)`;
+  const thumbPosition = sliderTooltipPosition(horizonProgress);
 
   // --- Return ---
 

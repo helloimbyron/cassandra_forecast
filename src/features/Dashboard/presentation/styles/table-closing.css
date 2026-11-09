@@ -325,7 +325,7 @@ td:first-child {
   border: 0 !important;
 }
 
-@media (width >= 30rem) {
+@variant compact {
   .table-section .table-section-heading {
     flex-direction: row;
     align-items: center;
@@ -337,7 +337,7 @@ td:first-child {
   }
 }
 
-@media (width >= 46rem) {
+@variant tablet {
   .table-column-options {
     right: 0;
     left: auto;

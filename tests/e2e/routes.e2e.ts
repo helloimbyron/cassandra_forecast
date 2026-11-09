@@ -1,5 +1,28 @@
 import { expect, test } from "@playwright/test";
 
+async function visualColors(page: import("@playwright/test").Page) {
+  return page.evaluate(() => {
+    const tokens = getComputedStyle(document.documentElement);
+    const resolveColor = (value: string) => {
+      const probe = document.createElement("span");
+      probe.style.color = value;
+      document.body.append(probe);
+      const color = getComputedStyle(probe).color;
+      probe.remove();
+      return color;
+    };
+    return {
+      background: tokens.getPropertyValue("--background").trim(),
+      card: tokens.getPropertyValue("--surface-raised").trim(),
+      primary: tokens.getPropertyValue("--primary").trim(),
+      bodyColor: getComputedStyle(document.body).backgroundColor,
+      cardColor: getComputedStyle(document.querySelector(".import-card")!).backgroundColor,
+      resolvedBackground: resolveColor("var(--background)"),
+      resolvedCard: resolveColor("var(--surface-raised)"),
+    };
+  });
+}
+
 test("direct dashboard navigation loads the example and the brand returns home", async ({
   page,
 }) => {
@@ -54,5 +77,37 @@ test("the initial theme follows the stored preference", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.locator("html")).toHaveClass(/light/);
-  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#f5f7fa");
+  const colors = await visualColors(page);
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    colors.background,
+  );
+});
+
+test("mobile theme toggle updates surfaces and browser color in both modes", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  const dark = await visualColors(page);
+  expect(dark.bodyColor).toBe(dark.resolvedBackground);
+  expect(dark.cardColor).toBe(dark.resolvedCard);
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    dark.background,
+  );
+  const iconHref = await page.locator('link[rel="icon"]').getAttribute("href");
+  const iconSvg = decodeURIComponent(iconHref?.split(",")[1] ?? "");
+  expect(iconSvg).toContain(`fill="${dark.background}"`);
+  expect(iconSvg).toContain(`stroke="${dark.primary}"`);
+
+  await page.locator(".theme-toggle").click();
+
+  const light = await visualColors(page);
+  expect(light.bodyColor).toBe(light.resolvedBackground);
+  await expect(page.locator(".import-card")).toHaveCSS("background-color", light.resolvedCard);
+  expect(light.background).not.toBe(dark.background);
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    light.background,
+  );
 });
