@@ -32,7 +32,7 @@ export function Header({
   // --- Return ---
 
   return (
-    <header className={`topbar${projectionControls ? "has-projection-controls" : ""}`}>
+    <header className={`topbar${projectionControls ? " has-projection-controls" : ""}`}>
       <div className="brand-group">
         <a
           className="brand"

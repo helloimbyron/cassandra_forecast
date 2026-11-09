@@ -74,15 +74,23 @@ export function App() {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowHeaderControls(!entry?.isIntersecting);
-      },
-      { threshold: 0 },
-    );
-    observer.observe(heroCard);
+    const syncHeaderControlsVisibility = () => {
+      const { top, bottom } = heroCard.getBoundingClientRect();
+      setShowHeaderControls(bottom <= 0 || top >= window.innerHeight);
+    };
 
-    return () => observer.disconnect();
+    syncHeaderControlsVisibility();
+
+    const observer = new IntersectionObserver(syncHeaderControlsVisibility, { threshold: 0 });
+    observer.observe(heroCard);
+    window.addEventListener("scroll", syncHeaderControlsVisibility, { capture: true, passive: true });
+    window.addEventListener("resize", syncHeaderControlsVisibility);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", syncHeaderControlsVisibility, true);
+      window.removeEventListener("resize", syncHeaderControlsVisibility);
+    };
   }, [isPortfolioLoaded, portfolioImportRevision]);
 
   useEffect(() => {
