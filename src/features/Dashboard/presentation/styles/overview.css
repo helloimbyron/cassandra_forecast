@@ -191,7 +191,8 @@
   overflow-wrap: anywhere;
 }
 
-.series-toggle-swatch {
+.series-toggle-swatch,
+.allocation-name i {
   display: inline-block;
   width: var(--space-2);
   height: var(--space-2);
@@ -224,14 +225,6 @@
 
 .series-toggle-swatch.is-dashed::after {
   border-top-style: dashed;
-}
-
-.allocation-name i {
-  display: inline-block;
-  width: var(--space-2);
-  height: var(--space-2);
-  flex: none;
-  border-radius: 50%;
 }
 
 .allocation-panel [data-slot="card-content"] {

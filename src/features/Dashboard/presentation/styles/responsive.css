@@ -37,9 +37,7 @@
 }
 
 .hero-side-stat {
-  align-items: flex-start;
   padding: 0;
-  text-align: left;
 }
 
 .hero-contributions-values,
@@ -126,10 +124,6 @@
   grid-row: 2;
 }
 
-.eyebrow {
-  font-size: var(--text-meta);
-}
-
 .hero-card {
   padding: var(--space-4);
 }
@@ -173,10 +167,6 @@
 
 .investment-primary-metric .investment-value-row {
   justify-content: center;
-}
-
-.investment-secondary-metrics {
-  grid-template-columns: minmax(0, 1fr);
 }
 
 .investment-growth-values {
@@ -270,14 +260,6 @@
 
   .distribution-heading p {
     font-size: var(--text-body);
-  }
-
-  :where(.distribution-panel) .panel-header {
-    align-items: start;
-  }
-
-  .distribution-control .numeric-unit-input {
-    width: var(--size-6-25);
   }
 
   .panel-header {
@@ -461,17 +443,8 @@
   .hero-growth-values {
     grid-row: 2 / span 2;
     grid-template-rows: subgrid;
-    row-gap: var(--space-025);
-  }
-
-  .hero-contributions-values {
     grid-template-columns: max-content max-content;
-    column-gap: var(--space-5);
-  }
-
-  .hero-growth-values {
-    grid-template-columns: max-content max-content;
-    column-gap: var(--space-5);
+    gap: var(--space-025) var(--space-5);
   }
 
   .hero-contributions-values > .hero-balance-value,
@@ -489,10 +462,6 @@
   .hero-contributions-values > .hero-balance-value > .hero-grid-value,
   .hero-growth-values > .hero-result-metric > .hero-grid-value {
     grid-row: 2;
-  }
-
-  .hero-growth-stat .hero-result-value {
-    justify-content: flex-start;
   }
 
   .allocation-panel [data-slot="card-content"] {
@@ -575,7 +544,6 @@
   .hero-main-without-inflation {
     grid-template-rows: repeat(3, auto);
     row-gap: var(--space-025);
-    align-items: stretch;
   }
 
   .hero-main {
@@ -611,10 +579,7 @@
   .hero-main > .hero-current-stat,
   .hero-main > .hero-contributions-stat,
   .hero-main > .hero-growth-stat {
-    display: grid;
     grid-row: 1 / span 3;
-    grid-template-rows: subgrid;
-    align-content: stretch;
     grid-column: auto;
   }
 
@@ -627,37 +592,8 @@
     padding-right: var(--space-4);
   }
 
-  .hero-total h3 {
-    grid-row: 2 / span 2;
-    align-self: end;
-  }
-
-  .hero-value-secondary .hero-breakdown-heading-spacer,
-  .hero-current-stat .hero-breakdown-heading-spacer {
-    grid-row: 1;
-  }
-
   .hero-value-secondary > .hero-grid-subtitle {
-    grid-row: 2;
     transform: translateY(var(--space-1));
-  }
-
-  .hero-value-secondary > .hero-grid-value {
-    grid-row: 3;
-  }
-
-  .hero-current-stat .hero-balance-value > .hero-grid-subtitle {
-    grid-row: 1;
-  }
-
-  .hero-current-stat .hero-balance-value > .hero-grid-value {
-    grid-row: 2;
-  }
-
-  .hero-current-stat .hero-balance-value {
-    display: grid;
-    grid-row: 2 / span 2;
-    grid-template-rows: subgrid;
   }
 
   .hero-main-with-inflation > .hero-value-secondary {
@@ -679,44 +615,6 @@
     justify-self: end;
   }
 
-  .hero-contributions-stat > .hero-breakdown-heading,
-  .hero-growth-stat > .hero-breakdown-heading {
-    grid-row: 1;
-  }
-
-  .hero-contributions-values,
-  .hero-growth-values {
-    grid-row: 2 / span 2;
-    grid-template-rows: subgrid;
-  }
-
-  .hero-contributions-values {
-    grid-template-columns: max-content max-content;
-    column-gap: var(--space-5);
-  }
-
-  .hero-growth-values {
-    grid-template-columns: max-content max-content;
-    column-gap: var(--space-5);
-  }
-
-  .hero-contributions-values > .hero-balance-value,
-  .hero-growth-values > .hero-result-metric {
-    display: grid;
-    grid-row: span 2;
-    grid-template-rows: subgrid;
-  }
-
-  .hero-contributions-values > .hero-balance-value > .hero-grid-subtitle,
-  .hero-growth-values > .hero-result-metric > .hero-grid-subtitle {
-    grid-row: 1;
-  }
-
-  .hero-contributions-values > .hero-balance-value > .hero-grid-value,
-  .hero-growth-values > .hero-result-metric > .hero-grid-value {
-    grid-row: 2;
-  }
-
   .hero-current-stat .hero-balance-value > .hero-grid-subtitle,
   .hero-contributions-values > .hero-balance-value > .hero-grid-subtitle,
   .hero-growth-values > .hero-result-metric > .hero-grid-subtitle {
@@ -728,10 +626,6 @@
   .hero-contributions-values > .hero-balance-value > .hero-grid-value,
   .hero-growth-values > .hero-result-metric > .hero-grid-value {
     transform: translateY(calc(-1 * var(--space-05)));
-  }
-
-  .hero-growth-stat .hero-result-value {
-    justify-content: flex-start;
   }
 
   .hero-growth-values > .hero-result-metric:last-child > .hero-result-value {

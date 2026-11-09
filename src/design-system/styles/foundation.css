@@ -139,7 +139,8 @@ a {
   height: var(--icon-md);
 }
 
-.icon-lg {
+.icon-lg,
+.brand-symbol {
   width: var(--icon-lg);
   height: var(--icon-lg);
 }
@@ -263,11 +264,6 @@ main,
   border-radius: var(--space-2);
   color: var(--primary-foreground);
   background: var(--primary);
-}
-
-.brand-symbol {
-  width: var(--icon-lg);
-  height: var(--icon-lg);
 }
 
 .brand-symbol-arc,
@@ -446,22 +442,13 @@ main,
   color: inherit;
 }
 
-.change-json-toggle svg {
-  width: var(--space-3);
-  height: var(--space-3);
-}
-
+.change-json-toggle svg,
 .theme-toggle svg {
   width: var(--space-3);
   height: var(--space-3);
 }
 
-.topbar.has-projection-controls .theme-toggle {
-  border-color: color-mix(in srgb, var(--hero-text) var(--mix-32), transparent);
-  color: var(--hero-text);
-  background: color-mix(in srgb, var(--hero-text) var(--mix-08), transparent);
-}
-
+.topbar.has-projection-controls .theme-toggle,
 .topbar.has-projection-controls .change-json-toggle {
   border-color: color-mix(in srgb, var(--hero-text) var(--mix-32), transparent);
   color: var(--hero-text);

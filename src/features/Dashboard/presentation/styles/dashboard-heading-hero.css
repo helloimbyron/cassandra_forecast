@@ -344,7 +344,8 @@
   white-space: nowrap;
 }
 
-.hero-side-stat span svg {
+.hero-side-stat span svg,
+.hero-result-label svg {
   flex: none;
   color: var(--hero-accent);
 }
@@ -398,15 +399,6 @@
   white-space: nowrap;
 }
 
-.hero-growth-stat .hero-result-value {
-  justify-content: flex-start;
-}
-
-.hero-result-label svg {
-  flex: none;
-  color: var(--hero-accent);
-}
-
 .hero-controls-grid {
   position: relative;
   z-index: var(--layer-content);
@@ -418,14 +410,7 @@
   border-top: var(--line-thin) solid color-mix(in srgb, var(--hero-text) var(--mix-80), transparent);
 }
 
-.hero-horizon {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  align-content: start;
-  row-gap: 0;
-  min-width: 0;
-}
-
+.hero-horizon,
 .hero-inflation-controls {
   display: grid;
   grid-template-rows: auto auto auto;

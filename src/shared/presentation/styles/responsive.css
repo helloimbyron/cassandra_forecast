@@ -5,7 +5,6 @@ main {
 .footer {
   width: calc(100% - var(--space-5));
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .topbar {
@@ -14,7 +13,6 @@ main {
 }
 
 .sticky-controls-viewport {
-  display: flex;
   align-items: center;
 }
 

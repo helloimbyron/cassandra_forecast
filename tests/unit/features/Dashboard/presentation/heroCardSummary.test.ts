@@ -86,7 +86,7 @@ describe("HeroCard balance and purchasing-power summary", () => {
     expect(heroStyles).toContain("align-items: center;");
     expect(responsiveStyles).toContain("grid-template-rows: subgrid;");
     expect(responsiveStyles.match(/\.hero-total h3\s*\{\s*grid-row: 2 \/ span 2;/g)).toHaveLength(
-      2,
+      1,
     );
     expect(responsiveStyles).toMatch(
       /\.hero-main,\s*\.hero-main-without-inflation\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/s,
