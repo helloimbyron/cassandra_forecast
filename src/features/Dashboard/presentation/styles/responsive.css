@@ -466,10 +466,12 @@
 
   .hero-contributions-values {
     grid-template-columns: max-content max-content;
+    column-gap: var(--space-5);
   }
 
   .hero-growth-values {
-    grid-template-columns: minmax(var(--size-7), 1fr) minmax(var(--size-7), 1fr);
+    grid-template-columns: max-content max-content;
+    column-gap: var(--space-5);
   }
 
   .hero-contributions-values > .hero-balance-value,
@@ -690,10 +692,12 @@
 
   .hero-contributions-values {
     grid-template-columns: max-content max-content;
+    column-gap: var(--space-5);
   }
 
   .hero-growth-values {
-    grid-template-columns: minmax(var(--size-7), 1fr) minmax(var(--size-7), 1fr);
+    grid-template-columns: max-content max-content;
+    column-gap: var(--space-5);
   }
 
   .hero-contributions-values > .hero-balance-value,
