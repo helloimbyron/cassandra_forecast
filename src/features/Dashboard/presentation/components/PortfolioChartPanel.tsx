@@ -1,3 +1,4 @@
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
 import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -37,8 +38,16 @@ export function PortfolioChartPanel({ model }: { model: LoadedDashboardModel }) 
   // --- Return ---
 
   return (
-    <Card className="panel-card chart-panel">
-      <CardHeader className="panel-header">
+    <Card
+      className={[veDashboardPrimitivesStyles.dashboardCardSurface, "panel-card chart-panel"].join(
+        " ",
+      )}
+    >
+      <CardHeader
+        className={[veDashboardPrimitivesStyles.panelHeader, "panel-header"]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <div>
           <CardTitle>{portfolioChartPanelCopy.portfolioProjection}</CardTitle>
           <CardDescription>{portfolioChartPanelCopy.timeEffectOnCapital}</CardDescription>

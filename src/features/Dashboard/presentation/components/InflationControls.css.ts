@@ -1,34 +1,56 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
 
-globalStyle(".inflation-controls-heading", {
+export const inflationControls = style({
+  display: "grid",
+  gap: "var(--space-1)",
+  minWidth: "0",
+});
+
+export const inflationControlsLayout = styleVariants({
+  card: {},
+  inline: {
+    gridTemplateColumns: "auto minmax(0, 1fr)",
+    alignItems: "center",
+    gap: "var(--space-3)",
+  },
+});
+
+export const inflationControlsHeading = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-slider-control", {
+});
+
+export const inflationSliderControl = style({
   display: "grid",
   gap: "var(--space-075)",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-slider-wrap", {
+});
+
+export const inflationSliderWrap = style({
   position: "relative",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-card .inflation-slider-wrap", {
+});
+
+globalStyle(`${inflationControlsLayout.card} ${inflationSliderWrap}`, {
   paddingBottom: "var(--space-5)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-slider-tooltip", {
+});
+
+export const inflationSliderTooltip = style({
   top: "var(--space-55)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-inline .inflation-controls-heading", {
+});
+
+globalStyle(`${inflationControlsLayout.inline} ${inflationControlsHeading}`, {
   justifyContent: "flex-start",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-inline .inflation-slider-control", {
+});
+
+globalStyle(`${inflationControlsLayout.inline} ${inflationSliderControl}`, {
   gap: "var(--space-05)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-slider-heading", {
+});
+
+export const inflationSliderHeading = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -36,32 +58,37 @@ globalStyle(".inflation-slider-heading", {
   color: "var(--text-muted)",
   fontSize: "var(--text-meta)",
   lineHeight: "var(--leading-tight)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-slider-heading strong", {
+});
+
+globalStyle(`${inflationSliderHeading} strong`, {
   color: "var(--text-strong)",
   whiteSpace: "nowrap",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-inline .inflation-slider-heading strong", {
+});
+
+globalStyle(`${inflationControlsLayout.inline} ${inflationSliderHeading} strong`, {
   gridColumn: "1",
   gridRow: "1",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-inline .inflation-slider-wrap", {
+});
+
+globalStyle(`${inflationControlsLayout.inline} ${inflationSliderWrap}`, {
   gridColumn: "2",
   gridRow: "1",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-inline .inflation-slider-heading strong", {
+});
+
+globalStyle(`${inflationControlsLayout.inline} ${inflationSliderHeading} strong`, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       gridColumn: "auto",
       gridRow: "auto",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".inflation-controls-inline .inflation-slider-wrap", {
+});
+
+globalStyle(`${inflationControlsLayout.inline} ${inflationSliderWrap}`, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       gridColumn: "auto",
       gridRow: "auto",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

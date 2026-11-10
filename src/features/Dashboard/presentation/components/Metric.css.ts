@@ -1,21 +1,22 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-globalStyle(".metric-value-row", {
+export const metricCard = style({});
+
+export const metricPositive = style({});
+
+export const metricValueRow = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-075)",
   minWidth: "0",
   marginTop: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-card .metric-value-row strong", {
+});
+
+globalStyle(`${metricCard} ${metricValueRow} strong`, {
   marginTop: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-card,\n.panel-card,\n.investment-card", {
-  border: "var(--line-thin) solid var(--border-subtle)",
-  borderRadius: "var(--radius-card)",
-  boxShadow: "var(--shadow-card)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-label", {
+});
+
+export const metricLabel = style({
   display: "flex",
   alignItems: "flex-start",
   flexWrap: "nowrap",
@@ -23,17 +24,20 @@ globalStyle(".metric-label", {
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
   fontWeight: "var(--font-weight-medium)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-label-icon", {
+});
+
+export const metricLabelIcon = style({
   display: "inline-flex",
   flex: "none",
   marginTop: "var(--space-025)",
   color: "var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-label-text", {
+});
+
+export const metricLabelText = style({
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-card strong", {
+});
+
+globalStyle(`${metricCard} strong`, {
   display: "block",
   marginTop: "var(--space-2)",
   color: "var(--text-strong)",
@@ -41,16 +45,19 @@ globalStyle(".metric-card strong", {
   fontWeight: "var(--font-weight-semibold)",
   letterSpacing: "var(--tracking-subtle)",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-card strong.metric-positive", {
+});
+
+globalStyle(`${metricCard} strong${metricPositive}`, {
   color: "var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metrics-grid .metric-card strong.metric-positive", {
+});
+
+globalStyle(`.metrics-grid ${metricCard} strong${metricPositive}`, {
   color: "var(--text-strong)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".metric-card small", {
+});
+
+globalStyle(`${metricCard} small`, {
   display: "block",
   marginTop: "var(--space-05)",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

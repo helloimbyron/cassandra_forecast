@@ -1,37 +1,8 @@
-import "./Button.css.ts";
+import { buttonVariants } from "./Button.css.ts";
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { Slot } from "radix-ui";
-
-// --- Constants ---
-
-const buttonVariants = cva("ui-button", {
-  variants: {
-    variant: {
-      default: "",
-      outline: "",
-      secondary: "",
-      ghost: "",
-      destructive: "",
-      link: "",
-    },
-    size: {
-      default: "",
-      xs: "",
-      sm: "",
-      lg: "",
-      icon: "",
-      "icon-xs": "",
-      "icon-sm": "",
-      "icon-lg": "",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "default",
-  },
-});
 
 // --- Components ---
 
@@ -42,7 +13,7 @@ function Button({
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
+  RecipeVariants<typeof buttonVariants> & {
     asChild?: boolean;
   }) {
   // --- Variables ---
@@ -56,7 +27,7 @@ function Button({
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn("ui-button", buttonVariants({ variant, size }), className)}
       {...props}
     />
   );

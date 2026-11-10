@@ -1,4 +1,4 @@
-import "./Header.css.ts";
+import * as veHeaderStyles from "./Header.css.ts";
 import { brandLabel } from "@/shared/presentation/copies/brand.copy";
 import { headerCopy } from "@/shared/presentation/copies/header.copy";
 import { Upload } from "lucide-react";
@@ -33,28 +33,39 @@ export function Header({
   // --- Return ---
 
   return (
-    <header className={`topbar${projectionControls ? " has-projection-controls" : ""}`}>
-      <div className="brand-group">
+    <header
+      className={[
+        veHeaderStyles.topbar,
+        `topbar${projectionControls ? " has-projection-controls" : ""}`,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <div className={[veHeaderStyles.brandGroup, "brand-group"].filter(Boolean).join(" ")}>
         <a
-          className="brand"
+          className={[veHeaderStyles.brand, "brand"].filter(Boolean).join(" ")}
           href={homeHref}
           onClick={handleBrandClick}
           aria-label={headerCopy.cassandraHome}
         >
-          <span className="brand-mark">
+          <span className={veHeaderStyles.brandMark}>
             <BrandMark />
           </span>
           <span>{brandLabel}</span>
         </a>
       </div>
       {projectionControls}
-      <div className="topbar-actions" role="group" aria-label={headerCopy.headerActions}>
+      <div
+        className={veHeaderStyles.topbarActions}
+        role="group"
+        aria-label={headerCopy.headerActions}
+      >
         {onChangeJson && (
           <Button
             type="button"
             variant="outline"
             size="icon"
-            className="change-json-toggle"
+            className={veHeaderStyles.changeJsonToggle}
             onClick={onChangeJson}
             aria-label={headerCopy.changePortfolioFile}
             title={headerCopy.changePortfolioFile}

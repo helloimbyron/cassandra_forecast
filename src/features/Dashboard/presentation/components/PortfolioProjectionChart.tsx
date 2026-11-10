@@ -1,4 +1,5 @@
-import "./PortfolioProjectionChart.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as vePortfolioProjectionChartStyles from "./PortfolioProjectionChart.css.ts";
 import type { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { portfolioChartPanelCopy } from "@/features/Dashboard/presentation/copies/portfolioChartPanel.copy";
@@ -45,7 +46,9 @@ export function PortfolioProjectionChart({
 
   return (
     <>
-      <div className="chart-wrap total-chart">
+      <div
+        className={[veDashboardPrimitivesStyles.chartWrap, "chart-wrap"].filter(Boolean).join(" ")}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart accessibilityLayer data={chartData} margin={chartVisual.margin}>
             <defs>
@@ -129,7 +132,7 @@ export function PortfolioProjectionChart({
         </ResponsiveContainer>
       </div>
       <div
-        className="investment-legend"
+        className={veDashboardPrimitivesStyles.investmentLegend}
         role="group"
         aria-label={portfolioChartPanelCopy.projectionSeries}
       >
@@ -161,7 +164,11 @@ export function PortfolioProjectionChart({
             />
           );
         })}
-        <div className="series-legend-divider" role="separator" aria-orientation="horizontal" />
+        <div
+          className={vePortfolioProjectionChartStyles.seriesLegendDivider}
+          role="separator"
+          aria-orientation="horizontal"
+        />
         {portfolio.investments.map((investment, index) => {
           const seriesKey = investmentSeriesKey(investment.id);
           const hidden = hiddenChartSeries.has(seriesKey);

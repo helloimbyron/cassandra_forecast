@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="input"]', {
+export const inputRoot = style({
   "@layer": {
     components: {
       display: "block",
@@ -16,26 +16,29 @@ globalStyle('[data-slot="input"]', {
       fontSize: "var(--text-body)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="input"]::placeholder', {
+});
+
+globalStyle(`${inputRoot}::placeholder`, {
   "@layer": {
     components: {
       color: "var(--muted-foreground)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="input"]:disabled', {
+});
+
+globalStyle(`${inputRoot}:disabled`, {
   "@layer": {
     components: {
       opacity: "var(--disabled-opacity)",
       cursor: "not-allowed",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="input"][aria-invalid="true"]', {
+});
+
+globalStyle(`${inputRoot}[aria-invalid="true"]`, {
   "@layer": {
     components: {
       borderColor: "var(--destructive)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

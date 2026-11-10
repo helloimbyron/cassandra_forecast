@@ -1,24 +1,28 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
 
-globalStyle(".intro-section", {
+export const introSection = style({
   padding: "var(--space-7) 0 var(--space-5)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-grid", {
+});
+
+export const introGrid = style({
   minHeight: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-content", {
+});
+
+export const introContent = style({
   width: "100%",
   textAlign: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-copy", {
+});
+
+export const introCopy = style({
   maxWidth: "var(--size-42)",
   margin: "0 auto",
   color: "var(--text-soft)",
   fontSize: "var(--text-card-title)",
   lineHeight: "var(--leading-body)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-orbit", {
+});
+
+export const introOrbit = style({
   position: "relative",
   width: "var(--size-13)",
   maxWidth: "100%",
@@ -26,25 +30,29 @@ globalStyle(".intro-orbit", {
   display: "grid",
   placeItems: "center",
   margin: "0 auto var(--space-3)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit", {
+});
+
+export const orbit = style({
   position: "absolute",
   top: "50%",
   left: "50%",
   border: "var(--line-thin) solid var(--border)",
   borderRadius: "50%",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-one", {
+});
+
+export const orbitOne = style({
   width: "var(--size-10-5)",
   height: "var(--size-6-25)",
   transform: "translate(-50%, -50%) rotate(-25deg)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-two", {
+});
+
+export const orbitTwo = style({
   width: "var(--size-12-5)",
   height: "var(--size-7-5)",
   transform: "translate(-50%, -50%) rotate(35deg)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-core", {
+});
+
+export const orbitCore = style({
   position: "relative",
   zIndex: "var(--layer-content)",
   width: "var(--space-65)",
@@ -55,62 +63,72 @@ globalStyle(".orbit-core", {
   color: "var(--primary)",
   background: "var(--surface-tint)",
   boxShadow: "var(--shadow-card)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-section", {
+});
+
+globalStyle(introSection, {
   paddingBlock: "var(--space-6) var(--space-3)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-orbit", {
+});
+
+globalStyle(introOrbit, {
   width: "var(--size-11)",
   height: "var(--size-7)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-one", {
+});
+
+globalStyle(orbitOne, {
   width: "var(--size-8-5)",
   height: "var(--size-5)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-two", {
+});
+
+globalStyle(orbitTwo, {
   width: "var(--size-10-5)",
   height: "var(--size-6-25)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-core", {
+});
+
+globalStyle(orbitCore, {
   width: "var(--space-6)",
   height: "var(--space-6)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-section", {
+});
+
+globalStyle(introSection, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       paddingBlock: "var(--space-7) var(--space-5)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".intro-orbit", {
+});
+
+globalStyle(introOrbit, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       width: "var(--size-13)",
       height: "var(--size-8-5)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-one", {
+});
+
+globalStyle(orbitOne, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       width: "var(--size-10-5)",
       height: "var(--size-6-25)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-two", {
+});
+
+globalStyle(orbitTwo, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       width: "var(--size-12-5)",
       height: "var(--size-7-5)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".orbit-core", {
+});
+
+globalStyle(orbitCore, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       width: "var(--space-65)",
       height: "var(--space-65)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

@@ -1,4 +1,4 @@
-import "./App.css.ts";
+import * as veAppStyles from "./App.css.ts";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router";
 import { usePortfolioSession } from "@/shared/presentation/hooks/usePortfolioSession";
@@ -129,7 +129,7 @@ export function App() {
   // --- Return ---
 
   return (
-    <div className="app-shell">
+    <div className={[veAppStyles.appShell, "app-shell"].filter(Boolean).join(" ")}>
       <Header
         onNavigateHome={handleNavigateHome}
         homeHref={APP_PATHS.HOME}

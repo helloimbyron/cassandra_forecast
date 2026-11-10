@@ -1,4 +1,10 @@
-import "./DistributionSection.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veMoneyTooltipStyles from "./money/MoneyTooltip.css.ts";
+import * as veRateNoteTooltipStyles from "./RateNoteTooltip.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veDistributionSectionStyles from "./DistributionSection.css.ts";
 import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { useState, type KeyboardEvent, type PointerEvent } from "react";
@@ -89,7 +95,7 @@ function RateFormula({
         tex={`${texText(distributionSectionCopy.monthlyRateLabel)} = (1 + ${texText(label)})^{1/12} - 1`}
       />
       <FormulaMath
-        className="formula-math-substitution"
+        className={veFormulaMathStyles.formulaMathSubstitution}
         label={`${label}: ${distributionSectionCopy.monthlyRateLabel}`}
         tex={`(1 + ${texText(formatAbbreviatedValue(annualReturnPct, "percent", "precise"))})^{1/12} - 1`}
       />
@@ -112,7 +118,12 @@ function DistributionAssumptionTooltip({ withInflation }: { withInflation: boole
         <TooltipPrimitive.Trigger asChild>
           <button
             type="button"
-            className="formula-tooltip-trigger distribution-heading-info-trigger"
+            className={[
+              veFormulaTooltipStyles.formulaTooltipTrigger,
+              veDistributionSectionStyles.distributionHeadingInfoTrigger,
+            ]
+              .filter(Boolean)
+              .join(" ")}
             aria-label={distributionSectionCopy.assumptionAriaLabel}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
               if (event.pointerType === "touch") {
@@ -124,11 +135,15 @@ function DistributionAssumptionTooltip({ withInflation }: { withInflation: boole
           </button>
         </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
-          <TooltipPrimitive.Content className="rate-note-tooltip-content" side="top" sideOffset={6}>
+          <TooltipPrimitive.Content
+            className={veRateNoteTooltipStyles.rateNoteTooltipContent}
+            side="top"
+            sideOffset={6}
+          >
             {withInflation
               ? distributionSectionCopy.realAssumption
               : distributionSectionCopy.assumption}
-            <TooltipPrimitive.Arrow className="money-tooltip-arrow" />
+            <TooltipPrimitive.Arrow className={veMoneyTooltipStyles.moneyTooltipArrow} />
           </TooltipPrimitive.Content>
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>
@@ -145,7 +160,12 @@ function DistributionLabelTooltip({ text, label }: { text: string; label: string
         <TooltipPrimitive.Trigger asChild>
           <button
             type="button"
-            className="formula-tooltip-trigger distribution-heading-info-trigger"
+            className={[
+              veFormulaTooltipStyles.formulaTooltipTrigger,
+              veDistributionSectionStyles.distributionHeadingInfoTrigger,
+            ]
+              .filter(Boolean)
+              .join(" ")}
             aria-label={label}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
               if (event.pointerType === "touch") {
@@ -157,9 +177,13 @@ function DistributionLabelTooltip({ text, label }: { text: string; label: string
           </button>
         </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
-          <TooltipPrimitive.Content className="rate-note-tooltip-content" side="top" sideOffset={6}>
+          <TooltipPrimitive.Content
+            className={veRateNoteTooltipStyles.rateNoteTooltipContent}
+            side="top"
+            sideOffset={6}
+          >
             {text}
-            <TooltipPrimitive.Arrow className="money-tooltip-arrow" />
+            <TooltipPrimitive.Arrow className={veMoneyTooltipStyles.moneyTooltipArrow} />
           </TooltipPrimitive.Content>
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>
@@ -325,20 +349,49 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
   }
 
   return (
-    <section className="distribution-section" aria-labelledby="distribution-title">
-      <div className="section-heading distribution-heading">
+    <section
+      className={veDistributionSectionStyles.distributionSection}
+      data-testid="dashboard-distribution-section"
+      aria-labelledby="distribution-title"
+    >
+      <div
+        className={[
+          veDashboardPrimitivesStyles.sectionHeading,
+          [veDistributionSectionStyles.distributionHeading, "section-heading distribution-heading"]
+            .filter(Boolean)
+            .join(" "),
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <div>
-          <div className="distribution-title-row">
-            <h2 id="distribution-title" className="eyebrow">
-              <span className="eyebrow-line" /> {t("dashboard.distributionSection.copy.title.p1")}
+          <div className={veDistributionSectionStyles.distributionTitleRow}>
+            <h2
+              id="distribution-title"
+              className={[veDashboardPrimitivesStyles.eyebrow, "eyebrow"].filter(Boolean).join(" ")}
+            >
+              <span className={veDashboardPrimitivesStyles.eyebrowLine} />{" "}
+              {t("dashboard.distributionSection.copy.title.p1")}
             </h2>
             <DistributionAssumptionTooltip withInflation={withInflation} />
           </div>
         </div>
       </div>
 
-      <Card className="panel-card distribution-panel">
-        <CardHeader className="panel-header">
+      <Card
+        className={[
+          veDashboardPrimitivesStyles.dashboardCardSurface,
+          veDistributionSectionStyles.distributionPanel,
+          "panel-card distribution-panel",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <CardHeader
+          className={[veDashboardPrimitivesStyles.panelHeader, "panel-header"]
+            .filter(Boolean)
+            .join(" ")}
+        >
           <div>
             <CardTitle>{distributionSectionCopy.chartTitle(withInflation)}</CardTitle>
             <CardDescription>
@@ -356,12 +409,16 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
           />
 
           <div
-            className="distribution-controls"
+            className={veDistributionSectionStyles.distributionControls}
             role="group"
             aria-label={distributionSectionCopy.controls}
           >
-            <div className="distribution-control">
-              <div className="distribution-control-heading">
+            <div
+              className={[veDistributionSectionStyles.distributionControl, "distribution-control"]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <div className={veDistributionSectionStyles.distributionControlHeading}>
                 <Label htmlFor="distribution-years">{distributionSectionCopy.horizon}</Label>
                 <strong>{distributionSectionCopy.yearCount(years)}</strong>
               </div>
@@ -374,15 +431,30 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                 value={[years]}
                 onValueChange={(value) => setYears(value[0] ?? DEFAULT_DISTRIBUTION_YEARS)}
               />
-              <div className="range-labels">
+              <div
+                className={[veDashboardPrimitivesStyles.rangeLabels, "range-labels"]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
                 <span>{distributionSectionCopy.zeroYears}</span>
                 <span>{distributionSectionCopy.fortyYears}</span>
               </div>
             </div>
 
-            <div className="distribution-control">
-              <div className="distribution-control-heading distribution-withdrawal-heading">
-                <div className="distribution-label-group">
+            <div
+              className={[veDistributionSectionStyles.distributionControl, "distribution-control"]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <div
+                className={[
+                  veDistributionSectionStyles.distributionControlHeading,
+                  veDistributionSectionStyles.distributionWithdrawalHeading,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <div className={veDistributionSectionStyles.distributionLabelGroup}>
                   <Label
                     htmlFor={
                       withdrawalMode === "monthly"
@@ -403,7 +475,12 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   )}
                 </div>
                 <div
-                  className="distribution-mode-toggle"
+                  className={[
+                    veDashboardPrimitivesStyles.distributionModeToggle,
+                    "distribution-mode-toggle",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                   role="group"
                   aria-label={distributionSectionCopy.withdrawalMode}
                 >
@@ -461,7 +538,11 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                     disabled={withdrawalMax === 0}
                     onValueChange={(value) => setManualWithdrawal(value[0] ?? 0)}
                   />
-                  <div className="range-labels">
+                  <div
+                    className={[veDashboardPrimitivesStyles.rangeLabels, "range-labels"]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
                     <span>{zeroMoneyLabel}</span>
                     <span>{withdrawalMaxLabel}</span>
                   </div>
@@ -476,7 +557,11 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                     value={[annualWithdrawalRatePct]}
                     onValueChange={(value) => setManualWithdrawalRate(value[0] ?? 0)}
                   />
-                  <div className="range-labels">
+                  <div
+                    className={[veDashboardPrimitivesStyles.rangeLabels, "range-labels"]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
                     <span>{zeroPercentLabel}</span>
                     <span>{withdrawalRateMaxLabel}</span>
                   </div>
@@ -484,9 +569,13 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               )}
             </div>
 
-            <div className="distribution-control">
-              <div className="distribution-control-heading">
-                <div className="distribution-label-group">
+            <div
+              className={[veDistributionSectionStyles.distributionControl, "distribution-control"]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <div className={veDistributionSectionStyles.distributionControlHeading}>
+                <div className={veDistributionSectionStyles.distributionLabelGroup}>
                   <Label htmlFor="distribution-return">
                     {withInflation
                       ? distributionSectionCopy.realAnnualReturn
@@ -544,14 +633,18 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   }
                 />
               </div>
-              <div className="range-labels">
+              <div
+                className={[veDashboardPrimitivesStyles.rangeLabels, "range-labels"]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
                 <span>{rateSliderMinLabel}</span>
                 <span>{rateSliderMaxLabel}</span>
               </div>
             </div>
           </div>
           {rateWasUnavailable && (
-            <p className="distribution-note" role="status">
+            <p className={veDistributionSectionStyles.distributionNote} role="status">
               {distributionSectionCopy.noCalculatedReturn}
             </p>
           )}
@@ -559,7 +652,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
       </Card>
 
       <section
-        className="distribution-insights"
+        className={veDistributionSectionStyles.distributionInsights}
         aria-label={distributionSectionCopy.insightsAriaLabel}
       >
         <Metric
@@ -577,9 +670,9 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               )}
               trigger={<Calculator className="icon-sm" aria-hidden="true" />}
             >
-              <ol className="formula-tooltip-copy">
+              <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {distributionSectionCopy.annualFormulaStep}
                   </span>
                   <FormulaMath
@@ -588,7 +681,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   />
                   <FormulaMath
                     label={distributionSectionCopy.annualWithdrawalLabel}
-                    className="formula-math-substitution"
+                    className={veFormulaMathStyles.formulaMathSubstitution}
                     tex={`${texText(formatAbbreviatedValue(monthlyWithdrawal, "currency"))} \\times 12`}
                   />
                   <FormulaResult
@@ -653,9 +746,9 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               trigger={<Calculator className="icon-sm" aria-hidden="true" />}
             >
               {withdrawalMode === "percentage" ? (
-                <ol className="formula-tooltip-copy">
+                <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                   <FormulaStep>
-                    <span className="formula-step-description">
+                    <span className={veFormulaStepStyles.formulaStepDescription}>
                       {distributionSectionCopy.equivalentMonthlyFormulaStep}
                     </span>
                     <FormulaMath
@@ -678,7 +771,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                     />
                     <FormulaMath
                       label={distributionSectionCopy.equivalentMonthlyFormulaStep}
-                      className="formula-math-substitution"
+                      className={veFormulaMathStyles.formulaMathSubstitution}
                       tex={
                         "\\frac{" +
                         texText(formatAbbreviatedValue(totalAtHorizon, "currency")) +
@@ -694,9 +787,9 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                   </FormulaStep>
                 </ol>
               ) : (
-                <ol className="formula-tooltip-copy">
+                <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                   <FormulaStep>
-                    <span className="formula-step-description">
+                    <span className={veFormulaStepStyles.formulaStepDescription}>
                       {distributionSectionCopy.percentFormulaStep}
                     </span>
                     <FormulaMath
@@ -704,14 +797,14 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                       tex={`\\frac{${texText(distributionSectionCopy.annualWithdrawalLabel)}}{${texText(distributionSectionCopy.initialTotalLabel)}} \\times 100`}
                     />
                     {annualWithdrawalPct === null ? (
-                      <p className="formula-no-result">
+                      <p className={veFormulaMathStyles.formulaNoResult}>
                         {distributionSectionCopy.noCapitalForPercent}
                       </p>
                     ) : (
                       <>
                         <FormulaMath
                           label={distributionSectionCopy.percentFormulaStep}
-                          className="formula-math-substitution"
+                          className={veFormulaMathStyles.formulaMathSubstitution}
                           tex={`\\frac{${texText(formatAbbreviatedValue(annualWithdrawal, "currency"))}}{${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))}} \\times 100`}
                         />
                         <FormulaResult
@@ -743,9 +836,9 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               )}
               trigger={<Calculator className="icon-sm" aria-hidden="true" />}
             >
-              <ol className="formula-tooltip-copy">
+              <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {distributionSectionCopy.balanceFormulaStep}
                   </span>
                   <FormulaMath
@@ -753,11 +846,11 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                     tex={`B_0 = ${texText(distributionSectionCopy.initialTotalLabel)}`}
                   />
                   <FormulaMath
-                    className="formula-math-substitution"
+                    className={veFormulaMathStyles.formulaMathSubstitution}
                     label={`${distributionSectionCopy.balanceLabel} inicial`}
                     tex={`B_0 = ${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))}`}
                   />
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {manualAnnualReturn === null
                       ? distributionSectionCopy.individualReturnsStep
                       : distributionSectionCopy.manualReturnStep}
@@ -786,7 +879,7 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
                     tex={`B_{j,m} = \\max(0, B_{j,m}^{+} - R_{j,m})`}
                   />
                   <FormulaMath
-                    className="formula-math-substitution"
+                    className={veFormulaMathStyles.formulaMathSubstitution}
                     label={distributionSectionCopy.withdrawalSubstitutionLabel}
                     tex={`${texText(formatAbbreviatedValue(monthlyWithdrawal, "currency"))} \\text{ USD/mes}`}
                   />
@@ -814,9 +907,11 @@ export function DistributionSection({ model }: { model: LoadedDashboardModel }) 
               )}
               trigger={<Calculator className="icon-sm" aria-hidden="true" />}
             >
-              <ol className="formula-tooltip-copy">
+              <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                 <FormulaStep>
-                  <span className="formula-step-description">{durationFormulaStep}</span>
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
+                    {durationFormulaStep}
+                  </span>
                   {projection.depletionMonth === 0 ? (
                     <FormulaMath
                       label={distributionSectionCopy.depletionCalculationLabel}

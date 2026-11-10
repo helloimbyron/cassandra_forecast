@@ -1,4 +1,4 @@
-import "./Separator.css.ts";
+import * as veSeparatorStyles from "./Separator.css.ts";
 import * as React from "react";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { Separator as SeparatorPrimitive } from "radix-ui";
@@ -15,7 +15,9 @@ function Separator({
       data-orientation={orientation}
       decorative={decorative}
       orientation={orientation}
-      className={cn("ui-separator", className)}
+      className={[veSeparatorStyles.separatorRoot, cn("ui-separator", className)]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     />
   );

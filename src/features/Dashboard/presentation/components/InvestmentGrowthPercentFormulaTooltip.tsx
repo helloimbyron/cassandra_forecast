@@ -1,3 +1,6 @@
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { Calculator } from "lucide-react";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
@@ -35,11 +38,11 @@ export function InvestmentGrowthPercentFormulaTooltip({
             )
       }
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
-      className="investment-growth-formula-trigger"
+      className={veFormulaTooltipStyles.investmentGrowthFormulaTrigger}
     >
-      <ol className="formula-tooltip-copy">
+      <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {investmentGrowthPercentFormulaTooltipCopy.description}
           </span>
           <FormulaMath
@@ -48,7 +51,7 @@ export function InvestmentGrowthPercentFormulaTooltip({
           />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {value === null
               ? investmentGrowthPercentFormulaTooltipCopy.noCurrentValue
               : investmentGrowthPercentFormulaTooltipCopy.substitutionDescription}
@@ -57,7 +60,7 @@ export function InvestmentGrowthPercentFormulaTooltip({
             <>
               <FormulaMath
                 label={investmentGrowthPercentFormulaTooltipCopy.substitutionLabel}
-                className="formula-math-substitution"
+                className={veFormulaMathStyles.formulaMathSubstitution}
                 tex={`\\frac{${texText(formatAbbreviatedValue(projection.growth, "currency"))}}{${texText(formatAbbreviatedValue(projection.initialValue, "currency"))}} \\times 100`}
               />
               <FormulaResult

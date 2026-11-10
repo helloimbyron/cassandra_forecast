@@ -1,4 +1,4 @@
-import "./FormulaResult.css.ts";
+import * as veFormulaResultStyles from "./FormulaResult.css.ts";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
 import { FormulaMath } from "@/features/Dashboard/presentation/components/FormulaMath";
 import { formulaResultCopy } from "@/features/Dashboard/presentation/copies/formulaResult.copy";
@@ -14,7 +14,7 @@ export function FormulaResult({
 }) {
   return (
     <FormulaMath
-      className="formula-math-result"
+      className={veFormulaResultStyles.formulaMathResult}
       label={formulaResultCopy.label(name, value, rounded)}
       tex={`${texText(name)} ${rounded ? "\\approx" : "="} ${texText(value)}`}
     />

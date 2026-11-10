@@ -1,70 +1,87 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
 
-globalStyle(".holding-row", {
+export const holdingRow = style({
   padding: "var(--space-3) 0",
   borderTop: "var(--line-thin) solid var(--border-subtle)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-row:last-child", {
+});
+
+globalStyle(`${holdingRow}:last-child`, {
   borderBottom: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell", {
+});
+
+export const holdingCell = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "start",
   gap: "var(--space-05)",
   color: "var(--text-soft)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell strong", {
+});
+
+export const holdingPosition = style({});
+
+globalStyle(`${holdingCell} strong`, {
   color: "var(--text-strong)",
   fontWeight: "var(--font-weight-semibold)",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-position strong", {
+});
+
+globalStyle(`${holdingPosition} strong`, {
   color: "var(--foreground)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell-label", {
+});
+
+export const holdingCellLabel = style({
   display: "none",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-projection-value", {
+});
+
+export const holdingProjectionValue = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-075)",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-projection-value > strong", {
+});
+
+globalStyle(`${holdingProjectionValue} > strong`, {
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-projection-value .abbreviated-value", {
+});
+
+globalStyle(`${holdingProjectionValue} .abbreviated-value`, {
   whiteSpace: "nowrap",
   overflowWrap: "normal",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-contribution", {
+});
+
+export const holdingContribution = style({
   alignItems: "end",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-row", {
+});
+
+globalStyle(holdingRow, {
   gridTemplateColumns: "minmax(0, 1fr)",
   gap: "var(--space-3)",
   alignItems: "stretch",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell", {
+});
+
+globalStyle(holdingCell, {
   display: "grid",
   gridTemplateColumns: "minmax(var(--size-7), 0.8fr) minmax(0, 1fr)",
   alignItems: "center",
   gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell-label", {
+});
+
+globalStyle(holdingCellLabel, {
   display: "block",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-contribution", {
+});
+
+globalStyle(holdingContribution, {
   alignItems: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-position strong", {
+});
+
+globalStyle(`${holdingPosition} strong`, {
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-row", {
+});
+
+globalStyle(holdingRow, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       gridTemplateColumns:
@@ -73,8 +90,9 @@ globalStyle(".holding-row", {
       alignItems: "center",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell", {
+});
+
+globalStyle(holdingCell, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       display: "flex",
@@ -83,25 +101,28 @@ globalStyle(".holding-cell", {
       gap: "var(--space-05)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-cell-label", {
+});
+
+globalStyle(holdingCellLabel, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       display: "none",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-contribution", {
+});
+
+globalStyle(holdingContribution, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       alignItems: "end",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-position strong", {
+});
+
+globalStyle(`${holdingPosition} strong`, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       overflowWrap: "normal",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

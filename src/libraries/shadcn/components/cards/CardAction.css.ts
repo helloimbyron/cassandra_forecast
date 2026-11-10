@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="card-action"]', {
+export const cardActionRoot = style({
   "@layer": {
     components: {
       gridColumn: "2",
@@ -8,4 +8,4 @@ globalStyle('[data-slot="card-action"]', {
       justifySelf: "end",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

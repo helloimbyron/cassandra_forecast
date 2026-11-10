@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-globalStyle(".formula-growth-comparison", {
+export const formulaGrowthComparison = style({
   display: "grid",
   gap: "var(--space-075)",
   width: "100%",
@@ -8,8 +8,9 @@ globalStyle(".formula-growth-comparison", {
   padding: "0",
   listStyle: "none",
   textAlign: "left",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-growth-comparison li", {
+});
+
+globalStyle(`${formulaGrowthComparison} li`, {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "baseline",
@@ -18,20 +19,24 @@ globalStyle(".formula-growth-comparison li", {
   padding: "var(--space-05) var(--space-075)",
   borderRadius: "var(--space-05)",
   color: "var(--text-soft)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-growth-comparison li span", {
+});
+
+globalStyle(`${formulaGrowthComparison} li span`, {
   minWidth: "0",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-growth-comparison li strong", {
+});
+
+globalStyle(`${formulaGrowthComparison} li strong`, {
   flex: "none",
   color: "var(--text-strong)",
   fontVariantNumeric: "tabular-nums",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-growth-comparison li.is-leading", {
+});
+
+globalStyle(`${formulaGrowthComparison} li.is-leading`, {
   background: "var(--surface-soft)",
   color: "var(--text-strong)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-growth-comparison li.is-leading strong", {
+});
+
+globalStyle(`${formulaGrowthComparison} li.is-leading strong`, {
   color: "var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

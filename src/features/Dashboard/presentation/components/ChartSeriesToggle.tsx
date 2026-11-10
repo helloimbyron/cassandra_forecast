@@ -1,4 +1,4 @@
-import "./ChartSeriesToggle.css.ts";
+import * as veChartSeriesToggleStyles from "./ChartSeriesToggle.css.ts";
 import type { ReactNode } from "react";
 
 // --- Props ---
@@ -23,16 +23,16 @@ export function ChartSeriesToggle({
   swatch,
 }: ChartSeriesToggleProps) {
   return (
-    <label className={checked ? "series-toggle" : "series-toggle is-hidden"}>
+    <label className={veChartSeriesToggleStyles.seriesToggle}>
       <input type="checkbox" checked={checked} onChange={onChange} />
       <i
-        className={
-          swatch === "dot"
-            ? "series-toggle-swatch"
-            : dashed
-              ? "series-toggle-swatch is-line is-dashed"
-              : "series-toggle-swatch is-line"
-        }
+        className={[
+          veChartSeriesToggleStyles.swatch,
+          veChartSeriesToggleStyles.swatchType[swatch],
+          swatch === "line" && dashed && veChartSeriesToggleStyles.dashedLine,
+        ]
+          .filter(Boolean)
+          .join(" ")}
         style={swatch === "line" ? { borderTopColor: color } : { backgroundColor: color }}
         aria-hidden="true"
       />

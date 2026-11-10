@@ -1,3 +1,4 @@
+import * as veMoneyTooltipStyles from "./MoneyTooltip.css.ts";
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
@@ -25,7 +26,12 @@ export function FullValueTooltip({ value, className }: MoneyProps) {
         <TooltipPrimitive.Trigger asChild>
           <button
             type="button"
-            className={cn("money-tooltip-trigger", className)}
+            className={[
+              veMoneyTooltipStyles.moneyTooltipTrigger,
+              cn("money-tooltip-trigger", className),
+            ]
+              .filter(Boolean)
+              .join(" ")}
             aria-label={moneyCopy.fullAmount(full)}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
               if (event.pointerType === "touch") {
@@ -37,9 +43,13 @@ export function FullValueTooltip({ value, className }: MoneyProps) {
           </button>
         </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
-          <TooltipPrimitive.Content className="money-tooltip-content" side="top" sideOffset={6}>
+          <TooltipPrimitive.Content
+            className={veMoneyTooltipStyles.moneyTooltipContent}
+            side="top"
+            sideOffset={6}
+          >
             {full}
-            <TooltipPrimitive.Arrow className="money-tooltip-arrow" />
+            <TooltipPrimitive.Arrow className={veMoneyTooltipStyles.moneyTooltipArrow} />
           </TooltipPrimitive.Content>
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>

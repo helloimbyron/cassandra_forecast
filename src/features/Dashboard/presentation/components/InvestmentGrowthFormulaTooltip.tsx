@@ -1,3 +1,6 @@
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -53,11 +56,11 @@ export function InvestmentGrowthFormulaTooltip({
         formatAbbreviatedValue(projection.growth, "currency"),
       )}
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
-      className="investment-growth-formula-trigger"
+      className={veFormulaTooltipStyles.investmentGrowthFormulaTrigger}
     >
-      <ol className="formula-tooltip-copy">
+      <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {investmentGrowthFormulaTooltipCopy.subtractTheirPreviousValue}
           </span>
           <FormulaMath
@@ -66,14 +69,14 @@ export function InvestmentGrowthFormulaTooltip({
           />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {roundedDifference
               ? investmentGrowthFormulaTooltipCopy.useVisibleAmountsForResult
               : investmentGrowthFormulaTooltipCopy.substituteInvestmentAmounts}
           </span>
           <FormulaMath
             label={investmentGrowthFormulaTooltipCopy.investmentGrowthSubstitution}
-            className="formula-math-substitution"
+            className={veFormulaMathStyles.formulaMathSubstitution}
             tex={`${texText(formatAbbreviatedValue(projection.finalValue, "currency"))} - ${texText(formatAbbreviatedValue(projection.initialValue, "currency"))} - ${texText(formatAbbreviatedValue(projection.totalContributions, "currency"))}`}
           />
           <FormulaResult

@@ -1,3 +1,4 @@
+import * as veChartTooltipStyles from "./ChartTooltip.css.ts";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
 
@@ -34,7 +35,7 @@ export function PortfolioTooltip({
   // --- Return ---
 
   return (
-    <div className="chart-tooltip">
+    <div className={veChartTooltipStyles.chartTooltip}>
       <span>{label}</span>
       {items.map((item) => (
         <div key={item.name} style={{ color: item.color }}>

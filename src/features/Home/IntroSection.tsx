@@ -1,4 +1,4 @@
-import "./IntroSection.css.ts";
+import * as veIntroSectionStyles from "./IntroSection.css.ts";
 import { PiggyBank } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -6,13 +6,21 @@ export function IntroSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="intro-section" aria-labelledby="onboarding-title">
-      <div className="intro-grid">
-        <div className="intro-content">
-          <div className="intro-orbit" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="orbit-core">
+    <section className={veIntroSectionStyles.introSection} aria-labelledby="onboarding-title">
+      <div className={veIntroSectionStyles.introGrid}>
+        <div className={veIntroSectionStyles.introContent}>
+          <div className={veIntroSectionStyles.introOrbit} aria-hidden="true">
+            <div
+              className={[veIntroSectionStyles.orbit, veIntroSectionStyles.orbitOne, "orbit"]
+                .filter(Boolean)
+                .join(" ")}
+            />
+            <div
+              className={[veIntroSectionStyles.orbit, veIntroSectionStyles.orbitTwo, "orbit"]
+                .filter(Boolean)
+                .join(" ")}
+            />
+            <div className={veIntroSectionStyles.orbitCore}>
               <PiggyBank className="icon-lg" />
             </div>
           </div>
@@ -21,7 +29,9 @@ export function IntroSection() {
             <em>{t("home.introSection.copy.futuro.p1")}</em>{" "}
             {t("home.introSection.copy.deTuCartera.p1")}
           </h1>
-          <p className="intro-copy">{t("home.introSection.copy.cargaTuCarteraEnJson.p1")}</p>
+          <p className={veIntroSectionStyles.introCopy}>
+            {t("home.introSection.copy.cargaTuCarteraEnJson.p1")}
+          </p>
         </div>
       </div>
     </section>

@@ -1,4 +1,7 @@
-import "./HeroCard.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
+import * as veHeroCardStyles from "./HeroCard.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { signedOutcomeLabel } from "@/features/Dashboard/domain/utils/signedOutcomeLabel.util";
@@ -77,27 +80,35 @@ export function HeroCard({
   return (
     <section
       ref={heroCardRef}
-      className="hero-card"
+      className={[veHeroCardStyles.heroCard, "hero-card"].filter(Boolean).join(" ")}
       data-testid="dashboard-hero-card"
       aria-labelledby="total-title"
     >
       <div
-        className={`hero-main ${
-          withInflation ? "hero-main-with-inflation" : "hero-main-without-inflation"
-        }`}
+        className={[
+          veHeroCardStyles.heroMain,
+          !withInflation && veHeroCardStyles.heroMainWithoutInflation,
+          `hero-main ${withInflation ? "hero-main-with-inflation" : "hero-main-without-inflation"}`,
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
-        <div className="hero-total">
-          <div className="hero-value-label hero-grid-subtitle">
+        <div className={veHeroCardStyles.heroTotal}>
+          <div
+            className={[veHeroCardStyles.heroValueLabel, veHeroCardStyles.heroGridSubtitle]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <p>{withInflation ? heroCardCopy.realValue : heroCardCopy.nominalValue}</p>
             {withInflation && (
               <FormulaTooltip
                 label={heroCardCopy.comparisonInfoTitle}
                 intro={heroCardCopy.comparisonInfoIntro}
                 triggerLabel={heroCardCopy.comparisonInfoTrigger}
-                className="hero-comparison-info-trigger"
+                className={veHeroCardStyles.heroComparisonInfoTrigger}
                 trigger={<Info className="icon-sm" aria-hidden="true" />}
               >
-                <div className="hero-comparison-info-copy">
+                <div className={veHeroCardStyles.heroComparisonInfoCopy}>
                   <p>
                     {heroCardCopy.balanceComparisonExample(
                       formatAbbreviatedValue(model.nominalTotalAtHorizon, "currency"),
@@ -121,41 +132,64 @@ export function HeroCard({
           </h3>
         </div>
         {withInflation && (
-          <div className="hero-value-secondary">
+          <div className={veHeroCardStyles.heroValueSecondary}>
             <div
-              className="hero-breakdown-heading hero-breakdown-heading-spacer"
+              className={[
+                veHeroCardStyles.heroBreakdownHeading,
+                veHeroCardStyles.heroBreakdownHeadingSpacer,
+              ]
+                .filter(Boolean)
+                .join(" ")}
               aria-hidden="true"
             />
-            <span className="hero-grid-subtitle">{heroCardCopy.nominalValue}</span>
-            <strong className="hero-grid-value">
+            <span className={veHeroCardStyles.heroGridSubtitle}>{heroCardCopy.nominalValue}</span>
+            <strong className={veHeroCardStyles.heroGridValue}>
               <AbbreviatedMoney value={model.nominalTotalAtHorizon} />
             </strong>
           </div>
         )}
         <div
-          className="hero-side-stat hero-current-stat"
+          className={[veHeroCardStyles.heroCurrentStat, veHeroCardStyles.heroSideStat]
+            .filter(Boolean)
+            .join(" ")}
           role="group"
           aria-label={heroCardCopy.balances}
         >
           <div
-            className="hero-breakdown-heading hero-breakdown-heading-spacer"
+            className={[
+              veHeroCardStyles.heroBreakdownHeading,
+              veHeroCardStyles.heroBreakdownHeadingSpacer,
+            ]
+              .filter(Boolean)
+              .join(" ")}
             aria-hidden="true"
           />
-          <div className="hero-balance-value">
-            <span className="hero-grid-subtitle">
+          <div
+            className={[veHeroCardStyles.heroBalanceValue, "hero-balance-value"]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <span className={veHeroCardStyles.heroGridSubtitle}>
               <Landmark className="icon-sm" aria-hidden="true" /> {labels.currentCapital}
             </span>
-            <strong className="hero-grid-value">
+            <strong className={veHeroCardStyles.heroGridValue}>
               <AbbreviatedMoney value={initial} />
             </strong>
           </div>
         </div>
         <div
-          className="hero-side-stat hero-contributions-stat"
+          className={[
+            veHeroCardStyles.heroSideStat,
+            veHeroCardStyles.heroBorderedStat,
+            veHeroCardStyles.heroContributionsStat,
+            "hero-contributions-stat",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           role="group"
           aria-label={heroCardCopy.contributions}
         >
-          <h4 className="hero-breakdown-heading">
+          <h4 className={veHeroCardStyles.heroBreakdownHeading}>
             {heroCardCopy.contributions}
             {withInflation && (
               <FormulaTooltip
@@ -165,41 +199,57 @@ export function HeroCard({
                 className="hero-contributions-info-trigger"
                 trigger={<Info className="icon-sm" aria-hidden="true" />}
               >
-                <div className="hero-comparison-info-copy">
+                <div className={veHeroCardStyles.heroComparisonInfoCopy}>
                   <p>{heroCardCopy.contributionsInfoExplanation}</p>
                 </div>
               </FormulaTooltip>
             )}
           </h4>
-          <div className="hero-contributions-values">
+          <div
+            className={[veHeroCardStyles.heroContributionsValues, "hero-contributions-values"]
+              .filter(Boolean)
+              .join(" ")}
+          >
             {withInflation ? (
               <>
-                <div className="hero-balance-value">
-                  <span className="hero-grid-subtitle">
+                <div
+                  className={[veHeroCardStyles.heroBalanceValue, "hero-balance-value"]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <span className={veHeroCardStyles.heroGridSubtitle}>
                     <ShoppingCart className="icon-sm" aria-hidden="true" />{" "}
                     {heroCardCopy.realContributionsShort}
                   </span>
-                  <strong className="hero-grid-value">
+                  <strong className={veHeroCardStyles.heroGridValue}>
                     <AbbreviatedMoney value={totalContributions} />
                   </strong>
                 </div>
-                <div className="hero-balance-value">
-                  <span className="hero-grid-subtitle">
+                <div
+                  className={[veHeroCardStyles.heroBalanceValue, "hero-balance-value"]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <span className={veHeroCardStyles.heroGridSubtitle}>
                     <ChartNoAxesCombined className="icon-sm" aria-hidden="true" />{" "}
                     {heroCardCopy.nominalContributionsShort}
                   </span>
-                  <strong className="hero-grid-value">
+                  <strong className={veHeroCardStyles.heroGridValue}>
                     <AbbreviatedMoney value={nominalTotalContributions} />
                   </strong>
                 </div>
               </>
             ) : (
-              <div className="hero-balance-value">
-                <span className="hero-grid-subtitle">
+              <div
+                className={[veHeroCardStyles.heroBalanceValue, "hero-balance-value"]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <span className={veHeroCardStyles.heroGridSubtitle}>
                   <PiggyBank className="icon-sm" aria-hidden="true" />{" "}
                   {heroCardCopy.nominalContributions}
                 </span>
-                <strong className="hero-grid-value">
+                <strong className={veHeroCardStyles.heroGridValue}>
                   <AbbreviatedMoney value={nominalTotalContributions} />
                 </strong>
               </div>
@@ -207,14 +257,33 @@ export function HeroCard({
           </div>
         </div>
         <div
-          className="hero-side-stat hero-growth-stat"
+          className={[
+            veHeroCardStyles.heroSideStat,
+            veHeroCardStyles.heroBorderedStat,
+            veHeroCardStyles.heroGrowthStat,
+            "hero-growth-stat",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           role="group"
           aria-label={heroCardCopy.results}
         >
-          <h4 className="hero-breakdown-heading">{heroCardCopy.results}</h4>
-          <div className="hero-growth-values" role="group" aria-label={heroCardCopy.results}>
-            <div className="hero-result-metric">
-              <span className="hero-result-label hero-grid-subtitle">
+          <h4 className={veHeroCardStyles.heroBreakdownHeading}>{heroCardCopy.results}</h4>
+          <div
+            className={veHeroCardStyles.heroGrowthValues}
+            role="group"
+            aria-label={heroCardCopy.results}
+          >
+            <div className={veHeroCardStyles.heroResultMetric}>
+              <span
+                className={[
+                  veHeroCardStyles.heroGridSubtitle,
+                  veHeroCardStyles.heroResultLabel,
+                  "hero-result-label",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
                 {totalGrowth > 0 ? (
                   <ArrowUp className="icon-sm" aria-hidden="true" />
                 ) : totalGrowth < 0 ? (
@@ -224,7 +293,11 @@ export function HeroCard({
                 )}
                 {signedOutcomeLabel(totalGrowth)}
               </span>
-              <div className="hero-result-value hero-grid-value">
+              <div
+                className={[veHeroCardStyles.heroGridValue, veHeroCardStyles.heroResultValue]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
                 <AbbreviatedMoney value={totalGrowth} />
                 <FormulaTooltip
                   label={signedOutcomeLabel(totalGrowth)}
@@ -237,9 +310,9 @@ export function HeroCard({
                   )}
                   trigger={<Calculator className="icon-sm" aria-hidden="true" />}
                 >
-                  <ol className="formula-tooltip-copy">
+                  <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                     <FormulaStep>
-                      <span className="formula-step-description">
+                      <span className={veFormulaStepStyles.formulaStepDescription}>
                         {heroCardCopy.distinguishesContributionsFromProjectedValue}
                       </span>
                       <FormulaMath
@@ -248,12 +321,12 @@ export function HeroCard({
                       />
                     </FormulaStep>
                     <FormulaStep>
-                      <span className="formula-step-description">
+                      <span className={veFormulaStepStyles.formulaStepDescription}>
                         {heroCardCopy.subtractCurrentCapitalAndAllContributions}
                       </span>
                       <FormulaMath
                         label={heroCardCopy.growthValueSubstitution}
-                        className="formula-math-substitution"
+                        className={veFormulaMathStyles.formulaMathSubstitution}
                         tex={`${texText(formatAbbreviatedValue(totalAtHorizon, "currency"))} - ${texText(formatAbbreviatedValue(initial, "currency"))} - ${texText(formatAbbreviatedValue(totalContributions, "currency"))}`}
                       />
                       <FormulaResult
@@ -265,13 +338,23 @@ export function HeroCard({
                 </FormulaTooltip>
               </div>
             </div>
-            <div className="hero-result-metric">
-              <span className="hero-result-label hero-grid-subtitle">
+            <div className={veHeroCardStyles.heroResultMetric}>
+              <span
+                className={[
+                  veHeroCardStyles.heroGridSubtitle,
+                  veHeroCardStyles.heroResultLabel,
+                  "hero-result-label",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
                 <Percent className="icon-sm" aria-hidden="true" />
                 {heroCardCopy.returnLabel}
               </span>
               <div
-                className="hero-result-value hero-grid-value"
+                className={[veHeroCardStyles.heroGridValue, veHeroCardStyles.heroResultValue]
+                  .filter(Boolean)
+                  .join(" ")}
                 role="group"
                 aria-label={
                   summaryInsights.growthPctOfCurrent === null
@@ -302,9 +385,9 @@ export function HeroCard({
                   }
                   trigger={<Calculator className="icon-sm" aria-hidden="true" />}
                 >
-                  <ol className="formula-tooltip-copy">
+                  <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
                     <FormulaStep>
-                      <span className="formula-step-description">
+                      <span className={veFormulaStepStyles.formulaStepDescription}>
                         {heroCardCopy.usesCurrentCapitalAsReference}
                       </span>
                       <FormulaMath
@@ -313,7 +396,7 @@ export function HeroCard({
                       />
                     </FormulaStep>
                     <FormulaStep>
-                      <span className="formula-step-description">
+                      <span className={veFormulaStepStyles.formulaStepDescription}>
                         {summaryInsights.growthPctOfCurrent === null
                           ? heroCardCopy.noCurrentCapital
                           : heroCardCopy.substituteAmountsToShowComparison}
@@ -321,7 +404,7 @@ export function HeroCard({
                       {summaryInsights.growthPctOfCurrent !== null && (
                         <FormulaMath
                           label={heroCardCopy.growthPercentValueSubstitution}
-                          className="formula-math-substitution"
+                          className={veFormulaMathStyles.formulaMathSubstitution}
                           tex={`\\frac{${texText(formatAbbreviatedValue(totalGrowth, "currency"))}}{${texText(formatAbbreviatedValue(initial, "currency"))}} \\times 100`}
                         />
                       )}
@@ -342,7 +425,7 @@ export function HeroCard({
           </div>
         </div>
       </div>
-      <div className="hero-controls-grid">
+      <div className={veHeroCardStyles.heroControlsGrid}>
         <HeroHorizonControl
           totalYears={totalYears}
           draftYears={draftYears}
@@ -352,7 +435,7 @@ export function HeroCard({
         />
         <InflationControls
           layout="card"
-          className="hero-inflation-controls"
+          className={[veHeroCardStyles.heroInflationControls, "hero-inflation-controls"].join(" ")}
           withInflation={withInflation}
           onWithInflationChange={setWithInflation}
           inflationRatePct={inflationRatePct}

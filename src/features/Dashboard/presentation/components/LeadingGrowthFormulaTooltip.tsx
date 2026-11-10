@@ -1,4 +1,7 @@
-import "./LeadingGrowthFormulaTooltip.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
+import * as veLeadingGrowthFormulaTooltipStyles from "./LeadingGrowthFormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { leadingGrowthFormulaTooltipCopy } from "@/features/Dashboard/presentation/copies/leadingGrowthFormulaTooltip.copy";
@@ -23,9 +26,9 @@ export function LeadingGrowthFormulaTooltip({
       intro={leadingGrowthFormulaTooltipCopy.compareGrowthAcrossInvestments}
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
     >
-      <ol className="formula-tooltip-copy">
+      <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {leadingGrowthFormulaTooltipCopy.calculateEachInvestmentGrowthFirst}
           </span>
           <FormulaMath
@@ -34,7 +37,7 @@ export function LeadingGrowthFormulaTooltip({
           />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {leadingGrowthFormulaTooltipCopy.comparaLosResultadosSiDosParecenIguales}
           </span>
           {leader && (
@@ -44,7 +47,7 @@ export function LeadingGrowthFormulaTooltip({
             />
           )}
           <ul
-            className="formula-growth-comparison"
+            className={veLeadingGrowthFormulaTooltipStyles.formulaGrowthComparison}
             aria-label={leadingGrowthFormulaTooltipCopy.growthByInvestment}
           >
             {projections.map((projection) => (
@@ -63,7 +66,7 @@ export function LeadingGrowthFormulaTooltip({
               value={formatAbbreviatedValue(leader.growth, "currency")}
             />
           ) : (
-            <p className="formula-no-result">
+            <p className={veFormulaMathStyles.formulaNoResult}>
               {leadingGrowthFormulaTooltipCopy.noInvestmentHasPositiveGrowth}
             </p>
           )}

@@ -1,38 +1,46 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
+import { formulaMath } from "./FormulaMath.css.ts";
+import { formulaMathResult } from "./FormulaResult.css.ts";
 
-globalStyle(".formula-month-examples", {
+export const formulaMonthExamples = style({
   display: "grid",
   gap: "var(--space-1)",
   width: "100%",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-month-example", {
+});
+
+export const formulaMonthExample = style({
   display: "grid",
   justifyItems: "center",
   gap: "var(--space-025)",
   width: "100%",
   minWidth: "0",
   paddingTop: "var(--space-05)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-month-example + .formula-month-example", {
+});
+
+globalStyle(`${formulaMonthExample} + ${formulaMonthExample}`, {
   borderTop: "var(--line-thin) solid var(--border-subtle)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-month-label", {
+});
+
+export const formulaMonthLabel = style({
   color: "var(--text-strong)",
   fontSize: "var(--text-meta)",
   lineHeight: "var(--leading-snug)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-month-gap", {
+});
+
+export const formulaMonthGap = style({
   margin: "var(--space-05) 0",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
   lineHeight: "var(--leading-snug)",
   textWrap: "pretty",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-month-example .formula-math", {
+});
+
+globalStyle(`${formulaMonthExample} ${formulaMath}`, {
   padding: "var(--space-025) var(--space-025) var(--space-025)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-month-example .formula-math-result", {
+});
+
+globalStyle(`${formulaMonthExample} ${formulaMathResult}`, {
   marginTop: "0",
   borderTop: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

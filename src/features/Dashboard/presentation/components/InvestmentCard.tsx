@@ -1,4 +1,5 @@
-import "./InvestmentCard.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veInvestmentCardStyles from "./InvestmentCard.css.ts";
 import { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -88,11 +89,18 @@ export function InvestmentCard({
   // --- Return ---
 
   return (
-    <Card className="investment-card" data-testid="dashboard-investment-card">
-      <CardHeader className="investment-card-header">
-        <div className="investment-identity">
+    <Card
+      className={[veDashboardPrimitivesStyles.dashboardCardSurface, "investment-card"].join(" ")}
+      data-testid="dashboard-investment-card"
+    >
+      <CardHeader
+        className={[veInvestmentCardStyles.investmentCardHeader, "investment-card-header"]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <div className={veInvestmentCardStyles.investmentIdentity}>
           <span
-            className="investment-icon"
+            className={veInvestmentCardStyles.investmentIcon}
             style={{ "--investment-accent": COLORS[index % COLORS.length] } as CSSProperties}
           >
             {createElement(Icon, { "aria-hidden": true })}
@@ -107,10 +115,10 @@ export function InvestmentCard({
             </CardDescription>
           </div>
         </div>
-        <div className="investment-header-actions">
+        <div className={veInvestmentCardStyles.investmentHeaderActions}>
           {investment.rateSource?.url && (
             <a
-              className="source-icon-link"
+              className={veDashboardPrimitivesStyles.sourceIconLink}
               href={investment.rateSource.url}
               target="_blank"
               rel="noreferrer"
@@ -123,10 +131,10 @@ export function InvestmentCard({
           <Badge variant="outline">{categoryLabels[investment.category]}</Badge>
         </div>
       </CardHeader>
-      <CardContent className="investment-card-content">
-        <div className="investment-metrics">
-          <div className="investment-primary-metric">
-            <div className="investment-value-label">
+      <CardContent className={veInvestmentCardStyles.investmentCardContent}>
+        <div className={veInvestmentCardStyles.investmentMetrics}>
+          <div className={veInvestmentCardStyles.investmentPrimaryMetric}>
+            <div className={veInvestmentCardStyles.investmentValueLabel}>
               {years === 0 ? (
                 labels.currentValueUpper
               ) : (
@@ -135,8 +143,8 @@ export function InvestmentCard({
                 </>
               )}
             </div>
-            <div className="investment-value-row">
-              <div className="investment-value">
+            <div className={veInvestmentCardStyles.investmentValueRow}>
+              <div className={veInvestmentCardStyles.investmentValue}>
                 <AbbreviatedMoney value={projection.finalValue} />
               </div>
               {years > 0 && (
@@ -154,10 +162,17 @@ export function InvestmentCard({
               )}
             </div>
           </div>
-          <div className="investment-secondary-metrics">
-            <div className="investment-secondary-metric">
-              <div className="investment-value-label investment-secondary-heading">
-                <span className="growth-arrow">
+          <div className={veInvestmentCardStyles.investmentSecondaryMetrics}>
+            <div className={veInvestmentCardStyles.investmentSecondaryMetric}>
+              <div
+                className={[
+                  veInvestmentCardStyles.investmentValueLabel,
+                  veInvestmentCardStyles.investmentSecondaryHeading,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <span className={veInvestmentCardStyles.growthArrow}>
                   {projection.growth > 0 ? (
                     <ArrowUp className="icon-sm" aria-hidden="true" />
                   ) : projection.growth < 0 ? (
@@ -169,12 +184,24 @@ export function InvestmentCard({
                 <span>{signedOutcomeLabel(projection.growth)}</span>
               </div>
               <div
-                className="investment-growth-values"
+                className={[
+                  veInvestmentCardStyles.investmentGrowthValues,
+                  "investment-growth-values",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 role="group"
                 aria-label={signedOutcomeLabel(projection.growth)}
               >
-                <div className="investment-value-row investment-growth-row">
-                  <div className="investment-growth-value">
+                <div
+                  className={[
+                    veInvestmentCardStyles.investmentValueRow,
+                    veInvestmentCardStyles.investmentGrowthRow,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <div className={veInvestmentCardStyles.investmentGrowthValue}>
                     <AbbreviatedMoney value={projection.growth} />
                   </div>
                   <InvestmentGrowthFormulaTooltip
@@ -184,8 +211,15 @@ export function InvestmentCard({
                     realMode={withInflation}
                   />
                 </div>
-                <div className="investment-value-row investment-growth-row">
-                  <div className="investment-growth-value">
+                <div
+                  className={[
+                    veInvestmentCardStyles.investmentValueRow,
+                    veInvestmentCardStyles.investmentGrowthRow,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <div className={veInvestmentCardStyles.investmentGrowthValue}>
                     {growthPercent === null ? (
                       "—"
                     ) : (
@@ -214,8 +248,14 @@ export function InvestmentCard({
           onToggleSeries={toggleChartSeries}
         />
 
-        <div className="slider-block">
-          <div className="slider-heading">
+        <div
+          className={[veInvestmentCardStyles.sliderBlock, "slider-block"].filter(Boolean).join(" ")}
+        >
+          <div
+            className={[veDashboardPrimitivesStyles.sliderHeading, "slider-heading"]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <Label htmlFor={`horizon-${investment.id}`}>{labels.horizon}</Label>
             <strong>{years === 0 ? labels.today : formatYears(years)}</strong>
           </div>
@@ -233,15 +273,19 @@ export function InvestmentCard({
               }))
             }
           />
-          <div className="range-labels">
+          <div
+            className={[veDashboardPrimitivesStyles.rangeLabels, "range-labels"]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <span>{labels.zeroToday}</span>
             <span>{investmentCardCopy.text40}</span>
           </div>
         </div>
 
-        <div className="rate-edit-row">
+        <div className={veInvestmentCardStyles.rateEditRow}>
           <Label htmlFor={`rate-${investment.id}`}>{labels.annualRate}</Label>
-          <div className="rate-input-controls">
+          <div className={veInvestmentCardStyles.rateInputControls}>
             <NumericUnitInput
               id={`rate-${investment.id}`}
               label={labels.annualRate}
@@ -255,11 +299,16 @@ export function InvestmentCard({
           </div>
         </div>
         <div
-          className="holding-list"
+          className={veInvestmentCardStyles.holdingList}
           role="table"
           aria-label={investmentCardCopy.positionsFor(investment.name)}
         >
-          <div className="holding-table-header" role="row">
+          <div
+            className={[veInvestmentCardStyles.holdingTableHeader, "holding-table-header"]
+              .filter(Boolean)
+              .join(" ")}
+            role="row"
+          >
             <span role="columnheader">{labels.position}</span>
             <span role="columnheader">{labels.currentValue}</span>
             <span role="columnheader">{labels.monthlyContribution}</span>

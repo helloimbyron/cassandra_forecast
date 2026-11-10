@@ -1,4 +1,7 @@
-import "./MetricsGrid.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
+import * as veMetricsGridStyles from "./MetricsGrid.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -39,7 +42,11 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="metrics-grid" aria-label={metricsGridCopy.portfolioMetrics}>
+    <section
+      className={[veMetricsGridStyles.metricsGrid, "metrics-grid"].filter(Boolean).join(" ")}
+      data-testid="dashboard-metrics-grid"
+      aria-label={metricsGridCopy.portfolioMetrics}
+    >
       <Metric
         icon={<ChartNoAxesCombined className="icon-sm" />}
         label={
@@ -79,9 +86,9 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
             }
             trigger={<Calculator className="icon-sm" aria-hidden="true" />}
           >
-            <ol className="formula-tooltip-copy">
+            <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
               <FormulaStep>
-                <span className="formula-step-description">
+                <span className={veFormulaStepStyles.formulaStepDescription}>
                   {metricsGridCopy.firstAddAllContributions}
                 </span>
                 <FormulaMath
@@ -90,7 +97,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                 />
                 <FormulaMath
                   label={metricsGridCopy.totalInvestedSubstitution}
-                  className="formula-math-substitution"
+                  className={veFormulaMathStyles.formulaMathSubstitution}
                   tex={`${texText(formatAbbreviatedValue(initial, "currency"))} + ${texText(formatAbbreviatedValue(totalContributions, "currency"))}`}
                 />
                 <FormulaResult
@@ -99,7 +106,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                 />
               </FormulaStep>
               <FormulaStep>
-                <span className="formula-step-description">
+                <span className={veFormulaStepStyles.formulaStepDescription}>
                   {summaryInsights.gainPctOfInvested === null
                     ? metricsGridCopy.noInvestedCapital
                     : metricsGridCopy.comparesGrowthToTotalInvested}
@@ -111,7 +118,7 @@ export function MetricsGrid({ model }: { model: LoadedDashboardModel }) {
                 {summaryInsights.gainPctOfInvested !== null && (
                   <FormulaMath
                     label={metricsGridCopy.returnOnInvestmentValueSubstitution}
-                    className="formula-math-substitution"
+                    className={veFormulaMathStyles.formulaMathSubstitution}
                     tex={`\\frac{${texText(formatAbbreviatedValue(totalGrowth, "currency"))}}{${texText(formatAbbreviatedValue(totalInvested, "currency"))}} \\times 100`}
                   />
                 )}

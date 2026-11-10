@@ -1,7 +1,7 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
 
-globalStyle(".sticky-controls-viewport", {
+export const stickyControlsViewport = style({
   flex: "1 1 auto",
   display: "flex",
   justifyContent: "safe center",
@@ -10,93 +10,110 @@ globalStyle(".sticky-controls-viewport", {
   scrollbarWidth: "none",
   paddingBlock: "var(--space-2)",
   marginBlock: "calc(-1 * var(--space-2))",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-controls-viewport::-webkit-scrollbar", {
+});
+
+globalStyle(`${stickyControlsViewport}::-webkit-scrollbar`, {
   display: "none",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-projection-controls", {
+});
+
+export const stickyProjectionControls = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-4)",
   margin: "0",
   width: "max-content",
   minWidth: "max-content",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-horizon-control", {
+});
+
+export const stickyHorizonControl = style({
   display: "grid",
   gap: "var(--space-075)",
   flex: "0 0 var(--size-12)",
   width: "var(--size-12)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-inflation-controls .distribution-mode-toggle", {
+});
+
+export const stickyInflationControls = style({
+  flex: "none",
+  gridTemplateColumns: "auto var(--size-12)",
+  gap: "var(--space-2)",
+});
+
+globalStyle(`${stickyInflationControls} .distribution-mode-toggle`, {
   borderColor: "color-mix(in srgb, var(--hero-text) var(--mix-20), transparent)",
   background: "color-mix(in srgb, var(--hero-text) var(--mix-08), transparent)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-inflation-controls .distribution-mode-toggle button", {
+});
+
+globalStyle(`${stickyInflationControls} .distribution-mode-toggle button`, {
   color: "var(--hero-muted)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.sticky-inflation-controls .distribution-mode-toggle button[aria-pressed="true"]', {
+});
+
+globalStyle(`${stickyInflationControls} .distribution-mode-toggle button[aria-pressed="true"]`, {
   color: "var(--hero-bg)",
   background: "color-mix(in srgb, var(--hero-text) var(--mix-92), var(--hero-accent))",
   boxShadow:
     "0 var(--line-thin) var(--line-focus)\n    color-mix(in srgb, var(--shadow-ink) var(--mix-20), transparent)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});
+
 globalStyle(
-  '.sticky-inflation-controls .distribution-mode-toggle:has(button:not([aria-pressed="true"]):hover)',
+  `${stickyInflationControls} .distribution-mode-toggle:has(button:not([aria-pressed="true"]):hover)`,
   {
     background: "color-mix(in srgb, var(--hero-text) var(--mix-20), transparent)",
-  } as unknown as Parameters<typeof globalStyle>[1],
+  },
 );
+
 globalStyle(
-  '.sticky-inflation-controls .distribution-mode-toggle button:not([aria-pressed="true"]):hover',
+  `${stickyInflationControls} .distribution-mode-toggle button:not([aria-pressed="true"]):hover`,
   {
     color: "var(--hero-text)",
-  } as unknown as Parameters<typeof globalStyle>[1],
+  },
 );
-globalStyle(".sticky-inflation-controls", {
-  flex: "none",
-  gridTemplateColumns: "auto var(--size-12)",
-  gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-inflation-controls .inflation-slider-control", {
+
+globalStyle(`${stickyInflationControls} .inflation-slider-control`, {
   width: "var(--size-12)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-control-label", {
+});
+
+export const stickyControlLabel = style({
   display: "flex",
   justifyContent: "space-between",
   gap: "var(--space-2)",
   color: "var(--text-muted)",
   fontSize: "var(--text-meta)",
   lineHeight: "var(--leading-tight)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-control-label strong", {
+});
+
+globalStyle(`${stickyControlLabel} strong`, {
   color: "var(--text-strong)",
   whiteSpace: "nowrap",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-projection-controls", {
+});
+
+globalStyle(stickyProjectionControls, {
   gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-projection-controls", {
+});
+
+globalStyle(stickyProjectionControls, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       gap: "var(--space-3)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-projection-controls", {
+});
+
+globalStyle(stickyProjectionControls, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       gap: "var(--space-4)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-controls-viewport", {
+});
+
+globalStyle(stickyControlsViewport, {
   alignItems: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".sticky-controls-viewport", {
+});
+
+globalStyle(stickyControlsViewport, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       alignItems: "stretch",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

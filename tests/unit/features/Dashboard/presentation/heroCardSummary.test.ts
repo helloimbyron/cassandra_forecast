@@ -52,53 +52,47 @@ describe("HeroCard balance and purchasing-power summary", () => {
     expect(heroCardSource).toContain('className="hero-contributions-info-trigger"');
     expect(heroCardSource).toContain("{heroCardCopy.contributionsInfoExplanation}");
     expect(heroCardCopy.contributionsInfoExplanation).toContain("No son aportes adicionales");
-    expect(heroCardSource.indexOf('<h4 className="hero-breakdown-heading">')).toBeLessThan(
+    expect(heroCardSource.indexOf("veHeroCardStyles.heroBreakdownHeading")).toBeLessThan(
       heroCardSource.indexOf('className="hero-contributions-info-trigger"'),
     );
     expect(heroCardSource.indexOf('className="hero-contributions-info-trigger"')).toBeLessThan(
       heroCardSource.indexOf("{heroCardCopy.nominalContributionsShort}"),
     );
-    expect(heroCardSource).toContain('className="hero-side-stat hero-current-stat"');
-    expect(heroCardSource).toContain('className="hero-side-stat hero-contributions-stat"');
-    expect(heroCardSource).toContain('className="hero-side-stat hero-growth-stat"');
-    expect(heroCardSource).toContain('className="hero-result-value hero-grid-value"');
-    expect(heroCardSource).toContain('className="hero-value-label hero-grid-subtitle"');
+    expect(heroCardSource).toContain("veHeroCardStyles.heroCurrentStat");
+    expect(heroCardSource).toContain("veHeroCardStyles.heroContributionsStat");
+    expect(heroCardSource).toContain("veHeroCardStyles.heroGrowthStat");
+    expect(heroCardSource).toContain("veHeroCardStyles.heroResultValue");
+    expect(heroCardSource).toContain("veHeroCardStyles.heroValueLabel");
     expect(heroCardSource).toContain("{heroCardCopy.balances}");
     expect(heroCardSource).toContain("{heroCardCopy.results}");
     expect(heroCardSource).toContain("{heroCardCopy.returnLabel}");
     const metricOrder = [
-      'className="hero-total"',
-      'className="hero-value-secondary"',
-      'className="hero-side-stat hero-current-stat"',
-      'className="hero-side-stat hero-contributions-stat"',
-      'className="hero-side-stat hero-growth-stat"',
+      "veHeroCardStyles.heroTotal",
+      "veHeroCardStyles.heroValueSecondary",
+      "veHeroCardStyles.heroCurrentStat",
+      "veHeroCardStyles.heroContributionsStat",
+      "veHeroCardStyles.heroGrowthStat",
     ].map((marker) => heroCardSource.indexOf(marker));
     expect(metricOrder.every((index) => index >= 0)).toBe(true);
     expect(metricOrder).toEqual([...metricOrder].sort((left, right) => left - right));
 
     const secondaryStyles =
-      heroStyles.match(/globalStyle\("\.hero-value-secondary", (\{[^;]+\}) as/s)?.[1] ?? "";
-    const dividerStyles =
-      heroStyles.match(
-        /globalStyle\("\.hero-contributions-stat,\\n\.hero-growth-stat", (\{[^;]+\}) as/s,
-      )?.[1] ?? "";
+      heroStyles.split("export const heroValueSecondary = style(")[1]?.split("});")[0] ?? "";
     expect(secondaryStyles).not.toContain("borderLeft");
-    expect(dividerStyles).toContain("borderLeft");
-    expect(heroStyles).toContain("hero-main-without-inflation");
-    expect(heroStyles).toContain("hero-main-with-inflation .hero-total");
+    expect(heroStyles).toContain("export const heroContributionsStat = style(");
+    expect(heroStyles).toContain("export const heroGrowthStat = style(");
+    expect(heroStyles).toContain('borderLeft: "var(--line-thin) solid var(--hero-track)"');
+    expect(heroStyles).toContain("export const heroMainWithoutInflation = style(");
+    expect(heroStyles).toContain(".hero-main-with-inflation ${heroTotal}");
     expect(heroStyles).toContain('whiteSpace: "nowrap"');
     expect(heroStyles).toContain('alignItems: "center"');
     expect(responsiveStyles).toContain('gridTemplateRows: "subgrid"');
-    expect(responsiveStyles).toMatch(/hero-total h3[\s\S]*?gridRow: "2 \/ span 2"/);
-    expect(responsiveStyles).toMatch(
-      /hero-main[\s\S]*?gridTemplateColumns: "repeat\(2, minmax\(0, 1fr\)\)/,
-    );
-    expect(responsiveStyles).toMatch(
-      /hero-main-without-inflation[\s\S]*?gridTemplateColumns: "repeat\(12, minmax\(0, 1fr\)\)/,
-    );
-    expect(responsiveStyles).toMatch(/hero-main[\s\S]*?gridTemplateRows: "repeat\(3, auto\)/);
-    expect(responsiveStyles).toContain(".hero-current-stat .hero-breakdown-heading-spacer");
-    expect(horizonControlStyles).toContain('globalStyle(".hero-slider-tooltip"');
+    expect(responsiveStyles).toContain('gridRow: "2 / span 2"');
+    expect(responsiveStyles).toContain('gridTemplateColumns: "repeat(2, minmax(0, 1fr))"');
+    expect(responsiveStyles).toContain('gridTemplateColumns: "repeat(12, minmax(0, 1fr))"');
+    expect(responsiveStyles).toContain('gridTemplateRows: "repeat(3, auto)"');
+    expect(responsiveStyles).toContain("${heroCurrentStat} ${heroBreakdownHeadingSpacer}");
+    expect(horizonControlStyles).toContain("export const heroSliderTooltip = style(");
   });
 
   it("explains the balance and contribution comparison with current formatted amounts", () => {

@@ -1,9 +1,24 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle(".rate-note-tooltip-trigger", {
+export const rateNoteTooltipContent = style({
+  zIndex: "var(--layer-dialog)",
+  maxWidth: "min(var(--fluid-max-width), var(--size-34))",
+  padding: "var(--space-1) var(--space-2)",
+  border: "var(--line-thin) solid var(--input)",
+  borderRadius: "var(--space-1)",
+  color: "var(--popover-foreground)",
+  background: "var(--popover)",
+  boxShadow: "var(--shadow-card)",
+  fontSize: "var(--text-meta)",
+  lineHeight: "var(--leading-body)",
+  overflowWrap: "anywhere",
+});
+
+export const rateNoteTooltipTrigger = style({
   cursor: "help",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".rate-note-question-mark", {
+});
+
+export const rateNoteQuestionMark = style({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -12,4 +27,4 @@ globalStyle(".rate-note-question-mark", {
   fontSize: "var(--text-meta)",
   fontWeight: "var(--font-weight-semibold)",
   lineHeight: "var(--leading-none)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

@@ -1,6 +1,7 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-globalStyle('[data-slot="badge"]', {
+export const badgeRoot = style({
   "@layer": {
     components: {
       display: "inline-flex",
@@ -21,46 +22,57 @@ globalStyle('[data-slot="badge"]', {
       whiteSpace: "nowrap",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="badge"][data-variant="secondary"]', {
-  "@layer": {
-    components: {
-      background: "var(--secondary)",
-      color: "var(--secondary-foreground)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="badge"][data-variant="outline"]', {
-  "@layer": {
-    components: {
-      borderColor: "var(--border)",
-      background: "transparent",
-      color: "var(--foreground)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="badge"][data-variant="destructive"]', {
-  "@layer": {
-    components: {
-      borderColor: "var(--destructive)",
-      background: "var(--muted)",
-      color: "var(--destructive)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(
-  '[data-slot="badge"][data-variant="ghost"],\n  [data-slot="badge"][data-variant="link"]',
-  {
-    "@layer": {
-      components: {
-        background: "transparent",
-        color: "var(--foreground)",
+});
+
+export const badgeVariants = recipe({
+  base: badgeRoot,
+  variants: {
+    variant: {
+      default: {},
+      secondary: {
+        "@layer": {
+          components: {
+            background: "var(--secondary)",
+            color: "var(--secondary-foreground)",
+          },
+        },
+      },
+      outline: {
+        "@layer": {
+          components: {
+            borderColor: "var(--border)",
+            background: "transparent",
+            color: "var(--foreground)",
+          },
+        },
+      },
+      destructive: {
+        "@layer": {
+          components: {
+            borderColor: "var(--destructive)",
+            background: "var(--muted)",
+            color: "var(--destructive)",
+          },
+        },
+      },
+      ghost: {
+        "@layer": {
+          components: { background: "transparent", color: "var(--foreground)" },
+        },
+      },
+      link: {
+        "@layer": {
+          components: { background: "transparent", color: "var(--foreground)" },
+        },
       },
     },
-  } as unknown as Parameters<typeof globalStyle>[1],
-);
-globalStyle('.panel-header [data-slot="badge"],\n.investment-card-header [data-slot="badge"]', {
+  },
+  defaultVariants: { variant: "default" },
+});
+
+// Parent cards deliberately override the primitive at the unlayered cascade level.
+globalStyle(`.panel-header ${badgeRoot},\n.investment-card-header ${badgeRoot}`, {
   color: "var(--foreground)",
   borderColor: "var(--input)",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

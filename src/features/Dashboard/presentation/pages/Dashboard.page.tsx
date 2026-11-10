@@ -1,3 +1,4 @@
+import * as feedbackStyles from "@/shared/presentation/styles/feedback.css";
 import type { RefCallback } from "react";
 import { DashboardHeading } from "@/features/Dashboard/presentation/components/DashboardHeading";
 import { HeroCard } from "@/features/Dashboard/presentation/components/HeroCard";
@@ -17,7 +18,7 @@ export function DashboardPage({
 }) {
   if (!model) {
     return (
-      <p role="status" className="drop-hint">
+      <p role="status" className={feedbackStyles.dropHint}>
         Cargando ejemplo…
       </p>
     );

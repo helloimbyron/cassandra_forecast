@@ -1,4 +1,7 @@
-import "./ProjectedValueFormulaTooltip.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
+import * as veProjectedValueFormulaTooltipStyles from "./ProjectedValueFormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
@@ -113,11 +116,11 @@ export function ProjectedValueFormulaTooltip({
         real,
       )}
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
-      className="holding-formula-trigger"
+      className={veProjectedValueFormulaTooltipStyles.holdingFormulaTrigger}
     >
-      <ol className="formula-tooltip-copy">
+      <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {projectedValueFormulaTooltipCopy.findMonthlyRateAppliedOver}
           </span>
           {inflationRatePct > 0 && (
@@ -128,7 +131,7 @@ export function ProjectedValueFormulaTooltip({
               />
               <FormulaMath
                 label={projectedValueFormulaTooltipCopy.fisherSubstitution}
-                className="formula-math-substitution"
+                className={veFormulaMathStyles.formulaMathSubstitution}
                 tex={`(1 + ${texText(formatAbbreviatedValue(annualRatePct, "percent", "precise"))}) / (1 + ${texText(formatAbbreviatedValue(inflationRatePct, "percent", "precise"))}) - 1 = ${texText(formatAbbreviatedValue(effectiveAnnualRatePct, "percent", "precise"))}`}
               />
             </>
@@ -139,7 +142,7 @@ export function ProjectedValueFormulaTooltip({
           />
           <FormulaMath
             label={projectedValueFormulaTooltipCopy.annualRateSubstitutionForMonthlyRate}
-            className="formula-math-substitution"
+            className={veFormulaMathStyles.formulaMathSubstitution}
             tex={`${texText(projectedValueFormulaTooltipCopy.equivalentMonthlyRate)} = (1 + ${texText(formatAbbreviatedValue(effectiveAnnualRatePct, "percent", "precise"))})^{1/12} - 1`}
           />
           <FormulaResult
@@ -148,7 +151,7 @@ export function ProjectedValueFormulaTooltip({
           />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {projectedValueFormulaTooltipCopy.convertHorizonToMonths}
           </span>
           <FormulaMath
@@ -157,13 +160,13 @@ export function ProjectedValueFormulaTooltip({
           />
           <FormulaMath
             label={projectedValueFormulaTooltipCopy.horizonToMonthsSubstitution}
-            className="formula-math-substitution"
+            className={veFormulaMathStyles.formulaMathSubstitution}
             tex={`${monthsLabel} = ${years} \\times 12`}
           />
           <FormulaResult name={labels.projectionMonths} value={formatMonths(monthCount)} />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {inflationRatePct > 0
               ? projectedValueFormulaTooltipCopy.inflationAdjustedMonthlyContribution
               : projectedValueFormulaTooltipCopy.nominalMonthlyContribution}
@@ -182,7 +185,7 @@ export function ProjectedValueFormulaTooltip({
           />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {projectedValueFormulaTooltipCopy.seeHowOneMonthChangesTheBalance}
           </span>
           <MonthlyBalanceExamples

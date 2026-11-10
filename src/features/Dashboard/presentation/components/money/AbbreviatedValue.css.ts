@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle(".abbreviated-value,\n.abbreviated-money", {
+export const abbreviatedValue = style({
   whiteSpace: "normal",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

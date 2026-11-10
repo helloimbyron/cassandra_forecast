@@ -1,4 +1,4 @@
-import "./StickyProjectionControls.css.ts";
+import * as veStickyProjectionControlsStyles from "./StickyProjectionControls.css.ts";
 import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
 import { InflationControls } from "@/features/Dashboard/presentation/components/InflationControls";
@@ -22,10 +22,14 @@ export function StickyProjectionControls({
   onWithInflationChange: (enabled: boolean) => void;
 }) {
   return (
-    <div className="sticky-controls-viewport">
-      <div className="sticky-projection-controls">
-        <div className="sticky-horizon-control">
-          <div className="sticky-control-label">
+    <div className={veStickyProjectionControlsStyles.stickyControlsViewport}>
+      <div className={veStickyProjectionControlsStyles.stickyProjectionControls}>
+        <div className={veStickyProjectionControlsStyles.stickyHorizonControl}>
+          <div
+            className={[veStickyProjectionControlsStyles.stickyControlLabel, "sticky-control-label"]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <span>{labels.totalHorizon}</span>
             <strong>{totalYears === 0 ? labels.today : formatYears(totalYears)}</strong>
           </div>
@@ -40,7 +44,12 @@ export function StickyProjectionControls({
         </div>
         <InflationControls
           layout="inline"
-          className="sticky-inflation-controls"
+          className={[
+            veStickyProjectionControlsStyles.stickyInflationControls,
+            "sticky-inflation-controls",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           withInflation={withInflation}
           onWithInflationChange={onWithInflationChange}
           inflationRatePct={inflationRatePct}

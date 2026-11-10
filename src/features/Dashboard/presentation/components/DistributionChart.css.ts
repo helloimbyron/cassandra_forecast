@@ -1,5 +1,5 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle(".distribution-chart", {
+export const distributionChart = style({
   height: "var(--size-22)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

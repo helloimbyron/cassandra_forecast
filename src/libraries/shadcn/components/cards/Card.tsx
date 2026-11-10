@@ -1,4 +1,4 @@
-import "./Card.css.ts";
+import * as veCardStyles from "./Card.css.ts";
 import * as React from "react";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 
@@ -7,5 +7,12 @@ export function Card({
   size = "default",
   ...props
 }: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
-  return <div data-slot="card" data-size={size} className={cn("ui-card", className)} {...props} />;
+  return (
+    <div
+      data-slot="card"
+      data-size={size}
+      className={[veCardStyles.cardRoot, cn("ui-card", className)].filter(Boolean).join(" ")}
+      {...props}
+    />
+  );
 }

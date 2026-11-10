@@ -1,4 +1,6 @@
-import "./InflationControls.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veInflationControlsStyles from "./InflationControls.css.ts";
+import * as veHeroHorizonControlStyles from "./HeroHorizonControl.css.ts";
 import { useState } from "react";
 import { Info, Link2 } from "lucide-react";
 import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
@@ -61,11 +63,33 @@ export function InflationControls({
   // --- Return ---
 
   return (
-    <div className={`inflation-controls inflation-controls-${layout} ${className}`}>
-      <div className="inflation-controls-heading">
+    <div
+      className={[
+        veInflationControlsStyles.inflationControls,
+        veInflationControlsStyles.inflationControlsLayout[layout],
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <div
+        className={[
+          veInflationControlsStyles.inflationControlsHeading,
+          "inflation-controls-heading",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         {layout === "card" && (
           <div className="inflation-card-heading">
-            <div className="inflation-slider-heading">
+            <div
+              className={[
+                veInflationControlsStyles.inflationSliderHeading,
+                "inflation-slider-heading",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               <span>{headerCopy.inflationSlider}</span>
               {withInflation && (
                 <strong>
@@ -77,7 +101,12 @@ export function InflationControls({
           </div>
         )}
         <div
-          className="distribution-mode-toggle inflation-mode-toggle"
+          className={[
+            veDashboardPrimitivesStyles.distributionModeToggle,
+            "distribution-mode-toggle",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           role="group"
           aria-label={headerCopy.inflationMode}
         >
@@ -112,7 +141,9 @@ export function InflationControls({
         )}
         {source && (
           <a
-            className="source-icon-link inflation-source-icon"
+            className={[veDashboardPrimitivesStyles.sourceIconLink, "inflation-source-icon"]
+              .filter(Boolean)
+              .join(" ")}
             href={source.url}
             target="_blank"
             rel="noreferrer"
@@ -124,9 +155,20 @@ export function InflationControls({
         )}
       </div>
       {withInflation && (
-        <div className="inflation-slider-control">
+        <div
+          className={[veInflationControlsStyles.inflationSliderControl, "inflation-slider-control"]
+            .filter(Boolean)
+            .join(" ")}
+        >
           {layout === "inline" && (
-            <div className="inflation-slider-heading">
+            <div
+              className={[
+                veInflationControlsStyles.inflationSliderHeading,
+                "inflation-slider-heading",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               <span>{headerCopy.inflationSlider}</span>
               <strong>
                 {displayedRate}
@@ -135,7 +177,14 @@ export function InflationControls({
             </div>
           )}
           {layout === "card" && (
-            <div className="range-labels inflation-range-labels">
+            <div
+              className={[
+                veDashboardPrimitivesStyles.rangeLabels,
+                "range-labels inflation-range-labels",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               <span>
                 {formatInflationRate(MIN_INFLATION_RATE_PCT)}
                 {labels.percentSymbol}
@@ -146,7 +195,11 @@ export function InflationControls({
               </span>
             </div>
           )}
-          <div className="inflation-slider-wrap">
+          <div
+            className={[veInflationControlsStyles.inflationSliderWrap, "inflation-slider-wrap"]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <DebouncedSlider
               aria-label={headerCopy.inflationSliderAriaLabel}
               min={MIN_INFLATION_RATE_PCT}
@@ -163,7 +216,13 @@ export function InflationControls({
             />
             {layout === "card" && (
               <span
-                className={`hero-slider-tooltip inflation-slider-tooltip ${draftRate <= MIN_INFLATION_RATE_PCT + INFLATION_RATE_STEP_PCT ? "is-start" : ""}${draftRate >= MAX_INFLATION_RATE_PCT - INFLATION_RATE_STEP_PCT ? "is-end" : ""}`}
+                className={[
+                  veHeroHorizonControlStyles.heroSliderTooltip,
+                  veInflationControlsStyles.inflationSliderTooltip,
+                  `hero-slider-tooltip inflation-slider-tooltip ${draftRate <= MIN_INFLATION_RATE_PCT + INFLATION_RATE_STEP_PCT ? "is-start" : ""}${draftRate >= MAX_INFLATION_RATE_PCT - INFLATION_RATE_STEP_PCT ? "is-end" : ""}`,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 style={{ left: draftThumbPosition }}
                 aria-hidden="true"
               >

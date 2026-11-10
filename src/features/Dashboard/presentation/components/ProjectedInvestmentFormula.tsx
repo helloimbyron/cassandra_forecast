@@ -1,4 +1,7 @@
-import "./ProjectedInvestmentFormula.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
+import { formulaInvestmentExpression } from "./ProjectedInvestmentFormula.css.ts";
 import { Calculator } from "lucide-react";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
 import { projectedPositionLabel } from "@/features/Dashboard/domain/utils/projectedPositionLabel.util";
@@ -42,9 +45,13 @@ export function ProjectedInvestmentFormula({
         )}
         trigger={<Calculator className="icon-sm" aria-hidden="true" />}
       >
-        <ol className="formula-tooltip-copy formula-investment-expression">
+        <ol
+          className={[veFormulaTooltipStyles.formulaTooltipCopy, formulaInvestmentExpression]
+            .filter(Boolean)
+            .join(" ")}
+        >
           <FormulaStep>
-            <span className="formula-step-description">
+            <span className={veFormulaStepStyles.formulaStepDescription}>
               {projectedValueFormulaTooltipCopy.noOtherPositionsToAdd}
             </span>
             <FormulaResult
@@ -67,9 +74,13 @@ export function ProjectedInvestmentFormula({
       )}
       trigger={<Calculator className="icon-sm" aria-hidden="true" />}
     >
-      <ol className="formula-tooltip-copy formula-investment-expression">
+      <ol
+        className={[veFormulaTooltipStyles.formulaTooltipCopy, formulaInvestmentExpression]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {projectedValueFormulaTooltipCopy.sumProjectedValueForEachPosition}
           </span>
           <FormulaMath
@@ -80,14 +91,14 @@ export function ProjectedInvestmentFormula({
           />
         </FormulaStep>
         <FormulaStep>
-          <span className="formula-step-description">
+          <span className={veFormulaStepStyles.formulaStepDescription}>
             {amountsDifferAfterRounding
               ? projectedValueFormulaTooltipCopy.useDisplayedAmountsForTotal
               : projectedValueFormulaTooltipCopy.replaceEachPositionWithProjectedAmount}
           </span>
           <FormulaMath
             label={values.map(({ value }) => formatAbbreviatedValue(value, "currency")).join(" + ")}
-            className="formula-math-substitution"
+            className={veFormulaMathStyles.formulaMathSubstitution}
             tex={substitution || texText("—")}
           />
           <FormulaResult

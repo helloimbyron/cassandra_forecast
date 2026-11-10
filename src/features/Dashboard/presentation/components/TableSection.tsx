@@ -1,4 +1,5 @@
-import "./TableSection.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veTableSectionStyles from "./TableSection.css.ts";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Columns3 } from "lucide-react";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
@@ -59,13 +60,22 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="table-section" aria-label={tableSectionCopy.yearByYearProgression}>
-      <div className="section-heading table-section-heading">
-        <div className="eyebrow">
-          <span className="eyebrow-line" /> {tableSectionCopy.yearByYearProgression}
+    <section
+      className={[veTableSectionStyles.tableSection, "table-section"].filter(Boolean).join(" ")}
+      data-testid="dashboard-table-section"
+      aria-label={tableSectionCopy.yearByYearProgression}
+    >
+      <div
+        className={[veDashboardPrimitivesStyles.sectionHeading, "table-section-heading"]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <div className={[veDashboardPrimitivesStyles.eyebrow, "eyebrow"].filter(Boolean).join(" ")}>
+          <span className={veDashboardPrimitivesStyles.eyebrowLine} />{" "}
+          {tableSectionCopy.yearByYearProgression}
         </div>
-        <div className="table-controls">
-          <details ref={columnPickerRef} className="table-column-picker">
+        <div className={veTableSectionStyles.tableControls}>
+          <details ref={columnPickerRef} className={veTableSectionStyles.tableColumnPicker}>
             <summary aria-label={tableSectionCopy.selectColumns}>
               <Columns3 className="icon-sm" aria-hidden="true" />
               <span>
@@ -80,7 +90,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
               <ChevronDown className="icon-sm" aria-hidden="true" />
             </summary>
             <div
-              className="table-column-options"
+              className={veTableSectionStyles.tableColumnOptions}
               role="group"
               aria-label={tableSectionCopy.selectColumns}
             >
@@ -88,7 +98,7 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
                 const visible = !hiddenInvestmentIds.has(investment.id);
 
                 return (
-                  <label key={investment.id} className="table-column-option">
+                  <label key={investment.id} className={veTableSectionStyles.tableColumnOption}>
                     <input
                       type="checkbox"
                       checked={visible}
@@ -103,9 +113,9 @@ export function TableSection({ model }: { model: LoadedDashboardModel }) {
           </details>
         </div>
       </div>
-      <Card className="panel-card">
+      <Card className={[veDashboardPrimitivesStyles.dashboardCardSurface, "panel-card"].join(" ")}>
         <CardContent>
-          <div className="table-scroll">
+          <div className={veTableSectionStyles.tableScroll}>
             <table
               aria-describedby="year-table-caption"
               style={{

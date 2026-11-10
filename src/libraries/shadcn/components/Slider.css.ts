@@ -1,16 +1,19 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 globalStyle('.topbar.has-projection-controls [data-slot="slider-track"]', {
   background: "var(--hero-track)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});
+
 globalStyle('.topbar.has-projection-controls [data-slot="slider-range"]', {
   background: "var(--hero-accent)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});
+
 globalStyle('.topbar.has-projection-controls [data-slot="slider-thumb"]', {
   borderColor: "var(--hero-text)",
   background: "var(--hero-text)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="slider"]', {
+});
+
+export const sliderRoot = style({
   "@layer": {
     components: {
       position: "relative",
@@ -22,8 +25,9 @@ globalStyle('[data-slot="slider"]', {
       userSelect: "none",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="slider-track"]', {
+});
+
+export const sliderTrackRoot = style({
   "@layer": {
     components: {
       position: "relative",
@@ -34,8 +38,9 @@ globalStyle('[data-slot="slider-track"]', {
       background: "var(--muted)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="slider-range"]', {
+});
+
+export const sliderRangeRoot = style({
   "@layer": {
     components: {
       position: "absolute",
@@ -43,8 +48,9 @@ globalStyle('[data-slot="slider-range"]', {
       background: "var(--primary)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="slider-thumb"]', {
+});
+
+export const sliderThumbRoot = style({
   "@layer": {
     components: {
       position: "relative",
@@ -58,50 +64,63 @@ globalStyle('[data-slot="slider-thumb"]', {
       cursor: "grab",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="slider-thumb"]:active', {
+});
+
+globalStyle(`${sliderThumbRoot}:active`, {
   "@layer": {
     components: {
       cursor: "grabbing",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.hero-horizon .hero-slider-wrap [data-slot="slider"]', {
+});
+
+globalStyle(`.hero-horizon .hero-slider-wrap ${sliderRoot}`, {
   minHeight: "var(--space-525)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.hero-inflation-controls .inflation-slider-wrap [data-slot="slider"]', {
+});
+
+globalStyle(`.hero-inflation-controls .inflation-slider-wrap ${sliderRoot}`, {
   minHeight: "var(--space-525)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.hero-card [data-slot="slider-track"]', {
+});
+
+globalStyle(`.hero-card ${sliderTrackRoot}`, {
   background: "var(--hero-track)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.hero-card [data-slot="slider-range"]', {
+});
+
+globalStyle(`.hero-card ${sliderRangeRoot}`, {
   background: "var(--hero-accent)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.hero-card [data-slot="slider-thumb"]', {
+});
+
+globalStyle(`.hero-card ${sliderThumbRoot}`, {
   background: "var(--hero-text)",
   borderColor: "var(--hero-text)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.distribution-control [data-slot="slider-track"]', {
+});
+
+globalStyle(`.distribution-control ${sliderTrackRoot}`, {
   background: "var(--input)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.distribution-control [data-slot="slider-range"]', {
+});
+
+globalStyle(`.distribution-control ${sliderRangeRoot}`, {
   background: "var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.distribution-control [data-slot="slider-thumb"]', {
+});
+
+globalStyle(`.distribution-control ${sliderThumbRoot}`, {
   borderColor: "var(--primary)",
   background: "var(--card)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.slider-block > [data-slot="slider"]', {
+});
+
+globalStyle(`.slider-block > ${sliderRoot}`, {
   minHeight: "var(--space-525)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.investment-card [data-slot="slider-track"]', {
+});
+
+globalStyle(`.investment-card ${sliderTrackRoot}`, {
   background: "var(--input)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.investment-card [data-slot="slider-range"]', {
+});
+
+globalStyle(`.investment-card ${sliderRangeRoot}`, {
   background: "var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('.investment-card [data-slot="slider-thumb"]', {
+});
+
+globalStyle(`.investment-card ${sliderThumbRoot}`, {
   background: "var(--card)",
   border: "var(--line-medium) solid var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

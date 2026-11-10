@@ -1,4 +1,5 @@
-import "./AllocationPanel.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veAllocationPanelStyles from "./AllocationPanel.css.ts";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { allocationPanelCopy } from "@/features/Dashboard/presentation/copies/allocationPanel.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
@@ -27,15 +28,27 @@ export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <Card className="panel-card allocation-panel">
-      <CardHeader className="panel-header">
+    <Card
+      className={[
+        veDashboardPrimitivesStyles.dashboardCardSurface,
+        veAllocationPanelStyles.allocationPanel,
+        "panel-card allocation-panel",
+      ].join(" ")}
+    >
+      <CardHeader
+        className={[veDashboardPrimitivesStyles.panelHeader, "panel-header"]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <div>
           <CardTitle>{allocationPanelCopy.currentAllocation}</CardTitle>
           <CardDescription>{allocationPanelCopy.capitalDistributionByInvestment}</CardDescription>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="donut-wrap">
+        <div
+          className={[veAllocationPanelStyles.donutWrap, "donut-wrap"].filter(Boolean).join(" ")}
+        >
           <ResponsiveContainer width="100%" height="100%">
             <PieChart accessibilityLayer>
               <Pie
@@ -67,14 +80,14 @@ export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
               />
             </PieChart>
           </ResponsiveContainer>
-          <div className="donut-center">
+          <div className={veAllocationPanelStyles.donutCenter}>
             <strong>
               <AbbreviatedMoney value={initial} />
             </strong>
             <span>{labels.currentCapital}</span>
           </div>
         </div>
-        <div className="allocation-list">
+        <div className={veAllocationPanelStyles.allocationList}>
           {portfolio.investments.map((investment, index) => {
             const amount = investment.holdings.reduce(
               (sum, holding) => sum + holding.currentValue,
@@ -82,8 +95,12 @@ export function AllocationPanel({ model }: { model: LoadedDashboardModel }) {
             );
 
             return (
-              <div className="allocation-row" key={investment.id}>
-                <span className="allocation-name">
+              <div className={veAllocationPanelStyles.allocationRow} key={investment.id}>
+                <span
+                  className={[veAllocationPanelStyles.allocationName, "allocation-name"]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
                   <i style={{ background: COLORS[index % COLORS.length] }} />
                   {investment.name}
                 </span>

@@ -1,4 +1,5 @@
-import "./MonthlyBalanceExamples.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veMonthlyBalanceExamplesStyles from "./MonthlyBalanceExamples.css.ts";
 import { monthlyBalanceExamplesCopy } from "@/features/Dashboard/presentation/copies/monthlyBalanceExamples.copy";
 import { formatAbbreviatedValue } from "@/features/Dashboard/presentation/formatters/formatAbbreviatedValue.util";
 import { texText } from "@/features/Dashboard/presentation/utils/texText.util";
@@ -57,7 +58,7 @@ export function MonthlyBalanceExamples({
 
   return (
     <div
-      className="formula-month-examples"
+      className={veMonthlyBalanceExamplesStyles.formulaMonthExamples}
       role="list"
       aria-label={monthlyBalanceExamplesCopy.monthByMonthCalculationExamples}
     >
@@ -67,23 +68,27 @@ export function MonthlyBalanceExamples({
         const isLast = example.month === months;
 
         return (
-          <div className="formula-month-example" role="listitem" key={example.month}>
+          <div
+            className={veMonthlyBalanceExamplesStyles.formulaMonthExample}
+            role="listitem"
+            key={example.month}
+          >
             {skipped > 0 && (
-              <p className="formula-month-gap">
+              <p className={veMonthlyBalanceExamplesStyles.formulaMonthGap}>
                 {monthlyBalanceExamplesCopy.months}
                 {priorShownMonth + 1} {monthlyBalanceExamplesCopy.to}
                 {example.month - 1}
                 {monthlyBalanceExamplesCopy.repeatCalculationOneAtATime}
               </p>
             )}
-            <strong className="formula-month-label">
+            <strong className={veMonthlyBalanceExamplesStyles.formulaMonthLabel}>
               {monthlyBalanceExamplesCopy.month}
               {example.month}
               {isLast ? monthlyBalanceExamplesCopy.lastMonth : ""}
             </strong>
             <FormulaMath
               label={monthlyBalanceExamplesCopy.calculationForMonth(example.month)}
-              className="formula-math-substitution"
+              className={veFormulaMathStyles.formulaMathSubstitution}
               tex={`${texText(formatAbbreviatedValue(example.previous, "currency"))} \\times (1 + ${texText(monthlyRateDisplay)}) + ${texText(formatAbbreviatedValue(monthlyContribution, "currency"))}${inflationRatePct === 0 ? "" : ` \\div (1 + ${texText(formatAbbreviatedValue(inflationRatePct, "percent", "precise"))})^{${example.month}/12}`}`}
             />
             <FormulaResult

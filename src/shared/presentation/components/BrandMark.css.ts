@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle(".icon-lg,\n.brand-symbol", {
+export const brandSymbol = style({
   width: "var(--icon-lg)",
   height: "var(--icon-lg)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

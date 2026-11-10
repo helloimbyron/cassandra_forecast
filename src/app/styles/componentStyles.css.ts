@@ -1,4 +1,8 @@
 import "./vanillaGlobalStyles.css.ts";
+import "../../features/Dashboard/presentation/components/DashboardPrimitives.css.ts";
+import "../../features/Dashboard/presentation/components/FormulaStep.css.ts";
+import "../../features/Dashboard/presentation/components/ChartTooltip.css.ts";
+import "../../features/Dashboard/presentation/components/money/MoneyTooltip.css.ts";
 import "../bootstrap/App.css.ts";
 import "../../features/Dashboard/presentation/components/InflationControls.css.ts";
 import "../../features/Dashboard/presentation/components/StickyProjectionControls.css.ts";
@@ -17,6 +21,7 @@ import "../../libraries/shadcn/components/cards/CardDescription.css.ts";
 import "../../libraries/shadcn/components/cards/CardFooter.css.ts";
 import "../../libraries/shadcn/components/cards/CardHeader.css.ts";
 import "../../libraries/shadcn/components/cards/CardTitle.css.ts";
+import "../../shared/presentation/styles/feedback.css.ts";
 import "../../features/Home/ImportSection.css.ts";
 import "../../features/Home/IntroSection.css.ts";
 import "../../features/Dashboard/presentation/components/DashboardHeading.css.ts";

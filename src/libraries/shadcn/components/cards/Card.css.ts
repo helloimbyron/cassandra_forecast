@@ -1,9 +1,9 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="card"]', {
+export const cardRoot = style({
   "@layer": {
     components: {
-      "--card-spacing": "var(--space-4)",
+      vars: { "--card-spacing": "var(--space-4)" },
       display: "flex",
       flexDirection: "column",
       gap: "var(--card-spacing)",
@@ -16,11 +16,12 @@ globalStyle('[data-slot="card"]', {
       fontSize: "var(--text-body)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="card"][data-size="sm"]', {
+});
+
+globalStyle(`${cardRoot}[data-size="sm"]`, {
   "@layer": {
     components: {
-      "--card-spacing": "var(--space-3)",
+      vars: { "--card-spacing": "var(--space-3)" },
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

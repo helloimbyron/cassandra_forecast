@@ -1,4 +1,5 @@
-import "./ImportSection.css.ts";
+import * as veImportSectionStyles from "./ImportSection.css.ts";
+import * as feedbackStyles from "@/shared/presentation/styles/feedback.css";
 import { importSectionCopy } from "@/features/Home/presentation/copies/importSection.copy";
 import type { PortfolioImportController } from "@/shared/presentation/types/PortfolioImportController.type";
 import { Button } from "@/libraries/shadcn/components/Button";
@@ -16,9 +17,14 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
   // --- Return ---
 
   return (
-    <section className="import-section" aria-labelledby="onboarding-title">
+    <section className={veImportSectionStyles.importSection} aria-labelledby="onboarding-title">
       <div
-        className={`import-card ${dragging ? "is-dragging" : ""}`}
+        className={[
+          veImportSectionStyles.importCard,
+          veImportSectionStyles.importCardState[dragging ? "dragging" : "idle"],
+        ]
+          .filter(Boolean)
+          .join(" ")}
         data-testid="home-import-card"
         onDragOver={(event) => {
           event.preventDefault();
@@ -27,7 +33,7 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
         onDragLeave={() => setDragging(false)}
         onDrop={onDrop}
       >
-        <div className="import-actions">
+        <div className={veImportSectionStyles.importActions}>
           <Button size="lg" onClick={() => fileInput.current?.click()}>
             <Upload className="icon-sm" /> {importSectionCopy.uploadPortfolioJson}
           </Button>
@@ -36,13 +42,15 @@ export function ImportSection({ model }: { model: PortfolioImportController }) {
           </Button>
         </div>
         {error && (
-          <p className="error-message" role="alert">
+          <p className={feedbackStyles.errorMessage} role="alert">
             {error}
           </p>
         )}
-        <div className="import-meta">
-          <span className="drop-hint">{importSectionCopy.orDropPortfolioJsonHere}</span>
-          <a className="sample-link" href="/portfolio.example.json" download>
+        <div className={veImportSectionStyles.importMeta}>
+          <span className={feedbackStyles.dropHint}>
+            {importSectionCopy.orDropPortfolioJsonHere}
+          </span>
+          <a className={veImportSectionStyles.sampleLink} href="/portfolio.example.json" download>
             <Download className="icon-sm" /> {importSectionCopy.downloadExampleTemplate}
           </a>
         </div>

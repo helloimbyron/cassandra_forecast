@@ -1,4 +1,4 @@
-import "./NumericUnitInput.css.ts";
+import * as veNumericUnitInputStyles from "./NumericUnitInput.css.ts";
 import { useEffect, useRef, useState, type ChangeEvent, type KeyboardEvent } from "react";
 import { Input } from "@/libraries/shadcn/components/Input";
 import { formatNumericUnitValue } from "@/features/Dashboard/presentation/formatters/formatNumericUnitValue.util";
@@ -118,9 +118,13 @@ export function NumericUnitInput({
   // --- Return ---
 
   return (
-    <div className={`numeric-unit-input is-${unit}`}>
+    <div
+      className={[veNumericUnitInputStyles.numericUnitInput, `numeric-unit-input is-${unit}`]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {unit === "money" && (
-        <span className="numeric-unit-affix" aria-hidden="true">
+        <span className={veNumericUnitInputStyles.numericUnitAffix} aria-hidden="true">
           {"$"}
         </span>
       )}
@@ -138,7 +142,7 @@ export function NumericUnitInput({
         onKeyDown={handleKeyDown}
       />
       {unit === "percent" && (
-        <span className="numeric-unit-affix" aria-hidden="true">
+        <span className={veNumericUnitInputStyles.numericUnitAffix} aria-hidden="true">
           {"%"}
         </span>
       )}

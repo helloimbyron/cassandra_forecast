@@ -1,21 +1,25 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
+import { chartWrap, panelHeader } from "./DashboardPrimitives.css.ts";
 
-globalStyle(
-  ".chart-wrap .recharts-surface:focus,\n.chart-wrap .recharts-surface :focus,\n.donut-wrap .recharts-surface:focus,\n.donut-wrap .recharts-surface :focus",
-  {
-    outline: "none",
-  } as unknown as Parameters<typeof globalStyle>[1],
-);
-globalStyle(".allocation-panel .panel-header", {
+export const allocationPanel = style({});
+
+globalStyle(`${allocationPanel} ${panelHeader}`, {
   paddingBottom: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".donut-wrap", {
+});
+
+export const donutWrap = style({
   position: "relative",
   height: "var(--size-15)",
   marginBottom: "var(--space-4)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".donut-center", {
+});
+
+globalStyle(
+  `${chartWrap} .recharts-surface:focus,\n${chartWrap} .recharts-surface :focus,\n${donutWrap} .recharts-surface:focus,\n${donutWrap} .recharts-surface :focus`,
+  { outline: "none" },
+);
+
+export const donutCenter = style({
   position: "absolute",
   inset: "0",
   display: "flex",
@@ -23,24 +27,29 @@ globalStyle(".donut-center", {
   alignItems: "center",
   justifyContent: "center",
   pointerEvents: "none",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".allocation-panel .recharts-tooltip-wrapper", {
+});
+
+globalStyle(`${allocationPanel} .recharts-tooltip-wrapper`, {
   zIndex: "var(--layer-raised)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".donut-center strong", {
+});
+
+globalStyle(`${donutCenter} strong`, {
   fontSize: "var(--text-xl)",
   fontWeight: "var(--font-weight-semibold)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".donut-center span", {
+});
+
+globalStyle(`${donutCenter} span`, {
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".allocation-list", {
+});
+
+export const allocationList = style({
   display: "flex",
   flexDirection: "column",
   gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".allocation-row", {
+});
+
+export const allocationRow = style({
   display: "grid",
   gridTemplateColumns: "minmax(0, 1fr) minmax(var(--space-7), auto) minmax(var(--size-6), auto)",
   alignItems: "center",
@@ -50,32 +59,45 @@ globalStyle(".allocation-row", {
   borderTop: "var(--line-thin) solid var(--border-subtle)",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".allocation-name", {
+});
+
+export const allocationName = style({
   display: "inline-flex",
   alignItems: "center",
   gap: "var(--space-1)",
   minWidth: "0",
   color: "var(--foreground)",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".allocation-row > span:not(.allocation-name)", {
+});
+
+globalStyle(`${allocationName} i`, {
+  display: "inline-block",
+  width: "var(--space-2)",
+  height: "var(--space-2)",
+  flex: "none",
+  borderRadius: "50%",
+});
+
+globalStyle(`${allocationRow} > span:not(${allocationName})`, {
   textAlign: "right",
   whiteSpace: "nowrap",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".allocation-row strong", {
+});
+
+globalStyle(`${allocationRow} strong`, {
   color: "var(--text-strong)",
   fontWeight: "var(--font-weight-semibold)",
   whiteSpace: "nowrap",
   textAlign: "right",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".donut-wrap", {
+});
+
+globalStyle(donutWrap, {
   height: "var(--size-13)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".donut-wrap", {
+});
+
+globalStyle(donutWrap, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       height: "var(--size-15)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

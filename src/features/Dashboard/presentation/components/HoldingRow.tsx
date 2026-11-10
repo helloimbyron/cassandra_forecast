@@ -1,4 +1,4 @@
-import "./HoldingRow.css.ts";
+import * as veHoldingRowStyles from "./HoldingRow.css.ts";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { projectedBalanceLabel } from "@/features/Dashboard/domain/utils/projectedBalanceLabel.util";
 import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";
@@ -40,19 +40,46 @@ export function HoldingRow({
   // --- Return ---
 
   return (
-    <div className="holding-row" role="row">
-      <div className="holding-cell holding-position" role="rowheader">
-        <span className="holding-cell-label">{labels.position}</span>
+    <div
+      className={[veHoldingRowStyles.holdingRow, "holding-row"].filter(Boolean).join(" ")}
+      role="row"
+    >
+      <div
+        className={[
+          veHoldingRowStyles.holdingCell,
+          veHoldingRowStyles.holdingPosition,
+          "holding-cell",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        role="rowheader"
+      >
+        <span className={veHoldingRowStyles.holdingCellLabel}>{labels.position}</span>
         <strong>{holding.label}</strong>
       </div>
-      <div className="holding-cell" role="cell">
-        <span className="holding-cell-label">{labels.currentValue}</span>
+      <div
+        className={[veHoldingRowStyles.holdingCell, "holding-cell"].filter(Boolean).join(" ")}
+        role="cell"
+      >
+        <span className={veHoldingRowStyles.holdingCellLabel}>{labels.currentValue}</span>
         <strong>
           <AbbreviatedMoney value={holding.currentValue} />
         </strong>
       </div>
-      <div className="holding-cell holding-contribution" role="cell">
-        <label className="holding-cell-label" htmlFor={`contribution-${holding.id}`}>
+      <div
+        className={[
+          veHoldingRowStyles.holdingCell,
+          veHoldingRowStyles.holdingContribution,
+          "holding-cell",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        role="cell"
+      >
+        <label
+          className={veHoldingRowStyles.holdingCellLabel}
+          htmlFor={`contribution-${holding.id}`}
+        >
           {labels.monthlyContribution}
         </label>
         <NumericUnitInput
@@ -64,17 +91,23 @@ export function HoldingRow({
           onChange={(value) => setContribution(investment.id, holding.id, String(value))}
         />
       </div>
-      <div className="holding-cell holding-total-contributions" role="cell">
-        <span className="holding-cell-label">{labels.totalContributed}</span>
+      <div
+        className={[veHoldingRowStyles.holdingCell, "holding-cell"].filter(Boolean).join(" ")}
+        role="cell"
+      >
+        <span className={veHoldingRowStyles.holdingCellLabel}>{labels.totalContributed}</span>
         <strong>
           <AbbreviatedMoney value={totalContributions} />
         </strong>
       </div>
-      <div className="holding-cell" role="cell">
-        <span className="holding-cell-label">
+      <div
+        className={[veHoldingRowStyles.holdingCell, "holding-cell"].filter(Boolean).join(" ")}
+        role="cell"
+      >
+        <span className={veHoldingRowStyles.holdingCellLabel}>
           {years === 0 ? labels.currentValue : projectedLabel}
         </span>
-        <div className="holding-projection-value">
+        <div className={veHoldingRowStyles.holdingProjectionValue}>
           <strong>
             <AbbreviatedMoney value={finalValue} />
           </strong>

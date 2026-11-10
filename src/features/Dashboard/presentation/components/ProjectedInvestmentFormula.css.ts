@@ -1,7 +1,10 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
+import { formulaMath } from "./FormulaMath.css.ts";
 
-globalStyle(".formula-investment-expression .formula-math", {
+export const formulaInvestmentExpression = style({});
+
+globalStyle(`${formulaInvestmentExpression} ${formulaMath}`, {
   paddingBlock: "var(--space-075)",
   fontSize: "var(--text-card-fluid)",
   fontWeight: "var(--font-weight-semibold)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

@@ -1,26 +1,8 @@
-import "./Badge.css.ts";
+import { badgeVariants } from "./Badge.css.ts";
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { Slot } from "radix-ui";
-
-// --- Constants ---
-
-const badgeVariants = cva("ui-badge", {
-  variants: {
-    variant: {
-      default: "",
-      secondary: "",
-      destructive: "",
-      outline: "",
-      ghost: "",
-      link: "",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
 
 // --- Components ---
 
@@ -29,7 +11,7 @@ function Badge({
   variant = "default",
   asChild = false,
   ...props
-}: React.ComponentProps<"span"> & VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+}: React.ComponentProps<"span"> & RecipeVariants<typeof badgeVariants> & { asChild?: boolean }) {
   // --- Variables ---
 
   const Comp = asChild ? Slot.Root : "span";
@@ -40,7 +22,7 @@ function Badge({
     <Comp
       data-slot="badge"
       data-variant={variant}
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn("ui-badge", badgeVariants({ variant }), className)}
       {...props}
     />
   );

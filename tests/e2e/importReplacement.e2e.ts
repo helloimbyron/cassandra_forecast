@@ -11,7 +11,7 @@ async function openHydratedHome(page: Page) {
 
 async function expectSingleDashboard(page: Page) {
   for (const section of [
-    "dashboard-heading",
+    "heading",
     "hero-card",
     "metrics-grid",
     "overview-grid",
@@ -19,7 +19,7 @@ async function expectSingleDashboard(page: Page) {
     "investments-section",
     "table-section",
   ]) {
-    await expect(page.locator(`main > .${section}`)).toHaveCount(1);
+    await expect(page.locator(`main > [data-testid="dashboard-${section}"]`)).toHaveCount(1);
   }
 }
 
@@ -27,26 +27,32 @@ test("each JSON import replaces the previous dashboard", async ({ page }) => {
   await openHydratedHome(page);
 
   await page.getByRole("button", { name: /ejemplo/i }).click();
-  await expect(page.locator("main > .hero-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-hero-card")).toHaveCount(1);
   await expectSingleDashboard(page);
-  await expect(page.locator(".investment-card").first()).toBeVisible();
+  await expect(page.getByTestId("dashboard-investment-card").first()).toBeVisible();
 
   const fileInput = page.locator('input[type="file"]');
   await fileInput.setInputFiles(alpha);
-  await expect(page.locator(".investment-card")).toHaveCount(1);
-  await expect(page.locator(".investment-card")).toContainText("Cartera Alfa");
-  await expect(page.locator(".investment-card")).not.toContainText("FTSE All-World");
+  await expect(page.getByTestId("dashboard-investment-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-investment-card")).toContainText("Cartera Alfa");
+  await expect(page.getByTestId("dashboard-investment-card")).not.toContainText("FTSE All-World");
   await expectSingleDashboard(page);
 
   await fileInput.setInputFiles(beta);
-  await expect(page.locator(".investment-card")).toHaveCount(2);
-  await expect(page.locator(".investment-card").first()).toContainText("Cartera Beta Uno");
-  await expect(page.locator(".investment-card").last()).toContainText("Cartera Beta Dos");
-  await expect(page.locator(".investment-card", { hasText: "Cartera Alfa" })).toHaveCount(0);
+  await expect(page.getByTestId("dashboard-investment-card")).toHaveCount(2);
+  await expect(page.getByTestId("dashboard-investment-card").first()).toContainText(
+    "Cartera Beta Uno",
+  );
+  await expect(page.getByTestId("dashboard-investment-card").last()).toContainText(
+    "Cartera Beta Dos",
+  );
+  await expect(
+    page.getByTestId("dashboard-investment-card").filter({ hasText: "Cartera Alfa" }),
+  ).toHaveCount(0);
   await expectSingleDashboard(page);
 
   await fileInput.setInputFiles(beta);
-  await expect(page.locator(".investment-card")).toHaveCount(2);
+  await expect(page.getByTestId("dashboard-investment-card")).toHaveCount(2);
   await expectSingleDashboard(page);
 
   await fileInput.setInputFiles({
@@ -55,8 +61,10 @@ test("each JSON import replaces the previous dashboard", async ({ page }) => {
     buffer: Buffer.from("{"),
   });
   await expect(page.locator(".dashboard-error")).toBeVisible();
-  await expect(page.locator(".investment-card")).toHaveCount(2);
-  await expect(page.locator(".investment-card").first()).toContainText("Cartera Beta Uno");
+  await expect(page.getByTestId("dashboard-investment-card")).toHaveCount(2);
+  await expect(page.getByTestId("dashboard-investment-card").first()).toContainText(
+    "Cartera Beta Uno",
+  );
   await expectSingleDashboard(page);
 });
 
@@ -65,12 +73,14 @@ test("importing a personal JSON first also replaces the previous dashboard", asy
   const fileInput = page.locator('input[type="file"]');
 
   await fileInput.setInputFiles(alpha);
-  await expect(page.locator(".investment-card")).toHaveCount(1);
-  await expect(page.locator(".investment-card")).toContainText("Cartera Alfa");
+  await expect(page.getByTestId("dashboard-investment-card")).toHaveCount(1);
+  await expect(page.getByTestId("dashboard-investment-card")).toContainText("Cartera Alfa");
   await expectSingleDashboard(page);
 
   await fileInput.setInputFiles(beta);
-  await expect(page.locator(".investment-card")).toHaveCount(2);
-  await expect(page.locator(".investment-card", { hasText: "Cartera Alfa" })).toHaveCount(0);
+  await expect(page.getByTestId("dashboard-investment-card")).toHaveCount(2);
+  await expect(
+    page.getByTestId("dashboard-investment-card").filter({ hasText: "Cartera Alfa" }),
+  ).toHaveCount(0);
   await expectSingleDashboard(page);
 });

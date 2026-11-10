@@ -1,4 +1,4 @@
-import "./FormulaMath.css.ts";
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 
@@ -25,7 +25,7 @@ export function FormulaMath({
 
   return (
     <div
-      className={className ? `formula-math ${className}` : "formula-math"}
+      className={[veFormulaMathStyles.formulaMath, className].filter(Boolean).join(" ")}
       role="img"
       aria-label={label}
       dangerouslySetInnerHTML={{ __html: html }}

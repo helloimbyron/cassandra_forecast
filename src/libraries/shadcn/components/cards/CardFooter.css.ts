@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="card-footer"]', {
+export const cardFooterRoot = style({
   "@layer": {
     components: {
       display: "flex",
@@ -10,4 +10,4 @@ globalStyle('[data-slot="card-footer"]', {
       background: "var(--muted)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

@@ -1,4 +1,6 @@
-import "./DistributionChart.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veChartTooltipStyles from "./ChartTooltip.css.ts";
+import * as veDistributionChartStyles from "./DistributionChart.css.ts";
 import type { readChartVisualTokens } from "@/design-system/utils/readChartVisualTokens.util";
 import { distributionSectionCopy } from "@/features/Dashboard/presentation/copies/distributionSection.copy";
 import { AbbreviatedMoney } from "@/features/Dashboard/presentation/components/money/AbbreviatedMoney";
@@ -31,7 +33,7 @@ function DistributionTooltip({
   const year = Number(label ?? payload[0]?.payload?.year ?? 0);
 
   return (
-    <div className="chart-tooltip">
+    <div className={veChartTooltipStyles.chartTooltip}>
       <span>{distributionSectionCopy.year(year)}</span>
       <div style={{ color: payload[0]?.color }}>
         <i style={{ background: payload[0]?.color }} />
@@ -57,7 +59,14 @@ export function DistributionChart({
 }) {
   return (
     <div
-      className="chart-wrap distribution-chart"
+      className={[
+        veDashboardPrimitivesStyles.chartWrap,
+        [veDistributionChartStyles.distributionChart, "chart-wrap distribution-chart"]
+          .filter(Boolean)
+          .join(" "),
+      ]
+        .filter(Boolean)
+        .join(" ")}
       role="img"
       aria-label={`${distributionSectionCopy.chartTitle(withInflation)}, ${distributionSectionCopy.yearCount(years)}`}
     >

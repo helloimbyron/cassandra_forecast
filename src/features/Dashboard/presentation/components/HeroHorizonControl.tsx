@@ -1,4 +1,5 @@
-import "./HeroHorizonControl.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veHeroHorizonControlStyles from "./HeroHorizonControl.css.ts";
 import { heroCardCopy } from "@/features/Dashboard/presentation/copies/heroCard.copy";
 import { DebouncedSlider } from "@/libraries/cassandra/components/DebouncedSlider";
 import { PORTFOLIO_CONSTANTS } from "@/shared/domain/constants/portfolioConstants.constant";
@@ -21,16 +22,28 @@ export function HeroHorizonControl({
   onHorizonChange: (years: number) => void;
 }) {
   return (
-    <div className="hero-horizon">
-      <div className="horizon-label">
+    <div className={[veHeroHorizonControlStyles.heroHorizon, "hero-horizon"].join(" ")}>
+      <div
+        className={[veHeroHorizonControlStyles.horizonLabel, "horizon-label"]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <span>{labels.totalHorizon}</span>
         <strong>{totalYears === 0 ? labels.today : formatYears(totalYears)}</strong>
       </div>
-      <div className="range-labels">
+      <div
+        className={[veDashboardPrimitivesStyles.rangeLabels, "range-labels"]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <span>{labels.zeroToday}</span>
         <span>{labels.fortyYears}</span>
       </div>
-      <div className="hero-slider-wrap">
+      <div
+        className={[veHeroHorizonControlStyles.heroSliderWrap, "hero-slider-wrap"]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <DebouncedSlider
           aria-label={heroCardCopy.totalHorizonYears}
           min={MIN_HORIZON_YEARS}
@@ -41,7 +54,12 @@ export function HeroHorizonControl({
           onValueChange={(value) => onHorizonChange(value[0] ?? totalYears)}
         />
         <span
-          className={`hero-slider-tooltip ${draftYears <= 3 ? "is-start" : draftYears >= 37 ? "is-end" : ""}`}
+          className={[
+            veHeroHorizonControlStyles.heroSliderTooltip,
+            `hero-slider-tooltip ${draftYears <= 3 ? "is-start" : draftYears >= 37 ? "is-end" : ""}`,
+          ]
+            .filter(Boolean)
+            .join(" ")}
           style={{ left: thumbPosition }}
           aria-hidden="true"
         >

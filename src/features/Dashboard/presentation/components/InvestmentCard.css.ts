@@ -1,30 +1,35 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
+import { investmentGrowthFormulaTrigger } from "./FormulaTooltip.css.ts";
 
-globalStyle(".investment-card-header", {
+export const investmentCardHeader = style({
   display: "flex",
   flexDirection: "row",
   alignItems: "start",
   justifyContent: "space-between",
   gap: "var(--space-3)",
   padding: "var(--space-4) var(--space-4) 0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-identity", {
+});
+
+export const investmentIdentity = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-2)",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-identity > div", {
+});
+
+globalStyle(`${investmentIdentity} > div`, {
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-header-actions", {
+});
+
+export const investmentHeaderActions = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-2)",
   flex: "none",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-icon", {
+});
+
+export const investmentIcon = style({
   display: "grid",
   placeItems: "center",
   flex: "none",
@@ -33,69 +38,83 @@ globalStyle(".investment-icon", {
   borderRadius: "var(--space-2)",
   background: "color-mix(in srgb, var(--investment-accent) var(--mix-20), var(--card))",
   color: "var(--investment-accent)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-icon svg", {
+});
+
+globalStyle(`${investmentIcon} svg`, {
   width: "var(--investment-symbol-size)",
   height: "var(--investment-symbol-size)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-card-content", {
+});
+
+export const investmentCardContent = style({
   padding: "var(--space-4) var(--space-4) var(--space-1)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-metrics", {
+});
+
+export const investmentMetrics = style({
   display: "grid",
   gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.2fr)",
   alignItems: "center",
   gap: "var(--space-4)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-primary-metric", {
+});
+
+export const investmentPrimaryMetric = style({
   minWidth: "0",
   textAlign: "left",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-secondary-metrics", {
+});
+
+export const investmentSecondaryMetrics = style({
   display: "grid",
   gridTemplateColumns: "minmax(0, 1fr)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-secondary-metric", {
+});
+
+export const investmentSecondaryMetric = style({
   minWidth: "0",
   textAlign: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-value-label", {
+});
+
+export const investmentValueLabel = style({
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
   fontWeight: "var(--font-weight-semibold)",
   textTransform: "none",
   letterSpacing: "normal",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-value", {
+});
+
+export const investmentValue = style({
   marginTop: "var(--space-05)",
   fontSize: "var(--text-subsection)",
   fontWeight: "var(--font-weight-semibold)",
   lineHeight: "var(--leading-tight)",
   letterSpacing: "var(--tracking-tight)",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-value-row", {
+});
+
+export const investmentValueRow = style({
   display: "flex",
   alignItems: "center",
   minWidth: "0",
   gap: "var(--space-075)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-secondary-metric .investment-value-row", {
+});
+
+globalStyle(`${investmentSecondaryMetric} ${investmentValueRow}`, {
   justifyContent: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-value-row .investment-value", {
+});
+
+globalStyle(`${investmentValueRow} ${investmentValue}`, {
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-secondary-metric .investment-value-label", {
+});
+
+globalStyle(`${investmentSecondaryMetric} ${investmentValueLabel}`, {
   marginBottom: "var(--space-05)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-secondary-heading", {
+});
+
+export const investmentSecondaryHeading = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   gap: "var(--space-05)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-growth-value", {
+});
+
+export const investmentGrowthValue = style({
   display: "flex",
   alignItems: "center",
   minWidth: "0",
@@ -105,28 +124,37 @@ globalStyle(".investment-growth-value", {
   fontWeight: "var(--font-weight-semibold)",
   lineHeight: "var(--leading-tight)",
   overflowWrap: "anywhere",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-growth-value .abbreviated-value", {
+});
+
+globalStyle(`${investmentGrowthValue} .abbreviated-value`, {
   color: "inherit",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-growth-row .investment-growth-formula-trigger", {
+});
+
+export const investmentGrowthRow = style({});
+
+globalStyle(`${investmentGrowthRow} ${investmentGrowthFormulaTrigger}`, {
   flex: "none",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".growth-arrow", {
+});
+
+export const growthArrow = style({
   display: "flex",
   color: "var(--primary)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".slider-block", {
+});
+
+export const sliderBlock = style({
   padding: "var(--space-4) 0",
   borderTop: "var(--line-thin) solid var(--border-subtle)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".slider-block > .slider-heading", {
+});
+
+globalStyle(`${sliderBlock} > .slider-heading`, {
   marginBottom: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".slider-block > .range-labels", {
+});
+
+globalStyle(`${sliderBlock} > .range-labels`, {
   marginTop: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".rate-edit-row", {
+});
+
+export const rateEditRow = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -135,92 +163,115 @@ globalStyle(".rate-edit-row", {
   padding: "var(--space-4) 0",
   borderTop: "var(--line-thin) solid var(--border-subtle)",
   color: "var(--text-soft)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".rate-input-controls", {
+});
+
+export const rateInputControls = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-list", {
+});
+
+export const holdingList = style({
   borderTop: "var(--line-thin) solid var(--border-subtle)",
-} as unknown as Parameters<typeof globalStyle>[1]);
+});
+
 globalStyle(".holding-table-header,\n.holding-row", {
   display: "grid",
   gridTemplateColumns:
     "minmax(0, 1.15fr) minmax(0, 0.85fr) minmax(var(--size-7-5), 0.95fr)\n    minmax(0, 0.9fr) minmax(0, 1fr)",
   alignItems: "center",
   gap: "var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-table-header", {
+});
+
+export const holdingTableHeader = style({
   padding: "var(--space-2) 0",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
   fontWeight: "var(--font-weight-medium)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-table-header > span,\n.holding-cell", {
-  minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-card-header", {
+});
+
+globalStyle(
+  `${holdingTableHeader} > span,
+.holding-cell`,
+  {
+    minWidth: "0",
+  },
+);
+
+globalStyle(investmentCardHeader, {
   flexWrap: "wrap",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-metrics", {
+});
+
+globalStyle(investmentMetrics, {
   gridTemplateColumns: "minmax(0, 1fr)",
   gap: "var(--space-3)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-primary-metric", {
+});
+
+globalStyle(investmentPrimaryMetric, {
   textAlign: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-primary-metric .investment-value-row", {
+});
+
+globalStyle(`${investmentPrimaryMetric} ${investmentValueRow}`, {
   justifyContent: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-growth-values", {
-  gap: "var(--space-3)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-table-header", {
+});
+
+export const investmentGrowthValues = style({
+  display: "grid",
+  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+  gap: "var(--space-4)",
+});
+
+globalStyle(holdingTableHeader, {
   position: "absolute",
   width: "var(--line-thin)",
   height: "var(--line-thin)",
   overflow: "hidden",
   whiteSpace: "nowrap",
   clipPath: "inset(50%)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-card-header", {
+});
+
+globalStyle(investmentCardHeader, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       flexWrap: "nowrap",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-metrics", {
+});
+
+globalStyle(investmentMetrics, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.2fr)",
       gap: "var(--space-4)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-primary-metric", {
+});
+
+globalStyle(investmentPrimaryMetric, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       textAlign: "left",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-primary-metric .investment-value-row", {
+});
+
+globalStyle(`${investmentPrimaryMetric} ${investmentValueRow}`, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       justifyContent: "flex-start",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".investment-growth-values", {
+});
+
+globalStyle(investmentGrowthValues, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       gap: "var(--space-4)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".holding-table-header", {
+});
+
+globalStyle(holdingTableHeader, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       position: "static",
@@ -231,4 +282,4 @@ globalStyle(".holding-table-header", {
       clipPath: "none",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

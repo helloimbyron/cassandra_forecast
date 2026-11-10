@@ -1,9 +1,7 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-globalStyle(".icon-sm,\n.icon-md,\n.icon-lg", {
-  flexShrink: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"]', {
+export const buttonRoot = style({
   "@layer": {
     components: {
       display: "inline-flex",
@@ -27,24 +25,27 @@ globalStyle('[data-slot="button"]', {
       transition: "background-color var(--motion-base) ease,\n      color var(--motion-base) ease",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"]:hover:not(:disabled)', {
+});
+
+globalStyle(`${buttonRoot}:hover:not(:disabled)`, {
   "@layer": {
     components: {
       background: "var(--accent)",
       color: "var(--accent-foreground)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"]:disabled', {
+});
+
+globalStyle(`${buttonRoot}:disabled`, {
   "@layer": {
     components: {
       opacity: "var(--disabled-opacity)",
       cursor: "not-allowed",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"] svg', {
+});
+
+globalStyle(`${buttonRoot} svg`, {
   "@layer": {
     components: {
       width: "var(--icon-md)",
@@ -53,65 +54,79 @@ globalStyle('[data-slot="button"] svg', {
       pointerEvents: "none",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"][data-variant="outline"]', {
-  "@layer": {
-    components: {
-      borderColor: "var(--border)",
-      background: "var(--card)",
-      color: "var(--card-foreground)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"][data-variant="secondary"]', {
-  "@layer": {
-    components: {
-      background: "var(--secondary)",
-      color: "var(--secondary-foreground)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(
-  '[data-slot="button"][data-variant="ghost"],\n  [data-slot="button"][data-variant="link"]',
-  {
-    "@layer": {
-      components: {
-        background: "transparent",
-        color: "var(--foreground)",
+});
+
+export const buttonVariants = recipe({
+  base: buttonRoot,
+  variants: {
+    variant: {
+      default: {},
+      outline: {
+        "@layer": {
+          components: {
+            borderColor: "var(--border)",
+            background: "var(--card)",
+            color: "var(--card-foreground)",
+          },
+        },
+      },
+      secondary: {
+        "@layer": {
+          components: {
+            background: "var(--secondary)",
+            color: "var(--secondary-foreground)",
+          },
+        },
+      },
+      ghost: {
+        "@layer": {
+          components: { background: "transparent", color: "var(--foreground)" },
+        },
+      },
+      destructive: {
+        "@layer": {
+          components: {
+            borderColor: "var(--destructive)",
+            background: "var(--muted)",
+            color: "var(--destructive)",
+          },
+        },
+      },
+      link: {
+        "@layer": {
+          components: {
+            background: "transparent",
+            color: "var(--primary)",
+            textDecoration: "underline",
+          },
+        },
       },
     },
-  } as unknown as Parameters<typeof globalStyle>[1],
-);
-globalStyle('[data-slot="button"][data-variant="link"]', {
-  "@layer": {
-    components: {
-      color: "var(--primary)",
-      textDecoration: "underline",
+    size: {
+      default: {},
+      xs: {},
+      sm: {},
+      lg: {
+        "@layer": {
+          components: {
+            minHeight: "var(--control-height-lg)",
+            paddingInline: "var(--space-4)",
+          },
+        },
+      },
+      icon: {
+        "@layer": { components: { width: "var(--control-height)", padding: "0" } },
+      },
+      "icon-xs": {
+        "@layer": { components: { width: "var(--control-height)", padding: "0" } },
+      },
+      "icon-sm": {
+        "@layer": { components: { width: "var(--control-height)", padding: "0" } },
+      },
+      "icon-lg": {
+        "@layer": { components: { width: "var(--control-height)", padding: "0" } },
+      },
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"][data-variant="destructive"]', {
-  "@layer": {
-    components: {
-      borderColor: "var(--destructive)",
-      background: "var(--muted)",
-      color: "var(--destructive)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"][data-size="lg"]', {
-  "@layer": {
-    components: {
-      minHeight: "var(--control-height-lg)",
-      paddingInline: "var(--space-4)",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle('[data-slot="button"][data-size^="icon"]', {
-  "@layer": {
-    components: {
-      width: "var(--control-height)",
-      padding: "0",
-    },
-  },
-} as unknown as Parameters<typeof globalStyle>[1]);
+  defaultVariants: { variant: "default", size: "default" },
+});

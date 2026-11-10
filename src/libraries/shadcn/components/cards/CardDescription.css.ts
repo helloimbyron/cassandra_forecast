@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="card-description"]', {
+export const cardDescriptionRoot = style({
   "@layer": {
     components: {
       color: "var(--muted-foreground)",
@@ -8,4 +8,4 @@ globalStyle('[data-slot="card-description"]', {
       lineHeight: "var(--leading-body)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

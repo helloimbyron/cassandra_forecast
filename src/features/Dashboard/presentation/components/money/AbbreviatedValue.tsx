@@ -1,4 +1,5 @@
-import "./AbbreviatedValue.css.ts";
+import * as veMoneyTooltipStyles from "./MoneyTooltip.css.ts";
+import { abbreviatedValue } from "./AbbreviatedValue.css.ts";
 import { useState, type PointerEvent } from "react";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
@@ -46,11 +47,17 @@ export function AbbreviatedValue({
         <TooltipPrimitive.Trigger asChild>
           <button
             type="button"
-            className={cn(
-              "money-tooltip-trigger abbreviated-value",
-              unit === "currency" && "abbreviated-money",
-              className,
-            )}
+            className={[
+              veMoneyTooltipStyles.moneyTooltipTrigger,
+              abbreviatedValue,
+              cn(
+                "money-tooltip-trigger abbreviated-value",
+                unit === "currency" && "abbreviated-money",
+                className,
+              ),
+            ]
+              .filter(Boolean)
+              .join(" ")}
             aria-label={moneyCopy.abbreviatedValue(displayValue, fullValue)}
             onPointerDown={(event: PointerEvent<HTMLButtonElement>) => {
               if (event.pointerType === "touch") {
@@ -62,9 +69,13 @@ export function AbbreviatedValue({
           </button>
         </TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
-          <TooltipPrimitive.Content className="money-tooltip-content" side="top" sideOffset={6}>
+          <TooltipPrimitive.Content
+            className={veMoneyTooltipStyles.moneyTooltipContent}
+            side="top"
+            sideOffset={6}
+          >
             {fullValue}
-            <TooltipPrimitive.Arrow className="money-tooltip-arrow" />
+            <TooltipPrimitive.Arrow className={veMoneyTooltipStyles.moneyTooltipArrow} />
           </TooltipPrimitive.Content>
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>

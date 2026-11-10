@@ -1,4 +1,5 @@
-import "./Metric.css.ts";
+import * as veMetricStyles from "./Metric.css.ts";
+import { dashboardCardSurface } from "./DashboardPrimitives.css.ts";
 import type { ReactNode } from "react";
 import { Card } from "@/libraries/shadcn/components/cards/Card";
 import { CardContent } from "@/libraries/shadcn/components/cards/CardContent";
@@ -19,14 +20,16 @@ export function Metric({
   tooltip?: ReactNode;
 }) {
   return (
-    <Card className="metric-card">
+    <Card className={[dashboardCardSurface, veMetricStyles.metricCard, "metric-card"].join(" ")}>
       <CardContent>
-        <div className="metric-label">
-          <span className="metric-label-icon">{icon}</span>
-          <span className="metric-label-text">{label}</span>
+        <div className={veMetricStyles.metricLabel}>
+          <span className={veMetricStyles.metricLabelIcon}>{icon}</span>
+          <span className={veMetricStyles.metricLabelText}>{label}</span>
         </div>
-        <div className="metric-value-row">
-          <strong className={positive ? "metric-positive" : ""}>{value}</strong>
+        <div
+          className={[veMetricStyles.metricValueRow, "metric-value-row"].filter(Boolean).join(" ")}
+        >
+          <strong className={positive ? veMetricStyles.metricPositive : ""}>{value}</strong>
           {tooltip}
         </div>
         <small>{note}</small>

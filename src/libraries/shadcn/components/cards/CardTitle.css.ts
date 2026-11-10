@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="card-title"]', {
+export const cardTitleRoot = style({
   "@layer": {
     components: {
       fontSize: "var(--text-card-title)",
@@ -8,4 +8,4 @@ globalStyle('[data-slot="card-title"]', {
       lineHeight: "var(--leading-tight)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

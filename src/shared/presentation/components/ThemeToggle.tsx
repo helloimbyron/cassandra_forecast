@@ -1,4 +1,4 @@
-import "./ThemeToggle.css.ts";
+import * as veThemeToggleStyles from "./ThemeToggle.css.ts";
 import { themeToggleCopy } from "@/shared/presentation/copies/themeToggle.copy";
 import { useState } from "react";
 import { Button } from "@/libraries/shadcn/components/Button";
@@ -52,7 +52,7 @@ export function ThemeToggle() {
     <Button
       type="button"
       variant="outline"
-      className="theme-toggle"
+      className={[veThemeToggleStyles.themeToggle, "theme-toggle"].filter(Boolean).join(" ")}
       data-testid="theme-toggle"
       onClick={toggleTheme}
       aria-label={

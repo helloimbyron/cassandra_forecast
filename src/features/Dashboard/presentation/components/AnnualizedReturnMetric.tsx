@@ -1,3 +1,6 @@
+import * as veFormulaMathStyles from "./FormulaMath.css.ts";
+import * as veFormulaStepStyles from "./FormulaStep.css.ts";
+import * as veFormulaTooltipStyles from "./FormulaTooltip.css.ts";
 import { FormulaStep } from "@/features/Dashboard/presentation/components/FormulaStep";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
 import { formatMonths } from "@/features/Dashboard/domain/utils/formatMonths.util";
@@ -72,10 +75,10 @@ export function AnnualizedReturnMetric({
           }
           trigger={<Calculator className="icon-sm" aria-hidden="true" />}
         >
-          <ol className="formula-tooltip-copy">
+          <ol className={veFormulaTooltipStyles.formulaTooltipCopy}>
             {summaryInsights.monthlyReturnPct === null ? (
               <FormulaStep>
-                <span className="formula-step-description">
+                <span className={veFormulaStepStyles.formulaStepDescription}>
                   {totalYears === 0
                     ? metricsGridCopy.notEnoughMonthsToCalculateYet
                     : metricsGridCopy.noRateAvailable}
@@ -84,7 +87,7 @@ export function AnnualizedReturnMetric({
             ) : (
               <>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {metricsGridCopy.expressHorizonInMonthsPerYear}
                   </span>
                   <FormulaMath
@@ -93,7 +96,7 @@ export function AnnualizedReturnMetric({
                   />
                   <FormulaMath
                     label={metricsGridCopy.horizonYearsSubstitution}
-                    className="formula-math-substitution"
+                    className={veFormulaMathStyles.formulaMathSubstitution}
                     tex={`${totalYears} \\times 12`}
                   />
                   <FormulaResult
@@ -102,7 +105,7 @@ export function AnnualizedReturnMetric({
                   />
                 </FormulaStep>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {activeInflationRatePct > 0
                       ? metricsGridCopy.realContributionStep
                       : metricsGridCopy.monthlyGrowthBeforeContributionStep}
@@ -117,7 +120,7 @@ export function AnnualizedReturnMetric({
                   />
                 </FormulaStep>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {metricsGridCopy.appTestsAndAdjustsRate}
                     {returnMonthCount} {metricsGridCopy.monthsUntilBalanceMatchesValue}
                   </span>
@@ -127,7 +130,7 @@ export function AnnualizedReturnMetric({
                   />
                 </FormulaStep>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {metricsGridCopy.tracksPortfolioValueEvery}
                   </span>
                   <MonthlyBalanceExamples
@@ -142,7 +145,7 @@ export function AnnualizedReturnMetric({
                   />
                 </FormulaStep>
                 <FormulaStep>
-                  <span className="formula-step-description">
+                  <span className={veFormulaStepStyles.formulaStepDescription}>
                     {metricsGridCopy.convertsMonthlyRateToAnnualRate}
                   </span>
                   <FormulaMath
@@ -151,7 +154,7 @@ export function AnnualizedReturnMetric({
                   />
                   <FormulaMath
                     label={metricsGridCopy.equivalentAnnualRateSubstitution}
-                    className="formula-math-substitution"
+                    className={veFormulaMathStyles.formulaMathSubstitution}
                     tex={`(1 + ${texText(monthlyReturnDisplay ?? "0,00%")})^{12} - 1`}
                   />
                   <FormulaResult

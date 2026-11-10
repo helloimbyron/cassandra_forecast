@@ -1,7 +1,7 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
 
-globalStyle(".dashboard-heading", {
+export const dashboardHeading = style({
   position: "relative",
   display: "flex",
   justifyContent: "space-between",
@@ -9,25 +9,29 @@ globalStyle(".dashboard-heading", {
   flexWrap: "wrap",
   gap: "var(--space-3)",
   padding: "var(--space-6) 0 var(--space-4)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".dashboard-error", {
+});
+
+export const dashboardError = style({
   flexBasis: "100%",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".dashboard-heading", {
+});
+
+globalStyle(dashboardHeading, {
   paddingTop: "var(--space-5)",
   alignItems: "start",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".dashboard-heading", {
+});
+
+globalStyle(dashboardHeading, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       alignItems: "end",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".dashboard-heading", {
+});
+
+globalStyle(dashboardHeading, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       paddingTop: "var(--space-6)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

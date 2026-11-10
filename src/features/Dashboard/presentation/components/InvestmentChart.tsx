@@ -1,4 +1,5 @@
-import "./InvestmentChart.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as veInvestmentChartStyles from "./InvestmentChart.css.ts";
 import { CHART_CONSTANTS } from "@/features/Dashboard/presentation/constants/chartConstants.constant";
 import { investmentCardCopy } from "@/features/Dashboard/presentation/copies/investmentCard.copy";
 import { labels } from "@/features/Dashboard/presentation/copies/labels.copy";
@@ -56,7 +57,14 @@ export function InvestmentChart({
   return (
     <>
       <div
-        className="chart-wrap investment-chart"
+        className={[
+          veDashboardPrimitivesStyles.chartWrap,
+          [veInvestmentChartStyles.investmentChart, "chart-wrap investment-chart"]
+            .filter(Boolean)
+            .join(" "),
+        ]
+          .filter(Boolean)
+          .join(" ")}
         role="img"
         aria-label={investmentCardCopy.chartFor(investment.name, years)}
       >
@@ -125,7 +133,17 @@ export function InvestmentChart({
         </ResponsiveContainer>
       </div>
       <div
-        className="investment-legend investment-chart-legend"
+        className={[
+          veDashboardPrimitivesStyles.investmentLegend,
+          [
+            veInvestmentChartStyles.investmentChartLegend,
+            "investment-legend investment-chart-legend",
+          ]
+            .filter(Boolean)
+            .join(" "),
+        ]
+          .filter(Boolean)
+          .join(" ")}
         role="group"
         aria-label={investmentCardCopy.seriesFor(investment.name)}
       >

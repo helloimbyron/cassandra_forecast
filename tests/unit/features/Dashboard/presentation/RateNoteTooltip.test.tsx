@@ -10,7 +10,7 @@ describe("RateNoteTooltip", () => {
 
     expect(html).toContain("rate-note-tooltip-trigger");
     expect(html).toContain("formula-tooltip-trigger");
-    expect(html).toContain('rate-note-question-mark" aria-hidden="true">?</span>');
+    expect(html).toMatch(/<span class="[^"]+" aria-hidden="true">\?<\/span>/);
     expect(html).not.toContain("lucide-circle-help");
     expect(html).toContain('aria-label="Leer nota de la tasa anual de SP500"');
     expect(html).toContain("<button");

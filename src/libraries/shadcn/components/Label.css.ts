@@ -1,6 +1,6 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-globalStyle('[data-slot="label"]', {
+export const labelRoot = style({
   "@layer": {
     components: {
       display: "flex",
@@ -12,4 +12,4 @@ globalStyle('[data-slot="label"]', {
       lineHeight: "var(--leading-body)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

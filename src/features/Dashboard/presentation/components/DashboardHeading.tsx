@@ -1,4 +1,6 @@
-import "./DashboardHeading.css.ts";
+import * as veDashboardPrimitivesStyles from "./DashboardPrimitives.css.ts";
+import * as feedbackStyles from "@/shared/presentation/styles/feedback.css";
+import * as veDashboardHeadingStyles from "./DashboardHeading.css.ts";
 import { dashboardHeadingCopy } from "@/features/Dashboard/presentation/copies/dashboardHeading.copy";
 import type { LoadedDashboardModel } from "@/features/Dashboard/presentation/types/LoadedDashboardModel.type";
 
@@ -12,10 +14,15 @@ export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
   // --- Return ---
 
   return (
-    <section className="dashboard-heading" aria-label={dashboardHeadingCopy.importedPortfolio}>
+    <section
+      className={veDashboardHeadingStyles.dashboardHeading}
+      data-testid="dashboard-heading"
+      aria-label={dashboardHeadingCopy.importedPortfolio}
+    >
       <div>
-        <div className="eyebrow">
-          <span className="eyebrow-line" /> {dashboardHeadingCopy.portfolioSummary}
+        <div className={[veDashboardPrimitivesStyles.eyebrow, "eyebrow"].filter(Boolean).join(" ")}>
+          <span className={veDashboardPrimitivesStyles.eyebrowLine} />{" "}
+          {dashboardHeadingCopy.portfolioSummary}
         </div>
       </div>
       <input
@@ -27,7 +34,17 @@ export function DashboardHeading({ model }: { model: LoadedDashboardModel }) {
         aria-label={dashboardHeadingCopy.selectAnotherPortfolioFile}
       />
       {error && (
-        <p className="error-message dashboard-error" role="alert">
+        <p
+          className={[
+            veDashboardHeadingStyles.dashboardError,
+            [feedbackStyles.errorMessage, "error-message dashboard-error"]
+              .filter(Boolean)
+              .join(" "),
+          ]
+            .filter(Boolean)
+            .join(" ")}
+          role="alert"
+        >
           {error}
         </p>
       )}

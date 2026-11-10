@@ -1,13 +1,59 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
 
-globalStyle(".formula-dialog-overlay", {
+export const formulaTooltipTrigger = style({
+  display: "inline-flex",
+  flex: "none",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "var(--space-35)",
+  height: "var(--space-35)",
+  minWidth: "var(--space-4)",
+  minHeight: "var(--space-4)",
+  margin: "0 0 0 var(--space-1)",
+  padding: "0",
+  border: "0",
+  color: "var(--primary)",
+  background: "transparent",
+  font: "inherit",
+  lineHeight: "inherit",
+  textAlign: "inherit",
+  cursor: "pointer",
+  opacity: "var(--emphasis-opacity)",
+});
+
+globalStyle(`${formulaTooltipTrigger}:focus-visible`, {
+  outline: "var(--line-medium) solid var(--focus-ring)",
+  outlineOffset: "var(--line-focus)",
+  borderRadius: "var(--space-05)",
+});
+
+export const investmentGrowthFormulaTrigger = style({});
+
+globalStyle(`${formulaTooltipTrigger}${investmentGrowthFormulaTrigger}`, {
+  marginLeft: "0",
+});
+
+export const formulaTooltipCopy = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-3)",
+  minWidth: "0",
+  maxWidth: "100%",
+  margin: "0",
+  padding: "0",
+  listStyle: "none",
+  counterReset: "formula-step",
+});
+
+export const formulaDialogOverlay = style({
   position: "fixed",
   inset: "0",
   zIndex: "var(--layer-dialog)",
   background: "var(--overlay-scrim)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-content", {
+});
+
+export const formulaDialogContent = style({
   position: "fixed",
   top: "50%",
   left: "50%",
@@ -30,37 +76,48 @@ globalStyle(".formula-dialog-content", {
   fontVariantNumeric: "tabular-nums",
   overflowWrap: "anywhere",
   containerType: "inline-size",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-content:focus-visible", {
+});
+
+globalStyle(`${formulaDialogContent}:focus-visible`, {
   outline: "var(--line-medium) solid var(--focus-ring)",
   outlineOffset: "var(--line-medium)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-heading", {
+});
+
+export const formulaTooltipHeading = style({
   position: "relative",
   flex: "none",
   margin: "0 var(--space-2)",
   padding: "var(--space-3) var(--space-525) var(--space-3) 0",
   borderBottom: "var(--line-thin) solid var(--border-subtle)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-heading [data-slot],\n.formula-tooltip-heading h2", {
-  margin: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-heading h2", {
+});
+
+globalStyle(
+  `${formulaTooltipHeading} [data-slot],
+${formulaTooltipHeading} h2`,
+  {
+    margin: "0",
+  },
+);
+
+globalStyle(`${formulaTooltipHeading} h2`, {
   color: "var(--text-strong)",
   fontSize: "var(--text-body)",
   fontWeight: "var(--font-weight-semibold)",
   lineHeight: "var(--leading-snug)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-heading p", {
+});
+
+globalStyle(`${formulaTooltipHeading} p`, {
   margin: "var(--space-075) 0 0",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
   lineHeight: "var(--leading-body)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-heading .formula-tooltip-example", {
+});
+
+globalStyle(`${formulaTooltipHeading} .formula-tooltip-example`, {
   color: "var(--text-strong)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-close", {
+});
+
+export const formulaDialogClose = style({
   position: "absolute",
   top: "var(--space-2)",
   right: "var(--space-2)",
@@ -74,40 +131,46 @@ globalStyle(".formula-dialog-close", {
   color: "var(--text-soft)",
   background: "transparent",
   cursor: "pointer",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-close:hover", {
+});
+
+globalStyle(`${formulaDialogClose}:hover`, {
   color: "var(--text-strong)",
   background: "var(--surface-soft)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-close:focus-visible", {
+});
+
+globalStyle(`${formulaDialogClose}:focus-visible`, {
   outline: "var(--line-medium) solid var(--focus-ring)",
   outlineOffset: "var(--line-medium)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-scroll", {
+});
+
+export const formulaDialogScroll = style({
   minHeight: "0",
   overflow: "hidden auto",
   overscrollBehavior: "contain",
   padding: "var(--space-3) var(--space-2)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-content", {
+});
+
+globalStyle(formulaDialogContent, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       width: "min(var(--size-42), calc(100vw - var(--space-5)))",
       maxHeight: "min(90dvh, var(--size-46))",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-heading", {
+});
+
+globalStyle(formulaTooltipHeading, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       marginInline: "var(--space-3)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-dialog-scroll", {
+});
+
+globalStyle(formulaDialogScroll, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       paddingInline: "var(--space-3)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});

@@ -1,4 +1,4 @@
-import "./Slider.css.ts";
+import * as veSliderStyles from "./Slider.css.ts";
 import * as React from "react";
 import { cn } from "@/libraries/shadcn/utils/cn.util";
 import { Slider as SliderPrimitive } from "radix-ui";
@@ -29,14 +29,24 @@ function Slider({
       value={value}
       min={min}
       max={max}
-      className={cn("ui-slider", className)}
+      className={[veSliderStyles.sliderRoot, cn("ui-slider", className)].filter(Boolean).join(" ")}
       {...props}
     >
-      <SliderPrimitive.Track data-slot="slider-track" className="ui-slider-track">
-        <SliderPrimitive.Range data-slot="slider-range" className="ui-slider-range" />
+      <SliderPrimitive.Track
+        data-slot="slider-track"
+        className={[veSliderStyles.sliderTrackRoot, "ui-slider-track"].filter(Boolean).join(" ")}
+      >
+        <SliderPrimitive.Range
+          data-slot="slider-range"
+          className={[veSliderStyles.sliderRangeRoot, "ui-slider-range"].filter(Boolean).join(" ")}
+        />
       </SliderPrimitive.Track>
       {Array.from({ length: _values.length }, (_, index) => (
-        <SliderPrimitive.Thumb data-slot="slider-thumb" key={index} className="ui-slider-thumb" />
+        <SliderPrimitive.Thumb
+          data-slot="slider-thumb"
+          key={index}
+          className={[veSliderStyles.sliderThumbRoot, "ui-slider-thumb"].filter(Boolean).join(" ")}
+        />
       ))}
     </SliderPrimitive.Root>
   );

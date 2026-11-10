@@ -1,57 +1,70 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { breakpoints } from "@/design-system/styles/breakpoints.build";
+import { formulaTooltipTrigger } from "./FormulaTooltip.css.ts";
 
-globalStyle(".distribution-section", {
+export const distributionSection = style({
   margin: "var(--space-6) 0 0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-heading", {
+});
+
+export const distributionHeading = style({
   alignItems: "end",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-heading h2", {
+});
+
+globalStyle(`${distributionHeading} h2`, {
   margin: "var(--space-1) 0 0",
   fontSize: "var(--text-section)",
   fontWeight: "var(--font-weight-semibold)",
   letterSpacing: "var(--tracking-tight)",
   lineHeight: "var(--leading-tight)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-heading h2.eyebrow", {
+});
+
+globalStyle(`${distributionHeading} h2.eyebrow`, {
   margin: "0",
   fontSize: "var(--text-meta)",
   fontWeight: "inherit",
   letterSpacing: "normal",
   lineHeight: "normal",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-title-row", {
+});
+
+export const distributionTitleRow = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-075)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".formula-tooltip-trigger.distribution-heading-info-trigger", {
+});
+
+export const distributionHeadingInfoTrigger = style({});
+
+globalStyle(`${formulaTooltipTrigger}${distributionHeadingInfoTrigger}`, {
   width: "var(--space-35)",
   height: "var(--space-35)",
   margin: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-panel", {
+});
+
+export const distributionPanel = style({
   overflow: "hidden",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-panel.distribution-panel .panel-header", {
+});
+
+globalStyle(`${distributionPanel}.distribution-panel .panel-header`, {
   alignItems: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-controls", {
+});
+
+export const distributionControls = style({
   display: "grid",
   gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
   gap: "var(--space-4)",
   marginTop: "var(--space-4)",
   paddingTop: "var(--space-4)",
   borderTop: "var(--line-thin) solid var(--border-subtle)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-control", {
+});
+
+export const distributionControl = style({
   display: "grid",
   alignContent: "start",
   gap: "var(--space-2)",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-control-heading", {
+});
+
+export const distributionControlHeading = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -59,103 +72,124 @@ globalStyle(".distribution-control-heading", {
   minHeight: "var(--control-height)",
   color: "var(--text-soft)",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-control-heading label", {
+});
+
+globalStyle(`${distributionControlHeading} label`, {
   minWidth: "0",
   fontSize: "var(--text-meta)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-label-group", {
+});
+
+export const distributionLabelGroup = style({
   display: "flex",
   alignItems: "center",
   gap: "var(--space-075)",
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-control-heading > strong", {
+});
+
+globalStyle(`${distributionControlHeading} > strong`, {
   color: "var(--text-strong)",
   fontWeight: "var(--font-weight-semibold)",
   whiteSpace: "nowrap",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-withdrawal-heading", {
+});
+
+export const distributionWithdrawalHeading = style({
   display: "grid",
   gridTemplateColumns: "minmax(0, 1fr) auto",
   gridTemplateRows: "auto auto",
   justifyContent: "initial",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-withdrawal-heading .distribution-label-group", {
+});
+
+globalStyle(`${distributionWithdrawalHeading} ${distributionLabelGroup}`, {
   gridColumn: "1 / -1",
   gridRow: "1",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-withdrawal-heading .distribution-mode-toggle", {
+});
+
+globalStyle(`${distributionWithdrawalHeading} .distribution-mode-toggle`, {
   gridColumn: "1",
   gridRow: "2",
   justifySelf: "start",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-withdrawal-heading .numeric-unit-input", {
+});
+
+globalStyle(`${distributionWithdrawalHeading} .numeric-unit-input`, {
   gridColumn: "2",
   gridRow: "2",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-note", {
+});
+
+export const distributionNote = style({
   margin: "var(--space-3) 0 0",
   color: "var(--primary)",
   fontSize: "var(--text-meta)",
   lineHeight: "var(--leading-snug)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights", {
+});
+
+export const distributionInsights = style({
   display: "grid",
   gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
   gap: "var(--space-3)",
   margin: "var(--space-4) 0 0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights .metric-card", {
+});
+
+globalStyle(`${distributionInsights} .metric-card`, {
   minWidth: "0",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights .metric-card strong", {
+});
+
+globalStyle(`${distributionInsights} .metric-card strong`, {
   fontSize: "var(--text-metric)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights .metric-value-row", {
+});
+
+globalStyle(`${distributionInsights} .metric-value-row`, {
   alignItems: "center",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights", {
+});
+
+globalStyle(distributionInsights, {
   gridTemplateColumns: "1fr",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-controls", {
+});
+
+globalStyle(distributionControls, {
   gridTemplateColumns: "1fr",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(":where(.distribution-panel) .panel-header", {
+});
+
+globalStyle(`:where(${distributionPanel}) .panel-header`, {
   alignItems: "start",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-control .numeric-unit-input", {
+});
+
+globalStyle(`${distributionControl} .numeric-unit-input`, {
   width: "var(--size-6-25)",
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights", {
+});
+
+globalStyle(distributionInsights, {
   "@media": {
     ["(width >= " + breakpoints.compact + ")"]: {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-controls", {
+});
+
+globalStyle(distributionControls, {
   "@media": {
     ["(width >= " + breakpoints.tablet + ")"]: {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-insights", {
+});
+
+globalStyle(distributionInsights, {
   "@media": {
     ["(width >= " + breakpoints.wide + ")"]: {
       gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-controls", {
+});
+
+globalStyle(distributionControls, {
   "@media": {
     ["(width >= " + breakpoints.wide + ")"]: {
       gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 1.35fr) minmax(0, 0.9fr)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-withdrawal-heading", {
+});
+
+globalStyle(distributionWithdrawalHeading, {
   "@media": {
     ["(width >= " + breakpoints.wide + ")"]: {
       display: "flex",
@@ -163,11 +197,12 @@ globalStyle(".distribution-withdrawal-heading", {
       gap: "var(--space-1)",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
-globalStyle(".distribution-withdrawal-heading .distribution-label-group", {
+});
+
+globalStyle(`${distributionWithdrawalHeading} ${distributionLabelGroup}`, {
   "@media": {
     ["(width >= " + breakpoints.wide + ")"]: {
       flex: "1",
     },
   },
-} as unknown as Parameters<typeof globalStyle>[1]);
+});
